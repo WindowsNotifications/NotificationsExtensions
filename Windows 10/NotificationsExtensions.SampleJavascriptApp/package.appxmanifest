@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  IgnorableNamespaces="uap mp">
+
+  <Identity
+    Name="dacb18e5-9731-4453-8159-3e16e8dc0489"
+    Version="1.0.0.0"
+    Publisher="CN=anbare" />
+
+  <mp:PhoneIdentity PhoneProductId="dacb18e5-9731-4453-8159-3e16e8dc0489" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>NotificationsExtensions.SampleJavascriptApp</DisplayName>
+    <PublisherDisplayName>anbare</PublisherDisplayName>
+    <Logo>images\storelogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10069.0" MaxVersionTested="10.0.10069.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+
+  <Applications>
+    <Application
+      Id="App"
+      StartPage="default.html">
+
+      <uap:VisualElements
+        DisplayName="NotificationsExtensions.SampleJavascriptApp"
+        Description="NotificationsExtensions.SampleJavascriptApp"
+        BackgroundColor="#464646"
+        Square150x150Logo="images\Logo.png"
+        Square44x44Logo="images\SmallLogo.png">
+
+        <uap:SplashScreen Image="images\splashscreen.png" />
+
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+
+</Package>
