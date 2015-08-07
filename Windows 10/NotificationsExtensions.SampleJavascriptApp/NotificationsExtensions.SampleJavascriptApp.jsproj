@@ -45,8 +45,8 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
   <PropertyGroup>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10069.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10069.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>$(VersionNumberMajor).$(VersionNumberMinor)</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>NotificationsExtensions.SampleJavascriptApp_TemporaryKey.pfx</PackageCertificateKeyFile>
@@ -70,6 +70,7 @@
     <Content Include="WinJS\js\WinJS.intellisense.js" />
     <Content Include="WinJS\js\WinJS.intellisense-setup.js" />
     <None Include="NotificationsExtensions.SampleJavascriptApp_TemporaryKey.pfx" />
+    <None Include="project.json"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NotificationsExtensions.Win10.WinRT\NotificationsExtensions.Win10.WinRT.csproj" />
