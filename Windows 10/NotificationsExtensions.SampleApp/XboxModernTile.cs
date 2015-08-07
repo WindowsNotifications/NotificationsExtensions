@@ -22,7 +22,7 @@ namespace NotificationsExtensions.SampleApp
 
             var mediumContent = new TileContentAdaptive()
             {
-                TextStacking = TileBindingTextStacking.Center,
+                TextStacking = TileTextStacking.Center,
 
                 Children =
                 {
@@ -94,7 +94,7 @@ namespace NotificationsExtensions.SampleApp
             // Large content
             var largeContent = new TileContentAdaptive()
             {
-                TextStacking = TileBindingTextStacking.Center,
+                TextStacking = TileTextStacking.Center,
 
                 Children =
                 {

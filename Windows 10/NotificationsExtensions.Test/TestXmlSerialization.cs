@@ -849,7 +849,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             var binding = new Element_TileBinding(TileTemplateNameV3.TileMedium)
             {
-                TextStacking = TileBindingTextStacking.Top
+                TextStacking = TileTextStacking.Top
             };
 
             AssertBindingPayload(@"<binding template=""TileMedium"" />", binding);
@@ -860,7 +860,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             var binding = new Element_TileBinding(TileTemplateNameV3.TileMedium)
             {
-                TextStacking = TileBindingTextStacking.Center
+                TextStacking = TileTextStacking.Center
             };
 
             AssertBindingPayload(@"<binding template=""TileMedium"" hint-textStacking=""center"" />", binding);
@@ -871,7 +871,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             var binding = new Element_TileBinding(TileTemplateNameV3.TileMedium)
             {
-                TextStacking = TileBindingTextStacking.Bottom
+                TextStacking = TileTextStacking.Bottom
             };
 
             AssertBindingPayload(@"<binding template=""TileMedium"" hint-textStacking=""bottom"" />", binding);
@@ -891,7 +891,7 @@ namespace NotificationsExtensions.Win10.Test
                 Language = "en-US",
                 Overlay = 50,
                 Presentation = TilePresentation.People,
-                TextStacking = TileBindingTextStacking.Center
+                TextStacking = TileTextStacking.Center
             };
 
             AssertBindingPayload(@"<binding template=""TileMedium"" fallback=""TileSquareText01"" addImageQuery=""True"" baseUri=""http://msn.com/images/"" branding=""name"" contentId=""myId"" displayName=""My Name"" lang=""en-US"" hint-overlay=""50"" hint-presentation=""people"" hint-textStacking=""center"" />", binding);
@@ -951,7 +951,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             var text = new Element_TileText()
             {
-                Lang = null
+                Language = null
             };
 
             AssertTextPayload(@"<text />", text);
@@ -962,7 +962,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             var text = new Element_TileText()
             {
-                Lang = "en-US"
+                Language = "en-US"
             };
 
             AssertTextPayload(@"<text lang=""en-US"" />", text);
@@ -1175,7 +1175,7 @@ namespace NotificationsExtensions.Win10.Test
             var text = new Element_TileText()
             {
                 Align = TileTextAlign.Center,
-                Lang = "en-US",
+                Language = "en-US",
                 MaxLines = 5,
                 MinLines = 3,
                 Style = TileTextStyle.CaptionSubtle,

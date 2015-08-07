@@ -82,7 +82,11 @@ namespace NotificationsExtensions
                 Language = Language,
                 BaseUri = BaseUri,
                 Branding = Branding,
-                AddImageQuery = AddImageQuery
+                AddImageQuery = AddImageQuery,
+                DisplayName = DisplayName,
+                ContentId = ContentId
+
+                // LockDetailedStatus gets populated by TileVisual
             };
 
             if (Content != null)
@@ -142,7 +146,7 @@ namespace NotificationsExtensions
 
         public TileImageSource PeekImage { get; set; }
 
-        public TileBindingTextStacking TextStacking { get; set; } = Element_TileBinding.DEFAULT_TEXT_STACKING;
+        public TileTextStacking TextStacking { get; set; } = Element_TileBinding.DEFAULT_TEXT_STACKING;
 
         public int Overlay { get; set; } = Element_TileBinding.DEFAULT_OVERLAY;
 
@@ -214,7 +218,7 @@ namespace NotificationsExtensions
             if (Icon != null)
             {
                 var element = Icon.ConvertToElement();
-                element.Id = "1";
+                element.Id = 1;
                 binding.Children.Add(element);
             }
         }
@@ -320,7 +324,7 @@ namespace NotificationsExtensions
         Circle
     }
 
-    public enum TileBindingTextStacking
+    public enum TileTextStacking
     {
         [EnumString("top")]
         Top,
@@ -664,11 +668,11 @@ namespace NotificationsExtensions
     }
 
     [NotificationXmlElement("binding")]
-    public sealed class Element_TileBinding
+    public sealed class Element_TileBinding : IElementWithDescendants
     {
         internal const TileBranding DEFAULT_BRANDING = TileBranding.Auto;
         internal const bool DEFAULT_ADD_IMAGE_QUERY = false;
-        internal const TileBindingTextStacking DEFAULT_TEXT_STACKING = TileBindingTextStacking.Top;
+        internal const TileTextStacking DEFAULT_TEXT_STACKING = TileTextStacking.Top;
         internal const int DEFAULT_OVERLAY = 20;
 
         public Element_TileBinding(TileTemplateNameV3 template)
@@ -726,6 +730,15 @@ namespace NotificationsExtensions
         [NotificationXmlAttribute("lang")]
         public string Language { get; set; }
 
+        [NotificationXmlAttribute("hint-lockDetailedStatus1")]
+        public string LockDetailedStatus1 { get; set; }
+
+        [NotificationXmlAttribute("hint-lockDetailedStatus2")]
+        public string LockDetailedStatus2 { get; set; }
+
+        [NotificationXmlAttribute("hint-lockDetailedStatus3")]
+        public string LockDetailedStatus3 { get; set; }
+
         private int _overlay = DEFAULT_OVERLAY;
         [NotificationXmlAttribute("hint-overlay", DEFAULT_OVERLAY)]
         public int Overlay
@@ -744,10 +757,35 @@ namespace NotificationsExtensions
         public TilePresentation? Presentation { get; set; }
 
         [NotificationXmlAttribute("hint-textStacking", DEFAULT_TEXT_STACKING)]
-        public TileBindingTextStacking TextStacking { get; set; } = DEFAULT_TEXT_STACKING;
+        public TileTextStacking TextStacking { get; set; } = DEFAULT_TEXT_STACKING;
         
 
         public IList<IElement_TileBindingChild> Children { get; private set; } = new List<IElement_TileBindingChild>();
+
+        /// <summary>
+        /// Generates an enumerable collection of children and all those children's children
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<object> Descendants()
+        {
+            foreach (IElement_TileBindingChild child in Children)
+            {
+                // Return the child
+                yield return child;
+
+                // And if it has descendants, return the descendants
+                if (child is IElementWithDescendants)
+                {
+                    foreach (object descendant in (child as IElementWithDescendants).Descendants())
+                        yield return descendant;
+                }
+            }
+        }
+    }
+
+    public interface IElementWithDescendants
+    {
+        IEnumerable<object> Descendants();
     }
 
     [NotificationXmlElement("image")]
@@ -760,7 +798,7 @@ namespace NotificationsExtensions
         internal const TileImageAlign DEFAULT_ALIGN = TileImageAlign.Stretch;
 
         [NotificationXmlAttribute("id")]
-        public string Id { get; set; }
+        public int? Id { get; set; }
 
         [NotificationXmlAttribute("src")]
         public string Src { get; set; }
@@ -797,10 +835,10 @@ namespace NotificationsExtensions
         public string Text { get; set; }
 
         [NotificationXmlAttribute("id")]
-        public string Id { get; set; }
+        public int? Id { get; set; }
 
         [NotificationXmlAttribute("lang")]
-        public string Lang { get; set; }
+        public string Language { get; set; }
 
         [NotificationXmlAttribute("hint-align", DEFAULT_ALIGN)]
         public TileTextAlign Align { get; set; } = DEFAULT_ALIGN;
@@ -841,9 +879,22 @@ namespace NotificationsExtensions
     }
 
     [NotificationXmlElement("group")]
-    public sealed class Element_TileGroup : IElement_TileBindingChild
+    public sealed class Element_TileGroup : IElement_TileBindingChild, IElementWithDescendants
     {
         public IList<Element_TileSubgroup> Children { get; private set; } = new List<Element_TileSubgroup>();
+
+        public IEnumerable<object> Descendants()
+        {
+            foreach (Element_TileSubgroup subgroup in Children)
+            {
+                // Return the subgroup
+                yield return subgroup;
+
+                // And also return its descendants
+                foreach (object descendant in subgroup.Descendants())
+                    yield return descendant;
+            }
+        }
     }
 
     public interface IElement_TileSubgroupChild { }
@@ -851,7 +902,7 @@ namespace NotificationsExtensions
     public interface IElement_TileBindingChild { }
 
     [NotificationXmlElement("subgroup")]
-    public sealed class Element_TileSubgroup
+    public sealed class Element_TileSubgroup : IElementWithDescendants
     {
         internal const TileAdaptiveSubgroupTextStacking DEFAULT_TEXT_STACKING = TileAdaptiveSubgroupTextStacking.Top;
 
@@ -874,6 +925,15 @@ namespace NotificationsExtensions
         }
 
         public IList<IElement_TileSubgroupChild> Children { get; private set; } = new List<IElement_TileSubgroupChild>();
+
+        public IEnumerable<object> Descendants()
+        {
+            foreach (IElement_TileSubgroupChild child in Children)
+            {
+                // Return each child (we know there's no further descendants)
+                yield return child;
+            }
+        }
     }
 
 

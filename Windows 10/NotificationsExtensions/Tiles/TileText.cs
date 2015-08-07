@@ -48,7 +48,7 @@ namespace NotificationsExtensions
             return new Element_TileText()
             {
                 Text = Text,
-                Lang = Lang,
+                Language = Lang,
                 Style = Style,
                 Wrap = Wrap,
                 MaxLines = MaxLines,
@@ -77,7 +77,7 @@ namespace NotificationsExtensions
             return new Element_TileText()
             {
                 Text = Text,
-                Lang = Lang
+                Language = Lang
             };
         }
 
