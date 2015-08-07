@@ -384,6 +384,231 @@ namespace NotificationsExtensions.Win10.Test
         }
 
         [TestMethod]
+        public void TestConversion_Visual_LockScreenDetailedStatus1_MatchingText_InSubgroup()
+        {
+            AssertSpecificallyVisual(
+
+                new Element_TileVisual()
+                {
+                    Bindings =
+                    {
+                        new Element_TileBinding(TileTemplateNameV3.TileWide)
+                        {
+                            Children =
+                            {
+                                new Element_TileText() { Text = "Awesome" },
+                                new Element_TileGroup()
+                                {
+                                    Children =
+                                    {
+                                        new Element_TileSubgroup()
+                                        {
+                                            Children =
+                                            {
+                                                new Element_TileImage(),
+                                                new Element_TileText() { Text = "Status 1", Id = 1 },
+                                                new Element_TileText() { Text = "Cool" }
+                                            }
+                                        }
+                                    }
+                                },
+                                new Element_TileText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                },
+
+                new TileVisual()
+                {
+                    LockDetailedStatus1 = "Status 1",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileAdaptiveText() { Text = "Awesome" },
+                                new TileAdaptiveGroup()
+                                {
+                                    Children =
+                                    {
+                                        new TileAdaptiveSubgroup()
+                                        {
+                                            Children =
+                                            {
+                                                new TileAdaptiveImage(),
+                                                new TileAdaptiveText() { Text = "Status 1" },
+                                                new TileAdaptiveText() { Text = "Cool" }
+                                            }
+                                        }
+                                    }
+                                },
+                                new TileAdaptiveText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        [TestMethod]
+        public void TestConversion_Visual_LockScreenDetailedStatus2_NoMatchingText()
+        {
+            AssertSpecificallyVisual(
+
+                new Element_TileVisual()
+                {
+                    Bindings =
+                    {
+                        new Element_TileBinding(TileTemplateNameV3.TileWide)
+                        {
+                            LockDetailedStatus2 = "Status 2",
+                            Children =
+                            {
+                                new Element_TileText() { Text = "Awesome" },
+                                new Element_TileText() { Text = "Cool" }
+                            }
+                        }
+                    }
+                },
+
+                new TileVisual()
+                {
+                    LockDetailedStatus2 = "Status 2",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileAdaptiveText() { Text = "Awesome" },
+                                new TileAdaptiveText() { Text = "Cool" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        [TestMethod]
+        public void TestConversion_Visual_LockScreenDetailedStatus2_MatchingText_InBinding()
+        {
+            AssertSpecificallyVisual(
+
+                new Element_TileVisual()
+                {
+                    Bindings =
+                    {
+                        new Element_TileBinding(TileTemplateNameV3.TileWide)
+                        {
+                            Children =
+                            {
+                                new Element_TileText() { Text = "Awesome" },
+                                new Element_TileText() { Text = "Cool" },
+                                new Element_TileText() { Text = "Status 2", Id = 2 },
+                                new Element_TileText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                },
+
+                new TileVisual()
+                {
+                    LockDetailedStatus2 = "Status 2",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileAdaptiveText() { Text = "Awesome" },
+                                new TileAdaptiveText() { Text = "Cool" },
+                                new TileAdaptiveText() { Text = "Status 2" },
+                                new TileAdaptiveText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        [TestMethod]
+        public void TestConversion_Visual_LockScreenDetailedStatus2_MatchingText_InSubgroup()
+        {
+            AssertSpecificallyVisual(
+
+                new Element_TileVisual()
+                {
+                    Bindings =
+                    {
+                        new Element_TileBinding(TileTemplateNameV3.TileWide)
+                        {
+                            Children =
+                            {
+                                new Element_TileText() { Text = "Awesome" },
+                                new Element_TileGroup()
+                                {
+                                    Children =
+                                    {
+                                        new Element_TileSubgroup()
+                                        {
+                                            Children =
+                                            {
+                                                new Element_TileImage(),
+                                                new Element_TileText() { Text = "Status 2", Id = 2 },
+                                                new Element_TileText() { Text = "Cool" }
+                                            }
+                                        }
+                                    }
+                                },
+                                new Element_TileText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                },
+
+                new TileVisual()
+                {
+                    LockDetailedStatus2 = "Status 2",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileAdaptiveText() { Text = "Awesome" },
+                                new TileAdaptiveGroup()
+                                {
+                                    Children =
+                                    {
+                                        new TileAdaptiveSubgroup()
+                                        {
+                                            Children =
+                                            {
+                                                new TileAdaptiveImage(),
+                                                new TileAdaptiveText() { Text = "Status 2" },
+                                                new TileAdaptiveText() { Text = "Cool" }
+                                            }
+                                        }
+                                    }
+                                },
+                                new TileAdaptiveText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        [TestMethod]
         public void TestConversion_Binding_Default()
         {
             AssertSpecificallyBinding(new Element_TileBinding(TileTemplateNameV3.TileMedium), new TileBinding());
@@ -770,6 +995,12 @@ namespace NotificationsExtensions.Win10.Test
             if (expected is Element_TileText)
                 AssertText(expected as Element_TileText, actual as Element_TileText);
 
+            else if (expected is Element_TileImage)
+                AssertImage(expected as Element_TileImage, actual as Element_TileImage);
+
+            else if (expected is Element_TileGroup)
+                AssertGroup(expected as Element_TileGroup, actual as Element_TileGroup);
+
             else
                 throw new NotImplementedException();
         }
@@ -784,6 +1015,51 @@ namespace NotificationsExtensions.Win10.Test
             Assert.AreEqual(expected.Style, actual.Style, "Style wasn't expected value.");
             Assert.AreEqual(expected.Text, actual.Text, "Text wasn't expected value.");
             Assert.AreEqual(expected.Wrap, actual.Wrap, "Wrap wasn't expected value.");
+        }
+
+        private static void AssertImage(Element_TileImage expected, Element_TileImage actual)
+        {
+            Assert.AreEqual(expected.AddImageQuery, actual.AddImageQuery, "AddImageQuery wasn't expected value.");
+            Assert.AreEqual(expected.Align, actual.Align, "Align wasn't expected value.");
+            Assert.AreEqual(expected.Alt, actual.Alt, "Alt wasn't expected value.");
+            Assert.AreEqual(expected.Crop, actual.Crop, "Crop wasn't expected value.");
+            Assert.AreEqual(expected.Id, actual.Id, "Id wasn't expected value.");
+            Assert.AreEqual(expected.Placement, actual.Placement, "Placement wasn't expected value.");
+            Assert.AreEqual(expected.RemoveMargin, actual.RemoveMargin, "RemoveMargin wasn't expected value.");
+            Assert.AreEqual(expected.Src, actual.Src, "Src wasn't expected value.");
+        }
+
+        private static void AssertGroup(Element_TileGroup expected, Element_TileGroup actual)
+        {
+            Assert.AreEqual(expected.Children.Count, actual.Children.Count, "Expected vs actual number of children didn't match.");
+
+            for (int i = 0; i < expected.Children.Count; i++)
+                AssertSubgroup(expected.Children[i], actual.Children[i]);
+        }
+
+        private static void AssertSubgroup(Element_TileSubgroup expected, Element_TileSubgroup actual)
+        {
+            Assert.AreEqual(expected.TextStacking, actual.TextStacking, "TextStacking wasn't expected value.");
+            Assert.AreEqual(expected.Weight, actual.Weight, "Weight wasn't expected value.");
+
+            Assert.AreEqual(expected.Children.Count, actual.Children.Count, "Expected vs actual number of children didn't match.");
+
+            for (int i = 0; i < expected.Children.Count; i++)
+                AssertSubgroupChild(expected.Children[i], actual.Children[i]);
+        }
+
+        private static void AssertSubgroupChild(IElement_TileSubgroupChild expected, IElement_TileSubgroupChild actual)
+        {
+            Assert.AreEqual(expected.GetType(), actual.GetType(), "Expected child to be the same type, but wasn't.");
+
+            if (expected is Element_TileText)
+                AssertText(expected as Element_TileText, actual as Element_TileText);
+
+            else if (expected is Element_TileImage)
+                AssertImage(expected as Element_TileImage, actual as Element_TileImage);
+
+            else
+                throw new NotImplementedException();
         }
     }
 
