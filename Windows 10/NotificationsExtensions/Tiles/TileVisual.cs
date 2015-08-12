@@ -128,6 +128,14 @@ namespace NotificationsExtensions
             if (TileLarge != null)
                 visual.Bindings.Add(TileLarge.ConvertToElement(TileSize.Large));
 
+
+
+
+            // TODO: If a BaseUri wasn't provided, we can potentially optimize the payload size by calculating the best BaseUri
+
+
+
+
             return visual;
         }
 

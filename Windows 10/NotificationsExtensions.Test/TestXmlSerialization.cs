@@ -714,7 +714,73 @@ namespace NotificationsExtensions.Win10.Test
         }
 
         [TestMethod]
-        public void TestXmlSerialization_Binding_Language_Overlay_Default()
+        public void TestXmlSerialization_LockDetailedStatus1_Null()
+        {
+            var binding = new Element_TileBinding(TileTemplateNameV3.TileMedium)
+            {
+                LockDetailedStatus1 = null
+            };
+
+            AssertBindingPayload(@"<binding template=""TileMedium"" />", binding);
+        }
+
+        [TestMethod]
+        public void TestXmlSerialization_LockDetailedStatus1_Value()
+        {
+            var binding = new Element_TileBinding(TileTemplateNameV3.TileMedium)
+            {
+                LockDetailedStatus1 = "Detailed status"
+            };
+
+            AssertBindingPayload(@"<binding template=""TileMedium"" hint-lockDetailedStatus1=""Detailed status"" />", binding);
+        }
+
+        [TestMethod]
+        public void TestXmlSerialization_LockDetailedStatus2_Null()
+        {
+            var binding = new Element_TileBinding(TileTemplateNameV3.TileMedium)
+            {
+                LockDetailedStatus2 = null
+            };
+
+            AssertBindingPayload(@"<binding template=""TileMedium"" />", binding);
+        }
+
+        [TestMethod]
+        public void TestXmlSerialization_LockDetailedStatus2_Value()
+        {
+            var binding = new Element_TileBinding(TileTemplateNameV3.TileMedium)
+            {
+                LockDetailedStatus2 = "Detailed status"
+            };
+
+            AssertBindingPayload(@"<binding template=""TileMedium"" hint-lockDetailedStatus2=""Detailed status"" />", binding);
+        }
+
+        [TestMethod]
+        public void TestXmlSerialization_LockDetailedStatus3_Null()
+        {
+            var binding = new Element_TileBinding(TileTemplateNameV3.TileMedium)
+            {
+                LockDetailedStatus3 = null
+            };
+
+            AssertBindingPayload(@"<binding template=""TileMedium"" />", binding);
+        }
+
+        [TestMethod]
+        public void TestXmlSerialization_LockDetailedStatus3_Value()
+        {
+            var binding = new Element_TileBinding(TileTemplateNameV3.TileMedium)
+            {
+                LockDetailedStatus3 = "Detailed status"
+            };
+
+            AssertBindingPayload(@"<binding template=""TileMedium"" hint-lockDetailedStatus3=""Detailed status"" />", binding);
+        }
+
+        [TestMethod]
+        public void TestXmlSerialization_Binding_Overlay_Default()
         {
             var binding = new Element_TileBinding(TileTemplateNameV3.TileMedium)
             {
@@ -891,10 +957,13 @@ namespace NotificationsExtensions.Win10.Test
                 Language = "en-US",
                 Overlay = 50,
                 Presentation = TilePresentation.People,
-                TextStacking = TileTextStacking.Center
+                TextStacking = TileTextStacking.Center,
+                LockDetailedStatus1 = "Detailed status 1",
+                LockDetailedStatus2 = "Detailed status 2",
+                LockDetailedStatus3 = "Detailed status 3"
             };
 
-            AssertBindingPayload(@"<binding template=""TileMedium"" fallback=""TileSquareText01"" addImageQuery=""True"" baseUri=""http://msn.com/images/"" branding=""name"" contentId=""myId"" displayName=""My Name"" lang=""en-US"" hint-overlay=""50"" hint-presentation=""people"" hint-textStacking=""center"" />", binding);
+            AssertBindingPayload(@"<binding template=""TileMedium"" fallback=""TileSquareText01"" addImageQuery=""True"" baseUri=""http://msn.com/images/"" branding=""name"" contentId=""myId"" displayName=""My Name"" lang=""en-US"" hint-lockDetailedStatus1=""Detailed status 1"" hint-lockDetailedStatus2=""Detailed status 2"" hint-lockDetailedStatus3=""Detailed status 3"" hint-overlay=""50"" hint-presentation=""people"" hint-textStacking=""center"" />", binding);
         }
 
 
@@ -951,7 +1020,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             var text = new Element_TileText()
             {
-                Language = null
+                Lang = null
             };
 
             AssertTextPayload(@"<text />", text);
@@ -962,7 +1031,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             var text = new Element_TileText()
             {
-                Language = "en-US"
+                Lang = "en-US"
             };
 
             AssertTextPayload(@"<text lang=""en-US"" />", text);
@@ -1175,7 +1244,7 @@ namespace NotificationsExtensions.Win10.Test
             var text = new Element_TileText()
             {
                 Align = TileTextAlign.Center,
-                Language = "en-US",
+                Lang = "en-US",
                 MaxLines = 5,
                 MinLines = 3,
                 Style = TileTextStyle.CaptionSubtle,
@@ -1399,7 +1468,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             var subgroup = new Element_TileSubgroup()
             {
-                TextStacking = TileAdaptiveSubgroupTextStacking.Top
+                TextStacking = TileTextStacking.Top
             };
 
             AssertSubgroupPayload(@"<subgroup />", subgroup);
@@ -1410,7 +1479,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             var subgroup = new Element_TileSubgroup()
             {
-                TextStacking = TileAdaptiveSubgroupTextStacking.Center
+                TextStacking = TileTextStacking.Center
             };
 
             AssertSubgroupPayload(@"<subgroup hint-textStacking=""center"" />", subgroup);
@@ -1421,7 +1490,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             var subgroup = new Element_TileSubgroup()
             {
-                TextStacking = TileAdaptiveSubgroupTextStacking.Bottom
+                TextStacking = TileTextStacking.Bottom
             };
 
             AssertSubgroupPayload(@"<subgroup hint-textStacking=""bottom"" />", subgroup);
@@ -1492,7 +1561,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             var subgroup = new Element_TileSubgroup()
             {
-                TextStacking = TileAdaptiveSubgroupTextStacking.Center,
+                TextStacking = TileTextStacking.Center,
                 Weight = 10,
                 Children =
                 {

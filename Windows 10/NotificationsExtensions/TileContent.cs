@@ -24,6 +24,11 @@ namespace NotificationsExtensions
         /// </summary>
         public TileVisual Visual { get; set; }
 
+        public string GetXml()
+        {
+            return ConvertToElement().GetXml();
+        }
+
         public Element_Tile ConvertToElement()
         {
             var tile = new Element_Tile();

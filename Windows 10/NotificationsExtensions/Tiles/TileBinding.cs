@@ -65,7 +65,7 @@ namespace NotificationsExtensions
         /// </summary>
         public string DisplayName { get; set; }
 
-        public ITileContent Content { get; set; }
+        public ITileBindingContent Content { get; set; }
 
         public Element_TileBinding ConvertToElement(TileSize size)
         {
@@ -128,7 +128,7 @@ namespace NotificationsExtensions
         Large
     }
 
-    public interface ITileContent
+    public interface ITileBindingContent
     {
         TileTemplateNameV3 GetTemplateName(TileSize size);
 
@@ -138,7 +138,7 @@ namespace NotificationsExtensions
     /// <summary>
     /// Supported on all sizes. This is the recommended way of specifying your tile content. Adaptive tile templates are the de-facto choice for Windows 10, and you can create a wide variety of custom tiles through adaptive.
     /// </summary>
-    public sealed class TileContentAdaptive : ITileContent
+    public sealed class TileBindingContentAdaptive : ITileBindingContent
     {
         public IList<ITileAdaptiveChild> Children { get; private set; } =  new List<ITileAdaptiveChild>();
 
@@ -148,7 +148,17 @@ namespace NotificationsExtensions
 
         public TileTextStacking TextStacking { get; set; } = Element_TileBinding.DEFAULT_TEXT_STACKING;
 
-        public int Overlay { get; set; } = Element_TileBinding.DEFAULT_OVERLAY;
+        private int _overlay = Element_TileBinding.DEFAULT_OVERLAY;
+        public int Overlay
+        {
+            get { return _overlay; }
+            set
+            {
+                Element_TileBinding.CheckOverlayValue(value);
+
+                _overlay = value;
+            }
+        }
 
         public TileTemplateNameV3 GetTemplateName(TileSize size)
         {
@@ -191,7 +201,7 @@ namespace NotificationsExtensions
     /// <summary>
     /// Supported on Small and Medium. Enables an iconic tile template, where you can have an icon and badge display next to each other on the tile, in true classic Windows Phone style. The number next to the icon is achieved through a separate badge notification.
     /// </summary>
-    public sealed class TileContentIconic : ITileContent
+    public sealed class TileBindingContentIconic : ITileBindingContent
     {
         /// <summary>
         /// At minimum, to support both Desktop and Phone, Small and Medium tiles, provide a square aspect ratio image with a resolution of 200x200, PNG format, with transparency and no color other than white. For more info see: http://blogs.msdn.com/b/tiles_and_toasts/archive/2015/07/31/iconic-tile-template-for-windows-10.aspx
@@ -227,7 +237,7 @@ namespace NotificationsExtensions
     /// <summary>
     /// Animates through a slideshow of photos.
     /// </summary>
-    public sealed class TileContentPhotos : ITileContent
+    public sealed class TileBindingContentPhotos : ITileBindingContent
     {
         /// <summary>
         /// Up to 10 images can be provided, which will be used for the slideshow.
@@ -251,7 +261,7 @@ namespace NotificationsExtensions
     /// <summary>
     /// Phone-only. Supported on Medium and Wide.
     /// </summary>
-    public sealed class TileContentPeople : ITileContent
+    public sealed class TileBindingContentPeople : ITileBindingContent
     {
         /// <summary>
         /// Images that will roll around as circles.
@@ -275,7 +285,7 @@ namespace NotificationsExtensions
     /// <summary>
     /// Phone-only. Supported on Small, Medium, and Wide.
     /// </summary>
-    public sealed class TileContentContact : ITileContent
+    public sealed class TileBindingContentContact : ITileBindingContent
     {
         public TileImageSource Image { get; set; }
 
@@ -746,11 +756,20 @@ namespace NotificationsExtensions
             get { return _overlay; }
             set
             {
-                if (value < 0 || value > 100)
-                    throw new ArgumentOutOfRangeException("Overlay must be between 0 and 100, inclusive.");
+                CheckOverlayValue(value);
 
                 _overlay = value;
             }
+        }
+
+        /// <summary>
+        /// Throws exception if value is invalid
+        /// </summary>
+        /// <param name="overlay"></param>
+        internal static void CheckOverlayValue(int value)
+        {
+            if (value < 0 || value > 100)
+                throw new ArgumentOutOfRangeException("Overlay must be between 0 and 100, inclusive.");
         }
 
         [NotificationXmlAttribute("hint-presentation")]
@@ -838,7 +857,7 @@ namespace NotificationsExtensions
         public int? Id { get; set; }
 
         [NotificationXmlAttribute("lang")]
-        public string Language { get; set; }
+        public string Lang { get; set; }
 
         [NotificationXmlAttribute("hint-align", DEFAULT_ALIGN)]
         public TileTextAlign Align { get; set; } = DEFAULT_ALIGN;
@@ -850,11 +869,16 @@ namespace NotificationsExtensions
             get { return _maxLines; }
             set
             {
-                if (value < 1)
-                    throw new ArgumentOutOfRangeException("MaxLines must be between 1 and int.MaxValue, inclusive.");
+                CheckMaxLinesValue(value);
 
                 _maxLines = value;
             }
+        }
+
+        internal static void CheckMaxLinesValue(int value)
+        {
+            if (value < 1)
+                throw new ArgumentOutOfRangeException("MaxLines must be between 1 and int.MaxValue, inclusive.");
         }
 
         private int _minLines = DEFAULT_MIN_LINES;
@@ -864,11 +888,16 @@ namespace NotificationsExtensions
             get { return _minLines; }
             set
             {
-                if (value < 1)
-                    throw new ArgumentOutOfRangeException("MinLines must be between 1 and int.MaxValue, inclusive.");
+                CheckMinLinesValue(value);
 
                 _minLines = value;
             }
+        }
+
+        internal static void CheckMinLinesValue(int value)
+        {
+            if (value < 1)
+                throw new ArgumentOutOfRangeException("MinLines must be between 1 and int.MaxValue, inclusive.");
         }
 
         [NotificationXmlAttribute("hint-style", DEFAULT_STYLE)]
@@ -904,10 +933,10 @@ namespace NotificationsExtensions
     [NotificationXmlElement("subgroup")]
     public sealed class Element_TileSubgroup : IElementWithDescendants
     {
-        internal const TileAdaptiveSubgroupTextStacking DEFAULT_TEXT_STACKING = TileAdaptiveSubgroupTextStacking.Top;
+        internal const TileTextStacking DEFAULT_TEXT_STACKING = TileTextStacking.Top;
 
         [NotificationXmlAttribute("hint-textStacking", DEFAULT_TEXT_STACKING)]
-        public TileAdaptiveSubgroupTextStacking TextStacking { get; set; } = DEFAULT_TEXT_STACKING;
+        public TileTextStacking TextStacking { get; set; } = DEFAULT_TEXT_STACKING;
 
         private int? _weight;
         [NotificationXmlAttribute("hint-weight")]

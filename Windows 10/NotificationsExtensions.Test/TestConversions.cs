@@ -8,6 +8,17 @@ namespace NotificationsExtensions.Win10.Test
     [TestClass]
     public class TestConversions
     {
+        private const string CATEGORY_CONVERSIONS_TILE = "Conversions/Tile";
+        private const string CATEGORY_CONVERSIONS_VISUAL = "Conversions/Visual";
+        private const string CATEGORY_CONVERSIONS_ADAPTIVE_ROOT = "Conversions/Adaptive/Root";
+        private const string CATEGORY_CONVERSIONS_ADAPTIVE_TEXT = "Conversions/Adaptive/Text";
+        private const string CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE = "Conversions/Adaptive/Image";
+
+
+
+        #region Tile
+
+        [TestCategory(CATEGORY_CONVERSIONS_TILE)]
         [TestMethod]
         public void TestConversion_Tile_Default()
         {
@@ -19,6 +30,7 @@ namespace NotificationsExtensions.Win10.Test
             Assert.IsNull(tileElement.Visual);
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_Default()
         {
@@ -26,6 +38,7 @@ namespace NotificationsExtensions.Win10.Test
             AssertSpecificallyVisual(new Element_TileVisual(), new TileVisual());
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_AddImageQuery_False()
         {
@@ -42,6 +55,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_AddImageQuery_True()
         {
@@ -58,6 +72,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_BaseUri_Null()
         {
@@ -74,6 +89,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_BaseUri_Value()
         {
@@ -90,6 +106,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_Branding_Auto()
         {
@@ -106,6 +123,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_Branding_Name()
         {
@@ -122,6 +140,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_Branding_Logo()
         {
@@ -138,6 +157,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_Branding_NameAndLogo()
         {
@@ -154,6 +174,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_Branding_None()
         {
@@ -170,6 +191,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_ContentId_Null()
         {
@@ -186,6 +208,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_ContentId_Value()
         {
@@ -202,6 +225,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_DisplayName_Null()
         {
@@ -218,6 +242,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_DisplayName_Value()
         {
@@ -234,6 +259,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_Language_Null()
         {
@@ -250,6 +276,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_Language_Value()
         {
@@ -266,6 +293,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_Version_Null()
         {
@@ -282,6 +310,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
         public void TestConversion_Visual_Version_Value()
         {
@@ -298,8 +327,9 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
-        public void TestConversion_Visual_LockScreenDetailedStatus1_NoMatchingText()
+        public void TestConversion_Visual_LockDetailedStatus1_NoMatchingText()
         {
             AssertSpecificallyVisual(
 
@@ -325,7 +355,7 @@ namespace NotificationsExtensions.Win10.Test
 
                     TileWide = new TileBinding()
                     {
-                        Content = new TileContentAdaptive()
+                        Content = new TileBindingContentAdaptive()
                         {
                             Children =
                             {
@@ -339,8 +369,9 @@ namespace NotificationsExtensions.Win10.Test
                 );
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
-        public void TestConversion_Visual_LockScreenDetailedStatus1_MatchingText_InBinding()
+        public void TestConversion_Visual_LockDetailedStatus1_MatchingText_InBinding()
         {
             AssertSpecificallyVisual(
 
@@ -367,7 +398,7 @@ namespace NotificationsExtensions.Win10.Test
 
                     TileWide = new TileBinding()
                     {
-                        Content = new TileContentAdaptive()
+                        Content = new TileBindingContentAdaptive()
                         {
                             Children =
                             {
@@ -383,8 +414,9 @@ namespace NotificationsExtensions.Win10.Test
                 );
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
-        public void TestConversion_Visual_LockScreenDetailedStatus1_MatchingText_InSubgroup()
+        public void TestConversion_Visual_LockDetailedStatus1_MatchingText_InSubgroup()
         {
             AssertSpecificallyVisual(
 
@@ -424,7 +456,7 @@ namespace NotificationsExtensions.Win10.Test
 
                     TileWide = new TileBinding()
                     {
-                        Content = new TileContentAdaptive()
+                        Content = new TileBindingContentAdaptive()
                         {
                             Children =
                             {
@@ -453,8 +485,9 @@ namespace NotificationsExtensions.Win10.Test
                 );
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
-        public void TestConversion_Visual_LockScreenDetailedStatus2_NoMatchingText()
+        public void TestConversion_Visual_LockDetailedStatus2_NoMatchingText()
         {
             AssertSpecificallyVisual(
 
@@ -480,7 +513,7 @@ namespace NotificationsExtensions.Win10.Test
 
                     TileWide = new TileBinding()
                     {
-                        Content = new TileContentAdaptive()
+                        Content = new TileBindingContentAdaptive()
                         {
                             Children =
                             {
@@ -494,8 +527,9 @@ namespace NotificationsExtensions.Win10.Test
                 );
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
-        public void TestConversion_Visual_LockScreenDetailedStatus2_MatchingText_InBinding()
+        public void TestConversion_Visual_LockDetailedStatus2_MatchingText_InBinding()
         {
             AssertSpecificallyVisual(
 
@@ -522,7 +556,7 @@ namespace NotificationsExtensions.Win10.Test
 
                     TileWide = new TileBinding()
                     {
-                        Content = new TileContentAdaptive()
+                        Content = new TileBindingContentAdaptive()
                         {
                             Children =
                             {
@@ -538,8 +572,9 @@ namespace NotificationsExtensions.Win10.Test
                 );
         }
 
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
         [TestMethod]
-        public void TestConversion_Visual_LockScreenDetailedStatus2_MatchingText_InSubgroup()
+        public void TestConversion_Visual_LockDetailedStatus2_MatchingText_InSubgroup()
         {
             AssertSpecificallyVisual(
 
@@ -579,7 +614,7 @@ namespace NotificationsExtensions.Win10.Test
 
                     TileWide = new TileBinding()
                     {
-                        Content = new TileContentAdaptive()
+                        Content = new TileBindingContentAdaptive()
                         {
                             Children =
                             {
@@ -607,6 +642,171 @@ namespace NotificationsExtensions.Win10.Test
 
                 );
         }
+
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
+        [TestMethod]
+        public void TestConversion_Visual_LockDetailedStatus3_NoMatchingText()
+        {
+            AssertSpecificallyVisual(
+
+                new Element_TileVisual()
+                {
+                    Bindings =
+                    {
+                        new Element_TileBinding(TileTemplateNameV3.TileWide)
+                        {
+                            LockDetailedStatus3 = "Status 3",
+                            Children =
+                            {
+                                new Element_TileText() { Text = "Awesome" },
+                                new Element_TileText() { Text = "Cool" }
+                            }
+                        }
+                    }
+                },
+
+                new TileVisual()
+                {
+                    LockDetailedStatus3 = "Status 3",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileAdaptiveText() { Text = "Awesome" },
+                                new TileAdaptiveText() { Text = "Cool" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
+        [TestMethod]
+        public void TestConversion_Visual_LockDetailedStatus3_MatchingText_InBinding()
+        {
+            AssertSpecificallyVisual(
+
+                new Element_TileVisual()
+                {
+                    Bindings =
+                    {
+                        new Element_TileBinding(TileTemplateNameV3.TileWide)
+                        {
+                            Children =
+                            {
+                                new Element_TileText() { Text = "Awesome" },
+                                new Element_TileText() { Text = "Cool" },
+                                new Element_TileText() { Text = "Status 3", Id = 3 },
+                                new Element_TileText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                },
+
+                new TileVisual()
+                {
+                    LockDetailedStatus3 = "Status 3",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileAdaptiveText() { Text = "Awesome" },
+                                new TileAdaptiveText() { Text = "Cool" },
+                                new TileAdaptiveText() { Text = "Status 3" },
+                                new TileAdaptiveText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_VISUAL)]
+        [TestMethod]
+        public void TestConversion_Visual_LockDetailedStatus3_MatchingText_InSubgroup()
+        {
+            AssertSpecificallyVisual(
+
+                new Element_TileVisual()
+                {
+                    Bindings =
+                    {
+                        new Element_TileBinding(TileTemplateNameV3.TileWide)
+                        {
+                            Children =
+                            {
+                                new Element_TileText() { Text = "Awesome" },
+                                new Element_TileGroup()
+                                {
+                                    Children =
+                                    {
+                                        new Element_TileSubgroup()
+                                        {
+                                            Children =
+                                            {
+                                                new Element_TileImage(),
+                                                new Element_TileText() { Text = "Status 3", Id = 3 },
+                                                new Element_TileText() { Text = "Cool" }
+                                            }
+                                        }
+                                    }
+                                },
+                                new Element_TileText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                },
+
+                new TileVisual()
+                {
+                    LockDetailedStatus3 = "Status 3",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileAdaptiveText() { Text = "Awesome" },
+                                new TileAdaptiveGroup()
+                                {
+                                    Children =
+                                    {
+                                        new TileAdaptiveSubgroup()
+                                        {
+                                            Children =
+                                            {
+                                                new TileAdaptiveImage(),
+                                                new TileAdaptiveText() { Text = "Status 3" },
+                                                new TileAdaptiveText() { Text = "Cool" }
+                                            }
+                                        }
+                                    }
+                                },
+                                new TileAdaptiveText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        #endregion
+
+
+
+
+        #region Binding
 
         [TestMethod]
         public void TestConversion_Binding_Default()
@@ -854,6 +1054,815 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
+        #endregion
+
+
+
+
+
+        #region Adaptive
+
+
+        #region Root
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_Defaults()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_BackgroundImage_Value()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    Children =
+                    {
+                        new Element_TileImage()
+                        {
+                            Src = "http://msn.com/image.png",
+                            Placement = TileImagePlacement.Background
+                        }
+                    }
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        BackgroundImage = new TileImageSource("http://msn.com/image.png")
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_Overlay_Default()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Overlay = 20
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_Overlay_Min()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    Overlay = 0
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Overlay = 0
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_Overlay_Max()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    Overlay = 100
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Overlay = 100
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_Overlay_AboveDefault()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    Overlay = 40
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Overlay = 40
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_Overlay_BelowDefault()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    Overlay = 10
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Overlay = 10
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_Overlay_BelowMin()
+        {
+            try
+            {
+                new TileBindingContentAdaptive()
+                {
+                    Overlay = -1
+                };
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_Overlay_AboveMax()
+        {
+            try
+            {
+                new TileBindingContentAdaptive()
+                {
+                    Overlay = 101
+                };
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_PeekImage_Value()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    Children =
+                    {
+                        new Element_TileImage()
+                        {
+                            Src = "http://msn.com",
+                            Alt = "alt",
+                            AddImageQuery = true,
+                            Placement = TileImagePlacement.Peek
+                        }
+                    }
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        PeekImage = new TileImageSource("http://msn.com")
+                        {
+                            Alt = "alt",
+                            AddImageQuery = true
+                        }
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_TextStacking_Top()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    TextStacking = TileTextStacking.Top
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        TextStacking = TileTextStacking.Top
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_TextStacking_Center()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    TextStacking = TileTextStacking.Center
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        TextStacking = TileTextStacking.Center
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Root_TextStacking_Bottom()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    TextStacking = TileTextStacking.Bottom
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        TextStacking = TileTextStacking.Bottom
+                    }
+                });
+        }
+
+        #endregion
+
+
+        #region Text
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_Defaults()
+        {
+            AssertSpecificallyAdaptiveText(new Element_TileText(), new TileAdaptiveText());
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_Align_Auto()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    Align = TileTextAlign.Auto
+                },
+
+                new TileAdaptiveText()
+                {
+                    Align = TileTextAlign.Auto
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_Align_Left()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    Align = TileTextAlign.Left
+                },
+
+                new TileAdaptiveText()
+                {
+                    Align = TileTextAlign.Left
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_Align_Center()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    Align = TileTextAlign.Center
+                },
+
+                new TileAdaptiveText()
+                {
+                    Align = TileTextAlign.Center
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_Align_Right()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    Align = TileTextAlign.Right
+                },
+
+                new TileAdaptiveText()
+                {
+                    Align = TileTextAlign.Right
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_Lang_Value()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    Lang = "en-US"
+                },
+
+                new TileAdaptiveText()
+                {
+                    Lang = "en-US"
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_MaxLines_Min()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    MaxLines = 1
+                },
+
+                new TileAdaptiveText()
+                {
+                    MaxLines = 1
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_MaxLines_Normal()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    MaxLines = 5
+                },
+
+                new TileAdaptiveText()
+                {
+                    MaxLines = 5
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_MaxLines_Max()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    MaxLines = int.MaxValue
+                },
+
+                new TileAdaptiveText()
+                {
+                    MaxLines = int.MaxValue
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_MaxLines_BelowMin()
+        {
+            try
+            {
+                new TileAdaptiveText()
+                {
+                    MaxLines = 0
+                };
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_MinLines_Min()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    MinLines = 1
+                },
+
+                new TileAdaptiveText()
+                {
+                    MinLines = 1
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_MinLines_Normal()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    MinLines = 5
+                },
+
+                new TileAdaptiveText()
+                {
+                    MinLines = 5
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_MinLines_Max()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    MinLines = int.MaxValue
+                },
+
+                new TileAdaptiveText()
+                {
+                    MinLines = int.MaxValue
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_MinLines_BelowMin()
+        {
+            try
+            {
+                new TileAdaptiveText()
+                {
+                    MinLines = 0
+                };
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_Style_Caption()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    Style = TileTextStyle.Caption
+                },
+
+                new TileAdaptiveText()
+                {
+                    Style = TileTextStyle.Caption
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_Style_HeaderSubtle()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    Style = TileTextStyle.HeaderSubtle
+                },
+
+                new TileAdaptiveText()
+                {
+                    Style = TileTextStyle.HeaderSubtle
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_Value()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    Text = "Hello world"
+                },
+
+                new TileAdaptiveText()
+                {
+                    Text = "Hello world"
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_Wrap_False()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    Wrap = false
+                },
+
+                new TileAdaptiveText()
+                {
+                    Wrap = false
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Text_Wrap_True()
+        {
+            AssertSpecificallyAdaptiveText(
+
+                new Element_TileText()
+                {
+                    Wrap = true
+                },
+
+                new TileAdaptiveText()
+                {
+                    Wrap = true
+                });
+        }
+
+        #endregion
+
+
+        #region Image
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Image_Defaults()
+        {
+            AssertSpecificallyAdaptiveImage(new Element_TileImage(), new TileAdaptiveImage());
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Image_Align_Stretch()
+        {
+            AssertSpecificallyAdaptiveImage(
+
+                new Element_TileImage()
+                {
+                    Align = TileImageAlign.Stretch
+                },
+
+                new TileAdaptiveImage()
+                {
+                    Align = TileImageAlign.Stretch
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Image_Align_Left()
+        {
+            AssertSpecificallyAdaptiveImage(
+
+                new Element_TileImage()
+                {
+                    Align = TileImageAlign.Left
+                },
+
+                new TileAdaptiveImage()
+                {
+                    Align = TileImageAlign.Left
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Image_Align_Center()
+        {
+            AssertSpecificallyAdaptiveImage(
+
+                new Element_TileImage()
+                {
+                    Align = TileImageAlign.Center
+                },
+
+                new TileAdaptiveImage()
+                {
+                    Align = TileImageAlign.Center
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Image_Align_Right()
+        {
+            AssertSpecificallyAdaptiveImage(
+
+                new Element_TileImage()
+                {
+                    Align = TileImageAlign.Right
+                },
+
+                new TileAdaptiveImage()
+                {
+                    Align = TileImageAlign.Right
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Image_Crop_None()
+        {
+            AssertSpecificallyAdaptiveImage(
+
+                new Element_TileImage()
+                {
+                    Crop = TileImageCrop.None
+                },
+
+                new TileAdaptiveImage()
+                {
+                    Crop = TileImageCrop.None
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Image_Crop_Circle()
+        {
+            AssertSpecificallyAdaptiveImage(
+
+                new Element_TileImage()
+                {
+                    Crop = TileImageCrop.Circle
+                },
+
+                new TileAdaptiveImage()
+                {
+                    Crop = TileImageCrop.Circle
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Image_RemoveMargin_False()
+        {
+            AssertSpecificallyAdaptiveImage(
+
+                new Element_TileImage()
+                {
+                    RemoveMargin = false
+                },
+
+                new TileAdaptiveImage()
+                {
+                    RemoveMargin = false
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Image_RemoveMargin_True()
+        {
+            AssertSpecificallyAdaptiveImage(
+
+                new Element_TileImage()
+                {
+                    RemoveMargin = true
+                },
+
+                new TileAdaptiveImage()
+                {
+                    RemoveMargin = true
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Image_Source_Value()
+        {
+            AssertSpecificallyAdaptiveImage(
+
+                new Element_TileImage()
+                {
+                    Src = "http://msn.com",
+                    AddImageQuery = true,
+                    Alt = "alt"
+                },
+
+                new TileAdaptiveImage()
+                {
+                    Source = new TileImageSource("http://msn.com")
+                    {
+                        AddImageQuery = true,
+                        Alt = "alt"
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Image_Source_Defaults()
+        {
+            AssertSpecificallyAdaptiveImage(
+
+                new Element_TileImage()
+                {
+                    Src = "http://msn.com"
+                },
+
+                new TileAdaptiveImage()
+                {
+                    Source = new TileImageSource("http://msn.com")
+                });
+        }
+
+        #endregion
+
+
+
+
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private static void AssertSpecificallyVisual(Element_TileVisual expected, TileVisual visual)
         {
@@ -934,8 +1943,8 @@ namespace NotificationsExtensions.Win10.Test
                         expected
                     }
                 }
-            }, 
-            
+            },
+
             new TileContent()
             {
                 Visual = new TileVisual()
@@ -943,6 +1952,54 @@ namespace NotificationsExtensions.Win10.Test
                     TileMedium = binding
                 }
             });
+        }
+
+        private static void AssertSpecificallyAdaptiveText(Element_TileText expected, TileAdaptiveText text)
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    Children =
+                    {
+                        expected
+                    }
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Children =
+                        {
+                            text
+                        }
+                    }
+                });
+        }
+
+        private static void AssertSpecificallyAdaptiveImage(Element_TileImage expected, TileAdaptiveImage image)
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    Children =
+                    {
+                        expected
+                    }
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Children =
+                        {
+                            image
+                        }
+                    }
+                });
         }
 
 
@@ -1009,7 +2066,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             Assert.AreEqual(expected.Align, actual.Align, "Align wasn't expected value.");
             Assert.AreEqual(expected.Id, actual.Id, "Id wasn't expected value.");
-            Assert.AreEqual(expected.Language, actual.Language, "Lang wasn't expected value.");
+            Assert.AreEqual(expected.Lang, actual.Lang, "Lang wasn't expected value.");
             Assert.AreEqual(expected.MaxLines, actual.MaxLines, "MaxLines wasn't expected value.");
             Assert.AreEqual(expected.MinLines, actual.MinLines, "MinLines wasn't expected value.");
             Assert.AreEqual(expected.Style, actual.Style, "Style wasn't expected value.");
@@ -1062,5 +2119,6 @@ namespace NotificationsExtensions.Win10.Test
                 throw new NotImplementedException();
         }
     }
+    
 
 }

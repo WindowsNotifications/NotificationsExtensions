@@ -27,9 +27,29 @@ namespace NotificationsExtensions
 
         public bool Wrap { get; set; } = Element_TileText.DEFAULT_WRAP;
 
-        public int MaxLines { get; set; } = Element_TileText.DEFAULT_MAX_LINES;
+        private int _maxLines = Element_TileText.DEFAULT_MAX_LINES;
+        public int MaxLines
+        {
+            get { return _maxLines; }
+            set
+            {
+                Element_TileText.CheckMaxLinesValue(value);
 
-        public int MinLines { get; set; } = Element_TileText.DEFAULT_MIN_LINES;
+                _maxLines = value;
+            }
+        }
+
+        private int _minLines = Element_TileText.DEFAULT_MIN_LINES;
+        public int MinLines
+        {
+            get { return _minLines; }
+            set
+            {
+                Element_TileText.CheckMinLinesValue(value);
+
+                _minLines = value;
+            }
+        }
 
         public TileTextAlign Align { get; set; } = Element_TileText.DEFAULT_ALIGN;
 
@@ -48,7 +68,7 @@ namespace NotificationsExtensions
             return new Element_TileText()
             {
                 Text = Text,
-                Language = Lang,
+                Lang = Lang,
                 Style = Style,
                 Wrap = Wrap,
                 MaxLines = MaxLines,
@@ -77,7 +97,7 @@ namespace NotificationsExtensions
             return new Element_TileText()
             {
                 Text = Text,
-                Language = Lang
+                Lang = Lang
             };
         }
 

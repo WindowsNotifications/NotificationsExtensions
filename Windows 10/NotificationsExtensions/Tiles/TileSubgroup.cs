@@ -24,7 +24,7 @@ namespace NotificationsExtensions
 
         public int? Weight { get; set; }
 
-        public TileAdaptiveSubgroupTextStacking TextStacking { get; set; } = Element_TileSubgroup.DEFAULT_TEXT_STACKING;
+        public TileTextStacking TextStacking { get; set; } = Element_TileSubgroup.DEFAULT_TEXT_STACKING;
 
         public Element_TileSubgroup ConvertToElement()
         {

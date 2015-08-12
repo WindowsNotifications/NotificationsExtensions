@@ -14,13 +14,13 @@ namespace NotificationsExtensions.SampleApp
             // Small content
             //var smallContent = TileContentFactory.SpecialTemplates.Contact.CreateSmall();
             //smallContent.Image = new TileImageSource("http://build2015-tile-polling.azurewebsites.net/assets/hipster.jpg");
-            var smallContent = new TileContentAdaptive();
+            var smallContent = new TileBindingContentAdaptive();
 
 
             // Medium content
             //var mediumContent = TileContentFactory.Adaptive.CreateMedium();
 
-            var mediumContent = new TileContentAdaptive()
+            var mediumContent = new TileBindingContentAdaptive()
             {
                 TextStacking = TileTextStacking.Center,
 
@@ -45,7 +45,7 @@ namespace NotificationsExtensions.SampleApp
 
 
             // Wide content
-            var wideContent = new TileContentAdaptive()
+            var wideContent = new TileBindingContentAdaptive()
             {
                 Children =
                 {
@@ -68,7 +68,7 @@ namespace NotificationsExtensions.SampleApp
 
                             new TileAdaptiveSubgroup()
                             {
-                                TextStacking = TileAdaptiveSubgroupTextStacking.Center,
+                                TextStacking = TileTextStacking.Center,
                                 Children =
                                 {
                                     new TileAdaptiveText()
@@ -92,7 +92,7 @@ namespace NotificationsExtensions.SampleApp
 
 
             // Large content
-            var largeContent = new TileContentAdaptive()
+            var largeContent = new TileBindingContentAdaptive()
             {
                 TextStacking = TileTextStacking.Center,
 
