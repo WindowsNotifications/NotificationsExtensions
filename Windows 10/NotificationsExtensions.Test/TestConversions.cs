@@ -13,6 +13,8 @@ namespace NotificationsExtensions.Win10.Test
         private const string CATEGORY_CONVERSIONS_ADAPTIVE_ROOT = "Conversions/Adaptive/Root";
         private const string CATEGORY_CONVERSIONS_ADAPTIVE_TEXT = "Conversions/Adaptive/Text";
         private const string CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE = "Conversions/Adaptive/Image";
+        private const string CATEGORY_CONVERSIONS_ADAPTIVE_GROUP = "Conversions/Adaptive/Group";
+        private const string CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP = "Conversions/Adaptive/Subgroup";
 
 
 
@@ -1845,13 +1847,327 @@ namespace NotificationsExtensions.Win10.Test
 
 
 
+        #region Group
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_GROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Group_Defaults()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    Children =
+                    {
+                        new Element_TileGroup()
+                    }
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Children =
+                        {
+                            new TileAdaptiveGroup()
+                        }
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_GROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Group_Multiple()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    Children =
+                    {
+                        new Element_TileGroup(),
+                        new Element_TileGroup(),
+                        new Element_TileGroup()
+                    }
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Children =
+                        {
+                            new TileAdaptiveGroup(),
+                            new TileAdaptiveGroup(),
+                            new TileAdaptiveGroup()
+                        }
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_GROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Group_WithSubgroups()
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    Children =
+                    {
+                        new Element_TileGroup()
+                        {
+                            Children =
+                            {
+                                new Element_TileSubgroup(),
+                                new Element_TileSubgroup()
+                            }
+                        }
+                    }
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Children =
+                        {
+                            new TileAdaptiveGroup()
+                            {
+                                Children =
+                                {
+                                    new TileAdaptiveSubgroup(),
+                                    new TileAdaptiveSubgroup()
+                                }
+                            }
+                        }
+                    }
+                });
+        }
+
+        #endregion
+
+
+
+        #region Subgroup
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Subgroup_Defaults()
+        {
+            AssertSpecificallySubgroup(new Element_TileSubgroup(), new TileAdaptiveSubgroup());
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Subgroup_TextStacking_Top()
+        {
+            AssertSpecificallySubgroup(
+
+                new Element_TileSubgroup()
+                {
+                    TextStacking = TileTextStacking.Top
+                },
+
+                new TileAdaptiveSubgroup()
+                {
+                    TextStacking = TileTextStacking.Top
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Subgroup_TextStacking_Center()
+        {
+            AssertSpecificallySubgroup(
+
+                new Element_TileSubgroup()
+                {
+                    TextStacking = TileTextStacking.Center
+                },
+
+                new TileAdaptiveSubgroup()
+                {
+                    TextStacking = TileTextStacking.Center
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Subgroup_TextStacking_Bottom()
+        {
+            AssertSpecificallySubgroup(
+
+                new Element_TileSubgroup()
+                {
+                    TextStacking = TileTextStacking.Bottom
+                },
+
+                new TileAdaptiveSubgroup()
+                {
+                    TextStacking = TileTextStacking.Bottom
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Subgroup_Weight_Min()
+        {
+            AssertSpecificallySubgroup(
+
+                new Element_TileSubgroup()
+                {
+                    Weight = 1
+                },
+
+                new TileAdaptiveSubgroup()
+                {
+                    Weight = 1
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Subgroup_Weight_Normal()
+        {
+            AssertSpecificallySubgroup(
+
+                new Element_TileSubgroup()
+                {
+                    Weight = 30
+                },
+
+                new TileAdaptiveSubgroup()
+                {
+                    Weight = 30
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Subgroup_Weight_Larger()
+        {
+            AssertSpecificallySubgroup(
+
+                new Element_TileSubgroup()
+                {
+                    Weight = 200
+                },
+
+                new TileAdaptiveSubgroup()
+                {
+                    Weight = 200
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Subgroup_Weight_Max()
+        {
+            AssertSpecificallySubgroup(
+
+                new Element_TileSubgroup()
+                {
+                    Weight = int.MaxValue
+                },
+
+                new TileAdaptiveSubgroup()
+                {
+                    Weight = int.MaxValue
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Subgroup_Weight_BelowMin()
+        {
+            try
+            {
+                new TileAdaptiveSubgroup()
+                {
+                    Weight = 0
+                };
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Subgroup_WithChildren()
+        {
+            AssertSpecificallySubgroup(
+
+                new Element_TileSubgroup()
+                {
+                    Children =
+                    {
+                        new Element_TileText(),
+                        new Element_TileImage()
+                    }
+                },
+
+                new TileAdaptiveSubgroup()
+                {
+                    Children =
+                    {
+                        new TileAdaptiveText(),
+                        new TileAdaptiveImage()
+                    }
+                });
+        }
+
+        [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP)]
+        [TestMethod]
+        public void TestConversion_Adaptive_Subgroup_AllProperties()
+        {
+            AssertSpecificallySubgroup(
+
+                new Element_TileSubgroup()
+                {
+                    Weight = 10,
+                    TextStacking = TileTextStacking.Center,
+                    Children =
+                    {
+                        new Element_TileText()
+                        {
+                            Text = "Hello"
+                        },
+
+                        new Element_TileImage()
+                        {
+                            Src = "Image.jpg"
+                        }
+                    }
+                },
+
+                new TileAdaptiveSubgroup()
+                {
+                    Weight = 10,
+                    TextStacking = TileTextStacking.Center,
+                    Children =
+                    {
+                        new TileAdaptiveText() { Text = "Hello" },
+                        new TileAdaptiveImage()
+                        {
+                            Source = new TileImageSource("Image.jpg")
+                        }
+                    }
+                });
+        }
+
+        #endregion
+
+
 
         #endregion
 
 
 
 
-
+        
 
 
 
@@ -1952,6 +2268,38 @@ namespace NotificationsExtensions.Win10.Test
                     TileMedium = binding
                 }
             });
+        }
+
+        private static void AssertSpecificallySubgroup(Element_TileSubgroup expected, TileAdaptiveSubgroup subgroup)
+        {
+            AssertSpecificallyBinding(
+
+                new Element_TileBinding(TileTemplateNameV3.TileMedium)
+                {
+                    Children =
+                    {
+                        new Element_TileGroup()
+                        {
+                            Children = { expected }
+                        }
+                    }
+                },
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Children =
+                        {
+                            new TileAdaptiveGroup()
+                            {
+                                Children = { subgroup }
+                            }
+                        }
+                    }
+                }
+
+                );
         }
 
         private static void AssertSpecificallyAdaptiveText(Element_TileText expected, TileAdaptiveText text)

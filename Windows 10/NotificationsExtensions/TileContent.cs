@@ -6,14 +6,18 @@
 // Copyright (c) Microsoft Corporation. All rights reserved
 
 using System;
+using System.Runtime.CompilerServices;
 using System.Text;
 #if !WINRT_NOT_PRESENT
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 #endif
 
+[assembly: InternalsVisibleTo("NotificationsExtensions.Win10.Test.Portable")]
+
 namespace NotificationsExtensions
 {
+
     /// <summary>
     /// Base tile element, which contains a single visual element.
     /// </summary>
@@ -29,7 +33,19 @@ namespace NotificationsExtensions
             return ConvertToElement().GetXml();
         }
 
-        public Element_Tile ConvertToElement()
+#if !WINRT_NOT_PRESENT
+
+        public XmlDocument GetXmlDocument()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(GetXml());
+
+            return doc;
+        }
+
+#endif
+
+        internal Element_Tile ConvertToElement()
         {
             var tile = new Element_Tile();
 

@@ -74,7 +74,7 @@ namespace NotificationsExtensions
 
 
 
-        public Element_TileVisual ConvertToElement()
+        internal Element_TileVisual ConvertToElement()
         {
             var visual = new Element_TileVisual()
             {
@@ -137,6 +137,11 @@ namespace NotificationsExtensions
 
 
             return visual;
+        }
+
+        private static void OptimizeBranding(Element_TileVisual visual)
+        {
+
         }
 
         private bool HasLockDetailedStatusValues()

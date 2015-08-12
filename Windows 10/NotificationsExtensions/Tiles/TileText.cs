@@ -53,17 +53,7 @@ namespace NotificationsExtensions
 
         public TileTextAlign Align { get; set; } = Element_TileText.DEFAULT_ALIGN;
 
-        IElement_TileBindingChild ITileAdaptiveChild.ConvertToElement()
-        {
-            return ConvertToElement();
-        }
-
-        IElement_TileSubgroupChild ITileAdaptiveSubgroupChild.ConvertToElement()
-        {
-            return ConvertToElement();
-        }
-
-        public Element_TileText ConvertToElement()
+        internal Element_TileText ConvertToElement()
         {
             return new Element_TileText()
             {
@@ -92,7 +82,7 @@ namespace NotificationsExtensions
 
         public string Lang { get; set; }
 
-        public Element_TileText ConvertToElement()
+        internal Element_TileText ConvertToElement()
         {
             return new Element_TileText()
             {

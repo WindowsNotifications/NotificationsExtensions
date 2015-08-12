@@ -22,11 +22,21 @@ namespace NotificationsExtensions
     {
         public IList<ITileAdaptiveSubgroupChild> Children { get; private set; } = new List<ITileAdaptiveSubgroupChild>();
 
-        public int? Weight { get; set; }
+        private int? _weight;
+        public int? Weight
+        {
+            get { return _weight; }
+            set
+            {
+                Element_TileSubgroup.CheckWeight(value);
+
+                _weight = value;
+            }
+        }
 
         public TileTextStacking TextStacking { get; set; } = Element_TileSubgroup.DEFAULT_TEXT_STACKING;
 
-        public Element_TileSubgroup ConvertToElement()
+        internal Element_TileSubgroup ConvertToElement()
         {
             var subgroup = new Element_TileSubgroup()
             {
@@ -35,9 +45,21 @@ namespace NotificationsExtensions
             };
 
             foreach (var child in Children)
-                subgroup.Children.Add(child.ConvertToElement());
+            {
+                subgroup.Children.Add(ConvertToSubgroupChildElement(child));
+            }
 
             return subgroup;
+        }
+
+        private static IElement_TileSubgroupChild ConvertToSubgroupChildElement(ITileAdaptiveSubgroupChild child)
+        {
+            IElement_TileSubgroupChild converted = ConversionHelper.ConvertToElement(child) as IElement_TileSubgroupChild;
+
+            if (converted == null)
+                throw new NotImplementedException("Subgroup child must support converting to element subgroup.");
+
+            return converted;
         }
     }
 
@@ -54,6 +76,5 @@ namespace NotificationsExtensions
 
     public interface ITileAdaptiveSubgroupChild
     {
-        IElement_TileSubgroupChild ConvertToElement();
     }
 }

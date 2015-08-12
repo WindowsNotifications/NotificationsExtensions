@@ -21,6 +21,31 @@ using System.IO;
 
 namespace NotificationsExtensions
 {
+    internal static class ConversionHelper
+    {
+        internal static object ConvertToElement(object obj)
+        {
+            MethodInfo convertToElement = GetMethod(obj.GetType(), "ConvertToElement");
+
+            if (convertToElement == null)
+                throw new NotImplementedException("Object must have ConvertToElement() method");
+
+            if (convertToElement.ReturnType == typeof(void))
+                throw new NotImplementedException("ConvertToElement() must return an object");
+
+            return convertToElement.Invoke(obj, null);
+        }
+
+        internal static MethodInfo GetMethod(Type type, string name)
+        {
+            return type.GetMethod(name, BindingFlags.Instance | BindingFlags.NonPublic);
+
+            //MethodInfo[] methods = type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance);
+
+            //return methods.FirstOrDefault(i => i.Name.Equals(name));
+        }
+    }
+
     public sealed class TileBinding
     {
         /// <summary>
@@ -67,15 +92,10 @@ namespace NotificationsExtensions
 
         public ITileBindingContent Content { get; set; }
 
-        public Element_TileBinding ConvertToElement(TileSize size)
+        internal Element_TileBinding ConvertToElement(TileSize size)
         {
-            TileTemplateNameV3 templateName;
-
-            if (Content != null)
-                templateName = Content.GetTemplateName(size);
-
-            else
-                templateName = TileSizeToAdaptiveTemplateConverter.Convert(size);
+            TileTemplateNameV3 templateName = GetTemplateName(Content, size);
+            
 
             Element_TileBinding binding = new Element_TileBinding(templateName)
             {
@@ -89,10 +109,45 @@ namespace NotificationsExtensions
                 // LockDetailedStatus gets populated by TileVisual
             };
 
-            if (Content != null)
-                Content.PopulateElement(binding, size);
+            PopulateElement(Content, binding, size);
 
             return binding;
+        }
+
+        private static void PopulateElement(ITileBindingContent bindingContent, Element_TileBinding binding, TileSize size)
+        {
+            if (bindingContent == null)
+                return;
+
+            Type type = bindingContent.GetType();
+
+            MethodInfo populateElement = ConversionHelper.GetMethod(type, "PopulateElement");
+
+            if (populateElement == null)
+                throw new NotImplementedException("Binding content must have a method for PopulateElement");
+
+            if (populateElement.ReturnType != typeof(void))
+                throw new NotImplementedException("PopulateElement must return " + typeof(void));
+
+            populateElement.Invoke(bindingContent, new object[] { binding, size });
+        }
+
+        private static TileTemplateNameV3 GetTemplateName(ITileBindingContent bindingContent, TileSize size)
+        {
+            if (bindingContent == null)
+                return TileSizeToAdaptiveTemplateConverter.Convert(size);
+
+            Type type = bindingContent.GetType();
+            
+            MethodInfo method = ConversionHelper.GetMethod(type, "GetTemplateName");
+
+            if (method == null)
+                throw new NotImplementedException("Binding content must have a method for GetTemplateName");
+
+            if (method.ReturnType != typeof(TileTemplateNameV3))
+                throw new NotImplementedException("GetTemplateName must return " + typeof(TileTemplateNameV3));
+
+            return (TileTemplateNameV3)method.Invoke(bindingContent, new object[] { size });
         }
     }
 
@@ -130,11 +185,8 @@ namespace NotificationsExtensions
 
     public interface ITileBindingContent
     {
-        TileTemplateNameV3 GetTemplateName(TileSize size);
-
-        void PopulateElement(Element_TileBinding binding, TileSize size);
     }
-
+    
     /// <summary>
     /// Supported on all sizes. This is the recommended way of specifying your tile content. Adaptive tile templates are the de-facto choice for Windows 10, and you can create a wide variety of custom tiles through adaptive.
     /// </summary>
@@ -160,12 +212,12 @@ namespace NotificationsExtensions
             }
         }
 
-        public TileTemplateNameV3 GetTemplateName(TileSize size)
+        internal TileTemplateNameV3 GetTemplateName(TileSize size)
         {
             return TileSizeToAdaptiveTemplateConverter.Convert(size);
         }
 
-        public void PopulateElement(Element_TileBinding binding, TileSize size)
+        internal void PopulateElement(Element_TileBinding binding, TileSize size)
         {
             // Assign properties
             binding.TextStacking = TextStacking;
@@ -189,13 +241,24 @@ namespace NotificationsExtensions
 
             // And then add all the children
             foreach (var child in Children)
-                binding.Children.Add(child.ConvertToElement());
+            {
+                binding.Children.Add(ConvertToBindingChildElement(child));
+            }
+        }
+
+        private static IElement_TileBindingChild ConvertToBindingChildElement(ITileAdaptiveChild child)
+        {
+            IElement_TileBindingChild converted = ConversionHelper.ConvertToElement(child) as IElement_TileBindingChild;
+
+            if (converted == null)
+                throw new NotImplementedException("Tile adaptive child must support converting to TileBindingChild");
+
+            return converted;
         }
     }
 
     public interface ITileAdaptiveChild
     {
-        IElement_TileBindingChild ConvertToElement();
     }
 
     /// <summary>
@@ -208,7 +271,7 @@ namespace NotificationsExtensions
         /// </summary>
         public TileImageSource Icon { get; set; }
 
-        public TileTemplateNameV3 GetTemplateName(TileSize size)
+        internal TileTemplateNameV3 GetTemplateName(TileSize size)
         {
             switch (size)
             {
@@ -223,7 +286,7 @@ namespace NotificationsExtensions
             }
         }
 
-        public void PopulateElement(Element_TileBinding binding, TileSize size)
+        internal void PopulateElement(Element_TileBinding binding, TileSize size)
         {
             if (Icon != null)
             {
@@ -244,12 +307,12 @@ namespace NotificationsExtensions
         /// </summary>
         public IList<TileImageSource> Images { get; private set; } = new List<TileImageSource>();
 
-        public TileTemplateNameV3 GetTemplateName(TileSize size)
+        internal TileTemplateNameV3 GetTemplateName(TileSize size)
         {
             return TileSizeToAdaptiveTemplateConverter.Convert(size);
         }
 
-        public void PopulateElement(Element_TileBinding binding, TileSize size)
+        internal void PopulateElement(Element_TileBinding binding, TileSize size)
         {
             binding.Presentation = TilePresentation.Photos;
 
@@ -268,12 +331,12 @@ namespace NotificationsExtensions
         /// </summary>
         public IList<TileImageSource> Images { get; private set; } = new List<TileImageSource>();
 
-        public TileTemplateNameV3 GetTemplateName(TileSize size)
+        internal TileTemplateNameV3 GetTemplateName(TileSize size)
         {
             return TileSizeToAdaptiveTemplateConverter.Convert(size);
         }
 
-        public void PopulateElement(Element_TileBinding binding, TileSize size)
+        internal void PopulateElement(Element_TileBinding binding, TileSize size)
         {
             binding.Presentation = TilePresentation.People;
 
@@ -294,12 +357,12 @@ namespace NotificationsExtensions
         /// </summary>
         public BasicTileText Text { get; set; }
 
-        public TileTemplateNameV3 GetTemplateName(TileSize size)
+        internal TileTemplateNameV3 GetTemplateName(TileSize size)
         {
             return TileSizeToAdaptiveTemplateConverter.Convert(size);
         }
 
-        public void PopulateElement(Element_TileBinding binding, TileSize size)
+        internal void PopulateElement(Element_TileBinding binding, TileSize size)
         {
             binding.Presentation = TilePresentation.Contact;
 
@@ -395,7 +458,7 @@ namespace NotificationsExtensions
     }
 
     [NotificationXmlElement("tile")]
-    public sealed class Element_Tile
+    internal sealed class Element_Tile
     {
         public Element_TileVisual Visual { get; set; }
 
@@ -481,7 +544,7 @@ namespace NotificationsExtensions
 
 
     [NotificationXmlElement("visual")]
-    public sealed class Element_TileVisual
+    internal sealed class Element_TileVisual
     {
         internal const TileBranding DEFAULT_BRANDING = TileBranding.Auto;
         internal const bool DEFAULT_ADD_IMAGE_QUERY = false;
@@ -678,7 +741,7 @@ namespace NotificationsExtensions
     }
 
     [NotificationXmlElement("binding")]
-    public sealed class Element_TileBinding : IElementWithDescendants
+    internal sealed class Element_TileBinding : IElementWithDescendants
     {
         internal const TileBranding DEFAULT_BRANDING = TileBranding.Auto;
         internal const bool DEFAULT_ADD_IMAGE_QUERY = false;
@@ -808,7 +871,7 @@ namespace NotificationsExtensions
     }
 
     [NotificationXmlElement("image")]
-    public sealed class Element_TileImage : IElement_TileBindingChild, IElement_TileSubgroupChild
+    internal sealed class Element_TileImage : IElement_TileBindingChild, IElement_TileSubgroupChild
     {
         internal const TileImagePlacement DEFAULT_PLACEMENT = TileImagePlacement.Inline;
         internal const bool DEFAULT_ADD_IMAGE_QUERY = false;
@@ -842,7 +905,7 @@ namespace NotificationsExtensions
     }
 
     [NotificationXmlElement("text")]
-    public sealed class Element_TileText : IElement_TileBindingChild, IElement_TileSubgroupChild
+    internal sealed class Element_TileText : IElement_TileBindingChild, IElement_TileSubgroupChild
     {
         internal const TileTextStyle DEFAULT_STYLE = TileTextStyle.Caption;
         internal const bool DEFAULT_WRAP = false;
@@ -908,7 +971,7 @@ namespace NotificationsExtensions
     }
 
     [NotificationXmlElement("group")]
-    public sealed class Element_TileGroup : IElement_TileBindingChild, IElementWithDescendants
+    internal sealed class Element_TileGroup : IElement_TileBindingChild, IElementWithDescendants
     {
         public IList<Element_TileSubgroup> Children { get; private set; } = new List<Element_TileSubgroup>();
 
@@ -926,12 +989,12 @@ namespace NotificationsExtensions
         }
     }
 
-    public interface IElement_TileSubgroupChild { }
+    internal interface IElement_TileSubgroupChild { }
 
-    public interface IElement_TileBindingChild { }
+    internal interface IElement_TileBindingChild { }
 
     [NotificationXmlElement("subgroup")]
-    public sealed class Element_TileSubgroup : IElementWithDescendants
+    internal sealed class Element_TileSubgroup : IElementWithDescendants
     {
         internal const TileTextStacking DEFAULT_TEXT_STACKING = TileTextStacking.Top;
 
@@ -946,11 +1009,16 @@ namespace NotificationsExtensions
 
             set
             {
-                if (value != null && value < 1)
-                    throw new ArgumentOutOfRangeException("Weight must be between 1 and int.MaxValue, inclusive (or null)");
+                CheckWeight(value);
 
                 _weight = value;
             }
+        }
+
+        internal static void CheckWeight(int? weight)
+        {
+            if (weight != null && weight.Value < 1)
+                throw new ArgumentOutOfRangeException("Weight must be between 1 and int.MaxValue, inclusive (or null)");
         }
 
         public IList<IElement_TileSubgroupChild> Children { get; private set; } = new List<IElement_TileSubgroupChild>();

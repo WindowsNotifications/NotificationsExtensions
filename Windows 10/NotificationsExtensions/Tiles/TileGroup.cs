@@ -22,7 +22,7 @@ namespace NotificationsExtensions
     {
         public IList<TileAdaptiveSubgroup> Children { get; private set; } = new List<TileAdaptiveSubgroup>();
         
-        public Element_TileGroup ConvertToElement()
+        internal Element_TileGroup ConvertToElement()
         {
             Element_TileGroup group = new Element_TileGroup();
 
@@ -30,11 +30,6 @@ namespace NotificationsExtensions
                 group.Children.Add(subgroup.ConvertToElement());
 
             return group;
-        }
-
-        IElement_TileBindingChild ITileAdaptiveChild.ConvertToElement()
-        {
-            return ConvertToElement();
         }
     }
 }

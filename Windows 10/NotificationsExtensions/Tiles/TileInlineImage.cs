@@ -30,17 +30,7 @@ namespace NotificationsExtensions
 
         public TileImageAlign Align { get; set; } = Element_TileImage.DEFAULT_ALIGN;
 
-        IElement_TileSubgroupChild ITileAdaptiveSubgroupChild.ConvertToElement()
-        {
-            return ConvertToElement();
-        }
-
-        IElement_TileBindingChild ITileAdaptiveChild.ConvertToElement()
-        {
-            return ConvertToElement();
-        }
-
-        public Element_TileImage ConvertToElement()
+        internal Element_TileImage ConvertToElement()
         {
             Element_TileImage image = new Element_TileImage()
             {
@@ -81,7 +71,7 @@ namespace NotificationsExtensions
 
         public bool AddImageQuery { get; set; } = Element_TileImage.DEFAULT_ADD_IMAGE_QUERY;
 
-        public Element_TileImage ConvertToElement()
+        internal Element_TileImage ConvertToElement()
         {
             Element_TileImage image = new Element_TileImage();
 
@@ -90,7 +80,7 @@ namespace NotificationsExtensions
             return image;
         }
 
-        public void PopulateElement(Element_TileImage image)
+        internal void PopulateElement(Element_TileImage image)
         {
             image.Src = Src;
             image.Alt = Alt;
