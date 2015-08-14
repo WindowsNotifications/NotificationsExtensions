@@ -63,17 +63,6 @@ namespace NotificationsExtensions
         }
     }
 
-    public enum TileSubgroupTextStacking
-    {
-        Top,
-
-        [EnumString("center")]
-        Center,
-
-        [EnumString("bottom")]
-        Bottom
-    }
-
     public interface ITileSubgroupChild
     {
     }

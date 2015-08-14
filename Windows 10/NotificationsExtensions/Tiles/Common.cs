@@ -21,7 +21,7 @@ using System.IO;
 
 namespace NotificationsExtensions
 {
-    public static class TileSizeToAdaptiveTemplateConverter
+    internal static class TileSizeToAdaptiveTemplateConverter
     {
         public static TileTemplateNameV3 Convert(TileSize size)
         {
@@ -45,7 +45,7 @@ namespace NotificationsExtensions
         }
     }
 
-    public enum TileSize
+    internal enum TileSize
     {
         Small,
         Medium,

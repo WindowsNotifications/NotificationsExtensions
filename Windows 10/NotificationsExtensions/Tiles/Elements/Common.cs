@@ -21,7 +21,7 @@ using System.IO;
 
 namespace NotificationsExtensions
 {
-    public enum TilePresentation
+    internal enum TilePresentation
     {
         [EnumString("people")]
         People,
@@ -33,7 +33,7 @@ namespace NotificationsExtensions
         Contact
     }
 
-    public enum TileImagePlacement
+    internal enum TileImagePlacement
     {
         [EnumString("inline")]
         Inline,

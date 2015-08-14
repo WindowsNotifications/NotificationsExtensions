@@ -14,7 +14,7 @@ using Windows.UI.Notifications;
 
 namespace NotificationsExtensions
 {
-    public enum TileTemplateNameV1
+    internal enum TileTemplateNameV1
     {
         TileSquareBlock,
         TileSquareImage,

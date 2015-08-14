@@ -52,7 +52,7 @@ namespace NotificationsExtensions
         Circle
     }
 
-    public enum ToastImagePlacement
+    internal enum ToastImagePlacement
     {
         Inline,
 
