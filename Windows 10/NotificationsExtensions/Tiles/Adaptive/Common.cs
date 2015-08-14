@@ -5,26 +5,31 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved
 
+
 using System;
+using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 #if !WINRT_NOT_PRESENT
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 #endif
+using System.Reflection;
+using System.Linq;
+using System.Collections;
+using System.IO;
 
 namespace NotificationsExtensions
 {
-    /// <summary>
-    /// Contains multiple binding child elements, each of which defines a tile.
-    /// </summary>
-    public sealed class TilePeekImage
+    public enum TileTextStacking
     {
-        internal static bool DEFAULT_ADD_IMAGE_QUERY = false;
+        [EnumString("top")]
+        Top,
 
-        public string Src { get; set; }
+        [EnumString("center")]
+        Center,
 
-        public string Alt { get; set; }
-
-        public bool AddImageQuery { get; set; } = DEFAULT_ADD_IMAGE_QUERY;
+        [EnumString("bottom")]
+        Bottom
     }
 }

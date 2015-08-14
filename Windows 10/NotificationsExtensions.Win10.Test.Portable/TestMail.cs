@@ -98,7 +98,8 @@ namespace NotificationsExtensions.Win10.Test.Portable
             string actualXml = content.GetXml();
 
 
-            Assert.AreEqual(expectedXml, actualXml);
+            AssertHelper.AssertXml(expectedXml, actualXml);
+            //Assert.AreEqual(expectedXml, actualXml);
         }
 
 
@@ -119,44 +120,44 @@ namespace NotificationsExtensions.Win10.Test.Portable
             return xml;
         }
 
-        private static TileAdaptiveText GenerateSpacer()
+        private static TileText GenerateSpacer()
         {
-            return new TileAdaptiveText();
+            return new TileText();
         }
 
-        private static TileAdaptiveGroup GenerateFirstMessage(bool makeLarge)
+        private static TileGroup GenerateFirstMessage(bool makeLarge)
         {
             return GenerateMessage(FIRST_FROM, FIRST_SUBJECT, FIRST_BODY, makeLarge);
         }
 
-        private static TileAdaptiveGroup GenerateSecondMessage(bool makeLarge)
+        private static TileGroup GenerateSecondMessage(bool makeLarge)
         {
             return GenerateMessage(SECOND_FROM, SECOND_SUBJECT, SECOND_BODY, makeLarge);
         }
 
-        private static TileAdaptiveGroup GenerateMessage(string from, string subject, string body, bool makeLarge)
+        private static TileGroup GenerateMessage(string from, string subject, string body, bool makeLarge)
         {
-            return new TileAdaptiveGroup()
+            return new TileGroup()
             {
                 Children =
                 {
-                    new TileAdaptiveSubgroup()
+                    new TileSubgroup()
                     {
                         Children =
                         {
-                            new TileAdaptiveText()
+                            new TileText()
                             {
                                 Text = from,
                                 Style = makeLarge ? TileTextStyle.Subtitle : TileTextStyle.Caption
                             },
 
-                            new TileAdaptiveText()
+                            new TileText()
                             {
                                 Text = subject,
                                 Style = TileTextStyle.CaptionSubtle
                             },
 
-                            new TileAdaptiveText()
+                            new TileText()
                             {
                                 Text = body,
                                 Style = TileTextStyle.CaptionSubtle

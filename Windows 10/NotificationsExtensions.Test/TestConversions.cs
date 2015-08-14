@@ -361,8 +361,8 @@ namespace NotificationsExtensions.Win10.Test
                         {
                             Children =
                             {
-                                new TileAdaptiveText() { Text = "Awesome" },
-                                new TileAdaptiveText() { Text = "Cool" }
+                                new TileText() { Text = "Awesome" },
+                                new TileText() { Text = "Cool" }
                             }
                         }
                     }
@@ -404,10 +404,10 @@ namespace NotificationsExtensions.Win10.Test
                         {
                             Children =
                             {
-                                new TileAdaptiveText() { Text = "Awesome" },
-                                new TileAdaptiveText() { Text = "Cool" },
-                                new TileAdaptiveText() { Text = "Status 1" },
-                                new TileAdaptiveText() { Text = "Blah" }
+                                new TileText() { Text = "Awesome" },
+                                new TileText() { Text = "Cool" },
+                                new TileText() { Text = "Status 1" },
+                                new TileText() { Text = "Blah" }
                             }
                         }
                     }
@@ -462,23 +462,23 @@ namespace NotificationsExtensions.Win10.Test
                         {
                             Children =
                             {
-                                new TileAdaptiveText() { Text = "Awesome" },
-                                new TileAdaptiveGroup()
+                                new TileText() { Text = "Awesome" },
+                                new TileGroup()
                                 {
                                     Children =
                                     {
-                                        new TileAdaptiveSubgroup()
+                                        new TileSubgroup()
                                         {
                                             Children =
                                             {
-                                                new TileAdaptiveImage(),
-                                                new TileAdaptiveText() { Text = "Status 1" },
-                                                new TileAdaptiveText() { Text = "Cool" }
+                                                new TileImage(),
+                                                new TileText() { Text = "Status 1" },
+                                                new TileText() { Text = "Cool" }
                                             }
                                         }
                                     }
                                 },
-                                new TileAdaptiveText() { Text = "Blah" }
+                                new TileText() { Text = "Blah" }
                             }
                         }
                     }
@@ -519,8 +519,8 @@ namespace NotificationsExtensions.Win10.Test
                         {
                             Children =
                             {
-                                new TileAdaptiveText() { Text = "Awesome" },
-                                new TileAdaptiveText() { Text = "Cool" }
+                                new TileText() { Text = "Awesome" },
+                                new TileText() { Text = "Cool" }
                             }
                         }
                     }
@@ -562,10 +562,10 @@ namespace NotificationsExtensions.Win10.Test
                         {
                             Children =
                             {
-                                new TileAdaptiveText() { Text = "Awesome" },
-                                new TileAdaptiveText() { Text = "Cool" },
-                                new TileAdaptiveText() { Text = "Status 2" },
-                                new TileAdaptiveText() { Text = "Blah" }
+                                new TileText() { Text = "Awesome" },
+                                new TileText() { Text = "Cool" },
+                                new TileText() { Text = "Status 2" },
+                                new TileText() { Text = "Blah" }
                             }
                         }
                     }
@@ -620,23 +620,23 @@ namespace NotificationsExtensions.Win10.Test
                         {
                             Children =
                             {
-                                new TileAdaptiveText() { Text = "Awesome" },
-                                new TileAdaptiveGroup()
+                                new TileText() { Text = "Awesome" },
+                                new TileGroup()
                                 {
                                     Children =
                                     {
-                                        new TileAdaptiveSubgroup()
+                                        new TileSubgroup()
                                         {
                                             Children =
                                             {
-                                                new TileAdaptiveImage(),
-                                                new TileAdaptiveText() { Text = "Status 2" },
-                                                new TileAdaptiveText() { Text = "Cool" }
+                                                new TileImage(),
+                                                new TileText() { Text = "Status 2" },
+                                                new TileText() { Text = "Cool" }
                                             }
                                         }
                                     }
                                 },
-                                new TileAdaptiveText() { Text = "Blah" }
+                                new TileText() { Text = "Blah" }
                             }
                         }
                     }
@@ -677,8 +677,8 @@ namespace NotificationsExtensions.Win10.Test
                         {
                             Children =
                             {
-                                new TileAdaptiveText() { Text = "Awesome" },
-                                new TileAdaptiveText() { Text = "Cool" }
+                                new TileText() { Text = "Awesome" },
+                                new TileText() { Text = "Cool" }
                             }
                         }
                     }
@@ -720,10 +720,10 @@ namespace NotificationsExtensions.Win10.Test
                         {
                             Children =
                             {
-                                new TileAdaptiveText() { Text = "Awesome" },
-                                new TileAdaptiveText() { Text = "Cool" },
-                                new TileAdaptiveText() { Text = "Status 3" },
-                                new TileAdaptiveText() { Text = "Blah" }
+                                new TileText() { Text = "Awesome" },
+                                new TileText() { Text = "Cool" },
+                                new TileText() { Text = "Status 3" },
+                                new TileText() { Text = "Blah" }
                             }
                         }
                     }
@@ -778,23 +778,23 @@ namespace NotificationsExtensions.Win10.Test
                         {
                             Children =
                             {
-                                new TileAdaptiveText() { Text = "Awesome" },
-                                new TileAdaptiveGroup()
+                                new TileText() { Text = "Awesome" },
+                                new TileGroup()
                                 {
                                     Children =
                                     {
-                                        new TileAdaptiveSubgroup()
+                                        new TileSubgroup()
                                         {
                                             Children =
                                             {
-                                                new TileAdaptiveImage(),
-                                                new TileAdaptiveText() { Text = "Status 3" },
-                                                new TileAdaptiveText() { Text = "Cool" }
+                                                new TileImage(),
+                                                new TileText() { Text = "Status 3" },
+                                                new TileText() { Text = "Cool" }
                                             }
                                         }
                                     }
                                 },
-                                new TileAdaptiveText() { Text = "Blah" }
+                                new TileText() { Text = "Blah" }
                             }
                         }
                     }
@@ -1346,7 +1346,7 @@ namespace NotificationsExtensions.Win10.Test
         [TestMethod]
         public void TestConversion_Adaptive_Text_Defaults()
         {
-            AssertSpecificallyAdaptiveText(new Element_TileText(), new TileAdaptiveText());
+            AssertSpecificallyAdaptiveText(new Element_TileText(), new TileText());
         }
 
         [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
@@ -1360,7 +1360,7 @@ namespace NotificationsExtensions.Win10.Test
                     Align = TileTextAlign.Auto
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     Align = TileTextAlign.Auto
                 });
@@ -1377,7 +1377,7 @@ namespace NotificationsExtensions.Win10.Test
                     Align = TileTextAlign.Left
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     Align = TileTextAlign.Left
                 });
@@ -1394,7 +1394,7 @@ namespace NotificationsExtensions.Win10.Test
                     Align = TileTextAlign.Center
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     Align = TileTextAlign.Center
                 });
@@ -1411,7 +1411,7 @@ namespace NotificationsExtensions.Win10.Test
                     Align = TileTextAlign.Right
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     Align = TileTextAlign.Right
                 });
@@ -1428,7 +1428,7 @@ namespace NotificationsExtensions.Win10.Test
                     Lang = "en-US"
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     Lang = "en-US"
                 });
@@ -1445,7 +1445,7 @@ namespace NotificationsExtensions.Win10.Test
                     MaxLines = 1
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     MaxLines = 1
                 });
@@ -1462,7 +1462,7 @@ namespace NotificationsExtensions.Win10.Test
                     MaxLines = 5
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     MaxLines = 5
                 });
@@ -1479,7 +1479,7 @@ namespace NotificationsExtensions.Win10.Test
                     MaxLines = int.MaxValue
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     MaxLines = int.MaxValue
                 });
@@ -1491,7 +1491,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             try
             {
-                new TileAdaptiveText()
+                new TileText()
                 {
                     MaxLines = 0
                 };
@@ -1513,7 +1513,7 @@ namespace NotificationsExtensions.Win10.Test
                     MinLines = 1
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     MinLines = 1
                 });
@@ -1530,7 +1530,7 @@ namespace NotificationsExtensions.Win10.Test
                     MinLines = 5
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     MinLines = 5
                 });
@@ -1547,7 +1547,7 @@ namespace NotificationsExtensions.Win10.Test
                     MinLines = int.MaxValue
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     MinLines = int.MaxValue
                 });
@@ -1559,7 +1559,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             try
             {
-                new TileAdaptiveText()
+                new TileText()
                 {
                     MinLines = 0
                 };
@@ -1581,7 +1581,7 @@ namespace NotificationsExtensions.Win10.Test
                     Style = TileTextStyle.Caption
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     Style = TileTextStyle.Caption
                 });
@@ -1598,7 +1598,7 @@ namespace NotificationsExtensions.Win10.Test
                     Style = TileTextStyle.HeaderSubtle
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     Style = TileTextStyle.HeaderSubtle
                 });
@@ -1615,7 +1615,7 @@ namespace NotificationsExtensions.Win10.Test
                     Text = "Hello world"
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     Text = "Hello world"
                 });
@@ -1632,7 +1632,7 @@ namespace NotificationsExtensions.Win10.Test
                     Wrap = false
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     Wrap = false
                 });
@@ -1649,7 +1649,7 @@ namespace NotificationsExtensions.Win10.Test
                     Wrap = true
                 },
 
-                new TileAdaptiveText()
+                new TileText()
                 {
                     Wrap = true
                 });
@@ -1664,7 +1664,7 @@ namespace NotificationsExtensions.Win10.Test
         [TestMethod]
         public void TestConversion_Adaptive_Image_Defaults()
         {
-            AssertSpecificallyAdaptiveImage(new Element_TileImage(), new TileAdaptiveImage());
+            AssertSpecificallyAdaptiveImage(new Element_TileImage(), new TileImage());
         }
 
         [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_IMAGE)]
@@ -1678,7 +1678,7 @@ namespace NotificationsExtensions.Win10.Test
                     Align = TileImageAlign.Stretch
                 },
 
-                new TileAdaptiveImage()
+                new TileImage()
                 {
                     Align = TileImageAlign.Stretch
                 });
@@ -1695,7 +1695,7 @@ namespace NotificationsExtensions.Win10.Test
                     Align = TileImageAlign.Left
                 },
 
-                new TileAdaptiveImage()
+                new TileImage()
                 {
                     Align = TileImageAlign.Left
                 });
@@ -1712,7 +1712,7 @@ namespace NotificationsExtensions.Win10.Test
                     Align = TileImageAlign.Center
                 },
 
-                new TileAdaptiveImage()
+                new TileImage()
                 {
                     Align = TileImageAlign.Center
                 });
@@ -1729,7 +1729,7 @@ namespace NotificationsExtensions.Win10.Test
                     Align = TileImageAlign.Right
                 },
 
-                new TileAdaptiveImage()
+                new TileImage()
                 {
                     Align = TileImageAlign.Right
                 });
@@ -1746,7 +1746,7 @@ namespace NotificationsExtensions.Win10.Test
                     Crop = TileImageCrop.None
                 },
 
-                new TileAdaptiveImage()
+                new TileImage()
                 {
                     Crop = TileImageCrop.None
                 });
@@ -1763,7 +1763,7 @@ namespace NotificationsExtensions.Win10.Test
                     Crop = TileImageCrop.Circle
                 },
 
-                new TileAdaptiveImage()
+                new TileImage()
                 {
                     Crop = TileImageCrop.Circle
                 });
@@ -1780,7 +1780,7 @@ namespace NotificationsExtensions.Win10.Test
                     RemoveMargin = false
                 },
 
-                new TileAdaptiveImage()
+                new TileImage()
                 {
                     RemoveMargin = false
                 });
@@ -1797,7 +1797,7 @@ namespace NotificationsExtensions.Win10.Test
                     RemoveMargin = true
                 },
 
-                new TileAdaptiveImage()
+                new TileImage()
                 {
                     RemoveMargin = true
                 });
@@ -1816,7 +1816,7 @@ namespace NotificationsExtensions.Win10.Test
                     Alt = "alt"
                 },
 
-                new TileAdaptiveImage()
+                new TileImage()
                 {
                     Source = new TileImageSource("http://msn.com")
                     {
@@ -1837,7 +1837,7 @@ namespace NotificationsExtensions.Win10.Test
                     Src = "http://msn.com"
                 },
 
-                new TileAdaptiveImage()
+                new TileImage()
                 {
                     Source = new TileImageSource("http://msn.com")
                 });
@@ -1869,7 +1869,7 @@ namespace NotificationsExtensions.Win10.Test
                     {
                         Children =
                         {
-                            new TileAdaptiveGroup()
+                            new TileGroup()
                         }
                     }
                 });
@@ -1897,9 +1897,9 @@ namespace NotificationsExtensions.Win10.Test
                     {
                         Children =
                         {
-                            new TileAdaptiveGroup(),
-                            new TileAdaptiveGroup(),
-                            new TileAdaptiveGroup()
+                            new TileGroup(),
+                            new TileGroup(),
+                            new TileGroup()
                         }
                     }
                 });
@@ -1932,12 +1932,12 @@ namespace NotificationsExtensions.Win10.Test
                     {
                         Children =
                         {
-                            new TileAdaptiveGroup()
+                            new TileGroup()
                             {
                                 Children =
                                 {
-                                    new TileAdaptiveSubgroup(),
-                                    new TileAdaptiveSubgroup()
+                                    new TileSubgroup(),
+                                    new TileSubgroup()
                                 }
                             }
                         }
@@ -1955,7 +1955,7 @@ namespace NotificationsExtensions.Win10.Test
         [TestMethod]
         public void TestConversion_Adaptive_Subgroup_Defaults()
         {
-            AssertSpecificallySubgroup(new Element_TileSubgroup(), new TileAdaptiveSubgroup());
+            AssertSpecificallySubgroup(new Element_TileSubgroup(), new TileSubgroup());
         }
 
         [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_SUBGROUP)]
@@ -1969,7 +1969,7 @@ namespace NotificationsExtensions.Win10.Test
                     TextStacking = TileTextStacking.Top
                 },
 
-                new TileAdaptiveSubgroup()
+                new TileSubgroup()
                 {
                     TextStacking = TileTextStacking.Top
                 });
@@ -1986,7 +1986,7 @@ namespace NotificationsExtensions.Win10.Test
                     TextStacking = TileTextStacking.Center
                 },
 
-                new TileAdaptiveSubgroup()
+                new TileSubgroup()
                 {
                     TextStacking = TileTextStacking.Center
                 });
@@ -2003,7 +2003,7 @@ namespace NotificationsExtensions.Win10.Test
                     TextStacking = TileTextStacking.Bottom
                 },
 
-                new TileAdaptiveSubgroup()
+                new TileSubgroup()
                 {
                     TextStacking = TileTextStacking.Bottom
                 });
@@ -2020,7 +2020,7 @@ namespace NotificationsExtensions.Win10.Test
                     Weight = 1
                 },
 
-                new TileAdaptiveSubgroup()
+                new TileSubgroup()
                 {
                     Weight = 1
                 });
@@ -2037,7 +2037,7 @@ namespace NotificationsExtensions.Win10.Test
                     Weight = 30
                 },
 
-                new TileAdaptiveSubgroup()
+                new TileSubgroup()
                 {
                     Weight = 30
                 });
@@ -2054,7 +2054,7 @@ namespace NotificationsExtensions.Win10.Test
                     Weight = 200
                 },
 
-                new TileAdaptiveSubgroup()
+                new TileSubgroup()
                 {
                     Weight = 200
                 });
@@ -2071,7 +2071,7 @@ namespace NotificationsExtensions.Win10.Test
                     Weight = int.MaxValue
                 },
 
-                new TileAdaptiveSubgroup()
+                new TileSubgroup()
                 {
                     Weight = int.MaxValue
                 });
@@ -2083,7 +2083,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             try
             {
-                new TileAdaptiveSubgroup()
+                new TileSubgroup()
                 {
                     Weight = 0
                 };
@@ -2109,12 +2109,12 @@ namespace NotificationsExtensions.Win10.Test
                     }
                 },
 
-                new TileAdaptiveSubgroup()
+                new TileSubgroup()
                 {
                     Children =
                     {
-                        new TileAdaptiveText(),
-                        new TileAdaptiveImage()
+                        new TileText(),
+                        new TileImage()
                     }
                 });
         }
@@ -2143,14 +2143,14 @@ namespace NotificationsExtensions.Win10.Test
                     }
                 },
 
-                new TileAdaptiveSubgroup()
+                new TileSubgroup()
                 {
                     Weight = 10,
                     TextStacking = TileTextStacking.Center,
                     Children =
                     {
-                        new TileAdaptiveText() { Text = "Hello" },
-                        new TileAdaptiveImage()
+                        new TileText() { Text = "Hello" },
+                        new TileImage()
                         {
                             Source = new TileImageSource("Image.jpg")
                         }
@@ -2270,7 +2270,7 @@ namespace NotificationsExtensions.Win10.Test
             });
         }
 
-        private static void AssertSpecificallySubgroup(Element_TileSubgroup expected, TileAdaptiveSubgroup subgroup)
+        private static void AssertSpecificallySubgroup(Element_TileSubgroup expected, TileSubgroup subgroup)
         {
             AssertSpecificallyBinding(
 
@@ -2291,7 +2291,7 @@ namespace NotificationsExtensions.Win10.Test
                     {
                         Children =
                         {
-                            new TileAdaptiveGroup()
+                            new TileGroup()
                             {
                                 Children = { subgroup }
                             }
@@ -2302,7 +2302,7 @@ namespace NotificationsExtensions.Win10.Test
                 );
         }
 
-        private static void AssertSpecificallyAdaptiveText(Element_TileText expected, TileAdaptiveText text)
+        private static void AssertSpecificallyAdaptiveText(Element_TileText expected, TileText text)
         {
             AssertSpecificallyBinding(
 
@@ -2326,7 +2326,7 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
-        private static void AssertSpecificallyAdaptiveImage(Element_TileImage expected, TileAdaptiveImage image)
+        private static void AssertSpecificallyAdaptiveImage(Element_TileImage expected, TileImage image)
         {
             AssertSpecificallyBinding(
 

@@ -139,11 +139,6 @@ namespace NotificationsExtensions
             return visual;
         }
 
-        private static void OptimizeBranding(Element_TileVisual visual)
-        {
-
-        }
-
         private bool HasLockDetailedStatusValues()
         {
             return LockDetailedStatus1 != null && LockDetailedStatus2 != null && LockDetailedStatus3 != null;

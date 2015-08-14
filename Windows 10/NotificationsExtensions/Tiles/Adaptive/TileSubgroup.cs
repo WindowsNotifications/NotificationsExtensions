@@ -18,9 +18,9 @@ namespace NotificationsExtensions
     /// <summary>
     /// Contains multiple binding child elements, each of which defines a tile.
     /// </summary>
-    public sealed class TileAdaptiveSubgroup
+    public sealed class TileSubgroup
     {
-        public IList<ITileAdaptiveSubgroupChild> Children { get; private set; } = new List<ITileAdaptiveSubgroupChild>();
+        public IList<ITileSubgroupChild> Children { get; private set; } = new List<ITileSubgroupChild>();
 
         private int? _weight;
         public int? Weight
@@ -52,7 +52,7 @@ namespace NotificationsExtensions
             return subgroup;
         }
 
-        private static IElement_TileSubgroupChild ConvertToSubgroupChildElement(ITileAdaptiveSubgroupChild child)
+        private static IElement_TileSubgroupChild ConvertToSubgroupChildElement(ITileSubgroupChild child)
         {
             IElement_TileSubgroupChild converted = ConversionHelper.ConvertToElement(child) as IElement_TileSubgroupChild;
 
@@ -63,7 +63,7 @@ namespace NotificationsExtensions
         }
     }
 
-    public enum TileAdaptiveSubgroupTextStacking
+    public enum TileSubgroupTextStacking
     {
         Top,
 
@@ -74,7 +74,7 @@ namespace NotificationsExtensions
         Bottom
     }
 
-    public interface ITileAdaptiveSubgroupChild
+    public interface ITileSubgroupChild
     {
     }
 }

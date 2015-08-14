@@ -17,7 +17,7 @@ namespace NotificationsExtensions
     /// <summary>
     /// Contains multiple binding child elements, each of which defines a tile.
     /// </summary>
-    public sealed class TileAdaptiveImage : ITileAdaptiveSubgroupChild, ITileAdaptiveChild
+    public sealed class TileImage : ITileSubgroupChild, ITileAdaptiveChild
     {
         /// <summary>
         /// Provide the source of the image and other image source related properties.
@@ -55,41 +55,25 @@ namespace NotificationsExtensions
         }
     }
 
-    public sealed class TileImageSource
+    public enum TileImageAlign
     {
-        public TileImageSource(string src)
-        {
-            if (src == null)
-                throw new ArgumentNullException("src is required");
+        Stretch,
 
-            Src = src;
-        }
+        [EnumString("left")]
+        Left,
 
-        public string Src { get; private set; }
+        [EnumString("center")]
+        Center,
 
-        public string Alt { get; set; }
+        [EnumString("right")]
+        Right
+    }
 
-        public bool AddImageQuery { get; set; } = Element_TileImage.DEFAULT_ADD_IMAGE_QUERY;
+    public enum TileImageCrop
+    {
+        None,
 
-        internal Element_TileImage ConvertToElement()
-        {
-            Element_TileImage image = new Element_TileImage();
-
-            PopulateElement(image);
-
-            return image;
-        }
-
-        internal void PopulateElement(Element_TileImage image)
-        {
-            image.Src = Src;
-            image.Alt = Alt;
-            image.AddImageQuery = AddImageQuery;
-        }
-
-        public override string ToString()
-        {
-            return Src;
-        }
+        [EnumString("circle")]
+        Circle
     }
 }

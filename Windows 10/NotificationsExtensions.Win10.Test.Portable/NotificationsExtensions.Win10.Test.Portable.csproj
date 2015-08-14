@@ -56,10 +56,13 @@
     <Compile Include="..\NotificationsExtensions.Test\**\*.cs">
       <Link>%(RecursiveDir)%(FileName)</Link>
     </Compile>
+    <Compile Include="AssertHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestWeather.cs" />
     <Compile Include="TestMail.cs" />
     <Compile Include="TextXboxModern.cs" />
+    <Compile Include="Test_Toast_XmlSerialization.cs" />
+    <Compile Include="Test_Toast_Xml.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NotificationsExtensions.Win10.Portable\NotificationsExtensions.Win10.Portable.csproj">

@@ -26,14 +26,14 @@ namespace NotificationsExtensions.SampleApp
 
                 Children =
                 {
-                    new TileAdaptiveText()
+                    new TileText()
                     {
                         Text = "Hi,",
                         Style = TileTextStyle.Base,
                         Align = TileTextAlign.Center
                     },
 
-                    new TileAdaptiveText()
+                    new TileText()
                     {
                         Text = "MasterHip",
                         Style = TileTextStyle.CaptionSubtle,
@@ -49,16 +49,16 @@ namespace NotificationsExtensions.SampleApp
             {
                 Children =
                 {
-                    new TileAdaptiveGroup()
+                    new TileGroup()
                     {
                         Children =
                         {
-                            new TileAdaptiveSubgroup()
+                            new TileSubgroup()
                             {
                                 Weight = 33,
                                 Children =
                                 {
-                                    new TileAdaptiveImage()
+                                    new TileImage()
                                     {
                                         Source = new TileImageSource("http://build2015-tile-polling.azurewebsites.net/assets/hipster.jpg"),
                                         Crop = TileImageCrop.Circle
@@ -66,18 +66,18 @@ namespace NotificationsExtensions.SampleApp
                                 }
                             },
 
-                            new TileAdaptiveSubgroup()
+                            new TileSubgroup()
                             {
                                 TextStacking = TileTextStacking.Center,
                                 Children =
                                 {
-                                    new TileAdaptiveText()
+                                    new TileText()
                                     {
                                         Text = "Hi,",
                                         Style = TileTextStyle.Title
                                     },
 
-                                    new TileAdaptiveText()
+                                    new TileText()
                                     {
                                         Text = "MasterHip",
                                         Style = TileTextStyle.SubtitleSubtle
@@ -98,20 +98,20 @@ namespace NotificationsExtensions.SampleApp
 
                 Children =
                 {
-                    new TileAdaptiveGroup()
+                    new TileGroup()
                     {
                         Children =
                         {
                             // this is for left padding
-                            new TileAdaptiveSubgroup() { Weight = 1 },
+                            new TileSubgroup() { Weight = 1 },
 
                             // this is the image itself
-                            new TileAdaptiveSubgroup()
+                            new TileSubgroup()
                             {
                                 Weight = 2,
                                 Children =
                                 {
-                                    new TileAdaptiveImage()
+                                    new TileImage()
                                     {
                                         Source = new TileImageSource("http://build2015-tile-polling.azurewebsites.net/assets/hipster.jpg"),
                                         Crop = TileImageCrop.Circle
@@ -120,18 +120,18 @@ namespace NotificationsExtensions.SampleApp
                             },
 
                             // this is for right padding
-                            new TileAdaptiveSubgroup() { Weight = 1 }
+                            new TileSubgroup() { Weight = 1 }
                         }
                     },
 
-                    new TileAdaptiveText()
+                    new TileText()
                     {
                         Text = "Hi,",
                         Style = TileTextStyle.Title,
                         Align = TileTextAlign.Center
                     },
 
-                    new TileAdaptiveText()
+                    new TileText()
                     {
                         Text = "MasterHip",
                         Style = TileTextStyle.SubtitleSubtle,

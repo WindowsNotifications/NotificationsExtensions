@@ -5,17 +5,33 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved
 
+
 using System;
+using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 #if !WINRT_NOT_PRESENT
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 #endif
+using System.Reflection;
+using System.Linq;
+using System.Collections;
+using System.IO;
 
 namespace NotificationsExtensions
 {
-    public sealed class TileMedium
+    public enum TileTextAlign
     {
-        
+        Auto,
+
+        [EnumString("left")]
+        Left,
+
+        [EnumString("center")]
+        Center,
+
+        [EnumString("right")]
+        Right
     }
 }

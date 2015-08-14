@@ -18,14 +18,14 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
                     Children =
                     {
-                        new TileAdaptiveText()
+                        new TileText()
                         {
                             Text = "Hi,",
                             Style = TileTextStyle.Base,
                             Align = TileTextAlign.Center
                         },
 
-                        new TileAdaptiveText()
+                        new TileText()
                         {
                             Text = "MasterHip",
                             Style = TileTextStyle.CaptionSubtle,
@@ -42,16 +42,16 @@ namespace NotificationsExtensions.Win10.Test.Portable
                 {
                     Children =
                     {
-                        new TileAdaptiveGroup()
+                        new TileGroup()
                         {
                             Children =
                             {
-                                new TileAdaptiveSubgroup()
+                                new TileSubgroup()
                                 {
                                     Weight = 33,
                                     Children =
                                     {
-                                        new TileAdaptiveImage()
+                                        new TileImage()
                                         {
                                             Source = new TileImageSource("http://xbox.com/MasterHip/profile.jpg"),
                                             Crop = TileImageCrop.Circle
@@ -59,18 +59,18 @@ namespace NotificationsExtensions.Win10.Test.Portable
                                     }
                                 },
 
-                                new TileAdaptiveSubgroup()
+                                new TileSubgroup()
                                 {
                                     TextStacking = TileTextStacking.Center,
                                     Children =
                                     {
-                                        new TileAdaptiveText()
+                                        new TileText()
                                         {
                                             Text = "Hi,",
                                             Style = TileTextStyle.Title
                                         },
 
-                                        new TileAdaptiveText()
+                                        new TileText()
                                         {
                                             Text = "MasterHip",
                                             Style = TileTextStyle.SubtitleSubtle
@@ -93,35 +93,35 @@ namespace NotificationsExtensions.Win10.Test.Portable
                     TextStacking = TileTextStacking.Center,
                     Children =
                     {
-                        new TileAdaptiveGroup()
+                        new TileGroup()
                         {
                             Children =
                             {
-                                new TileAdaptiveSubgroup() { Weight = 1 },
-                                new TileAdaptiveSubgroup()
+                                new TileSubgroup() { Weight = 1 },
+                                new TileSubgroup()
                                 {
                                     Weight = 2,
                                     Children =
                                     {
-                                        new TileAdaptiveImage()
+                                        new TileImage()
                                         {
                                             Source = new TileImageSource("http://xbox.com/MasterHip/profile.jpg"),
                                             Crop = TileImageCrop.Circle
                                         }
                                     }
                                 },
-                                new TileAdaptiveSubgroup() { Weight = 1 }
+                                new TileSubgroup() { Weight = 1 }
                             }
                         },
 
-                        new TileAdaptiveText()
+                        new TileText()
                         {
                             Text = "Hi,",
                             Style = TileTextStyle.Title,
                             Align = TileTextAlign.Center
                         },
 
-                        new TileAdaptiveText()
+                        new TileText()
                         {
                             Text = "MasterHip",
                             Style = TileTextStyle.SubtitleSubtle,
@@ -167,7 +167,8 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
             string actualXml = content.GetXml();
 
-            Assert.AreEqual(expectedXml, actualXml);
+            AssertHelper.AssertXml(expectedXml, actualXml);
+            //Assert.AreEqual(expectedXml, actualXml);
         }
     }
 }

@@ -7,7 +7,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
+using System.Linq;
 #if !WINRT_NOT_PRESENT
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
@@ -18,18 +20,26 @@ namespace NotificationsExtensions
     /// <summary>
     /// Contains multiple binding child elements, each of which defines a tile.
     /// </summary>
-    public sealed class TileAdaptiveGroup : ITileAdaptiveChild
+    public sealed class ToastAppLogo
     {
-        public IList<TileAdaptiveSubgroup> Children { get; private set; } = new List<TileAdaptiveSubgroup>();
-        
-        internal Element_TileGroup ConvertToElement()
+        public ToastImageSource Source { get; set; }
+
+        public ToastImageCrop Crop { get; set; } = Element_ToastImage.DEFAULT_CROP;
+
+        internal Element_ToastImage ConvertToElement()
         {
-            Element_TileGroup group = new Element_TileGroup();
+            Element_ToastImage el = new Element_ToastImage()
+            {
+                Placement = ToastImagePlacement.AppLogoOverride,
+                Crop = Crop
+            };
 
-            foreach (var subgroup in Children)
-                group.Children.Add(subgroup.ConvertToElement());
+            if (Source != null)
+                Source.PopulateElement(el);
 
-            return group;
+            return el;
         }
     }
+
+
 }

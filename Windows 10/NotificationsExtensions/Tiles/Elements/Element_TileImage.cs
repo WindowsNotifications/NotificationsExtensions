@@ -1,0 +1,57 @@
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+// THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+// PARTICULAR PURPOSE.
+//
+// Copyright (c) Microsoft Corporation. All rights reserved
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Xml;
+#if !WINRT_NOT_PRESENT
+using Windows.Data.Xml.Dom;
+using Windows.UI.Notifications;
+#endif
+using System.Reflection;
+using System.Linq;
+using System.Collections;
+using System.IO;
+
+namespace NotificationsExtensions
+{
+    [NotificationXmlElement("image")]
+    internal sealed class Element_TileImage : IElement_TileBindingChild, IElement_TileSubgroupChild
+    {
+        internal const TileImagePlacement DEFAULT_PLACEMENT = TileImagePlacement.Inline;
+        internal const bool DEFAULT_ADD_IMAGE_QUERY = false;
+        internal const TileImageCrop DEFAULT_CROP = TileImageCrop.None;
+        internal const bool DEFAULT_REMOVE_MARGIN = false;
+        internal const TileImageAlign DEFAULT_ALIGN = TileImageAlign.Stretch;
+
+        [NotificationXmlAttribute("id")]
+        public int? Id { get; set; }
+
+        [NotificationXmlAttribute("src")]
+        public string Src { get; set; }
+
+        [NotificationXmlAttribute("alt")]
+        public string Alt { get; set; }
+
+        [NotificationXmlAttribute("addImageQuery", DEFAULT_ADD_IMAGE_QUERY)]
+        public bool AddImageQuery { get; set; } = DEFAULT_ADD_IMAGE_QUERY;
+
+        [NotificationXmlAttribute("placement", DEFAULT_PLACEMENT)]
+        public TileImagePlacement Placement { get; set; } = DEFAULT_PLACEMENT;
+
+        [NotificationXmlAttribute("hint-align", DEFAULT_ALIGN)]
+        public TileImageAlign Align { get; set; } = DEFAULT_ALIGN;
+
+        [NotificationXmlAttribute("hint-crop", DEFAULT_CROP)]
+        public TileImageCrop Crop { get; set; } = DEFAULT_CROP;
+
+        [NotificationXmlAttribute("hint-removeMargin", DEFAULT_REMOVE_MARGIN)]
+        public bool RemoveMargin { get; set; } = DEFAULT_REMOVE_MARGIN;
+    }
+}

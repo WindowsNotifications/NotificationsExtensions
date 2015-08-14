@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Xml;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Notifications;
@@ -32,6 +33,7 @@ namespace NotificationsExtensions.SampleApp
 
         private void ButtonSendTileNotification_Click(object sender, RoutedEventArgs e)
         {
+            ComboBox comboBox = new ComboBox();
             //var tileContent = NotificationsExtensions.GenerateTileContent();
             //TileNotification notif = new TileNotification(null);
             //ITileSquareText01 tileContent = TileContentFactory.CreateTileSquareText01();

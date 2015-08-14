@@ -1599,7 +1599,9 @@ namespace NotificationsExtensions.Win10.Test
 
         private static void AssertPayload(string expectedXml, Element_Tile tile)
         {
-            Assert.AreEqual("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + expectedXml, tile.GetXml());
+            AssertHelper.AssertXml(expectedXml, tile.GetXml());
+
+            //Assert.AreEqual("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + expectedXml, tile.GetXml());
         }
 
         private static void AssertVisualPayload(string expectedVisualXml, Element_TileVisual visual)

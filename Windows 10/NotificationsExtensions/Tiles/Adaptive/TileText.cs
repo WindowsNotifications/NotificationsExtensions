@@ -17,7 +17,7 @@ namespace NotificationsExtensions
     /// <summary>
     /// An adaptive text element
     /// </summary>
-    public sealed class TileAdaptiveText : ITileAdaptiveSubgroupChild, ITileAdaptiveChild
+    public sealed class TileText : ITileSubgroupChild, ITileAdaptiveChild
     {
         public string Text { get; set; }
 
@@ -71,97 +71,5 @@ namespace NotificationsExtensions
         {
             return Text;
         }
-    }
-
-    public sealed class BasicTileText
-    {
-        /// <summary>
-        /// The text value that will be shown in the text field.
-        /// </summary>
-        public string Text { get; set; }
-
-        public string Lang { get; set; }
-
-        internal Element_TileText ConvertToElement()
-        {
-            return new Element_TileText()
-            {
-                Text = Text,
-                Lang = Lang
-            };
-        }
-
-        public override string ToString()
-        {
-            return Text;
-        }
-    }
-
-    public enum TileTextAlign
-    {
-        Auto,
-
-        [EnumString("left")]
-        Left,
-
-        [EnumString("center")]
-        Center,
-
-        [EnumString("right")]
-        Right
-    }
-
-    public enum TileTextStyle
-    {
-        [EnumString("caption")]
-        Caption,
-
-        [EnumString("captionSubtle")]
-        CaptionSubtle,
-
-        [EnumString("body")]
-        Body,
-
-        [EnumString("bodySubtle")]
-        BodySubtle,
-
-        [EnumString("base")]
-        Base,
-
-        [EnumString("baseSubtle")]
-        BaseSubtle,
-
-        [EnumString("subtitle")]
-        Subtitle,
-
-        [EnumString("subtitleSubtle")]
-        SubtitleSubtle,
-
-        [EnumString("title")]
-        Title,
-
-        [EnumString("titleSubtle")]
-        TitleSubtle,
-
-        [EnumString("titleNumeral")]
-        TitleNumeral,
-
-        [EnumString("subheader")]
-        Subheader,
-
-        [EnumString("subheaderSubtle")]
-        SubheaderSubtle,
-
-        [EnumString("subheaderNumeral")]
-        SubheaderNumeral,
-
-        [EnumString("header")]
-        Header,
-
-        [EnumString("headerSubtle")]
-        HeaderSubtle,
-
-        [EnumString("headerNumeral")]
-        HeaderNumeral
     }
 }
