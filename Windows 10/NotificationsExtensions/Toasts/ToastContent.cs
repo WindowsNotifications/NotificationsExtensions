@@ -21,7 +21,7 @@ namespace NotificationsExtensions
     /// <summary>
     /// Base tile element, which contains a single visual element.
     /// </summary>
-    public sealed class ToastContentNew
+    public sealed class ToastContent
     {
         /// <summary>
         /// The visual element is required.

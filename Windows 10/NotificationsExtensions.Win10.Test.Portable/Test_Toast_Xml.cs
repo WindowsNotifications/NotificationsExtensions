@@ -9,7 +9,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
         [TestMethod]
         public void Test_Toast_XML_Toast_Defaults()
         {
-            AssertPayload("<toast/>", new ToastContentNew());
+            AssertPayload("<toast/>", new ToastContent());
         }
 
         [TestMethod]
@@ -840,7 +840,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
         private static void AssertActionsPayload(string expectedActionsXml, IToastActions actions)
         {
-            AssertPayload("<toast>" + expectedActionsXml + "</toast>", new ToastContentNew()
+            AssertPayload("<toast>" + expectedActionsXml + "</toast>", new ToastContent()
             {
                 Actions = actions
             });
@@ -848,7 +848,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
         private static void AssertAudioPayload(string expectedAudioXml, ToastAudio audio)
         {
-            AssertPayload("<toast>" + expectedAudioXml + "</toast>", new ToastContentNew()
+            AssertPayload("<toast>" + expectedAudioXml + "</toast>", new ToastContent()
             {
                 Audio = audio
             });
@@ -856,13 +856,13 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
         private static void AssertVisualPayload(string expectedVisualXml, ToastVisual visual)
         {
-            AssertPayload("<toast>" + expectedVisualXml + "</toast>", new ToastContentNew()
+            AssertPayload("<toast>" + expectedVisualXml + "</toast>", new ToastContent()
             {
                 Visual = visual
             });
         }
 
-        private static void AssertPayload(string expectedXml, ToastContentNew toast)
+        private static void AssertPayload(string expectedXml, ToastContent toast)
         {
             AssertHelper.AssertXml(expectedXml, toast.GetXml());
         }
