@@ -120,8 +120,7 @@ namespace NotificationsExtensions.BadgeContent
         /// </summary>
         /// <param name="number">
         /// The number that will appear on the badge.  If the number is 0, the badge
-        /// will be removed.  The largest value that will appear on the badge is 99.
-        /// Numbers greater than 99 are allowed, but will be displayed as "99+".
+        /// will be removed.
         /// </param>
         public BadgeNumericNotificationContent(uint number)
         {
@@ -130,8 +129,7 @@ namespace NotificationsExtensions.BadgeContent
 
         /// <summary>
         /// The number that will appear on the badge.  If the number is 0, the badge
-        /// will be removed.  The largest value that will appear on the badge is 99.
-        /// Numbers greater than 99 are allowed, but will be displayed as "99+".
+        /// will be removed.
         /// </summary>
         public uint Number
         {

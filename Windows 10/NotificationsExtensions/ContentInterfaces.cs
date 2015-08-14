@@ -113,6 +113,10 @@ namespace NotificationsExtensions
             /// </summary>
             Alert,
             /// <summary>
+            /// A glyph representing an alarm.
+            /// </summary>
+            Alarm,
+            /// <summary>
             /// A glyph representing availability status.
             /// </summary>
             Available,
