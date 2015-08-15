@@ -16,7 +16,7 @@ namespace NotificationsExtensions.BadgeContent
     /// <summary>
     /// Notification content object to display a glyph on a tile's badge.
     /// </summary>
-    public sealed class BadgeGlyphNotificationContent : IBadgeNotificationContent
+    public sealed class BadgeGlyphNotificationContent : INotificationContent
     {
         /// <summary>
         /// Default constructor to create a glyph badge content object.
@@ -87,17 +87,6 @@ namespace NotificationsExtensions.BadgeContent
             xml.LoadXml(GetContent());
             return xml;
         }
-
-        /// <summary>
-        /// Creates a WinRT BadgeNotification object based on the content.
-        /// </summary>
-        /// <returns>A WinRT BadgeNotification object based on the content.</returns>
-        public BadgeNotification CreateNotification()
-        {
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(GetContent());
-            return new BadgeNotification(xmlDoc);
-        }
 #endif
 
         private GlyphValue m_Glyph = (GlyphValue)(-1);
@@ -106,7 +95,7 @@ namespace NotificationsExtensions.BadgeContent
     /// <summary>
     /// Notification content object to display a number on a tile's badge.
     /// </summary>
-    public sealed class BadgeNumericNotificationContent : IBadgeNotificationContent
+    public sealed class BadgeNumericNotificationContent : INotificationContent
     {
         /// <summary>
         /// Default constructor to create a numeric badge content object.
@@ -165,17 +154,6 @@ namespace NotificationsExtensions.BadgeContent
             XmlDocument xml = new XmlDocument();
             xml.LoadXml(GetContent());
             return xml;
-        }
-
-        /// <summary>
-        /// Creates a WinRT BadgeNotification object based on the content.
-        /// </summary>
-        /// <returns>A WinRT BadgeNotification object based on the content.</returns>
-        public BadgeNotification CreateNotification()
-        {
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(GetContent());
-            return new BadgeNotification(xmlDoc);
         }
 #endif
 

@@ -22,7 +22,7 @@ using System.IO;
 namespace NotificationsExtensions
 {
     [NotificationXmlElement("tile")]
-    internal sealed class Element_Tile
+    internal sealed class Element_Tile : INotificationContent
     {
         public Element_TileVisual Visual { get; set; }
 
@@ -30,7 +30,7 @@ namespace NotificationsExtensions
         /// Gets the XML, using UTF-8 encoding by default.
         /// </summary>
         /// <returns></returns>
-        public string GetXml()
+        public string GetContent()
         {
             using (MemoryStream stream = new MemoryStream())
             {
@@ -52,5 +52,18 @@ namespace NotificationsExtensions
                 }
             }
         }
+
+#if !WINRT_NOT_PRESENT
+        /// <summary>
+        /// Retrieves the notification Xml content as a WinRT Xml document.
+        /// </summary>
+        /// <returns>The notification Xml content as a WinRT Xml document.</returns>
+        public Windows.Data.Xml.Dom.XmlDocument GetXml()
+        {
+            Windows.Data.Xml.Dom.XmlDocument xml = new Windows.Data.Xml.Dom.XmlDocument();
+            xml.LoadXml(GetContent());
+            return xml;
+        }
+#endif
     }
 }

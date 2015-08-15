@@ -34,6 +34,7 @@ namespace NotificationsExtensions.SampleApp
 
         private void ButtonSendTileNotification_Click(object sender, RoutedEventArgs e)
         {
+
             BadgeNumericNotificationContent badgeContent = new BadgeNumericNotificationContent(4);
             badgeContent.GetXml();
 

@@ -30,7 +30,7 @@ namespace NotificationsExtensions
 
         public string GetXml()
         {
-            return ConvertToElement().GetXml();
+            return ConvertToElement().GetContent();
         }
 
 #if !WINRT_NOT_PRESENT
