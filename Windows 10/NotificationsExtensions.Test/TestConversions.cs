@@ -2,6 +2,7 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Xml;
 using System.Collections.Generic;
+using NotificationsExtensions.Tiles;
 
 namespace NotificationsExtensions.Win10.Test
 {

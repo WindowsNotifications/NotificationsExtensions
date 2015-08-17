@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NotificationsExtensions.Tiles;
 
 namespace NotificationsExtensions.Win10.Test.Portable
 {

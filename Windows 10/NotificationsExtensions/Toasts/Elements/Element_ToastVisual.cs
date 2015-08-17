@@ -24,7 +24,6 @@ namespace NotificationsExtensions
     [NotificationXmlElement("visual")]
     internal sealed class Element_ToastVisual
     {
-        internal const TileBranding DEFAULT_BRANDING = TileBranding.Auto;
         internal const bool DEFAULT_ADD_IMAGE_QUERY = false;
 
         [NotificationXmlAttribute("addImageQuery", DEFAULT_ADD_IMAGE_QUERY)]

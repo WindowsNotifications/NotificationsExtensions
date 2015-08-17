@@ -19,7 +19,7 @@ using System.Linq;
 using System.Collections;
 using System.IO;
 
-namespace NotificationsExtensions
+namespace NotificationsExtensions.Tiles
 {
     [NotificationXmlElement("subgroup")]
     internal sealed class Element_TileSubgroup : IElementWithDescendants

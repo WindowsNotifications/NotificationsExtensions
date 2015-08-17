@@ -19,7 +19,7 @@ using System.Linq;
 using System.Collections;
 using System.IO;
 
-namespace NotificationsExtensions
+namespace NotificationsExtensions.Tiles
 {
     [NotificationXmlElement("visual")]
     internal sealed class Element_TileVisual

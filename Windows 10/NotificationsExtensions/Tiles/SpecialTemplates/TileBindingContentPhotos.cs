@@ -19,7 +19,7 @@ using System.Linq;
 using System.Collections;
 using System.IO;
 
-namespace NotificationsExtensions
+namespace NotificationsExtensions.Tiles
 {
     /// <summary>
     /// Animates through a slideshow of photos.

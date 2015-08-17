@@ -12,7 +12,7 @@ using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 #endif
 
-namespace NotificationsExtensions
+namespace NotificationsExtensions.Tiles
 {
     public sealed class TileBasicText
     {

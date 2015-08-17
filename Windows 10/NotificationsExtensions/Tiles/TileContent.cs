@@ -13,9 +13,7 @@ using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 #endif
 
-[assembly: InternalsVisibleTo("NotificationsExtensions.Win10.Test.Portable")]
-
-namespace NotificationsExtensions
+namespace NotificationsExtensions.Tiles
 {
 
     /// <summary>

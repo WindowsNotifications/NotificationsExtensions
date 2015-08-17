@@ -19,7 +19,7 @@ using System.Linq;
 using System.Collections;
 using System.IO;
 
-namespace NotificationsExtensions
+namespace NotificationsExtensions.Tiles
 {
     [NotificationXmlElement("binding")]
     internal sealed class Element_TileBinding : IElementWithDescendants

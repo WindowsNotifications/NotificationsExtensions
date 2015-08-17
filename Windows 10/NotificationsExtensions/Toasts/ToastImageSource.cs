@@ -34,7 +34,7 @@ namespace NotificationsExtensions
 
         public string Alt { get; set; }
 
-        public bool AddImageQuery { get; set; } = Element_TileImage.DEFAULT_ADD_IMAGE_QUERY;
+        public bool AddImageQuery { get; set; } = Element_ToastImage.DEFAULT_ADD_IMAGE_QUERY;
 
         internal Element_ToastImage ConvertToElement()
         {

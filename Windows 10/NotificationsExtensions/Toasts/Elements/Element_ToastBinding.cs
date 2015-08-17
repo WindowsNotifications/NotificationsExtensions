@@ -24,10 +24,7 @@ namespace NotificationsExtensions
     [NotificationXmlElement("binding")]
     internal sealed class Element_ToastBinding
     {
-        internal const TileBranding DEFAULT_BRANDING = TileBranding.Auto;
         internal const bool DEFAULT_ADD_IMAGE_QUERY = false;
-        internal const TileTextStacking DEFAULT_TEXT_STACKING = TileTextStacking.Top;
-        internal const int DEFAULT_OVERLAY = 20;
 
         public Element_ToastBinding(ToastTemplateType template)
         {
