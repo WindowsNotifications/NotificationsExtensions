@@ -360,7 +360,7 @@ namespace NotificationsExtensions
         }
     }
 
-    public interface IElementWithDescendants
+    internal interface IElementWithDescendants
     {
         IEnumerable<object> Descendants();
     }
