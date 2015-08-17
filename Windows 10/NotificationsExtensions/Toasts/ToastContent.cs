@@ -15,7 +15,7 @@ using Windows.UI.Notifications;
 
 [assembly: InternalsVisibleTo("NotificationsExtensions.Win10.Test.Portable")]
 
-namespace NotificationsExtensions
+namespace NotificationsExtensions.Toasts
 {
 
     /// <summary>

@@ -19,7 +19,7 @@ using System.Linq;
 using System.Collections;
 using System.IO;
 
-namespace NotificationsExtensions
+namespace NotificationsExtensions.Toasts
 {
     [NotificationXmlElement("toast")]
     internal sealed class Element_Toast : BaseElement

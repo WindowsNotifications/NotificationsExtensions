@@ -15,7 +15,7 @@ using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 #endif
 
-namespace NotificationsExtensions
+namespace NotificationsExtensions.Toasts
 {
     /// <summary>
     /// Contains multiple binding child elements, each of which defines a tile.
