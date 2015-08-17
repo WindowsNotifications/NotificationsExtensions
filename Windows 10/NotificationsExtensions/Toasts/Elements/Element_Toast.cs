@@ -22,7 +22,7 @@ using System.IO;
 namespace NotificationsExtensions
 {
     [NotificationXmlElement("toast")]
-    internal sealed class Element_Toast
+    internal sealed class Element_Toast : BaseElement
     {
         internal const ToastScenario DEFAULT_SCENARIO = ToastScenario.Default;
         internal const ToastActivationType DEFAULT_ACTIVATION_TYPE = ToastActivationType.Foreground;
@@ -45,33 +45,6 @@ namespace NotificationsExtensions
         public Element_ToastAudio Audio { get; set; }
 
         public Element_ToastActions Actions { get; set; }
-
-        /// <summary>
-        /// Gets the XML, using UTF-8 encoding by default.
-        /// </summary>
-        /// <returns></returns>
-        public string GetXml()
-        {
-            using (MemoryStream stream = new MemoryStream())
-            {
-                using (XmlWriter writer = XmlWriter.Create(stream, new XmlWriterSettings()
-                {
-                    Encoding = Encoding.UTF8, // Use UTF-8 encoding to save space (it defaults to UTF-16 which is 2x the size)
-                    Indent = false,
-                    NewLineOnAttributes = false
-                }))
-                {
-                    XmlWriterHelper.Write(writer, this);
-                }
-
-                stream.Position = 0;
-
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    return reader.ReadToEnd();
-                }
-            }
-        }
     }
 
     public enum ToastDuration

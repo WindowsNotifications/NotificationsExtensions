@@ -32,7 +32,7 @@ namespace NotificationsExtensions
 #endif
     }
 
-    namespace BadgeContent
+    namespace Badges
     {
 
         /// <summary>

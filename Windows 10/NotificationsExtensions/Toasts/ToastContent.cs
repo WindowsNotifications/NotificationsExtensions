@@ -21,7 +21,7 @@ namespace NotificationsExtensions
     /// <summary>
     /// Base tile element, which contains a single visual element.
     /// </summary>
-    public sealed class ToastContent
+    public sealed class ToastContent : INotificationContent
     {
         /// <summary>
         /// The visual element is required.
@@ -35,17 +35,17 @@ namespace NotificationsExtensions
         /// </summary>
         public IToastActions Actions { get; set; }
 
-        public string GetXml()
+        public string GetContent()
         {
-            return ConvertToElement().GetXml();
+            return ConvertToElement().GetContent();
         }
 
 #if !WINRT_NOT_PRESENT
 
-        public XmlDocument GetXmlDocument()
+        public XmlDocument GetXml()
         {
             XmlDocument doc = new XmlDocument();
-            doc.LoadXml(GetXml());
+            doc.LoadXml(GetContent());
 
             return doc;
         }

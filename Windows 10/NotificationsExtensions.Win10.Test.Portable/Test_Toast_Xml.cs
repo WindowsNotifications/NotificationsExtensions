@@ -864,7 +864,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
         private static void AssertPayload(string expectedXml, ToastContent toast)
         {
-            AssertHelper.AssertXml(expectedXml, toast.GetXml());
+            AssertHelper.AssertXml(expectedXml, toast.GetContent());
         }
     }
 }

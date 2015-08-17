@@ -668,7 +668,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
         private static void AssertPayload(string expectedXml, Element_Toast toast)
         {
-            AssertHelper.AssertXml(expectedXml, toast.GetXml());
+            AssertHelper.AssertXml(expectedXml, toast.GetContent());
             //Assert.AreEqual("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + expectedXml, toast.GetXml());
         }
     }

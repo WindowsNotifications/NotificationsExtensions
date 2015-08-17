@@ -95,7 +95,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
 
 
-            string actualXml = content.GetXml();
+            string actualXml = content.GetContent();
 
 
             AssertHelper.AssertXml(expectedXml, actualXml);

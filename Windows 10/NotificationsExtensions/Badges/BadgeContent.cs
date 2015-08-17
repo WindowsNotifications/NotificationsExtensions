@@ -11,7 +11,7 @@ using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 #endif
 
-namespace NotificationsExtensions.BadgeContent
+namespace NotificationsExtensions.Badges
 {
     /// <summary>
     /// Notification content object to display a glyph on a tile's badge.

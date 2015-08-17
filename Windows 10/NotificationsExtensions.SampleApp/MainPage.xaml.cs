@@ -1,5 +1,4 @@
 ﻿
-using NotificationsExtensions.BadgeContent;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,9 +33,6 @@ namespace NotificationsExtensions.SampleApp
 
         private void ButtonSendTileNotification_Click(object sender, RoutedEventArgs e)
         {
-
-            BadgeNumericNotificationContent badgeContent = new BadgeNumericNotificationContent(4);
-            badgeContent.GetXml();
 
             ComboBox comboBox = new ComboBox();
             //var tileContent = NotificationsExtensions.GenerateTileContent();

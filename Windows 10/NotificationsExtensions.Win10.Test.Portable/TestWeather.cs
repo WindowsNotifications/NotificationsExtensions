@@ -237,7 +237,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
             expectedPayload += "</group></binding></visual></tile>";
 
 
-            string actualPayload = content.GetXml();
+            string actualPayload = content.GetContent();
 
             AssertHelper.AssertXml(expectedPayload, actualPayload);
             //Assert.AreEqual(expectedPayload, actualPayload);

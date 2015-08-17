@@ -28,17 +28,17 @@ namespace NotificationsExtensions
         /// </summary>
         public TileVisual Visual { get; set; }
 
-        public string GetXml()
+        public string GetContent()
         {
             return ConvertToElement().GetContent();
         }
 
 #if !WINRT_NOT_PRESENT
 
-        public XmlDocument GetXmlDocument()
+        public XmlDocument GetXml()
         {
             XmlDocument doc = new XmlDocument();
-            doc.LoadXml(GetXml());
+            doc.LoadXml(GetContent());
 
             return doc;
         }

@@ -63,6 +63,7 @@
     <Compile Include="TextXboxModern.cs" />
     <Compile Include="Test_Toast_XmlSerialization.cs" />
     <Compile Include="Test_Toast_Xml.cs" />
+    <Compile Include="Test_Badge_Xml.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NotificationsExtensions.Win10.Portable\NotificationsExtensions.Win10.Portable.csproj">
