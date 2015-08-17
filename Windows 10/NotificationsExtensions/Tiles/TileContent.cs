@@ -26,13 +26,21 @@ namespace NotificationsExtensions.Tiles
         /// </summary>
         public TileVisual Visual { get; set; }
 
+
+        /// <summary>
+        /// Retrieves the notification XML content as a string.
+        /// </summary>
+        /// <returns>The notification XML content as a string.</returns>
         public string GetContent()
         {
             return ConvertToElement().GetContent();
         }
 
 #if !WINRT_NOT_PRESENT
-
+        /// <summary>
+        /// Retrieves the notification XML content as a WinRT XML document.
+        /// </summary>
+        /// <returns>The notification XML content as a WinRT XML document.</returns>
         public XmlDocument GetXml()
         {
             XmlDocument doc = new XmlDocument();

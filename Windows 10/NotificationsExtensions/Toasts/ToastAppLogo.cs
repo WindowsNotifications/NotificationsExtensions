@@ -18,12 +18,18 @@ using Windows.UI.Notifications;
 namespace NotificationsExtensions.Toasts
 {
     /// <summary>
-    /// Contains multiple binding child elements, each of which defines a tile.
+    /// The logo that is displayed alongside your toast notification content.
     /// </summary>
     public sealed class ToastAppLogo
     {
+        /// <summary>
+        /// Specify the image source.
+        /// </summary>
         public ToastImageSource Source { get; set; }
 
+        /// <summary>
+        /// Specify how you would like the image to be cropped.
+        /// </summary>
         public ToastImageCrop Crop { get; set; } = Element_ToastImage.DEFAULT_CROP;
 
         internal Element_ToastImage ConvertToElement()

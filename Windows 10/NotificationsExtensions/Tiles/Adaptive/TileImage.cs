@@ -15,7 +15,7 @@ using Windows.UI.Notifications;
 namespace NotificationsExtensions.Tiles
 {
     /// <summary>
-    /// Contains multiple binding child elements, each of which defines a tile.
+    /// An inline image to be displayed on the tile.
     /// </summary>
     public sealed class TileImage : ITileSubgroupChild, ITileAdaptiveChild
     {
@@ -24,10 +24,19 @@ namespace NotificationsExtensions.Tiles
         /// </summary>
         public TileImageSource Source { get; set; }
 
+        /// <summary>
+        /// Control the desired cropping of the image.
+        /// </summary>
         public TileImageCrop Crop { get; set; } = Element_TileImage.DEFAULT_CROP;
 
+        /// <summary>
+        /// By default, images have an 8px margin around them. You can remove this margin by setting this property to true.
+        /// </summary>
         public bool RemoveMargin { get; set; } = Element_TileImage.DEFAULT_REMOVE_MARGIN;
 
+        /// <summary>
+        /// The horizontal alignment of the image.
+        /// </summary>
         public TileImageAlign Align { get; set; } = Element_TileImage.DEFAULT_ALIGN;
 
         internal Element_TileImage ConvertToElement()
@@ -46,6 +55,10 @@ namespace NotificationsExtensions.Tiles
             return image;
         }
 
+        /// <summary>
+        /// Returns the image's source string.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             if (Source == null)
@@ -55,24 +68,48 @@ namespace NotificationsExtensions.Tiles
         }
     }
 
+    /// <summary>
+    /// Specifies the horizontal alignment for an image.
+    /// </summary>
     public enum TileImageAlign
     {
+        /// <summary>
+        /// Default value. Image stretches to fill available width (and potentially available height too, depending on where the image is).
+        /// </summary>
         Stretch,
 
+        /// <summary>
+        /// Align the image to the left, displaying the image at its native resolution.
+        /// </summary>
         [EnumString("left")]
         Left,
 
+        /// <summary>
+        /// Align the image in the center horizontally, displaying the image at its native resolution.
+        /// </summary>
         [EnumString("center")]
         Center,
 
+        /// <summary>
+        /// Align the image to the right, displaying the image at its native resolution.
+        /// </summary>
         [EnumString("right")]
         Right
     }
 
+    /// <summary>
+    /// Specify the desired cropping of the image.
+    /// </summary>
     public enum TileImageCrop
     {
+        /// <summary>
+        /// Default value. Image is not cropped.
+        /// </summary>
         None,
 
+        /// <summary>
+        /// Image is cropped to a circle shape.
+        /// </summary>
         [EnumString("circle")]
         Circle
     }

@@ -16,10 +16,13 @@ using Windows.UI.Notifications;
 namespace NotificationsExtensions.Tiles
 {
     /// <summary>
-    /// Contains multiple binding child elements, each of which defines a tile.
+    /// Groups semantically identify that the content in the group must either be displayed as a whole, or not displayed if it cannot fit. Groups also allow creating multiple columns.
     /// </summary>
     public sealed class TileGroup : ITileAdaptiveChild
     {
+        /// <summary>
+        /// The only valid children of groups are <see cref="TileSubgroup"/>. Each subgroup is displayed as a separate vertical column.
+        /// </summary>
         public IList<TileSubgroup> Children { get; private set; } = new List<TileSubgroup>();
         
         internal Element_TileGroup ConvertToElement()

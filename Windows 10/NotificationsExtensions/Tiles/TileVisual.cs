@@ -22,12 +22,24 @@ namespace NotificationsExtensions.Tiles
     /// </summary>
     public sealed class TileVisual
     {
+        /// <summary>
+        /// The version of the tile XML schema this particular payload was developed for. Windows 10 ignores this property.
+        /// </summary>
         public int? Version { get; set; }
 
+        /// <summary>
+        /// The target locale of the XML payload, specified as a BCP-47 language tags such as "en-US" or "fr-FR". This locale is overridden by any locale specified in binding or text. If this value is a literal string, this attribute defaults to the user's UI language. If this value is a string reference, this attribute defaults to the locale chosen by Windows Runtime in resolving the string.
+        /// </summary>
         public string Language { get; set; }
 
+        /// <summary>
+        /// A default base URI that is combined with relative URIs in image source attributes.
+        /// </summary>
         public Uri BaseUri { get; set; }
 
+        /// <summary>
+        /// The form that the tile should use to display the app's brand.
+        /// </summary>
         public TileBranding Branding { get; set; } = Element_TileVisual.DEFAULT_BRANDING;
 
         public bool AddImageQuery { get; set; } = Element_TileVisual.DEFAULT_ADD_IMAGE_QUERY;

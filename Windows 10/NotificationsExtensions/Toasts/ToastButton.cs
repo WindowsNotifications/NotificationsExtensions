@@ -21,6 +21,9 @@ using System.IO;
 
 namespace NotificationsExtensions.Toasts
 {
+    /// <summary>
+    /// A button that the user can click on a toast notification.
+    /// </summary>
     public sealed class ToastButton
     {
         /// <summary>

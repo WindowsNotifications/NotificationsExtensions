@@ -16,13 +16,20 @@ using Windows.UI.Notifications;
 namespace NotificationsExtensions.Tiles
 {
     /// <summary>
-    /// Contains multiple binding child elements, each of which defines a tile.
+    /// Subgroups are vertical columns that can contain text and images.
     /// </summary>
     public sealed class TileSubgroup
     {
+        /// <summary>
+        /// <see cref="TileText"/> and <see cref="TileImage"/> are valid children of subgroups.
+        /// </summary>
         public IList<ITileSubgroupChild> Children { get; private set; } = new List<ITileSubgroupChild>();
 
         private int? _weight;
+
+        /// <summary>
+        /// Control the width of this subgroup column by specifying the weight, relative to the other subgroups.
+        /// </summary>
         public int? Weight
         {
             get { return _weight; }
@@ -34,6 +41,9 @@ namespace NotificationsExtensions.Tiles
             }
         }
 
+        /// <summary>
+        /// Control the vertical alignment of this subgroup's content.
+        /// </summary>
         public TileTextStacking TextStacking { get; set; } = Element_TileSubgroup.DEFAULT_TEXT_STACKING;
 
         internal Element_TileSubgroup ConvertToElement()

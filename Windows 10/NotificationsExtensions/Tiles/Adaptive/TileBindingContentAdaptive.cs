@@ -22,29 +22,30 @@ using System.IO;
 namespace NotificationsExtensions.Tiles
 {
     /// <summary>
-    /// Supported on all sizes. This is the recommended way of specifying your tile content. Adaptive tile templates are the de-facto choice for Windows 10, and you can create a wide variety of custom tiles through adaptive.
+    /// Supported on all sizes. This is the recommended way of specifying your Tile content. Adaptive Tile templates are the de-facto choice for Windows 10, and you can create a wide variety of custom Tiles through adaptive.
     /// </summary>
     public sealed class TileBindingContentAdaptive : ITileBindingContent
     {
+        /// <summary>
+        /// <see cref="TileText"/>, <see cref="TileImage"/>, and <see cref="TileGroup"/> objects can be added as children. The children are displayed in a vertical StackPanel fashion.
+        /// </summary>
         public IList<ITileAdaptiveChild> Children { get; private set; } = new List<ITileAdaptiveChild>();
 
+        /// <summary>
+        /// An optional background image that gets displayed behind all the tile content, full bleed.
+        /// </summary>
         public TileImageSource BackgroundImage { get; set; }
 
+        /// <summary>
+        /// An optional peek image that animates in from the top of the tile.
+        /// </summary>
         public TileImageSource PeekImage { get; set; }
 
+        /// <summary>
+        /// Controls the text stacking (vertical alignment) of the entire binding element.
+        /// </summary>
         public TileTextStacking TextStacking { get; set; } = Element_TileBinding.DEFAULT_TEXT_STACKING;
-
-        private int _overlay = Element_TileBinding.DEFAULT_OVERLAY;
-        public int Overlay
-        {
-            get { return _overlay; }
-            set
-            {
-                Element_TileBinding.CheckOverlayValue(value);
-
-                _overlay = value;
-            }
-        }
+        
 
         internal TileTemplateNameV3 GetTemplateName(TileSize size)
         {

@@ -21,8 +21,9 @@ using System.IO;
 
 namespace NotificationsExtensions.Tiles
 {
-    
-
+    /// <summary>
+    /// The binding element is a size-specific element, allowing you to specify different tile content for each size (like Medium or Wide).
+    /// </summary>
     public sealed class TileBinding
     {
         /// <summary>
@@ -31,16 +32,12 @@ namespace NotificationsExtensions.Tiles
         public string Language { get; set; }
 
         /// <summary>
-        /// A default base URI that is combined with relative URIs in image source attributes.
-        /// 
-        /// Required: NO
+        /// A default base URI that is combined with relative URIs in image source attributes. Defaults to null.
         /// </summary>
         public Uri BaseUri { get; set; }
 
         /// <summary>
-        /// The form that the tile should use to display the app's brand.
-        /// 
-        /// Required: No
+        /// The form that the tile should use to display the app's brand..
         /// </summary>
         public TileBranding Branding { get; set; } = Element_TileBinding.DEFAULT_BRANDING;
 
@@ -57,8 +54,6 @@ namespace NotificationsExtensions.Tiles
 
         /// <summary>
         /// Set to a sender-defined string that uniquely identifies the content of the notification. This prevents duplicates in the situation where a large tile template is displaying the last three wide tile notifications.
-        /// 
-        /// Required: NO
         /// </summary>
         public string ContentId { get; set; }
 
@@ -67,6 +62,9 @@ namespace NotificationsExtensions.Tiles
         /// </summary>
         public string DisplayName { get; set; }
 
+        /// <summary>
+        /// The actual content to be displayed. One of <see cref="TileBindingContentAdaptive"/>, <see cref="TileBindingContentIconic"/>, <see cref="TileBindingContentContact"/>, <see cref="TileBindingContentPeople"/>, or <see cref="TileBindingContentPhotos"/>
+        /// </summary>
         public ITileBindingContent Content { get; set; }
 
         internal Element_TileBinding ConvertToElement(TileSize size)

@@ -26,6 +26,9 @@ namespace NotificationsExtensions.Tiles
     /// </summary>
     public sealed class TileBindingContentContact : ITileBindingContent
     {
+        /// <summary>
+        /// The image to display.
+        /// </summary>
         public TileImageSource Image { get; set; }
 
         /// <summary>

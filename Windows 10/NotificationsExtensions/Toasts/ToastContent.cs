@@ -19,7 +19,7 @@ namespace NotificationsExtensions.Toasts
 {
 
     /// <summary>
-    /// Base tile element, which contains a single visual element.
+    /// Base toast element, which contains at least a visual element.
     /// </summary>
     public sealed class ToastContent : INotificationContent
     {
@@ -28,6 +28,9 @@ namespace NotificationsExtensions.Toasts
         /// </summary>
         public ToastVisual Visual { get; set; }
 
+        /// <summary>
+        /// Specify custom audio options.
+        /// </summary>
         public ToastAudio Audio { get; set; }
 
         /// <summary>
