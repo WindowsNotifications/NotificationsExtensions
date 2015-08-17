@@ -1,10 +1,12 @@
 ﻿
+using NotificationsExtensions.Tiles;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Xml;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Data.Xml.Dom;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Notifications;
@@ -31,8 +33,73 @@ namespace NotificationsExtensions.SampleApp
             this.InitializeComponent();
         }
 
+private TileGroup GenerateEmailGroup(string from, string subject)
+{
+    return new TileGroup()
+    {
+        Children =
+        {
+            new TileSubgroup()
+            {
+                Children =
+                {
+                    new TileText()
+                    {
+                        Text = from
+                    },
+
+                    new TileText()
+                    {
+                        Text = subject,
+                        Style = TileTextStyle.CaptionSubtle
+                    }
+                }
+            }
+        }
+    };
+}
+
         private void ButtonSendTileNotification_Click(object sender, RoutedEventArgs e)
         {
+TileBindingContentAdaptive bindingContent = new TileBindingContentAdaptive()
+{
+    Children =
+    {
+        GenerateEmailGroup("Jennifer Parker", "Photos from our trip"),
+        GenerateEmailGroup("Steve Bosniak", "Want to go out for dinner after Build tonight?")
+    }
+};
+
+TileBinding binding = new TileBinding()
+{
+    Content = bindingContent
+};
+
+
+TileContent content = new TileContent()
+{
+    Visual = new TileVisual()
+    {
+        TileMedium = binding
+    }
+};
+            
+
+            DataPackage dp = new DataPackage();
+            dp.SetText(content.GetContent());
+            Clipboard.SetContent(dp);
+            return;
+
+
+            string xmlAsString = content.GetContent();
+            TileNotification notification = new TileNotification(content.GetXml());
+
+            content.Visual.TileMedium = new TileBinding()
+            {
+                Branding = TileBranding.Logo,
+
+                Content = new TileBindingContentAdaptive()
+            };
 
             ComboBox comboBox = new ComboBox();
             //var tileContent = NotificationsExtensions.GenerateTileContent();
