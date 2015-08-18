@@ -9,6 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NotificationsExtensions</RootNamespace>
     <AssemblyName>NotificationsExtensions.WIn10.WinRT</AssemblyName>
+    <AssemblyName>NotificationsExtensions.Win10.WinRT</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
