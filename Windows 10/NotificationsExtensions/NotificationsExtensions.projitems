@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>8f4cc187-1ae8-4db4-9cbc-0380de29e84b</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>NotificationsExtensions</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Badges\BadgeContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentInterfaces.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Adaptive\Common.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Adaptive\TileBindingContentAdaptive.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Adaptive\TileGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Adaptive\TileImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Adaptive\TileSubgroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Adaptive\TileText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Adaptive\TileTextAlign.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Adaptive\TileTextStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Common.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Elements\Common.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Elements\Element_Tile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Elements\Element_TileBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Elements\Element_TileGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Elements\Element_TileImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Elements\Element_TileSubgroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Elements\Element_TileText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\Elements\Element_TileVisual.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\ITileBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\SpecialTemplates\TileBindingContentContact.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\SpecialTemplates\TileBindingContentIconic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\SpecialTemplates\TileBindingContentPeople.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\SpecialTemplates\TileBindingContentPhotos.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\TileBasicText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\TileBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\TileBranding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\TileContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\TileImageSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\TileTemplateNameV1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\TileTemplateNameV3.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tiles\TileVisual.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\Common.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\Elements\Element_Toast.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\Elements\Element_ToastAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\Elements\Element_ToastActions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\Elements\Element_ToastAudio.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\Elements\Element_ToastBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\Elements\Element_ToastImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\Elements\Element_ToastInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\Elements\Element_ToastSelection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\Elements\Element_ToastText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\Elements\Element_ToastVisual.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastActions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastAppLogo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastAudio.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastImageSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastSelectionBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastSelectionBoxItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastTextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastVisual.cs" />
+  </ItemGroup>
+</Project>

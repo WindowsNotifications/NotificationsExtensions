@@ -37,11 +37,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\NotificationsExtensions\**\*.cs">
-      <Link>%(RecursiveDir)%(FileName)</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <Import Project="..\NotificationsExtensions\NotificationsExtensions.projitems" Label="Shared" />
   <!--<ItemGroup>
     <Content Include="..\NotificationsExtensions\**">
       <Link>%(RecursiveDir)%(FileName)</Link>
