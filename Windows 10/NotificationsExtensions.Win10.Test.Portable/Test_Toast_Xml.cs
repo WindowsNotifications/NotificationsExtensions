@@ -14,6 +14,72 @@ namespace NotificationsExtensions.Win10.Test.Portable
         }
 
         [TestMethod]
+        public void Test_Toast_XML_Toast_Launch_Value()
+        {
+            var toast = new ToastContent()
+            {
+                Launch = "tacos"
+            };
+
+            AssertPayload("<toast launch='tacos'/>", toast);
+        }
+
+        [TestMethod]
+        public void Test_Toast_XML_Toast_ActivationType_Foreground()
+        {
+            var toast = new ToastContent()
+            {
+                ActivationType = ToastActivationType.Foreground
+            };
+
+            AssertPayload("<toast />", toast);
+        }
+
+        [TestMethod]
+        public void Test_Toast_XML_Toast_ActivationType_Background()
+        {
+            var toast = new ToastContent()
+            {
+                ActivationType = ToastActivationType.Background
+            };
+
+            AssertPayload("<toast activationType='background' />", toast);
+        }
+
+        [TestMethod]
+        public void Test_Toast_XML_Toast_ActivationType_Protocol()
+        {
+            var toast = new ToastContent()
+            {
+                ActivationType = ToastActivationType.Protocol
+            };
+
+            AssertPayload("<toast activationType='protocol' />", toast);
+        }
+
+        [TestMethod]
+        public void Test_Toast_XML_Toast_Duration_Short()
+        {
+            var toast = new ToastContent()
+            {
+                Duration = ToastDuration.Short
+            };
+
+            AssertPayload("<toast />", toast);
+        }
+
+        [TestMethod]
+        public void Test_Toast_XML_Toast_Duration_Long()
+        {
+            var toast = new ToastContent()
+            {
+                Duration = ToastDuration.Long
+            };
+
+            AssertPayload("<toast duration='long' />", toast);
+        }
+
+        [TestMethod]
         public void Test_Toast_XML_Visual_Defaults()
         {
             AssertVisualPayload(@"<visual><binding template=""ToastGeneric""/></visual>", new ToastVisual());

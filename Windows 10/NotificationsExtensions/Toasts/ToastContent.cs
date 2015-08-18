@@ -38,6 +38,26 @@ namespace NotificationsExtensions.Toasts
         /// </summary>
         public IToastActions Actions { get; set; }
 
+        /// <summary>
+        /// Specify the scenario, to make the toast behave like an alarm, reminder, or more.
+        /// </summary>
+        public ToastScenario Scenario { get; set; }
+
+        /// <summary>
+        /// The amount of time the toast should display. You typically should use the Scenario attribute instead, which impacts how long a toast stays on screen.
+        /// </summary>
+        public ToastDuration Duration { get; set; }
+
+        /// <summary>
+        /// A string that is passed to the application when it is activated by the toast. The format and contents of this string are defined by the app for its own use. When the user taps or clicks the toast to launch its associated app, the launch string provides the context to the app that allows it to show the user a view relevant to the toast content, rather than launching in its default way.
+        /// </summary>
+        public string Launch { get; set; }
+
+        /// <summary>
+        /// Specifies what activation type will be used when the user clicks the body of this toast.
+        /// </summary>
+        public ToastActivationType ActivationType { get; set; }
+
         public string GetContent()
         {
             return ConvertToElement().GetContent();
