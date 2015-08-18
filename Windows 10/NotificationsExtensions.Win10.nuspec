@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>NotificationsExtensions.Win10</id>
+        <version>0.0.0</version>
+        <authors>Microsoft, Andrew Bares</authors>
+        <projectUrl>https://github.com/anbare/NotificationsExtensions/wiki</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Generate tile, toast, and badge notifications for Windows via code, with the help of IntelliSense, instead of directly using XML.
+
+Supports adaptive tiles and adaptive/interactive toasts for Windows 10!</description>
+        <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+        <tags>notifications, win10, windows 10, tile, tiles, toast, toasts, badge, xml</tags>
+    </metadata>
+    <files>
+        <file src="NotificationsExtensions.Win10.Portable\bin\Release\*" target="lib\portable-net45+sl50+win+wpa81+wp80"/>
+        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\*" target="lib\.NETCore50"/>
+    </files>
+</package>
