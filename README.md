@@ -1,6 +1,6 @@
 # NotificationsExtensions
 
-Generate tile, toast, and badge notifications for Windows via code, with the help of IntelliSense, instead of directly using XML.
+The official Microsoft NotificationsExtensions library. Generate tile, toast, and badge notifications for Windows via code, with the help of IntelliSense, instead of directly using XML.
 
 **Supports adaptive tiles and adaptive/interactive toast notifications for Windows 10!**
 
