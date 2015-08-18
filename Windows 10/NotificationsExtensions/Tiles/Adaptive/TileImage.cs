@@ -69,6 +69,67 @@ namespace NotificationsExtensions.Tiles
     }
 
     /// <summary>
+    /// A peek image that animates in from the top of the tile.
+    /// </summary>
+    public sealed class TilePeekImage
+    {
+        /// <summary>
+        /// Provide the source of the image and other image source related properties.
+        /// </summary>
+        public TileImageSource Source { get; set; }
+
+        internal Element_TileImage ConvertToElement()
+        {
+            Element_TileImage image = new Element_TileImage()
+            {
+                Placement = TileImagePlacement.Peek
+            };
+
+            if (Source != null)
+                Source.PopulateElement(image);
+
+            return image;
+        }
+    }
+
+    /// <summary>
+    /// A full-bleed background image that appears beneath the tile content.
+    /// </summary>
+    public sealed class TileBackgroundImage
+    {
+        /// <summary>
+        /// Provide the source of the image and other image source related properties.
+        /// </summary>
+        public TileImageSource Source { get; set; }
+
+        private int _overlay = Element_TileBinding.DEFAULT_OVERLAY;
+
+        public int Overlay
+        {
+            get { return _overlay; }
+            set
+            {
+                Element_TileBinding.CheckOverlayValue(value);
+
+                _overlay = value;
+            }
+        }
+
+        internal Element_TileImage ConvertToElement()
+        {
+            Element_TileImage image = new Element_TileImage()
+            {
+                Placement = TileImagePlacement.Background
+            };
+
+            if (Source != null)
+                Source.PopulateElement(image);
+
+            return image;
+        }
+    }
+
+    /// <summary>
     /// Specifies the horizontal alignment for an image.
     /// </summary>
     public enum TileImageAlign

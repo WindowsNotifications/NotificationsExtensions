@@ -34,12 +34,12 @@ namespace NotificationsExtensions.Tiles
         /// <summary>
         /// An optional background image that gets displayed behind all the tile content, full bleed.
         /// </summary>
-        public TileImageSource BackgroundImage { get; set; }
+        public TileBackgroundImage BackgroundImage { get; set; }
 
         /// <summary>
         /// An optional peek image that animates in from the top of the tile.
         /// </summary>
-        public TileImageSource PeekImage { get; set; }
+        public TilePeekImage PeekImage { get; set; }
 
         /// <summary>
         /// Controls the text stacking (vertical alignment) of the entire binding element.
@@ -56,22 +56,21 @@ namespace NotificationsExtensions.Tiles
         {
             // Assign properties
             binding.TextStacking = TextStacking;
-            binding.Overlay = Overlay;
 
             // Add the background image if there's one
             if (BackgroundImage != null)
             {
-                var el_bgImg = BackgroundImage.ConvertToElement();
-                el_bgImg.Placement = TileImagePlacement.Background;
-                binding.Children.Add(el_bgImg);
+                // We pull up the overlay value from there
+                binding.Overlay = BackgroundImage.Overlay;
+                
+                // And add it as a child
+                binding.Children.Add(BackgroundImage.ConvertToElement());
             }
 
             // Add the peek image if there's one
             if (PeekImage != null)
             {
-                var el_peekImg = PeekImage.ConvertToElement();
-                el_peekImg.Placement = TileImagePlacement.Peek;
-                binding.Children.Add(el_peekImg);
+                binding.Children.Add(PeekImage.ConvertToElement());
             }
 
             // And then add all the children

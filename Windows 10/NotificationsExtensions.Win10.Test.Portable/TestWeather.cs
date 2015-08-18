@@ -23,8 +23,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
             TileBindingContentAdaptive smallContent = new TileBindingContentAdaptive()
             {
                 TextStacking = TileTextStacking.Center,
-                Overlay = overlay,
-                BackgroundImage = backgroundImage,
+                BackgroundImage = new TileBackgroundImage() { Source = backgroundImage, Overlay = overlay },
                 Children =
                 {
                     new TileText()
@@ -46,8 +45,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
             TileBindingContentAdaptive mediumContent = new TileBindingContentAdaptive()
             {
-                Overlay = overlay,
-                BackgroundImage = backgroundImage,
+                BackgroundImage = new TileBackgroundImage() { Source = backgroundImage, Overlay = overlay },
                 Children =
                 {
                     new TileGroup()
@@ -66,8 +64,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
             TileBindingContentAdaptive wideContent = new TileBindingContentAdaptive()
             {
-                Overlay = overlay,
-                BackgroundImage = backgroundImage,
+                BackgroundImage = new TileBackgroundImage() { Source = backgroundImage, Overlay = overlay },
                 Children =
                 {
                     new TileGroup()
@@ -93,8 +90,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
             TileBindingContentAdaptive largeContent = new TileBindingContentAdaptive()
             {
-                Overlay = overlay,
-                BackgroundImage = backgroundImage,
+                BackgroundImage = new TileBackgroundImage() { Source = backgroundImage, Overlay = overlay },
                 Children =
                 {
                     new TileGroup()

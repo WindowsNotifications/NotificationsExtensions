@@ -1107,7 +1107,10 @@ namespace NotificationsExtensions.Win10.Test
                 {
                     Content = new TileBindingContentAdaptive()
                     {
-                        BackgroundImage = new TileImageSource("http://msn.com/image.png")
+                        BackgroundImage = new TileBackgroundImage()
+                        {
+                            Source = new TileImageSource("http://msn.com/image.png")
+                        }
                     }
                 });
         }
@@ -1120,13 +1123,20 @@ namespace NotificationsExtensions.Win10.Test
 
                 new Element_TileBinding(TileTemplateNameV3.TileMedium)
                 {
+                    Children =
+                    {
+                        new Element_TileImage() { Placement = TileImagePlacement.Background }
+                    }
                 },
 
                 new TileBinding()
                 {
                     Content = new TileBindingContentAdaptive()
                     {
-                        Overlay = 20
+                        BackgroundImage = new TileBackgroundImage()
+                        {
+                            Overlay = 20
+                        }
                     }
                 });
         }
@@ -1139,14 +1149,22 @@ namespace NotificationsExtensions.Win10.Test
 
                 new Element_TileBinding(TileTemplateNameV3.TileMedium)
                 {
-                    Overlay = 0
+                    Overlay = 0,
+
+                    Children =
+                    {
+                        new Element_TileImage() { Placement = TileImagePlacement.Background }
+                    }
                 },
 
                 new TileBinding()
                 {
                     Content = new TileBindingContentAdaptive()
                     {
-                        Overlay = 0
+                        BackgroundImage = new TileBackgroundImage()
+                        {
+                            Overlay = 0
+                        }
                     }
                 });
         }
@@ -1159,14 +1177,22 @@ namespace NotificationsExtensions.Win10.Test
 
                 new Element_TileBinding(TileTemplateNameV3.TileMedium)
                 {
-                    Overlay = 100
+                    Overlay = 100,
+
+                    Children =
+                    {
+                        new Element_TileImage() { Placement = TileImagePlacement.Background }
+                    }
                 },
 
                 new TileBinding()
                 {
                     Content = new TileBindingContentAdaptive()
                     {
-                        Overlay = 100
+                        BackgroundImage = new TileBackgroundImage()
+                        {
+                            Overlay = 100
+                        }
                     }
                 });
         }
@@ -1179,14 +1205,22 @@ namespace NotificationsExtensions.Win10.Test
 
                 new Element_TileBinding(TileTemplateNameV3.TileMedium)
                 {
-                    Overlay = 40
+                    Overlay = 40,
+
+                    Children =
+                    {
+                        new Element_TileImage() { Placement = TileImagePlacement.Background }
+                    }
                 },
 
                 new TileBinding()
                 {
                     Content = new TileBindingContentAdaptive()
                     {
-                        Overlay = 40
+                        BackgroundImage = new TileBackgroundImage()
+                        {
+                            Overlay = 40
+                        }
                     }
                 });
         }
@@ -1199,25 +1233,33 @@ namespace NotificationsExtensions.Win10.Test
 
                 new Element_TileBinding(TileTemplateNameV3.TileMedium)
                 {
-                    Overlay = 10
+                    Overlay = 10,
+
+                    Children =
+                    {
+                        new Element_TileImage() { Placement = TileImagePlacement.Background }
+                    }
                 },
 
                 new TileBinding()
                 {
                     Content = new TileBindingContentAdaptive()
                     {
-                        Overlay = 10
+                        BackgroundImage = new TileBackgroundImage()
+                        {
+                            Overlay = 10
+                        }
                     }
                 });
         }
 
         [TestCategory(CATEGORY_CONVERSIONS_ADAPTIVE_ROOT)]
         [TestMethod]
-        public void TestConversion_Adaptive_Root_Overlay_BelowMin()
+        public void TestConversion_BackgroundImage_Overlay_BelowMin()
         {
             try
             {
-                new TileBindingContentAdaptive()
+                new TileBackgroundImage()
                 {
                     Overlay = -1
                 };
@@ -1234,7 +1276,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             try
             {
-                new TileBindingContentAdaptive()
+                new TileBackgroundImage()
                 {
                     Overlay = 101
                 };
@@ -1269,10 +1311,13 @@ namespace NotificationsExtensions.Win10.Test
                 {
                     Content = new TileBindingContentAdaptive()
                     {
-                        PeekImage = new TileImageSource("http://msn.com")
+                        PeekImage = new TilePeekImage()
                         {
-                            Alt = "alt",
-                            AddImageQuery = true
+                            Source = new TileImageSource("http://msn.com")
+                            {
+                                Alt = "alt",
+                                AddImageQuery = true
+                            }
                         }
                     }
                 });

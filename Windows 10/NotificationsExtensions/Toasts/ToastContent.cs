@@ -77,7 +77,13 @@ namespace NotificationsExtensions.Toasts
 
         internal Element_Toast ConvertToElement()
         {
-            var toast = new Element_Toast();
+            var toast = new Element_Toast()
+            {
+                ActivationType = ActivationType,
+                Duration = Duration,
+                Launch = Launch,
+                Scenario = Scenario
+            };
 
             if (Visual != null)
                 toast.Visual = Visual.ConvertToElement();
@@ -87,6 +93,7 @@ namespace NotificationsExtensions.Toasts
 
             if (Actions != null)
                 toast.Actions = ConvertToActionsElement(Actions);
+            
 
             return toast;
         }
