@@ -18,12 +18,12 @@ using Windows.UI.Notifications;
 namespace NotificationsExtensions.Toasts
 {
     /// <summary>
-    /// Contains multiple binding child elements, each of which defines a tile.
+    /// A selection box item (an item that the user can select from the drop down list).
     /// </summary>
     public sealed class ToastSelectionBoxItem
     {
         /// <summary>
-        /// Constructs a new toast SelectionBox input control with the required elements.
+        /// Constructs a new toast SelectionBoxItem with the required elements.
         /// </summary>
         /// <param name="id">Developer-provided ID that the developer uses later to retrieve input when the toast is interacted with.</param>
         /// <param name="content">String that is displayed on the selection item. This is what the user sees.</param>

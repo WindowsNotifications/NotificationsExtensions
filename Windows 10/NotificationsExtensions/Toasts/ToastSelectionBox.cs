@@ -18,7 +18,7 @@ using Windows.UI.Notifications;
 namespace NotificationsExtensions.Toasts
 {
     /// <summary>
-    /// Contains multiple binding child elements, each of which defines a tile.
+    /// A selection box control, which lets users pick from a dropdown list of options.
     /// </summary>
     public sealed class ToastSelectionBox : IToastInput
     {
@@ -52,7 +52,7 @@ namespace NotificationsExtensions.Toasts
         /// <summary>
         /// The selection items that the user can pick from in this SelectionBox. Only 5 items can be added.
         /// </summary>
-        public IList<ToastSelectionBoxItem> Items { get; private set; } = new List<ToastSelectionBoxItem>();
+        public IList<ToastSelectionBoxItem> Items { get; private set; } = new LimitedList<ToastSelectionBoxItem>(5);
 
         internal Element_ToastInput ConvertToElement()
         {

@@ -18,7 +18,7 @@ using Windows.UI.Notifications;
 namespace NotificationsExtensions.Toasts
 {
     /// <summary>
-    /// Contains multiple binding child elements, each of which defines a tile.
+    /// A text box control on the toast that a user can type text into.
     /// </summary>
     public sealed class ToastTextBox : IToastInput
     {

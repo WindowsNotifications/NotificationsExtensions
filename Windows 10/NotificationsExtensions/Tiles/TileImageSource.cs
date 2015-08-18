@@ -33,7 +33,7 @@ namespace NotificationsExtensions.Tiles
         public TileImageSource(string src)
         {
             if (src == null)
-                throw new ArgumentNullException("src is required");
+                throw new ArgumentNullException("src");
 
             Src = src;
         }
