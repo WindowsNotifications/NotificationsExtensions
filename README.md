@@ -13,3 +13,6 @@ The official Microsoft NotificationsExtensions library. Generate tile, toast, an
 5. After the project is referenced, the namespace is "NotificationsExtensions" and each category of notifications are under their own namespace like "NotificationsExtensions.Tiles" or "Toasts" or "Badges".
 
 
+## How to use it
+
+Please [read our Wiki](https://github.com/anbare/NotificationsExtensions/wiki) to learn how to use NotificationsExtensions.
