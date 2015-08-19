@@ -5,8 +5,7 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved
 
-#if !WINRT_NOT_PRESENT
-using Windows.UI.Notifications;
+#if WINRT
 using Windows.Data.Xml.Dom;
 #endif
 
@@ -23,7 +22,7 @@ namespace NotificationsExtensions
         /// <returns>The notification Xml content as a string.</returns>
         string GetContent();
 
-#if !WINRT_NOT_PRESENT
+#if WINRT
         /// <summary>
         /// Retrieves the notification Xml content as a WinRT Xml document.
         /// </summary>

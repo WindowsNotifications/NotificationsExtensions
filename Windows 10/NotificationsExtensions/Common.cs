@@ -15,7 +15,7 @@ using System.Xml;
 using System.Linq;
 using System.Collections;
 using System.IO;
-#if !WINRT_NOT_PRESENT
+#if WINRT
 using Windows.Data.Xml.Dom;
 #endif
 
@@ -252,10 +252,10 @@ namespace NotificationsExtensions
 
         private static object GetPropertyValue(PropertyInfo propertyInfo, object obj)
         {
-#if WINRT_NOT_PRESENT
-            return propertyInfo.GetValue(obj, null);
-#else
+#if NETFX_CORE
             return propertyInfo.GetValue(obj);
+#else
+            return propertyInfo.GetValue(obj, null);
 #endif
         }
 
@@ -276,7 +276,9 @@ namespace NotificationsExtensions
 
         private static EnumStringAttribute GetEnumStringAttribute(Enum enumValue)
         {
-#if WINRT_NOT_PRESENT
+#if NETFX_CORE
+            return enumValue.GetType().GetTypeInfo().GetDeclaredField(enumValue.ToString()).GetCustomAttribute<EnumStringAttribute>();
+#else
             MemberInfo[] memberInfo = enumValue.GetType().GetMember(enumValue.ToString());
 
             if (memberInfo != null && memberInfo.Length > 0)
@@ -288,26 +290,24 @@ namespace NotificationsExtensions
             }
 
             return null;
-#else
-            return enumValue.GetType().GetTypeInfo().GetDeclaredField(enumValue.ToString()).GetCustomAttribute<EnumStringAttribute>();
 #endif
         }
 
         private static bool IsEnum(Type type)
         {
-#if WINRT_NOT_PRESENT
-            return type.IsEnum;
-#else
+#if NETFX_CORE
             return type.GetTypeInfo().IsEnum;
+#else
+            return type.IsEnum;
 #endif
         }
 
         private static IEnumerable<PropertyInfo> GetProperties(Type type)
         {
-#if WINRT_NOT_PRESENT
-            return type.GetProperties();
-#else
+#if NETFX_CORE
             return type.GetTypeInfo().DeclaredProperties;
+#else
+            return type.GetProperties();
 #endif
         }
 
@@ -318,19 +318,19 @@ namespace NotificationsExtensions
 
         private static IEnumerable<Attribute> GetCustomAttributes(Type type)
         {
-#if WINRT_NOT_PRESENT
-            return type.GetCustomAttributes(true).OfType<Attribute>();
-#else
+#if NETFX_CORE
             return type.GetTypeInfo().GetCustomAttributes();
+#else
+            return type.GetCustomAttributes(true).OfType<Attribute>();
 #endif
         }
 
         private static IEnumerable<Attribute> GetCustomAttributes(PropertyInfo propertyInfo)
         {
-#if WINRT_NOT_PRESENT
-            return propertyInfo.GetCustomAttributes(true).OfType<Attribute>();
-#else
+#if NETFX_CORE
             return propertyInfo.GetCustomAttributes();
+#else
+            return propertyInfo.GetCustomAttributes(true).OfType<Attribute>();
 #endif
         }
     }
@@ -420,7 +420,7 @@ namespace NotificationsExtensions
         }
 
 
-#if !WINRT_NOT_PRESENT
+#if WINRT
         /// <summary>
         /// Retrieves the notification XML content as a WinRT XML document.
         /// </summary>

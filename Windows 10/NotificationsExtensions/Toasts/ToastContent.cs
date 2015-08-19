@@ -8,9 +8,8 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Text;
-#if !WINRT_NOT_PRESENT
+#if WINRT
 using Windows.Data.Xml.Dom;
-using Windows.UI.Notifications;
 #endif
 
 [assembly: InternalsVisibleTo("NotificationsExtensions.Win10.Test.Portable")]
@@ -63,7 +62,7 @@ namespace NotificationsExtensions.Toasts
             return ConvertToElement().GetContent();
         }
 
-#if !WINRT_NOT_PRESENT
+#if WINRT
 
         public XmlDocument GetXml()
         {

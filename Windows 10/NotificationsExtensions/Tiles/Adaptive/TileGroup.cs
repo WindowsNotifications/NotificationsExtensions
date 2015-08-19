@@ -8,10 +8,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-#if !WINRT_NOT_PRESENT
-using Windows.Data.Xml.Dom;
-using Windows.UI.Notifications;
-#endif
 
 namespace NotificationsExtensions.Tiles
 {

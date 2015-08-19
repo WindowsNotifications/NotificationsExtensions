@@ -8,9 +8,8 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Text;
-#if !WINRT_NOT_PRESENT
+#if WINRT
 using Windows.Data.Xml.Dom;
-using Windows.UI.Notifications;
 #endif
 
 namespace NotificationsExtensions.Tiles
@@ -36,7 +35,7 @@ namespace NotificationsExtensions.Tiles
             return ConvertToElement().GetContent();
         }
 
-#if !WINRT_NOT_PRESENT
+#if WINRT
         /// <summary>
         /// Retrieves the notification XML content as a WinRT XML document.
         /// </summary>

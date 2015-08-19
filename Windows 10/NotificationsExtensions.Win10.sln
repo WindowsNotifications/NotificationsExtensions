@@ -15,9 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Win
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NotificationsExtensions", "NotificationsExtensions\NotificationsExtensions.shproj", "{8F4CC187-1AE8-4DB4-9CBC-0380DE29E84B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Win10.NETCore", "NotificationsExtensions.Win10.NETCore\NotificationsExtensions.Win10.NETCore.csproj", "{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		NotificationsExtensions\NotificationsExtensions.projitems*{8f4cc187-1ae8-4db4-9cbc-0380de29e84b}*SharedItemsImports = 13
+		NotificationsExtensions\NotificationsExtensions.projitems*{d904d8c8-aec5-440b-b80e-d42ff3b91ede}*SharedItemsImports = 4
 		NotificationsExtensions\NotificationsExtensions.projitems*{df77ce61-4633-49ec-90b1-debe0ed19eb6}*SharedItemsImports = 4
 		NotificationsExtensions\NotificationsExtensions.projitems*{2e0f30a7-4d63-427d-b547-024b44bd2cfb}*SharedItemsImports = 4
 	EndGlobalSection
@@ -126,6 +129,22 @@ Global
 		{D161BAA8-6070-48AD-B3C0-3DC7404C4F51}.Release|x64.Build.0 = Release|Any CPU
 		{D161BAA8-6070-48AD-B3C0-3DC7404C4F51}.Release|x86.ActiveCfg = Release|Any CPU
 		{D161BAA8-6070-48AD-B3C0-3DC7404C4F51}.Release|x86.Build.0 = Release|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Debug|ARM.Build.0 = Debug|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Debug|x64.Build.0 = Debug|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Debug|x86.Build.0 = Debug|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Release|ARM.ActiveCfg = Release|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Release|ARM.Build.0 = Release|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Release|x64.ActiveCfg = Release|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Release|x64.Build.0 = Release|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Release|x86.ActiveCfg = Release|Any CPU
+		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

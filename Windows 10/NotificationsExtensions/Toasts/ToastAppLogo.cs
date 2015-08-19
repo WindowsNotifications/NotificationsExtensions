@@ -10,10 +10,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Linq;
-#if !WINRT_NOT_PRESENT
-using Windows.Data.Xml.Dom;
-using Windows.UI.Notifications;
-#endif
 
 namespace NotificationsExtensions.Toasts
 {
