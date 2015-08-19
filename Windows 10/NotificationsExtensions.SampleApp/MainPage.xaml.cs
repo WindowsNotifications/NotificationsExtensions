@@ -1,5 +1,6 @@
 ﻿
 using NotificationsExtensions.Tiles;
+using NotificationsExtensions.Toasts;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,6 +32,69 @@ namespace NotificationsExtensions.SampleApp
         public MainPage()
         {
             this.InitializeComponent();
+
+            SendToastNotification();
+        }
+        
+
+        private void SendToastNotification()
+        {
+    ToastContent content = new ToastContent()
+    {
+        Launch = "lei",
+
+        Visual = new ToastVisual()
+        {
+            TitleText = new ToastText()
+            {
+                Text = "New message from Lei"
+            },
+
+            BodyTextLine1 = new ToastText()
+            {
+                Text = "NotificationsExtensions is great!"
+            },
+
+            AppLogoOverride = new ToastAppLogo()
+            {
+                Crop = ToastImageCrop.Circle,
+                Source = new ToastImageSource("http://messageme.com/lei/profile.jpg")
+            }
+        },
+                
+        Actions = new ToastActionsCustom()
+        {
+            Inputs =
+            {
+                new ToastTextBox("tbReply")
+                {
+                    PlaceholderContent = "Type a response"
+                }
+            },
+
+            Buttons =
+            {
+                new ToastButton("reply", "reply")
+                {
+                    ActivationType = ToastActivationType.Background,
+                    ImageUri = "Assets/QuickReply.png",
+                    TextBoxId = "tbReply"
+                }
+            }
+        },
+                
+        Audio = new ToastAudio()
+        {
+            Src = new Uri("ms-winsoundevent:Notification.IM")
+        }
+    };
+
+
+            DataPackage dp = new DataPackage();
+            dp.SetText(content.GetContent());
+            Clipboard.SetContent(dp);
+
+            ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()));
         }
 
 private TileGroup GenerateEmailGroup(string from, string subject)
