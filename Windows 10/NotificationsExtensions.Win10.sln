@@ -23,6 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Win
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		NotificationsExtensions.Test\NotificationsExtensions.Test.projitems*{2135edd4-3c9f-4f3b-8040-96d4449fb1d8}*SharedItemsImports = 4
 		NotificationsExtensions\NotificationsExtensions.projitems*{8f4cc187-1ae8-4db4-9cbc-0380de29e84b}*SharedItemsImports = 13
 		NotificationsExtensions\NotificationsExtensions.projitems*{d904d8c8-aec5-440b-b80e-d42ff3b91ede}*SharedItemsImports = 4
 		NotificationsExtensions.Test\NotificationsExtensions.Test.projitems*{6672bcc5-ffe8-4fdf-a982-9d4840f70678}*SharedItemsImports = 13

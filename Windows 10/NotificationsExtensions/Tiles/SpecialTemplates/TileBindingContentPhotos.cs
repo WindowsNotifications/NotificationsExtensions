@@ -23,9 +23,9 @@ namespace NotificationsExtensions.Tiles
     public sealed class TileBindingContentPhotos : ITileBindingContent
     {
         /// <summary>
-        /// Up to 10 images can be provided, which will be used for the slideshow. Adding more than 10 will throw an exception.
+        /// Up to 12 images can be provided, which will be used for the slideshow. Adding more than 12 will throw an exception.
         /// </summary>
-        public IList<TileImageSource> Images { get; private set; } = new LimitedList<TileImageSource>(10);
+        public IList<TileImageSource> Images { get; private set; } = new LimitedList<TileImageSource>(12);
 
         internal TileTemplateNameV3 GetTemplateName(TileSize size)
         {
