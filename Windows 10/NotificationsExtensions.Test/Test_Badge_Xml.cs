@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NotificationsExtensions.Badges;
 
 namespace NotificationsExtensions.Win10.Test.Portable

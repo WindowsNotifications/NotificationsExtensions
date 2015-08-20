@@ -5,9 +5,6 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved
 
-using System;
-using System.Runtime.CompilerServices;
-using System.Text;
 #if WINRT
 using Windows.Data.Xml.Dom;
 #endif
