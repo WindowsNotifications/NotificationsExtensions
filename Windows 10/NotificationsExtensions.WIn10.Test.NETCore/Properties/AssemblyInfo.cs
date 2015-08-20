@@ -1,26 +1,20 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NotificationsExtensions.Win10.Test.Portable")]
+[assembly: AssemblyTitle("NotificationsExtensions.WIn10.Test.NETCore")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NotificationsExtensions.Win10.Test.Portable")]
+[assembly: AssemblyProduct("NotificationsExtensions.WIn10.Test.NETCore")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
-// Setting ComVisible to false makes the types in this assembly not visible 
-// to COM components.  If you need to access a type in this assembly from 
-// COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c4518f16-3500-4021-8b19-f1b1fd3b0815")]
+[assembly: NeutralResourcesLanguage("en")]
 
 // Version information for an assembly consists of the following four values:
 //

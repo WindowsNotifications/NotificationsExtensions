@@ -60,12 +60,14 @@ namespace NotificationsExtensions.Tiles
 
         private static IElement_TileSubgroupChild ConvertToSubgroupChildElement(ITileSubgroupChild child)
         {
-            IElement_TileSubgroupChild converted = ConversionHelper.ConvertToElement(child) as IElement_TileSubgroupChild;
+            if (child is TileText)
+                return (child as TileText).ConvertToElement();
 
-            if (converted == null)
-                throw new NotImplementedException("Subgroup child must support converting to element subgroup.");
+            else if (child is TileImage)
+                return (child as TileImage).ConvertToElement();
 
-            return converted;
+            else
+                throw new NotImplementedException("Unknown child: " + child.GetType());
         }
     }
 

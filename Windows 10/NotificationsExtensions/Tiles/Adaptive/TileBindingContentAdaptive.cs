@@ -78,12 +78,17 @@ namespace NotificationsExtensions.Tiles
 
         private static IElement_TileBindingChild ConvertToBindingChildElement(ITileAdaptiveChild child)
         {
-            IElement_TileBindingChild converted = ConversionHelper.ConvertToElement(child) as IElement_TileBindingChild;
+            if (child is TileText)
+                return (child as TileText).ConvertToElement();
 
-            if (converted == null)
-                throw new NotImplementedException("Tile adaptive child must support converting to TileBindingChild");
+            else if (child is TileImage)
+                return (child as TileImage).ConvertToElement();
 
-            return converted;
+            else if (child is TileGroup)
+                return (child as TileGroup).ConvertToElement();
+
+            else
+                throw new NotImplementedException("Unknown child: " + child.GetType());
         }
     }
 

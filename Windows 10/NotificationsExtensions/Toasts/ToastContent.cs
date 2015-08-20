@@ -99,12 +99,13 @@ namespace NotificationsExtensions.Toasts
 
         private static Element_ToastActions ConvertToActionsElement(IToastActions actions)
         {
-            Element_ToastActions converted = ConversionHelper.ConvertToElement(actions) as Element_ToastActions;
+            if (actions is ToastActionsCustom)
+                return (actions as ToastActionsCustom).ConvertToElement();
 
-            if (converted == null)
-                throw new NotImplementedException("Toast actions must support converting to Element_ToastActions");
+            else if (actions is ToastActionsSnoozeAndDismiss)
+                return (actions as ToastActionsSnoozeAndDismiss).ConvertToElement();
 
-            return converted;
+            throw new NotImplementedException("Unknown actions type: " + actions.GetType());
         }
     }
 }

@@ -62,12 +62,13 @@ namespace NotificationsExtensions.Toasts
 
         private static Element_ToastInput ConvertToInputElement(IToastInput input)
         {
-            Element_ToastInput converted = ConversionHelper.ConvertToElement(input) as Element_ToastInput;
+            if (input is ToastTextBox)
+                return (input as ToastTextBox).ConvertToElement();
 
-            if (converted == null)
-                throw new NotImplementedException("Toast input must support converting to Element_ToastInput");
+            else if (input is ToastSelectionBox)
+                return (input as ToastSelectionBox).ConvertToElement();
 
-            return converted;
+            throw new NotImplementedException("Unknown input child: " + input.GetType());
         }
     }
 

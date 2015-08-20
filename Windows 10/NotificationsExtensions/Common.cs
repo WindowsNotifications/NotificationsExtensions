@@ -335,31 +335,6 @@ namespace NotificationsExtensions
         }
     }
 
-    internal static class ConversionHelper
-    {
-        internal static object ConvertToElement(object obj)
-        {
-            MethodInfo convertToElement = GetMethod(obj.GetType(), "ConvertToElement");
-
-            if (convertToElement == null)
-                throw new NotImplementedException("Object must have ConvertToElement() method");
-
-            if (convertToElement.ReturnType == typeof(void))
-                throw new NotImplementedException("ConvertToElement() must return an object");
-
-            return convertToElement.Invoke(obj, null);
-        }
-
-        internal static MethodInfo GetMethod(Type type, string name)
-        {
-            return type.GetMethod(name, BindingFlags.Instance | BindingFlags.NonPublic);
-
-            //MethodInfo[] methods = type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance);
-
-            //return methods.FirstOrDefault(i => i.Name.Equals(name));
-        }
-    }
-
     internal interface IElementWithDescendants
     {
         IEnumerable<object> Descendants();

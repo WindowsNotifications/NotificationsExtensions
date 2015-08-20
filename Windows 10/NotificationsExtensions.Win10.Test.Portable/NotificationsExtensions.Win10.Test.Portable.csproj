@@ -3,12 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D161BAA8-6070-48AD-B3C0-3DC7404C4F51}</ProjectGuid>
+    <ProjectGuid>{C4518F16-3500-4021-8B19-F1B1FD3B0815}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NotificationsExtensions.Win10.Test.Portable</RootNamespace>
     <AssemblyName>NotificationsExtensions.Win10.Test.Portable</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.XML" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -46,9 +47,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
-          <Private>False</Private>
-        </Reference>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -56,14 +55,7 @@
     <Compile Include="..\NotificationsExtensions.Test\**\*.cs">
       <Link>%(RecursiveDir)%(FileName)</Link>
     </Compile>
-    <Compile Include="AssertHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestWeather.cs" />
-    <Compile Include="TestMail.cs" />
-    <Compile Include="TextXboxModern.cs" />
-    <Compile Include="Test_Toast_XmlSerialization.cs" />
-    <Compile Include="Test_Toast_Xml.cs" />
-    <Compile Include="Test_Badge_Xml.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NotificationsExtensions.Win10.Portable\NotificationsExtensions.Win10.Portable.csproj">

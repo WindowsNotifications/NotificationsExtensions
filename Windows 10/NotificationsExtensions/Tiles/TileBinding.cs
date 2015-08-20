@@ -90,17 +90,23 @@ namespace NotificationsExtensions.Tiles
             if (bindingContent == null)
                 return;
 
-            Type type = bindingContent.GetType();
+            if (bindingContent is TileBindingContentAdaptive)
+                (bindingContent as TileBindingContentAdaptive).PopulateElement(binding, size);
 
-            MethodInfo populateElement = ConversionHelper.GetMethod(type, "PopulateElement");
+            else if (bindingContent is TileBindingContentContact)
+                (bindingContent as TileBindingContentContact).PopulateElement(binding, size);
 
-            if (populateElement == null)
-                throw new NotImplementedException("Binding content must have a method for PopulateElement");
+            else if (bindingContent is TileBindingContentIconic)
+                (bindingContent as TileBindingContentIconic).PopulateElement(binding, size);
 
-            if (populateElement.ReturnType != typeof(void))
-                throw new NotImplementedException("PopulateElement must return " + typeof(void));
+            else if (bindingContent is TileBindingContentPeople)
+                (bindingContent as TileBindingContentPeople).PopulateElement(binding, size);
 
-            populateElement.Invoke(bindingContent, new object[] { binding, size });
+            else if (bindingContent is TileBindingContentPhotos)
+                (bindingContent as TileBindingContentPhotos).PopulateElement(binding, size);
+
+            else
+                throw new NotImplementedException("Unknown binding content type: " + bindingContent.GetType());
         }
 
         private static TileTemplateNameV3 GetTemplateName(ITileBindingContent bindingContent, TileSize size)
@@ -108,17 +114,23 @@ namespace NotificationsExtensions.Tiles
             if (bindingContent == null)
                 return TileSizeToAdaptiveTemplateConverter.Convert(size);
 
-            Type type = bindingContent.GetType();
-            
-            MethodInfo method = ConversionHelper.GetMethod(type, "GetTemplateName");
 
-            if (method == null)
-                throw new NotImplementedException("Binding content must have a method for GetTemplateName");
+            if (bindingContent is TileBindingContentAdaptive)
+                return (bindingContent as TileBindingContentAdaptive).GetTemplateName(size);
 
-            if (method.ReturnType != typeof(TileTemplateNameV3))
-                throw new NotImplementedException("GetTemplateName must return " + typeof(TileTemplateNameV3));
+            else if (bindingContent is TileBindingContentContact)
+                return (bindingContent as TileBindingContentContact).GetTemplateName(size);
 
-            return (TileTemplateNameV3)method.Invoke(bindingContent, new object[] { size });
+            else if (bindingContent is TileBindingContentIconic)
+                return (bindingContent as TileBindingContentIconic).GetTemplateName(size);
+
+            else if (bindingContent is TileBindingContentPeople)
+                return (bindingContent as TileBindingContentPeople).GetTemplateName(size);
+
+            else if (bindingContent is TileBindingContentPhotos)
+                return (bindingContent as TileBindingContentPhotos).GetTemplateName(size);
+
+            throw new NotImplementedException("Unknown binding content type: " + bindingContent.GetType());
         }
     }
 

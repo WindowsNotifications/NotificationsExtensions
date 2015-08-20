@@ -1,0 +1,1814 @@
+using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Xml;
+using System.Collections.Generic;
+using NotificationsExtensions.Tiles;
+
+namespace NotificationsExtensions.Win10.Test
+{
+    [TestClass]
+    public class Test_Tile_Xml
+    {
+
+        #region Tile
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Tile_Default()
+        {
+            TileContent tile = new TileContent();
+
+            AssertPayload("<tile/>", tile);
+        }
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Default()
+        {
+            // Assert the defaults
+            AssertVisual("<visual/>", new TileVisual());
+        }
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_AddImageQuery_False()
+        {
+            AssertVisual(
+            
+                "<visual/>",
+                    
+                new TileVisual()
+                {
+                    AddImageQuery = false
+                });
+        }
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_AddImageQuery_True()
+        {
+            AssertVisual(
+                
+                "<visual addImageQuery='True'/>",
+                
+                new TileVisual()
+                {
+                    AddImageQuery = true
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_BaseUri_Null()
+        {
+            AssertVisual(
+
+                "<visual />",
+
+                new TileVisual()
+                {
+                    BaseUri = null
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_BaseUri_Value()
+        {
+            AssertVisual(
+
+                "<visual baseUri='http://msn.com/'/>",
+
+                new TileVisual()
+                {
+                    BaseUri = new Uri("http://msn.com")
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Branding_Auto()
+        {
+            AssertVisual(
+
+                "<visual />",
+
+                new TileVisual()
+                {
+                    Branding = TileBranding.Auto
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Branding_Name()
+        {
+            AssertVisual(
+
+                "<visual branding='name'/>",
+
+                new TileVisual()
+                {
+                    Branding = TileBranding.Name
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Branding_Logo()
+        {
+            AssertVisual(
+
+                "<visual branding='logo'/>",
+
+                new TileVisual()
+                {
+                    Branding = TileBranding.Logo
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Branding_NameAndLogo()
+        {
+            AssertVisual(
+
+                "<visual branding='nameAndLogo'/>",
+
+                new TileVisual()
+                {
+                    Branding = TileBranding.NameAndLogo
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Branding_None()
+        {
+            AssertVisual(
+
+                "<visual branding='none'/>",
+
+                new TileVisual()
+                {
+                    Branding = TileBranding.None
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_ContentId_Null()
+        {
+            AssertVisual(
+
+                "<visual />",
+
+                new TileVisual()
+                {
+                    ContentId = null
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_ContentId_Value()
+        {
+            AssertVisual(
+
+                "<visual contentId='tsla'/>",
+
+                new TileVisual()
+                {   
+                    ContentId = "tsla"
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_DisplayName_Null()
+        {
+            AssertVisual(
+
+                "<visual />",
+
+                new TileVisual()
+                {
+                    DisplayName = null
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_DisplayName_Value()
+        {
+            AssertVisual(
+
+                "<visual displayName='My name'/>",
+
+                new TileVisual()
+                {
+                    DisplayName = "My name"
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Language_Null()
+        {
+            AssertVisual(
+
+                "<visual />",
+
+                new TileVisual()
+                {
+                    Language = null
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Language_Value()
+        {
+            AssertVisual(
+
+                "<visual lang='en-US'/>",
+
+                new TileVisual()
+                {
+                    Language = "en-US"
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Version_Null()
+        {
+            AssertVisual(
+
+                "<visual />",
+
+                new TileVisual()
+                {
+                    Version = null
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Version_Value()
+        {
+            AssertVisual(
+
+                "<visual version='3'/>",
+
+                new TileVisual()
+                {
+                    Version = 3
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_LockDetailedStatus1_NoMatchingText()
+        {
+            AssertVisual(
+
+                "<visual><binding template='TileWide' hint-lockDetailedStatus1='Status 1'><text>Awesome</text><text>Cool</text></binding></visual>",
+
+                new TileVisual()
+                {
+                    LockDetailedStatus1 = "Status 1",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileText() { Text = "Awesome" },
+                                new TileText() { Text = "Cool" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_LockDetailedStatus1_MatchingText_InBinding()
+        {
+            AssertVisual(
+
+                "<visual><binding template='TileWide'><text>Awesome</text><text>Cool</text><text id='1'>Status 1</text><text>Blah</text></binding></visual>",
+
+                new TileVisual()
+                {
+                    LockDetailedStatus1 = "Status 1",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileText() { Text = "Awesome" },
+                                new TileText() { Text = "Cool" },
+                                new TileText() { Text = "Status 1" },
+                                new TileText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_LockDetailedStatus1_MatchingText_InSubgroup()
+        {
+            AssertVisual(
+
+                "<visual><binding template='TileWide'><text>Awesome</text><group><subgroup><image /><text id='1'>Status 1</text><text>Cool</text></subgroup></group><text>Blah</text></binding></visual>",
+
+                new TileVisual()
+                {
+                    LockDetailedStatus1 = "Status 1",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileText() { Text = "Awesome" },
+                                new TileGroup()
+                                {
+                                    Children =
+                                    {
+                                        new TileSubgroup()
+                                        {
+                                            Children =
+                                            {
+                                                new TileImage(),
+                                                new TileText() { Text = "Status 1" },
+                                                new TileText() { Text = "Cool" }
+                                            }
+                                        }
+                                    }
+                                },
+                                new TileText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_LockDetailedStatus2_NoMatchingText()
+        {
+            AssertVisual(
+
+                "<visual><binding template='TileWide' hint-lockDetailedStatus2='Status 2'><text>Awesome</text><text>Cool</text></binding></visual>",
+
+                new TileVisual()
+                {
+                    LockDetailedStatus2 = "Status 2",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileText() { Text = "Awesome" },
+                                new TileText() { Text = "Cool" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_LockDetailedStatus2_MatchingText_InBinding()
+        {
+            AssertVisual(
+
+                "<visual><binding template='TileWide'><text>Awesome</text><text>Cool</text><text id='2'>Status 2</text><text>Blah</text></binding></visual>",
+
+                new TileVisual()
+                {
+                    LockDetailedStatus2 = "Status 2",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileText() { Text = "Awesome" },
+                                new TileText() { Text = "Cool" },
+                                new TileText() { Text = "Status 2" },
+                                new TileText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_LockDetailedStatus2_MatchingText_InSubgroup()
+        {
+            AssertVisual(
+
+                "<visual><binding template='TileWide'><text>Awesome</text><group><subgroup><image /><text id='2'>Status 2</text><text>Cool</text></subgroup></group><text>Blah</text></binding></visual>",
+
+                new TileVisual()
+                {
+                    LockDetailedStatus2 = "Status 2",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileText() { Text = "Awesome" },
+                                new TileGroup()
+                                {
+                                    Children =
+                                    {
+                                        new TileSubgroup()
+                                        {
+                                            Children =
+                                            {
+                                                new TileImage(),
+                                                new TileText() { Text = "Status 2" },
+                                                new TileText() { Text = "Cool" }
+                                            }
+                                        }
+                                    }
+                                },
+                                new TileText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_LockDetailedStatus3_NoMatchingText()
+        {
+            AssertVisual(
+
+                "<visual><binding template='TileWide' hint-lockDetailedStatus3='Status 3'><text>Awesome</text><text>Cool</text></binding></visual>",
+
+                new TileVisual()
+                {
+                    LockDetailedStatus3 = "Status 3",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileText() { Text = "Awesome" },
+                                new TileText() { Text = "Cool" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_LockDetailedStatus3_MatchingText_InBinding()
+        {
+            AssertVisual(
+
+                "<visual><binding template='TileWide'><text>Awesome</text><text>Cool</text><text id='3'>Status 3</text><text>Blah</text></binding></visual>",
+
+                new TileVisual()
+                {
+                    LockDetailedStatus3 = "Status 3",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileText() { Text = "Awesome" },
+                                new TileText() { Text = "Cool" },
+                                new TileText() { Text = "Status 3" },
+                                new TileText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_LockDetailedStatus3_MatchingText_InSubgroup()
+        {
+            AssertVisual(
+
+                "<visual><binding template='TileWide'><text>Awesome</text><group><subgroup><image /><text id='3'>Status 3</text><text>Cool</text></subgroup></group><text>Blah</text></binding></visual>",
+
+                new TileVisual()
+                {
+                    LockDetailedStatus3 = "Status 3",
+
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new TileText() { Text = "Awesome" },
+                                new TileGroup()
+                                {
+                                    Children =
+                                    {
+                                        new TileSubgroup()
+                                        {
+                                            Children =
+                                            {
+                                                new TileImage(),
+                                                new TileText() { Text = "Status 3" },
+                                                new TileText() { Text = "Cool" }
+                                            }
+                                        }
+                                    }
+                                },
+                                new TileText() { Text = "Blah" }
+                            }
+                        }
+                    }
+                }
+
+                );
+        }
+
+        #endregion
+
+
+
+
+        #region Binding
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Default()
+        {
+            AssertBindingMedium("<binding template='TileMedium'/>", new TileBinding());
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_AddImageQuery_False()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium'/>",
+
+                new TileBinding()
+                {
+                    AddImageQuery = false
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_AddImageQuery_True()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' addImageQuery='True'/>",
+
+                new TileBinding()
+                {
+                    AddImageQuery = true
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_BaseUri_Null()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium'/>",
+
+                new TileBinding()
+                {
+                    BaseUri = null
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_BaseUri_Value()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' baseUri='http://msn.com/'/>",
+
+                new TileBinding()
+                {
+                    BaseUri = new Uri("http://msn.com")
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Branding_Auto()
+        {
+            AssertBindingMedium(
+                
+                "<binding template='TileMedium'/>",
+
+                new TileBinding()
+                {
+                    Branding = TileBranding.Auto
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Branding_None()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' branding='none'/>",
+
+                new TileBinding()
+                {
+                    Branding = TileBranding.None
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Branding_Name()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' branding='name'/>",
+
+                new TileBinding()
+                {
+                    Branding = TileBranding.Name
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Branding_Logo()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' branding='logo'/>",
+
+                new TileBinding()
+                {
+                    Branding = TileBranding.Logo
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Branding_NameAndLogo()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' branding='nameAndLogo'/>",
+
+                new TileBinding()
+                {
+                    Branding = TileBranding.NameAndLogo
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_ContentId_Null()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' />",
+
+                new TileBinding()
+                {
+                    ContentId = null
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_ContentId_Value()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' contentId='myId'/>",
+
+                new TileBinding()
+                {
+                    ContentId = "myId"
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_DisplayName_Null()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' />",
+
+                new TileBinding()
+                {
+                    DisplayName = null
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_DisplayName_Value()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' displayName='My name'/>",
+
+                new TileBinding()
+                {
+                    DisplayName = "My name"
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Language_Null()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' />",
+
+                new TileBinding()
+                {
+                    Language = null
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Language_Value()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' lang='en-US'/>",
+
+                new TileBinding()
+                {
+                    Language = "en-US"
+                });
+        }
+
+        #endregion
+
+
+
+
+
+        #region Adaptive
+
+
+        #region Root
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Root_Defaults()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' />",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Root_BackgroundImage_Value()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium'><image src='http://msn.com/image.png' placement='background' /></binding>",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        BackgroundImage = new TileBackgroundImage()
+                        {
+                            Source = new TileImageSource("http://msn.com/image.png")
+                        }
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Root_Overlay_Default()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium'><image placement='background' /></binding>",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        BackgroundImage = new TileBackgroundImage()
+                        {
+                            Overlay = 20
+                        }
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Root_Overlay_Min()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' hint-overlay='0'><image placement='background' /></binding>",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        BackgroundImage = new TileBackgroundImage()
+                        {
+                            Overlay = 0
+                        }
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Root_Overlay_Max()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' hint-overlay='100'><image placement='background' /></binding>",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        BackgroundImage = new TileBackgroundImage()
+                        {
+                            Overlay = 100
+                        }
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Root_Overlay_AboveDefault()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' hint-overlay='40'><image placement='background' /></binding>",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        BackgroundImage = new TileBackgroundImage()
+                        {
+                            Overlay = 40
+                        }
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Root_Overlay_BelowDefault()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' hint-overlay='10'><image placement='background' /></binding>",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        BackgroundImage = new TileBackgroundImage()
+                        {
+                            Overlay = 10
+                        }
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_BackgroundImage_Overlay_BelowMin()
+        {
+            try
+            {
+                new TileBackgroundImage()
+                {
+                    Overlay = -1
+                };
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Root_Overlay_AboveMax()
+        {
+            try
+            {
+                new TileBackgroundImage()
+                {
+                    Overlay = 101
+                };
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Root_PeekImage_Value()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium'><image src='http://msn.com' alt='alt' addImageQuery='True' placement='peek' /></binding>",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        PeekImage = new TilePeekImage()
+                        {
+                            Source = new TileImageSource("http://msn.com")
+                            {
+                                Alt = "alt",
+                                AddImageQuery = true
+                            }
+                        }
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Root_TextStacking_Top()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' />",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        TextStacking = TileTextStacking.Top
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Root_TextStacking_Center()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' hint-textStacking='center'/>",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        TextStacking = TileTextStacking.Center
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Root_TextStacking_Bottom()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' hint-textStacking='bottom'/>",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        TextStacking = TileTextStacking.Bottom
+                    }
+                });
+        }
+
+        #endregion
+
+
+        #region Text
+
+
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_AllStyles()
+        {
+            AssertTextStyle("base", TileTextStyle.Base);
+            AssertTextStyle("baseSubtle", TileTextStyle.BaseSubtle);
+            AssertTextStyle("body", TileTextStyle.Body);
+            AssertTextStyle("bodySubtle", TileTextStyle.BodySubtle);
+            // Omit caption since it's default and is not written to XML
+            AssertTextStyle("captionSubtle", TileTextStyle.CaptionSubtle);
+            AssertTextStyle("header", TileTextStyle.Header);
+            AssertTextStyle("headerNumeral", TileTextStyle.HeaderNumeral);
+            AssertTextStyle("headerSubtle", TileTextStyle.HeaderSubtle);
+            AssertTextStyle("subheader", TileTextStyle.Subheader);
+            AssertTextStyle("subheaderNumeral", TileTextStyle.SubheaderNumeral);
+            AssertTextStyle("subheaderSubtle", TileTextStyle.SubheaderSubtle);
+            AssertTextStyle("subtitle", TileTextStyle.Subtitle);
+            AssertTextStyle("subtitleSubtle", TileTextStyle.SubtitleSubtle);
+            AssertTextStyle("title", TileTextStyle.Title);
+            AssertTextStyle("titleNumeral", TileTextStyle.TitleNumeral);
+            AssertTextStyle("titleSubtle", TileTextStyle.TitleSubtle);
+        }
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_Defaults()
+        {
+            AssertAdaptiveText("<text/>", new TileText());
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_Align_Auto()
+        {
+            AssertAdaptiveText(
+
+                "<text/>",
+
+                new TileText()
+                {
+                    Align = TileTextAlign.Auto
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_Align_Left()
+        {
+            AssertAdaptiveText(
+
+                "<text hint-align='left'/>",
+
+                new TileText()
+                {
+                    Align = TileTextAlign.Left
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_Align_Center()
+        {
+            AssertAdaptiveText(
+
+                "<text hint-align='center'/>",
+
+                new TileText()
+                {
+                    Align = TileTextAlign.Center
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_Align_Right()
+        {
+            AssertAdaptiveText(
+
+                "<text hint-align='right'/>",
+
+                new TileText()
+                {
+                    Align = TileTextAlign.Right
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_Lang_Value()
+        {
+            AssertAdaptiveText(
+
+                "<text lang='en-US'/>",
+
+                new TileText()
+                {
+                    Lang = "en-US"
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_MaxLines_Min()
+        {
+            AssertAdaptiveText(
+
+                "<text hint-maxLines='1'/>",
+
+                new TileText()
+                {
+                    MaxLines = 1
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_MaxLines_Normal()
+        {
+            AssertAdaptiveText(
+
+                "<text hint-maxLines='5'/>",
+
+                new TileText()
+                {
+                    MaxLines = 5
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_MaxLines_Max()
+        {
+            AssertAdaptiveText(
+
+                $"<text />",
+
+                new TileText()
+                {
+                    MaxLines = int.MaxValue
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_MaxLines_BelowMin()
+        {
+            try
+            {
+                new TileText()
+                {
+                    MaxLines = 0
+                };
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_MinLines_Min()
+        {
+            AssertAdaptiveText(
+
+                "<text />",
+
+                new TileText()
+                {
+                    MinLines = 1
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_MinLines_Normal()
+        {
+            AssertAdaptiveText(
+
+                "<text hint-minLines='5'/>",
+
+                new TileText()
+                {
+                    MinLines = 5
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_MinLines_Max()
+        {
+            AssertAdaptiveText(
+
+                $"<text hint-minLines='{int.MaxValue}'/>",
+
+                new TileText()
+                {
+                    MinLines = int.MaxValue
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_MinLines_BelowMin()
+        {
+            try
+            {
+                new TileText()
+                {
+                    MinLines = 0
+                };
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_Style_Caption()
+        {
+            AssertAdaptiveText(
+
+                "<text />",
+
+                new TileText()
+                {
+                    Style = TileTextStyle.Caption
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_Style_HeaderSubtle()
+        {
+            AssertAdaptiveText(
+
+                "<text hint-style='headerSubtle'/>",
+
+                new TileText()
+                {
+                    Style = TileTextStyle.HeaderSubtle
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_Value()
+        {
+            AssertAdaptiveText(
+
+                "<text>Hello world</text>",
+
+                new TileText()
+                {
+                    Text = "Hello world"
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_Wrap_False()
+        {
+            AssertAdaptiveText(
+
+                "<text />",
+
+                new TileText()
+                {
+                    Wrap = false
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Text_Wrap_True()
+        {
+            AssertAdaptiveText(
+
+                "<text hint-wrap='True'/>",
+
+                new TileText()
+                {
+                    Wrap = true
+                });
+        }
+
+        #endregion
+
+
+        #region Image
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Image_Defaults()
+        {
+            AssertAdaptiveImage("<image/>", new TileImage());
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Image_Align_Stretch()
+        {
+            AssertAdaptiveImage(
+
+                "<image />",
+
+                new TileImage()
+                {
+                    Align = TileImageAlign.Stretch
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Image_Align_Left()
+        {
+            AssertAdaptiveImage(
+
+                "<image hint-align='left'/>",
+
+                new TileImage()
+                {
+                    Align = TileImageAlign.Left
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Image_Align_Center()
+        {
+            AssertAdaptiveImage(
+
+                "<image hint-align='center'/>",
+
+                new TileImage()
+                {
+                    Align = TileImageAlign.Center
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Image_Align_Right()
+        {
+            AssertAdaptiveImage(
+
+                "<image hint-align='right'/>",
+
+                new TileImage()
+                {
+                    Align = TileImageAlign.Right
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Image_Crop_None()
+        {
+            AssertAdaptiveImage(
+
+                "<image />",
+
+                new TileImage()
+                {
+                    Crop = TileImageCrop.None
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Image_Crop_Circle()
+        {
+            AssertAdaptiveImage(
+
+                "<image hint-crop='circle'/>",
+
+                new TileImage()
+                {
+                    Crop = TileImageCrop.Circle
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Image_RemoveMargin_False()
+        {
+            AssertAdaptiveImage(
+
+                "<image />",
+
+                new TileImage()
+                {
+                    RemoveMargin = false
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Image_RemoveMargin_True()
+        {
+            AssertAdaptiveImage(
+
+                "<image hint-removeMargin='True'/>",
+
+                new TileImage()
+                {
+                    RemoveMargin = true
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Image_Source_Value()
+        {
+            AssertAdaptiveImage(
+
+                "<image src='http://msn.com' addImageQuery='True' alt='alt'/>",
+
+                new TileImage()
+                {
+                    Source = new TileImageSource("http://msn.com")
+                    {
+                        AddImageQuery = true,
+                        Alt = "alt"
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Image_Source_Defaults()
+        {
+            AssertAdaptiveImage(
+
+                "<image src='http://msn.com'/>",
+
+                new TileImage()
+                {
+                    Source = new TileImageSource("http://msn.com")
+                });
+        }
+
+        #endregion
+
+
+
+        #region Group
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Group_Defaults()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium'><group/></binding>",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Children =
+                        {
+                            new TileGroup()
+                        }
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Group_Multiple()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium'><group/><group/><group/></binding>",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Children =
+                        {
+                            new TileGroup(),
+                            new TileGroup(),
+                            new TileGroup()
+                        }
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Group_WithSubgroups()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium'><group><subgroup /><subgroup /></group></binding>",
+
+                new TileBinding()
+                {
+                    Content = new TileBindingContentAdaptive()
+                    {
+                        Children =
+                        {
+                            new TileGroup()
+                            {
+                                Children =
+                                {
+                                    new TileSubgroup(),
+                                    new TileSubgroup()
+                                }
+                            }
+                        }
+                    }
+                });
+        }
+
+        #endregion
+
+
+
+        #region Subgroup
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Subgroup_Defaults()
+        {
+            AssertSubgroup("<subgroup/>", new TileSubgroup());
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Subgroup_TextStacking_Top()
+        {
+            AssertSubgroup(
+
+                "<subgroup />",
+
+                new TileSubgroup()
+                {
+                    TextStacking = TileTextStacking.Top
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Subgroup_TextStacking_Center()
+        {
+            AssertSubgroup(
+
+                "<subgroup hint-textStacking='center'/>",
+
+                new TileSubgroup()
+                {
+                    TextStacking = TileTextStacking.Center
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Subgroup_TextStacking_Bottom()
+        {
+            AssertSubgroup(
+
+                "<subgroup hint-textStacking='bottom'/>",
+
+                new TileSubgroup()
+                {
+                    TextStacking = TileTextStacking.Bottom
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Subgroup_Weight_Min()
+        {
+            AssertSubgroup(
+
+                "<subgroup hint-weight='1'/>",
+
+                new TileSubgroup()
+                {
+                    Weight = 1
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Subgroup_Weight_Normal()
+        {
+            AssertSubgroup(
+
+                "<subgroup hint-weight='30'/>",
+
+                new TileSubgroup()
+                {
+                    Weight = 30
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Subgroup_Weight_Larger()
+        {
+            AssertSubgroup(
+
+                "<subgroup hint-weight='200'/>",
+
+                new TileSubgroup()
+                {
+                    Weight = 200
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Subgroup_Weight_Max()
+        {
+            AssertSubgroup(
+
+                $"<subgroup hint-weight='{int.MaxValue}'/>",
+
+                new TileSubgroup()
+                {
+                    Weight = int.MaxValue
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Subgroup_Weight_BelowMin()
+        {
+            try
+            {
+                new TileSubgroup()
+                {
+                    Weight = 0
+                };
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Subgroup_WithChildren()
+        {
+            AssertSubgroup(
+
+                "<subgroup><text/><image/></subgroup>",
+
+                new TileSubgroup()
+                {
+                    Children =
+                    {
+                        new TileText(),
+                        new TileImage()
+                    }
+                });
+        }
+
+        
+        [TestMethod]
+        public void Test_Tile_Xml_Adaptive_Subgroup_AllProperties()
+        {
+            AssertSubgroup(
+
+                "<subgroup hint-weight='10' hint-textStacking='center'><text>Hello</text><image src='Image.jpg'/></subgroup>",
+
+                new TileSubgroup()
+                {
+                    Weight = 10,
+                    TextStacking = TileTextStacking.Center,
+                    Children =
+                    {
+                        new TileText() { Text = "Hello" },
+                        new TileImage()
+                        {
+                            Source = new TileImageSource("Image.jpg")
+                        }
+                    }
+                });
+        }
+
+        #endregion
+
+
+
+        #endregion
+
+
+
+
+        
+
+        
+
+
+        private static void AssertTextStyle(string expectedStyle, TileTextStyle style)
+        {
+            AssertAdaptiveText($"<text hint-style='{expectedStyle}'>Hello world</text>", new TileText()
+            {
+                Style = style,
+                Text = "Hello world"
+            });
+        }
+
+        private static void AssertSubgroup(string expectedSubgroupXml, TileSubgroup subgroup)
+        {
+            AssertBindingMedium("<binding template='TileMedium'><group>" + expectedSubgroupXml + "</group></binding>", new TileBinding()
+            {
+                Content = new TileBindingContentAdaptive()
+                {
+                    Children =
+                    {
+                        new TileGroup()
+                        {
+                            Children = { subgroup }
+                        }
+                    }
+                }
+            });
+        }
+
+        private static void AssertAdaptiveImage(string expectedImageXml, TileImage image)
+        {
+            AssertBindingMedium("<binding template='TileMedium'>" + expectedImageXml + "</binding>", new TileBinding()
+            {
+                Content = new TileBindingContentAdaptive()
+                {
+                    Children =
+                    {
+                        image
+                    }
+                }
+            });
+        }
+
+        private static void AssertAdaptiveText(string expectedTextXml, TileText text)
+        {
+            AssertBindingMedium("<binding template='TileMedium'>" + expectedTextXml + "</binding>", new TileBinding()
+            {
+                Content = new TileBindingContentAdaptive()
+                {
+                    Children =
+                    {
+                        text
+                    }
+                }
+            });
+        }
+
+        private static void AssertBindingMedium(string expectedBindingXml, TileBinding binding)
+        {
+            AssertVisual("<visual>" + expectedBindingXml + "</visual>", new TileVisual()
+            {
+                TileMedium = binding
+            });
+        }
+
+        private static void AssertVisual(string expectedVisualXml, TileVisual visual)
+        {
+            AssertPayload("<tile>" + expectedVisualXml + "</tile>", new TileContent()
+            {
+                Visual = visual
+            });
+        }
+
+        private static void AssertPayload(string expectedXml, TileContent tile)
+        {
+            AssertHelper.AssertXml(expectedXml, tile.GetContent());
+        }
+    }
+    
+
+}
