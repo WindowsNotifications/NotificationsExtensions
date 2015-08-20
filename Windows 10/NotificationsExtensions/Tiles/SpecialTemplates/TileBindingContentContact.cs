@@ -41,12 +41,12 @@ namespace NotificationsExtensions.Tiles
         {
             binding.Presentation = TilePresentation.Contact;
 
-            if (Image != null)
-                binding.Children.Add(Image.ConvertToElement());
-
             // Small size doesn't display the text, so no reason to include it in the payload
             if (Text != null && size != TileSize.Small)
                 binding.Children.Add(Text.ConvertToElement());
+
+            if (Image != null)
+                binding.Children.Add(Image.ConvertToElement());
         }
     }
 }

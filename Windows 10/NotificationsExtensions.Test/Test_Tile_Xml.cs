@@ -1728,10 +1728,313 @@ namespace NotificationsExtensions.Win10.Test
 
 
 
+        #region Special
 
-        
+        #region Photos
 
-        
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Photos_Default()
+        {
+            TileBindingContentPhotos content = new TileBindingContentPhotos()
+            {
+            };
+
+            AssertBindingMedium("<binding template='TileMedium' hint-presentation='photos'/>", new TileBinding()
+            {
+                Content = content
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Photos_OneImage()
+        {
+            TileBindingContentPhotos content = new TileBindingContentPhotos()
+            {
+                Images =
+                {
+                    new TileImageSource("http://msn.com/1.jpg")
+                    {
+                        AddImageQuery = true,
+                        Alt = "alternate"
+                    }
+                }
+            };
+
+            AssertBindingMedium("<binding template='TileMedium' hint-presentation='photos'><image src='http://msn.com/1.jpg' addImageQuery='True' alt='alternate'/></binding>", new TileBinding()
+            {
+                Content = content
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Photos_TwoImages()
+        {
+            TileBindingContentPhotos content = new TileBindingContentPhotos()
+            {
+                Images =
+                {
+                    new TileImageSource("Assets/1.jpg"),
+                    new TileImageSource("Assets/2.jpg")
+                }
+            };
+
+            AssertBindingMedium("<binding template='TileMedium' hint-presentation='photos'><image src='Assets/1.jpg'/><image src='Assets/2.jpg'/></binding>", new TileBinding()
+            {
+                Content = content
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Photos_MaxImages()
+        {
+            TileBindingContentPhotos content = new TileBindingContentPhotos()
+            {
+                Images =
+                {
+                    new TileImageSource("1.jpg"),
+                    new TileImageSource("2.jpg"),
+                    new TileImageSource("3.jpg"),
+                    new TileImageSource("4.jpg"),
+                    new TileImageSource("5.jpg"),
+                    new TileImageSource("6.jpg"),
+                    new TileImageSource("7.jpg"),
+                    new TileImageSource("8.jpg"),
+                    new TileImageSource("9.jpg"),
+                    new TileImageSource("10.jpg"),
+                    new TileImageSource("11.jpg"),
+                    new TileImageSource("12.jpg")
+                }
+            };
+
+            AssertBindingMedium(@"<binding template='TileMedium' hint-presentation='photos'>
+                <image src='1.jpg'/>
+                <image src='2.jpg'/>
+                <image src='3.jpg'/>
+                <image src='4.jpg'/>
+                <image src='5.jpg'/>
+                <image src='6.jpg'/>
+                <image src='7.jpg'/>
+                <image src='8.jpg'/>
+                <image src='9.jpg'/>
+                <image src='10.jpg'/>
+                <image src='11.jpg'/>
+                <image src='12.jpg'/>
+            </binding>", new TileBinding()
+            {
+                Content = content
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Photos_TooManyImages()
+        {
+            try
+            {
+                new TileBindingContentPhotos()
+                {
+                    Images =
+                    {
+                        new TileImageSource("1.jpg"),
+                        new TileImageSource("2.jpg"),
+                        new TileImageSource("3.jpg"),
+                        new TileImageSource("4.jpg"),
+                        new TileImageSource("5.jpg"),
+                        new TileImageSource("6.jpg"),
+                        new TileImageSource("7.jpg"),
+                        new TileImageSource("8.jpg"),
+                        new TileImageSource("9.jpg"),
+                        new TileImageSource("10.jpg"),
+                        new TileImageSource("11.jpg"),
+                        new TileImageSource("12.jpg"),
+                        new TileImageSource("13.jpg")
+                    }
+                };
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown, adding more than 12 images isn't supported.");
+        }
+
+        #endregion
+
+        #region People
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_People_Defaults()
+        {
+            TileBindingContentPeople content = new TileBindingContentPeople();
+
+            AssertBindingMedium("<binding template='TileMedium' hint-presentation='people'/>", new TileBinding()
+            {
+                Content = content
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_People_OneImage()
+        {
+            TileBindingContentPeople content = new TileBindingContentPeople()
+            {
+                Images =
+                {
+                    new TileImageSource("http://msn.com/1.jpg")
+                    {
+                        AddImageQuery = true,
+                        Alt = "alternate"
+                    }
+                }
+            };
+
+            AssertBindingMedium("<binding template='TileMedium' hint-presentation='people'><image src='http://msn.com/1.jpg' addImageQuery='True' alt='alternate'/></binding>", new TileBinding()
+            {
+                Content = content
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_People_TwoImages()
+        {
+            TileBindingContentPeople content = new TileBindingContentPeople()
+            {
+                Images =
+                {
+                    new TileImageSource("Assets/1.jpg"),
+                    new TileImageSource("Assets/2.jpg")
+                }
+            };
+
+            AssertBindingMedium("<binding template='TileMedium' hint-presentation='people'><image src='Assets/1.jpg'/><image src='Assets/2.jpg'/></binding>", new TileBinding()
+            {
+                Content = content
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_People_ManyImages()
+        {
+            string payload = "<binding template='TileMedium' hint-presentation='people'>";
+
+            TileBindingContentPeople content = new TileBindingContentPeople();
+
+            // Add 30 images
+            for (int i = 1; i <= 30; i++)
+            {
+                string src = i + ".jpg";
+
+                content.Images.Add(new TileImageSource(src));
+                payload += $"<image src='{src}'/>";
+            }
+
+            payload += "</binding>";
+
+            AssertBindingMedium(payload, new TileBinding()
+            {
+                Content = content
+            });
+        }
+
+        #endregion
+
+        #region Contact
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Contact_Defaults()
+        {
+            TileBindingContentContact content = new TileBindingContentContact();
+
+            AssertBindingMedium("<binding template='TileMedium' hint-presentation='contact'/>", new TileBinding()
+            {
+                Content = content
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Contact_Text()
+        {
+            TileBindingContentContact content = new TileBindingContentContact()
+            {
+                Text = new TileBasicText()
+                {
+                    Text = "Hello world",
+                    Lang = "en-US"
+                }
+            };
+
+            AssertBindingMedium("<binding template='TileMedium' hint-presentation='contact'><text lang='en-US'>Hello world</text></binding>", new TileBinding()
+            {
+                Content = content
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Contact_Image()
+        {
+            TileBindingContentContact content = new TileBindingContentContact()
+            {
+                Image = new TileImageSource("http://msn.com/img.jpg")
+                {
+                    AddImageQuery = true,
+                    Alt = "John Smith"
+                }
+            };
+
+            AssertBindingMedium("<binding template='TileMedium' hint-presentation='contact'><image src='http://msn.com/img.jpg' addImageQuery='True' alt='John Smith'/></binding>", new TileBinding()
+            {
+                Content = content
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Contact_Both_Small()
+        {
+            TileBindingContentContact content = new TileBindingContentContact()
+            {
+                Text = new TileBasicText()
+                {
+                    Text = "Hello world"
+                },
+
+                Image = new TileImageSource("Assets/img.jpg")
+            };
+
+            // Small doesn't support the text, so it doesn't output the text element when rendered for small
+            AssertVisual("<visual><binding template='TileSmall' hint-presentation='contact'><image src='Assets/img.jpg'/></binding></visual>", new TileVisual()
+            {
+                TileSmall = new TileBinding() { Content = content }
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Contact_Both_Medium()
+        {
+            TileBindingContentContact content = new TileBindingContentContact()
+            {
+                Text = new TileBasicText()
+                {
+                    Text = "Hello world"
+                },
+
+                Image = new TileImageSource("Assets/img.jpg")
+            };
+
+            // Text is written before the image element
+            AssertVisual("<visual><binding template='TileMedium' hint-presentation='contact'><text>Hello world</text><image src='Assets/img.jpg'/></binding></visual>", new TileVisual()
+            {
+                TileMedium = new TileBinding() { Content = content }
+            });
+        }
+
+        #endregion
+
+        #endregion
+
+
+
+
+
+
+
 
 
         private static void AssertTextStyle(string expectedStyle, TileTextStyle style)
