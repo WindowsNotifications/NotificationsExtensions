@@ -2027,6 +2027,44 @@ namespace NotificationsExtensions.Win10.Test
 
         #endregion
 
+        #region Iconic
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Iconic_Small()
+        {
+            AssertVisual("<visual><binding template='TileSquare71x71IconWithBadge'/></visual>", new TileVisual()
+            {
+                TileSmall = new TileBinding() { Content = new TileBindingContentIconic() }
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Iconic_Medium()
+        {
+            AssertVisual("<visual><binding template='TileSquare150x150IconWithBadge'/></visual>", new TileVisual()
+            {
+                TileMedium = new TileBinding() { Content = new TileBindingContentIconic() }
+            });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Special_Iconic_Image()
+        {
+            AssertVisual("<visual><binding template='TileSquare150x150IconWithBadge'><image id='1' src='Assets/Iconic.png' alt='iconic'/></binding></visual>", new TileVisual()
+            {
+                TileMedium = new TileBinding() { Content = new TileBindingContentIconic()
+                    {
+                        Icon = new TileImageSource("Assets/Iconic.png")
+                        {
+                            Alt = "iconic"
+                        }
+                    }
+                }
+            });
+        }
+
+        #endregion
+
         #endregion
 
 

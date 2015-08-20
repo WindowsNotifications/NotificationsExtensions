@@ -271,7 +271,7 @@ namespace NotificationsExtensions.Win10.Test
 
 
             // If attribute count doesn't match
-            Assert.AreEqual(expected.Attributes.Count, actual.Attributes.Count, "Element attributes counts didn't match");
+            Assert.AreEqual(expected.Attributes.Count, actual.Attributes.Count, $"Different number of attributes on <{expected.Name}>");
 
 
             // Make sure attributes match (order does NOT matter)
