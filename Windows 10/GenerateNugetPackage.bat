@@ -5,6 +5,10 @@ echo.
 
 set /p version="Enter Version Number (ex. 10240.0.0): "
 
-"C:\Program Files (x86)\NuGet\nuget.exe" pack -Version %version%
+if not exist "..\NugetPackages" mkdir "..\NugetPackages"
+
+"C:\Program Files (x86)\NuGet\nuget.exe" pack -Version %version% -OutputDirectory "..\NugetPackages"
 
 PAUSE
+
+explorer ..\NugetPackages
