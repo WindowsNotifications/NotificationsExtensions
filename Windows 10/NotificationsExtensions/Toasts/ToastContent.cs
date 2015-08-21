@@ -11,8 +11,6 @@ using System.Runtime.CompilerServices;
 using Windows.Data.Xml.Dom;
 #endif
 
-[assembly: InternalsVisibleTo("NotificationsExtensions.Win10.Test.Portable")]
-
 namespace NotificationsExtensions.Toasts
 {
 
