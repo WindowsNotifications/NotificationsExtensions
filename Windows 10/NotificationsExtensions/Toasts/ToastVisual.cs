@@ -55,7 +55,7 @@ namespace NotificationsExtensions.Toasts
         /// <summary>
         /// Inline images to display after the lines of text. Only 6 images are allowed. Adding more than 6 will throw an exception.
         /// </summary>
-        public IList<ToastImageSource> InlineImages { get; private set; } = new LimitedList<ToastImageSource>(6);
+        public IList<ToastImage> InlineImages { get; private set; } = new LimitedList<ToastImage>(6);
 
         /// <summary>
         /// An optional override of the logo displayed on the toast notification.
