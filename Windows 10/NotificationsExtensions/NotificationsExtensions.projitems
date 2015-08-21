@@ -59,7 +59,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastImageSource.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastSelectionBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastSelectionBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastText.cs" />
