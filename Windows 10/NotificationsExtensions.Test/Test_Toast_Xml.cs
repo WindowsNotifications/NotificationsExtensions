@@ -249,11 +249,15 @@ namespace NotificationsExtensions.Win10.Test.Portable
             {
                 InlineImages =
                 {
-                    new ToastImageSource("http://msn.com/image.jpg")
+                    new ToastImage()
                     {
-                        AddImageQuery = true,
-                        Alt = "alternate"
+                        Source = new ToastImageSource("http://msn.com/image.jpg")
+                        {
+                            AddImageQuery = true,
+                            Alt = "alternate"
+                        }
                     }
+                    
                 }
             };
 
@@ -267,13 +271,19 @@ namespace NotificationsExtensions.Win10.Test.Portable
             {
                 InlineImages =
                 {
-                    new ToastImageSource("http://msn.com/image.jpg")
+                    new ToastImage()
                     {
-                        AddImageQuery = true,
-                        Alt = "alternate"
+                        Source = new ToastImageSource("http://msn.com/image.jpg")
+                        {
+                            AddImageQuery = true,
+                            Alt = "alternate"
+                        }
                     },
 
-                    new ToastImageSource("Assets/img2.jpg")
+                    new ToastImage()
+                    {
+                        Source = new ToastImageSource("Assets/img2.jpg")
+                    }
                 }
             };
 
@@ -287,12 +297,12 @@ namespace NotificationsExtensions.Win10.Test.Portable
             {
                 InlineImages =
                 {
-                    new ToastImageSource("Assets/img1.jpg"),
-                    new ToastImageSource("Assets/img2.jpg"),
-                    new ToastImageSource("Assets/img3.jpg"),
-                    new ToastImageSource("Assets/img4.jpg"),
-                    new ToastImageSource("Assets/img5.jpg"),
-                    new ToastImageSource("Assets/img6.jpg")
+                    new ToastImage() { Source = new ToastImageSource("Assets/img1.jpg") },
+                    new ToastImage() { Source = new ToastImageSource("Assets/img2.jpg") },
+                    new ToastImage() { Source = new ToastImageSource("Assets/img3.jpg") },
+                    new ToastImage() { Source = new ToastImageSource("Assets/img4.jpg") },
+                    new ToastImage() { Source = new ToastImageSource("Assets/img5.jpg") },
+                    new ToastImage() { Source = new ToastImageSource("Assets/img6.jpg") }
                 }
             };
 
@@ -308,13 +318,13 @@ namespace NotificationsExtensions.Win10.Test.Portable
                 {
                     InlineImages =
                     {
-                        new ToastImageSource("Assets/img1.jpg"),
-                        new ToastImageSource("Assets/img2.jpg"),
-                        new ToastImageSource("Assets/img3.jpg"),
-                        new ToastImageSource("Assets/img4.jpg"),
-                        new ToastImageSource("Assets/img5.jpg"),
-                        new ToastImageSource("Assets/img6.jpg"),
-                        new ToastImageSource("Assets/img7.jpg")
+                        new ToastImage(),
+                        new ToastImage(),
+                        new ToastImage(),
+                        new ToastImage(),
+                        new ToastImage(),
+                        new ToastImage(),
+                        new ToastImage()
                     }
                 };
             }
