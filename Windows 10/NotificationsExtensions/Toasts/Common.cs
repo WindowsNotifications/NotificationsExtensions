@@ -29,6 +29,12 @@ namespace NotificationsExtensions.Toasts
         /// Launch a different app using protocol activation.
         /// </summary>
         [EnumString("protocol")]
-        Protocol
+        Protocol,
+
+        /// <summary>
+        /// Start a system command.
+        /// </summary>
+        [EnumString("system")]
+        System,
     }
 }
