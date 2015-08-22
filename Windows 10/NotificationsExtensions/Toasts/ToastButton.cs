@@ -70,5 +70,42 @@ namespace NotificationsExtensions.Toasts
         }
     }
 
+    /// <summary>
+    /// A button that, when clicked, is interpreted as a "dismiss" by the system, and the toast is dismissed just like if the user swiped the toast away.
+    /// </summary>
+    public sealed class ToastButtonDismiss
+    {
+        public string CustomContent { get; private set; }
 
+        /// <summary>
+        /// Constructs a system-handled dismiss button that displays localized "Dismiss" text on the button.
+        /// </summary>
+        public ToastButtonDismiss()
+        {
+
+        }
+
+        /// <summary>
+        /// Constructs a system-handled dismiss button that displays your text on the button.
+        /// </summary>
+        /// <param name="customContent">The text you want displayed on the button.</param>
+        public ToastButtonDismiss(string customContent)
+        {
+            if (customContent == null)
+                throw new ArgumentNullException("customContent");
+
+            CustomContent = customContent;
+        }
+    }
+
+    public sealed class ToastButtonSnooze
+    {
+        /// <summary>
+        /// Constructs a system-handled snooze button that displays localized "Snooze" text on the button and automatically handles snoozing 
+        /// </summary>
+        public ToastButtonSnooze()
+        {
+
+        }
+    }
 }
