@@ -35,59 +35,59 @@ namespace NotificationsExtensions.SampleApp
 
             SendToastNotification();
         }
-        
+
 
         private void SendToastNotification()
         {
-    ToastContent content = new ToastContent()
-    {
-        Launch = "lei",
+            ToastContent content = new ToastContent()
+            {
+                Launch = "lei",
 
-        Visual = new ToastVisual()
-        {
-            TitleText = new ToastText()
-            {
-                Text = "New message from Lei"
-            },
-
-            BodyTextLine1 = new ToastText()
-            {
-                Text = "NotificationsExtensions is great!"
-            },
-
-            AppLogoOverride = new ToastAppLogo()
-            {
-                Crop = ToastImageCrop.Circle,
-                Source = new ToastImageSource("http://messageme.com/lei/profile.jpg")
-            }
-        },
-                
-        Actions = new ToastActionsCustom()
-        {
-            Inputs =
-            {
-                new ToastTextBox("tbReply")
+                Visual = new ToastVisual()
                 {
-                    PlaceholderContent = "Type a response"
-                }
-            },
+                    TitleText = new ToastText()
+                    {
+                        Text = "New message from Lei"
+                    },
 
-            Buttons =
-            {
-                new ToastButton("reply", "reply")
+                    BodyTextLine1 = new ToastText()
+                    {
+                        Text = "NotificationsExtensions is great!"
+                    },
+
+                    AppLogoOverride = new ToastAppLogo()
+                    {
+                        Crop = ToastImageCrop.Circle,
+                        Source = new ToastImageSource("http://messageme.com/lei/profile.jpg")
+                    }
+                },
+
+                Actions = new ToastActionsCustom()
                 {
-                    ActivationType = ToastActivationType.Background,
-                    ImageUri = "Assets/QuickReply.png",
-                    TextBoxId = "tbReply"
+                    Inputs =
+                    {
+                        new ToastTextBox("tbReply")
+                        {
+                            PlaceholderContent = "Type a response"
+                        }
+                    },
+
+                    Buttons =
+                    {
+                        new ToastButton("reply", "reply")
+                        {
+                            ActivationType = ToastActivationType.Background,
+                            ImageUri = "Assets/QuickReply.png",
+                            TextBoxId = "tbReply"
+                        }
+                    }
+                },
+
+                Audio = new ToastAudio()
+                {
+                    Src = new Uri("ms-winsoundevent:Notification.IM")
                 }
-            }
-        },
-                
-        Audio = new ToastAudio()
-        {
-            Src = new Uri("ms-winsoundevent:Notification.IM")
-        }
-    };
+            };
 
 
             DataPackage dp = new DataPackage();
@@ -97,57 +97,57 @@ namespace NotificationsExtensions.SampleApp
             ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()));
         }
 
-private TileGroup GenerateEmailGroup(string from, string subject)
-{
-    return new TileGroup()
-    {
-        Children =
+        private TileGroup GenerateEmailGroup(string from, string subject)
         {
-            new TileSubgroup()
+            return new TileGroup()
             {
                 Children =
                 {
-                    new TileText()
+                    new TileSubgroup()
                     {
-                        Text = from
-                    },
+                        Children =
+                        {
+                            new TileText()
+                            {
+                                Text = from
+                            },
 
-                    new TileText()
-                    {
-                        Text = subject,
-                        Style = TileTextStyle.CaptionSubtle
+                            new TileText()
+                            {
+                                Text = subject,
+                                Style = TileTextStyle.CaptionSubtle
+                            }
+                        }
                     }
                 }
-            }
+            };
         }
-    };
-}
 
         private void ButtonSendTileNotification_Click(object sender, RoutedEventArgs e)
         {
-TileBindingContentAdaptive bindingContent = new TileBindingContentAdaptive()
-{
-    Children =
-    {
-        GenerateEmailGroup("Jennifer Parker", "Photos from our trip"),
-        GenerateEmailGroup("Steve Bosniak", "Want to go out for dinner after Build tonight?")
-    }
-};
+            TileBindingContentAdaptive bindingContent = new TileBindingContentAdaptive()
+            {
+                Children =
+                {
+                    GenerateEmailGroup("Jennifer Parker", "Photos from our trip"),
+                    GenerateEmailGroup("Steve Bosniak", "Want to go out for dinner after Build tonight?")
+                }
+            };
 
-TileBinding binding = new TileBinding()
-{
-    Content = bindingContent
-};
+            TileBinding binding = new TileBinding()
+            {
+                Content = bindingContent
+            };
 
 
-TileContent content = new TileContent()
-{
-    Visual = new TileVisual()
-    {
-        TileMedium = binding
-    }
-};
-            
+            TileContent content = new TileContent()
+            {
+                Visual = new TileVisual()
+                {
+                    TileMedium = binding
+                }
+            };
+
 
             DataPackage dp = new DataPackage();
             dp.SetText(content.GetContent());
@@ -169,6 +169,68 @@ TileContent content = new TileContent()
             //var tileContent = NotificationsExtensions.GenerateTileContent();
             //TileNotification notif = new TileNotification(null);
             //ITileSquareText01 tileContent = TileContentFactory.CreateTileSquareText01();
+        }
+
+        private void ButtonSendToastNotification_Click(object sender, RoutedEventArgs e)
+        {
+            ToastContent content = new ToastContent()
+            {
+                Launch = "lei",
+                
+                Visual = new ToastVisual()
+                {
+                    TitleText = new ToastText()
+                    {
+                        Text = "New message from Lei"
+                    },
+
+                    BodyTextLine1 = new ToastText()
+                    {
+                        Text = "NotificationsExtensions is great!"
+                    },
+
+                    AppLogoOverride = new ToastAppLogo()
+                    {
+                        Crop = ToastImageCrop.Circle,
+                        Source = new ToastImageSource("http://messageme.com/lei/profile.jpg")
+                    }
+                },
+
+                Actions = new ToastActionsCustom()
+                {
+                    Inputs =
+                    {
+                        new ToastTextBox("tbReply")
+                        {
+                            PlaceholderContent = "Type a response"
+                        }
+                    },
+
+                    Buttons =
+                    {
+                        new ToastButton("Reply", "reply")
+                        {
+                            ActivationType = ToastActivationType.Background,
+                        },
+                        new ToastButton("", "dismiss")
+                        {
+                            ActivationType = ToastActivationType.System,
+                        }
+                    }
+                },
+
+                Audio = new ToastAudio()
+                {
+                    Src = new Uri("ms-winsoundevent:Notification.IM")
+                }
+            };
+
+
+            DataPackage dp = new DataPackage();
+            dp.SetText(content.GetContent());
+            Clipboard.SetContent(dp);
+
+            ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(content.GetXml()));
         }
     }
 }
