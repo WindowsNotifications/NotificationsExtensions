@@ -7,10 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Button
             x:Name="ButtonSendTileNotification"
             Content="Click to send tile notification"
             Click="ButtonSendTileNotification_Click"/>
-    </Grid>
+        <Button
+            x:Name="ButtonSendToastNotification"
+            Content="Click to send toast notification"
+            Click="ButtonSendToastNotification_Click"/>
+    </StackPanel>
 </Page>
