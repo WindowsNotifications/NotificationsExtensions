@@ -42,7 +42,8 @@
                 <Button
                     x:Name="ButtonCustomSnoozeAndDismissText"
                     Style="{StaticResource ImageButtonStyle}"
-                    Click="ButtonCustomSnoozeAndDismissText_Click"/>
+                    Click="ButtonCustomSnoozeAndDismissText_Click"
+                    Content="Assets/Samples/Toasts/CustomSnoozeAndDismissText.jpg"/>
                 
             </StackPanel>
         </ScrollViewer>
