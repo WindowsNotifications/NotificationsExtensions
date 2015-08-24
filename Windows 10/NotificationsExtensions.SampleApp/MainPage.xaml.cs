@@ -32,8 +32,6 @@ namespace NotificationsExtensions.SampleApp
         public MainPage()
         {
             this.InitializeComponent();
-
-            SendToastNotification();
         }
         
 
@@ -169,6 +167,11 @@ TileContent content = new TileContent()
             //var tileContent = NotificationsExtensions.GenerateTileContent();
             //TileNotification notif = new TileNotification(null);
             //ITileSquareText01 tileContent = TileContentFactory.CreateTileSquareText01();
+        }
+
+        private void ButtonToasts_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ToastsPage));
         }
     }
 }

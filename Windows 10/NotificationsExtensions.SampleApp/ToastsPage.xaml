@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="NotificationsExtensions.SampleApp.ToastsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NotificationsExtensions.SampleApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <Style x:Key="ImageButtonStyle" TargetType="Button">
+            <Setter Property="Margin" Value="0,0,0,24"/>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Image Source="{Binding}" Stretch="None"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Content" Value="Assets/Samples/Toasts/UnderConstruction.jpg"/>
+        </Style>
+        
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
+            <StackPanel Margin="24">
+                
+                <Button
+                    x:Name="ButtonQuickReply"
+                    Style="{StaticResource ImageButtonStyle}"
+                    Content="Assets/Samples/Toasts/QuickReply.jpg"
+                    Click="ButtonQuickReply_Click"/>
+                
+                <Button
+                    x:Name="ButtonCustomSnoozeTimes"
+                    Style="{StaticResource ImageButtonStyle}"
+                    Content="Assets/Samples/Toasts/CustomSnoozeTimes.jpg"
+                    Click="ButtonCustomSnoozeTimes_Click"/>
+                
+                <Button
+                    x:Name="ButtonCustomSnoozeAndDismissText"
+                    Style="{StaticResource ImageButtonStyle}"
+                    Click="ButtonCustomSnoozeAndDismissText_Click"/>
+                
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

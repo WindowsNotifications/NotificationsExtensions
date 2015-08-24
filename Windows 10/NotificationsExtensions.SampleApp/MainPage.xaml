@@ -8,9 +8,11 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button
-            x:Name="ButtonSendTileNotification"
-            Content="Click to send tile notification"
-            Click="ButtonSendTileNotification_Click"/>
+        <StackPanel Margin="24">
+            <Button
+                x:Name="ButtonToasts"
+                Content="Open Toasts Page"
+                Click="ButtonToasts_Click"/>
+        </StackPanel>
     </Grid>
 </Page>
