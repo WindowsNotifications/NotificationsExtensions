@@ -721,6 +721,49 @@ namespace NotificationsExtensions.Win10.Test.Portable
         }
 
         [TestMethod]
+        public void Test_Toast_Xml_ButtonSnooze_Defaults()
+        {
+            ToastButtonSnooze button = new ToastButtonSnooze();
+
+            AssertButtonPayload("<action activationType='system' arguments='snooze' content=''/>", button);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_ButtonSnooze_CustomContent()
+        {
+            ToastButtonSnooze button = new ToastButtonSnooze("my snooze");
+
+            AssertButtonPayload("<action activationType='system' arguments='snooze' content='my snooze'/>", button);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_ButtonSnooze_SelectionId()
+        {
+            ToastButtonSnooze button = new ToastButtonSnooze()
+            {
+                SelectionBoxId = "snoozeId"
+            };
+
+            AssertButtonPayload("<action activationType='system' arguments='snooze' content='' hint-inputId='snoozeId'/>", button);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_ButtonDismiss_Defaults()
+        {
+            ToastButtonDismiss button = new ToastButtonDismiss();
+
+            AssertButtonPayload("<action activationType='system' arguments='dismiss' content=''/>", button);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_ButtonDismiss_CustomContent()
+        {
+            ToastButtonDismiss button = new ToastButtonDismiss("my dismiss");
+
+            AssertButtonPayload("<action activationType='system' arguments='dismiss' content='my dismiss'/>", button);
+        }
+
+        [TestMethod]
         public void Test_Toast_Xml_TextBox_Defaults()
         {
             var textBox = new ToastTextBox("myId");
@@ -907,7 +950,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
             });
         }
 
-        private static void AssertButtonPayload(string expectedButtonXml, ToastButton button)
+        private static void AssertButtonPayload(string expectedButtonXml, IToastButton button)
         {
             AssertActionsPayload("<actions>" + expectedButtonXml + "</actions>", new ToastActionsCustom()
             {

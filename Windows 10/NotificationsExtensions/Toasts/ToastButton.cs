@@ -11,9 +11,14 @@ using System;
 namespace NotificationsExtensions.Toasts
 {
     /// <summary>
+    /// One of <see cref="ToastButton"/>, <see cref="ToastButtonSnooze"/>, or <see cref="ToastButtonDismiss"/>.
+    /// </summary>
+    public interface IToastButton { }
+
+    /// <summary>
     /// A button that the user can click on a toast notification.
     /// </summary>
-    public sealed class ToastButton
+    public sealed class ToastButton : IToastButton
     {
         /// <summary>
         /// Constructs a toast button with the required properties.
@@ -45,7 +50,7 @@ namespace NotificationsExtensions.Toasts
         /// <summary>
         /// Controls what type of activation this button will use when clicked. Defaults to Foreground.
         /// </summary>
-        public ToastActivationType ActivationType { get; set; } = Element_ToastAction.DEFAULT_ACTIVATION_TYPE;
+        public ToastActivationType ActivationType { get; set; } = ToastActivationType.Foreground;
 
         /// <summary>
         /// An optional image icon for the button to display (required for buttons adjacent to inputs like quick reply).
@@ -63,17 +68,35 @@ namespace NotificationsExtensions.Toasts
             {
                 Content = Content,
                 Arguments = Arguments,
-                ActivationType = ActivationType,
+                ActivationType = GetElementActivationType(),
                 ImageUri = ImageUri,
                 InputId = TextBoxId
             };
+        }
+
+        private Element_ToastActivationType GetElementActivationType()
+        {
+            switch (ActivationType)
+            {
+                case ToastActivationType.Foreground:
+                    return Element_ToastActivationType.Foreground;
+
+                case ToastActivationType.Background:
+                    return Element_ToastActivationType.Background;
+
+                case ToastActivationType.Protocol:
+                    return Element_ToastActivationType.Protocol;
+
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 
     /// <summary>
     /// A button that, when clicked, is interpreted as a "dismiss" by the system, and the toast is dismissed just like if the user swiped the toast away.
     /// </summary>
-    public sealed class ToastButtonDismiss
+    public sealed class ToastButtonDismiss : IToastButton
     {
         public string CustomContent { get; private set; }
 
@@ -96,16 +119,59 @@ namespace NotificationsExtensions.Toasts
 
             CustomContent = customContent;
         }
+
+        internal Element_ToastAction ConvertToElement()
+        {
+            return new Element_ToastAction()
+            {
+                Content = CustomContent == null ? "" : CustomContent, // If not using custom content, we need to provide empty string, otherwise toast doesn't get displayed
+                Arguments = "dismiss",
+                ActivationType = Element_ToastActivationType.System
+                // ImageUri is useless since Shell doesn't display it for system buttons
+                // InputId is useless since dismiss button can't be placed to the right of text box (shell doesn't display it)
+            };
+        }
     }
 
-    public sealed class ToastButtonSnooze
+    public sealed class ToastButtonSnooze : IToastButton
     {
+        public string CustomContent { get; private set; }
+
         /// <summary>
-        /// Constructs a system-handled snooze button that displays localized "Snooze" text on the button and automatically handles snoozing 
+        /// Optionally specify the ID of an existing <see cref="ToastSelectionBox"/> in order to allow the user to pick a custom snooze time. The ID's of the <see cref="ToastSelectionBoxItem"/>s inside the selection box must represent the snooze interval in minutes. For example, if the user selects an item that has an ID of "120", then the notification will be snoozed for 2 hours. When the user clicks this button, if you specified a SelectionBoxId, the system will parse the ID of the selected item and snooze by that amount of minutes. If you didn't specify a SelectionBoxId, the system will snooze by the default system snooze time.
+        /// </summary>
+        public string SelectionBoxId { get; set; }
+
+        /// <summary>
+        /// Constructs a system-handled snooze button that displays localized "Snooze" text on the button and automatically handles snoozing. 
         /// </summary>
         public ToastButtonSnooze()
         {
 
+        }
+
+        /// <summary>
+        /// Constructs a system-handled snooze button that displays your text on the button and automatically handles snoozing.
+        /// </summary>
+        /// <param name="customContent">The text you want displayed on the button.</param>
+        public ToastButtonSnooze(string customContent)
+        {
+            if (customContent == null)
+                throw new ArgumentNullException("customContent");
+
+            CustomContent = customContent;
+        }
+
+        internal Element_ToastAction ConvertToElement()
+        {
+            return new Element_ToastAction()
+            {
+                Content = CustomContent == null ? "" : CustomContent, // If not using custom content, we need to provide empty string, otherwise toast doesn't get displayed
+                Arguments = "snooze",
+                ActivationType = Element_ToastActivationType.System,
+                InputId = SelectionBoxId
+                // ImageUri is useless since Shell doesn't display it for system buttons
+            };
         }
     }
 }
