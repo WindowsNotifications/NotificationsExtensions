@@ -165,8 +165,8 @@ namespace NotificationsExtensions.Tiles
                 throw new ArgumentNullException("binding cannot be null");
 
 
-            // If a text element already has an id with the line number
-            Element_TileText matchingIdTextElement = binding.Descendants().OfType<Element_TileText>().FirstOrDefault(i => i.Id != null && i.Id.Equals(lineNumber.ToString()));
+            // If a text element already has an id with the line number (only look at immediate children, since the lockscreen will ignore things under groups/subgroups)
+            Element_TileText matchingIdTextElement = binding.Children.OfType<Element_TileText>().FirstOrDefault(i => i.Id != null && i.Id.Equals(lineNumber.ToString()));
 
             if (matchingIdTextElement != null)
             {
@@ -181,7 +181,7 @@ namespace NotificationsExtensions.Tiles
 
 
             // Otherwise no text elements use that ID, so we could assign one if we find a text element that doesn't have an ID assigned and matches the lock text
-            Element_TileText matchingTextTextElement = binding.Descendants().OfType<Element_TileText>().FirstOrDefault(i => i.Id == null && i.Text != null && i.Text.Equals(lockText));
+            Element_TileText matchingTextTextElement = binding.Children.OfType<Element_TileText>().FirstOrDefault(i => i.Id == null && i.Text != null && i.Text.Equals(lockText));
 
             // If we found text that matched, we'll assign the id so it gets re-used for lock!
             if (matchingTextTextElement != null)

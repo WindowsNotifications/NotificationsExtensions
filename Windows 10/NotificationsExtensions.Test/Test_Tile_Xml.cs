@@ -323,9 +323,12 @@ namespace NotificationsExtensions.Win10.Test
         [TestMethod]
         public void Test_Tile_Xml_Visual_LockDetailedStatus1_MatchingText_InSubgroup()
         {
+            /// The lockscreen only looks at ID's in the immediate binding children. So anything in the groups/subgroups are
+            /// ignored. Thus, if text matches there, it still has to be placed as a hint.
+
             AssertVisual(
 
-                "<visual><binding template='TileWide'><text>Awesome</text><group><subgroup><image /><text id='1'>Status 1</text><text>Cool</text></subgroup></group><text>Blah</text></binding></visual>",
+                "<visual><binding template='TileWide' hint-lockDetailedStatus1='Status 1'><text>Awesome</text><group><subgroup><image /><text>Status 1</text><text>Cool</text></subgroup></group><text>Blah</text></binding></visual>",
 
                 new TileVisual()
                 {
@@ -426,7 +429,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertVisual(
 
-                "<visual><binding template='TileWide'><text>Awesome</text><group><subgroup><image /><text id='2'>Status 2</text><text>Cool</text></subgroup></group><text>Blah</text></binding></visual>",
+                "<visual><binding template='TileWide' hint-lockDetailedStatus2='Status 2'><text>Awesome</text><group><subgroup><image /><text>Status 2</text><text>Cool</text></subgroup></group><text>Blah</text></binding></visual>",
 
                 new TileVisual()
                 {
@@ -527,7 +530,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertVisual(
 
-                "<visual><binding template='TileWide'><text>Awesome</text><group><subgroup><image /><text id='3'>Status 3</text><text>Cool</text></subgroup></group><text>Blah</text></binding></visual>",
+                "<visual><binding template='TileWide' hint-lockDetailedStatus3='Status 3'><text>Awesome</text><group><subgroup><image /><text>Status 3</text><text>Cool</text></subgroup></group><text>Blah</text></binding></visual>",
 
                 new TileVisual()
                 {
