@@ -23,6 +23,7 @@ Supports adaptive tiles and adaptive/interactive toasts for Windows 10!</descrip
         <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pri" target="lib\uap10.0"/>
         <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pdb" target="lib\uap10.0"/>
         <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.xml" target="lib\uap10.0"/>
+        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.xml" target="lib\uap10.0\NotificationsExtensions.winmd.xml"/>
 
 	<file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.dll" target="lib\dotnet"/>
 	<file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.pdb" target="lib\dotnet"/>
