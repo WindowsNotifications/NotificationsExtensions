@@ -26,13 +26,21 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer>
             <StackPanel Margin="24">
-                
+
                 <Button
                     x:Name="ButtonQuickReply"
                     Style="{StaticResource ImageButtonStyle}"
                     Content="Assets/Samples/Toasts/QuickReply.jpg"
-                    Click="ButtonQuickReply_Click"/>
-                
+                    Click="ButtonQuickReply_Click"
+                    Tag="Quick reply"/>
+
+                <Button
+                    x:Name="ButtonSystemSnoozeDismiss"
+                    Style="{StaticResource ImageButtonStyle}"
+                    Content="Assets/Samples/Toasts/SystemSnoozeAndDismiss.jpg"
+                    Click="ButtonSystemSnoozeDismiss_Click"
+                    Tag="System handled snooze and dismiss"/>
+
                 <Button
                     x:Name="ButtonCustomSnoozeTimes"
                     Style="{StaticResource ImageButtonStyle}"

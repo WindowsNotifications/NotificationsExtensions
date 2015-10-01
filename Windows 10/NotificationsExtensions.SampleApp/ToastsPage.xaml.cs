@@ -138,5 +138,23 @@ namespace NotificationsExtensions.SampleApp
                 }
             });
         }
+
+        private void ButtonSystemSnoozeDismiss_Click(object sender, RoutedEventArgs e)
+        {
+            Show(new ToastContent()
+            {
+                Visual = new ToastVisual()
+                {
+                    TitleText = new ToastText() { Text = "Take Out Garbage" },
+                    BodyTextLine1 = new ToastText() { Text = "7:00 PM" }
+                },
+
+                Launch = "984910",
+
+                Scenario = ToastScenario.Reminder,
+
+                Actions = new ToastActionsSnoozeAndDismiss()
+            });
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace NotificationsExtensions.Toasts
         {
             return new Element_ToastActions()
             {
-                SystemCommand = ToastSystemCommand.SnoozeAndDismiss
+                SystemCommands = ToastSystemCommand.SnoozeAndDismiss
             };
         }
     }

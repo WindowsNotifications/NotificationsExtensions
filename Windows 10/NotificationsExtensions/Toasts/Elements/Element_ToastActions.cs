@@ -15,8 +15,8 @@ namespace NotificationsExtensions.Toasts
     {
         internal const ToastSystemCommand DEFAULT_SYSTEM_COMMAND = ToastSystemCommand.None;
 
-        [NotificationXmlAttribute("hint-systemCommand", DEFAULT_SYSTEM_COMMAND)]
-        public ToastSystemCommand SystemCommand { get; set; } = ToastSystemCommand.None;
+        [NotificationXmlAttribute("hint-systemCommands", DEFAULT_SYSTEM_COMMAND)]
+        public ToastSystemCommand SystemCommands { get; set; } = ToastSystemCommand.None;
 
         public IList<IElement_ToastActionsChild> Children { get; private set; } = new List<IElement_ToastActionsChild>();
     }

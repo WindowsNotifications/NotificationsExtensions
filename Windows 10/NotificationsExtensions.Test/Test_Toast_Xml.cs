@@ -475,7 +475,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
         [TestMethod]
         public void Test_Toast_Xml_Actions_SnoozeAndDismiss()
         {
-            AssertActionsPayload("<actions hint-systemCommand='SnoozeAndDismiss'/>", new ToastActionsSnoozeAndDismiss());
+            AssertActionsPayload("<actions hint-systemCommands='SnoozeAndDismiss'/>", new ToastActionsSnoozeAndDismiss());
         }
 
         [TestMethod]
