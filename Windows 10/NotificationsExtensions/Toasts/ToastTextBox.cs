@@ -15,7 +15,7 @@ namespace NotificationsExtensions.Toasts
     public sealed class ToastTextBox : IToastInput
     {
         /// <summary>
-        /// Constructs a new Toast TextBox input control with the required elements.
+        /// Initializes a new toast TextBox input control with the required elements.
         /// </summary>
         /// <param name="id">Developer-provided ID that the developer uses later to retrieve input when the toast is interacted with.</param>
         public ToastTextBox(string id)

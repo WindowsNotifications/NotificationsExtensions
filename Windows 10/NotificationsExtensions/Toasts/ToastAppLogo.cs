@@ -9,10 +9,15 @@
 namespace NotificationsExtensions.Toasts
 {
     /// <summary>
-    /// The logo that is displayed alongside your toast notification content.
+    /// The logo that is displayed on your toast notification.
     /// </summary>
     public sealed class ToastAppLogo
     {
+        /// <summary>
+        /// Initializes a new instance of a toast app logo, which can override the logo displayed on your toast notification. 
+        /// </summary>
+        public ToastAppLogo() { }
+
         /// <summary>
         /// Specify the image source.
         /// </summary>

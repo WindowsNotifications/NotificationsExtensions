@@ -17,6 +17,11 @@ namespace NotificationsExtensions.Toasts
     /// </summary>
     public sealed class ToastActionsSnoozeAndDismiss : IToastActions
     {
+        /// <summary>
+        /// Automatically constructs a selection box for snooze intervals, and snooze/dismiss buttons, all automatically localized, and snoozing logic is automatically handled by the system.
+        /// </summary>
+        public ToastActionsSnoozeAndDismiss() { }
+
         internal Element_ToastActions ConvertToElement()
         {
             return new Element_ToastActions()
@@ -31,6 +36,11 @@ namespace NotificationsExtensions.Toasts
     /// </summary>
     public sealed class ToastActionsCustom : IToastActions
     {
+        /// <summary>
+        /// Initializes a new instance of custom actions, which can use controls like <see cref="ToastButton"/>, <see cref="ToastTextBox"/>, and <see cref="ToastSelectionBox"/>.
+        /// </summary>
+        public ToastActionsCustom() { }
+
         /// <summary>
         /// Inputs like <see cref="ToastTextBox"/> and <see cref="ToastSelectionBox"/> can be added to the toast. Only up to 5 inputs can be added; after that, an exception is thrown.
         /// </summary>
@@ -80,8 +90,13 @@ namespace NotificationsExtensions.Toasts
         }
     }
 
+    /// <summary>
+    /// An input element on a toast notification. One of <see cref="ToastTextBox"/> or <see cref="ToastSelectionBox"/>.
+    /// </summary>
     public interface IToastInput { }
 
-
+    /// <summary>
+    /// Actions to display on a toast notification. One of <see cref="ToastActionsCustom"/> or <see cref="ToastActionsSnoozeAndDismiss"/>.
+    /// </summary>
     public interface IToastActions { }
 }

@@ -10,6 +10,11 @@ namespace NotificationsExtensions.Toasts
     public sealed class ToastImage
     {
         /// <summary>
+        /// Constructs an inline image that can be displayed on a toast notification.
+        /// </summary>
+        public ToastImage() { }
+
+        /// <summary>
         /// Specify the image source.
         /// </summary>
         public ToastImageSource Source { get; set; }

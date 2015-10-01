@@ -37,7 +37,7 @@ namespace NotificationsExtensions.Tiles
         /// 
         /// included in the notification becomes
         /// 
-        /// "www.website.com/images/hello.png?ms-scale=100&ms-contrast=standard&ms-lang=en-us"
+        /// "www.website.com/images/hello.png?ms-scale=100&amp;ms-contrast=standard&amp;ms-lang=en-us"
         /// </summary>
         [NotificationXmlAttribute("addImageQuery", DEFAULT_ADD_IMAGE_QUERY)]
         public bool AddImageQuery { get; set; } = DEFAULT_ADD_IMAGE_QUERY;
@@ -99,7 +99,7 @@ namespace NotificationsExtensions.Tiles
         /// <summary>
         /// Throws exception if value is invalid
         /// </summary>
-        /// <param name="overlay"></param>
+        /// <param name="value">Overlay value (0-100)</param>
         internal static void CheckOverlayValue(int value)
         {
             if (value < 0 || value > 100)

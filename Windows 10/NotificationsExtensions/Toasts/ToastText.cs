@@ -14,6 +14,11 @@ namespace NotificationsExtensions.Toasts
     public sealed class ToastText
     {
         /// <summary>
+        /// Constructs a new text element that can be displayed on a toast notification.
+        /// </summary>
+        public ToastText() { }
+
+        /// <summary>
         /// The text to display.
         /// </summary>
         public string Text { get; set; }

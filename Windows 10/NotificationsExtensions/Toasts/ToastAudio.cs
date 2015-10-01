@@ -17,6 +17,11 @@ namespace NotificationsExtensions.Toasts
     public sealed class ToastAudio
     {
         /// <summary>
+        /// Initializes a new instance of toast audio, which specifies what audio to play when the toast notification is received.
+        /// </summary>
+        public ToastAudio() { }
+
+        /// <summary>
         /// The media file to play in place of the default sound.
         /// </summary>
         public Uri Src { get; set; }

@@ -16,6 +16,11 @@ namespace NotificationsExtensions.Toasts
     public sealed class ToastVisual
     {
         /// <summary>
+        /// Initializes a new instance that defines the visual aspects of a toast notification.
+        /// </summary>
+        public ToastVisual() { }
+
+        /// <summary>
         /// The version of the tile XML schema this particular payload was developed for. Windows 10 ignores this property.
         /// </summary>
         public int? Version { get; set; }

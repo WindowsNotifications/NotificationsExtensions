@@ -29,7 +29,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tiles\Elements\Element_TileSubgroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiles\Elements\Element_TileText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiles\Elements\Element_TileVisual.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tiles\ITileBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiles\SpecialTemplates\TileBindingContentContact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiles\SpecialTemplates\TileBindingContentIconic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiles\SpecialTemplates\TileBindingContentPeople.cs" />

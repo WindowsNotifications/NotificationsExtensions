@@ -11,10 +11,15 @@ using System;
 namespace NotificationsExtensions.Tiles
 {
     /// <summary>
-    /// The binding element is a size-specific element, allowing you to specify different tile content for each size (like Medium or Wide).
+    /// The binding element contains the visual content for a specific tile size.
     /// </summary>
     public sealed class TileBinding
     {
+        /// <summary>
+        /// Initializes a binding element, which contains the visual content for a specific tile size.
+        /// </summary>
+        public TileBinding() { }
+
         /// <summary>
         /// The target locale of the XML payload, specified as a BCP-47 language tags such as "en-US" or "fr-FR". The locale specified here overrides that in visual, but can be overriden by that in text. If this value is a literal string, this attribute defaults to the user's UI language. If this value is a string reference, this attribute defaults to the locale chosen by Windows Runtime in resolving the string. See Remarks for when this value isn't specified.
         /// </summary>
@@ -37,7 +42,7 @@ namespace NotificationsExtensions.Tiles
         /// 
         /// included in the notification becomes
         /// 
-        /// "www.website.com/images/hello.png?ms-scale=100&ms-contrast=standard&ms-lang=en-us"
+        /// "www.website.com/images/hello.png?ms-scale=100&amp;ms-contrast=standard&amp;ms-lang=en-us"
         /// </summary>
         public bool AddImageQuery { get; set; } = Element_TileBinding.DEFAULT_ADD_IMAGE_QUERY;
 
@@ -128,7 +133,9 @@ namespace NotificationsExtensions.Tiles
     }
 
     
-
+    /// <summary>
+    /// Visual tile content. One of <see cref="TileBindingContentAdaptive"/>, <see cref="TileBindingContentIconic"/>, <see cref="TileBindingContentPhotos"/>, <see cref="TileBindingContentPeople"/>, or <see cref="TileBindingContentContact"/>.
+    /// </summary>
     public interface ITileBindingContent
     {
     }

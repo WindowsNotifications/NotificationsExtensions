@@ -21,7 +21,7 @@ namespace NotificationsExtensions.Toasts
     public sealed class ToastButton : IToastButton
     {
         /// <summary>
-        /// Constructs a toast button with the required properties.
+        /// Initializes a toast button with the required properties.
         /// </summary>
         /// <param name="content">The text to display on the button.</param>
         /// <param name="arguments">App-defined string of arguments that the app can later retrieve once it is activated when the user clicks the button.</param>
@@ -98,15 +98,15 @@ namespace NotificationsExtensions.Toasts
     /// </summary>
     public sealed class ToastButtonDismiss : IToastButton
     {
+        /// <summary>
+        /// Custom text displayed on the button that overrides the default localized "Dismiss" text.
+        /// </summary>
         public string CustomContent { get; private set; }
 
         /// <summary>
-        /// Constructs a system-handled dismiss button that displays localized "Dismiss" text on the button.
+        /// Initializes a system-handled dismiss button that displays localized "Dismiss" text on the button.
         /// </summary>
-        public ToastButtonDismiss()
-        {
-
-        }
+        public ToastButtonDismiss() { }
 
         /// <summary>
         /// Constructs a system-handled dismiss button that displays your text on the button.
@@ -133,8 +133,14 @@ namespace NotificationsExtensions.Toasts
         }
     }
 
+    /// <summary>
+    /// A system-handled snooze button that automatically handles snoozing of a toast notification.
+    /// </summary>
     public sealed class ToastButtonSnooze : IToastButton
     {
+        /// <summary>
+        /// Custom text displayed on the button that overrides the default localized "Snooze" text.
+        /// </summary>
         public string CustomContent { get; private set; }
 
         /// <summary>
@@ -143,7 +149,7 @@ namespace NotificationsExtensions.Toasts
         public string SelectionBoxId { get; set; }
 
         /// <summary>
-        /// Constructs a system-handled snooze button that displays localized "Snooze" text on the button and automatically handles snoozing. 
+        /// Initializes a system-handled snooze button that displays localized "Snooze" text on the button and automatically handles snoozing. 
         /// </summary>
         public ToastButtonSnooze()
         {
@@ -151,7 +157,7 @@ namespace NotificationsExtensions.Toasts
         }
 
         /// <summary>
-        /// Constructs a system-handled snooze button that displays your text on the button and automatically handles snoozing.
+        /// Initializes a system-handled snooze button that displays your text on the button and automatically handles snoozing.
         /// </summary>
         /// <param name="customContent">The text you want displayed on the button.</param>
         public ToastButtonSnooze(string customContent)

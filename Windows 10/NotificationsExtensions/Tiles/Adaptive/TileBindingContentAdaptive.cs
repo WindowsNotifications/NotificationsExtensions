@@ -17,6 +17,11 @@ namespace NotificationsExtensions.Tiles
     public sealed class TileBindingContentAdaptive : ITileBindingContent
     {
         /// <summary>
+        /// Supported on all sizes. This is the recommended way of specifying your Tile content. Adaptive Tile templates are the de-facto choice for Windows 10, and you can create a wide variety of custom Tiles through adaptive.
+        /// </summary>
+        public TileBindingContentAdaptive() { }
+
+        /// <summary>
         /// <see cref="TileText"/>, <see cref="TileImage"/>, and <see cref="TileGroup"/> objects can be added as children. The children are displayed in a vertical StackPanel fashion.
         /// </summary>
         public IList<ITileAdaptiveChild> Children { get; private set; } = new List<ITileAdaptiveChild>();
@@ -86,6 +91,9 @@ namespace NotificationsExtensions.Tiles
         }
     }
 
+    /// <summary>
+    /// Elements (<see cref="TileText"/>, <see cref="TileImage"/>, <see cref="TileGroup"/>) that can be direct children of <see cref="TileBindingContentAdaptive"/>.
+    /// </summary>
     public interface ITileAdaptiveChild
     {
     }

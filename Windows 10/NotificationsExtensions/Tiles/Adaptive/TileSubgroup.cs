@@ -16,6 +16,11 @@ namespace NotificationsExtensions.Tiles
     public sealed class TileSubgroup
     {
         /// <summary>
+        /// Initializes a new subgroup. Subgroups are vertical columns that can contain text and images.
+        /// </summary>
+        public TileSubgroup() { }
+
+        /// <summary>
         /// <see cref="TileText"/> and <see cref="TileImage"/> are valid children of subgroups.
         /// </summary>
         public IList<ITileSubgroupChild> Children { get; private set; } = new List<ITileSubgroupChild>();
@@ -70,6 +75,10 @@ namespace NotificationsExtensions.Tiles
         }
     }
 
+
+    /// <summary>
+    /// Elements (<see cref="TileText"/>, <see cref="TileImage"/>) that can be direct children of a <see cref="TileSubgroup"/>.
+    /// </summary>
     public interface ITileSubgroupChild
     {
     }

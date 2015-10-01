@@ -16,6 +16,11 @@ namespace NotificationsExtensions.Tiles
     public sealed class TileVisual
     {
         /// <summary>
+        /// Initializes a tile notification's visual element, which can contain multiple tile size bindings, each defining the visuals for a specific tile size.
+        /// </summary>
+        public TileVisual() { }
+
+        /// <summary>
         /// The version of the tile XML schema this particular payload was developed for. Windows 10 ignores this property.
         /// </summary>
         public int? Version { get; set; }
@@ -34,11 +39,26 @@ namespace NotificationsExtensions.Tiles
         /// The form that the tile should use to display the app's brand.
         /// </summary>
         public TileBranding Branding { get; set; } = Element_TileVisual.DEFAULT_BRANDING;
-
+        
+        /// <summary>
+        /// Defaults to false. Set to true to allow Windows to append a query string to the image URI supplied in the tile notification. Use this attribute if your server hosts images and can handle query strings, either by retrieving an image variant based on the query strings or by ignoring the query string and returning the image as specified without the query string. This query string specifies scale, contrast setting, and language; for instance, a value of
+        /// 
+        /// "www.website.com/images/hello.png"
+        /// 
+        /// included in the notification becomes
+        /// 
+        /// "www.website.com/images/hello.png?ms-scale=100&amp;ms-contrast=standard&amp;ms-lang=en-us"
+        /// </summary>
         public bool AddImageQuery { get; set; } = Element_TileVisual.DEFAULT_ADD_IMAGE_QUERY;
 
+        /// <summary>
+        /// Set to a sender-defined string that uniquely identifies the content of the notification. This prevents duplicates in the situation where a large tile template is displaying the last three wide tile notifications.
+        /// </summary>
         public string ContentId { get; set; }
 
+        /// <summary>
+        /// An optional string to override the tile's display name while showing this notification.
+        /// </summary>
         public string DisplayName { get; set; }
 
         /// <summary>

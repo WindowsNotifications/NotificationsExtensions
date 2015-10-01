@@ -31,7 +31,7 @@ namespace NotificationsExtensions.Toasts
         /// 
         /// included in the notification becomes
         /// 
-        /// "www.website.com/images/hello.png?ms-scale=100&ms-contrast=standard&ms-lang=en-us"
+        /// "www.website.com/images/hello.png?ms-scale=100&amp;ms-contrast=standard&amp;ms-lang=en-us"
         /// </summary>
         [NotificationXmlAttribute("addImageQuery", DEFAULT_ADD_IMAGE_QUERY)]
         public bool AddImageQuery { get; set; } = DEFAULT_ADD_IMAGE_QUERY;

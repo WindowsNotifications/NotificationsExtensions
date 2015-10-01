@@ -15,6 +15,11 @@ namespace NotificationsExtensions.Tiles
     public sealed class TileBindingContentContact : ITileBindingContent
     {
         /// <summary>
+        /// Phone-only. Supported on Small, Medium, and Wide.
+        /// </summary>
+        public TileBindingContentContact() { }
+
+        /// <summary>
         /// The image to display.
         /// </summary>
         public TileImageSource Image { get; set; }

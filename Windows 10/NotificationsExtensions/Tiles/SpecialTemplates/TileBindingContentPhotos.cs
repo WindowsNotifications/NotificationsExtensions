@@ -16,6 +16,11 @@ namespace NotificationsExtensions.Tiles
     public sealed class TileBindingContentPhotos : ITileBindingContent
     {
         /// <summary>
+        /// Animates through a slideshow of photos. Supported on all sizes.
+        /// </summary>
+        public TileBindingContentPhotos() { }
+
+        /// <summary>
         /// Up to 12 images can be provided (Mobile will only display up to 9), which will be used for the slideshow. Adding more than 12 will throw an exception.
         /// </summary>
         public IList<TileImageSource> Images { get; private set; } = new LimitedList<TileImageSource>(12);

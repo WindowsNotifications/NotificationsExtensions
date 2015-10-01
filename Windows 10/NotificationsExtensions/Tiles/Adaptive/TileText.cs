@@ -14,6 +14,11 @@ namespace NotificationsExtensions.Tiles
     public sealed class TileText : ITileSubgroupChild, ITileAdaptiveChild
     {
         /// <summary>
+        /// Initializes a new adaptive text element.
+        /// </summary>
+        public TileText() { }
+
+        /// <summary>
         /// The text to display.
         /// </summary>
         public string Text { get; set; }

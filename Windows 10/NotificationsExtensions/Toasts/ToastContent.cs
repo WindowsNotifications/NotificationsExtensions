@@ -20,6 +20,11 @@ namespace NotificationsExtensions.Toasts
     public sealed class ToastContent : INotificationContent
     {
         /// <summary>
+        /// Initializes a new instance of toast content. You must then set the Visual property, which is required for a toast notification. You can optionally set Audio, Actions, and more.
+        /// </summary>
+        public ToastContent() { }
+
+        /// <summary>
         /// The visual element is required.
         /// </summary>
         public ToastVisual Visual { get; set; }
@@ -54,6 +59,10 @@ namespace NotificationsExtensions.Toasts
         /// </summary>
         public ToastActivationType ActivationType { get; set; }
 
+        /// <summary>
+        /// Retrieves the notification XML content as a string, so that it can be sent with a HTTP POST in a push notification.
+        /// </summary>
+        /// <returns>The notification XML content as a string.</returns>
         public string GetContent()
         {
             return ConvertToElement().GetContent();
@@ -61,6 +70,10 @@ namespace NotificationsExtensions.Toasts
 
 #if WINRT
 
+        /// <summary>
+        /// Retrieves the notification XML content as a WinRT XmlDocument, so that it can be used with a local toast notification's constructor on either <see cref="Windows.UI.Notifications.ToastNotification"/> or <see cref="Windows.UI.Notifications.ScheduledToastNotification"/>.
+        /// </summary>
+        /// <returns>The notification XML content as a WinRT XmlDocument.</returns>
         public XmlDocument GetXml()
         {
             XmlDocument doc = new XmlDocument();

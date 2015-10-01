@@ -67,19 +67,19 @@ namespace NotificationsExtensions.Badges
         }
 
         /// <summary>
-        /// Retrieves the notification Xml content as a string.
+        /// Retrieves the notification XML content as a string.
         /// </summary>
-        /// <returns>The notification Xml content as a string.</returns>
+        /// <returns>The notification XML content as a string.</returns>
         public override string ToString()
         {
             return GetContent();
         }
-        
+
 #if WINRT
         /// <summary>
-        /// Retrieves the notification Xml content as a WinRT Xml document.
+        /// Retrieves the notification XML content as a WinRT Xml document.
         /// </summary>
-        /// <returns>The notification Xml content as a WinRT Xml document.</returns>
+        /// <returns>The notification XML content as a WinRT Xml document.</returns>
         public XmlDocument GetXml()
         {
             XmlDocument xml = new XmlDocument();

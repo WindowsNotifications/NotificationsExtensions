@@ -18,13 +18,18 @@ namespace NotificationsExtensions.Tiles
     public sealed class TileContent
     {
         /// <summary>
+        /// Initializes a new instance of a tile notification's content. You must then set the Visual property, which is required for a tile notification.
+        /// </summary>
+        public TileContent() { }
+
+        /// <summary>
         /// The visual element is required.
         /// </summary>
         public TileVisual Visual { get; set; }
 
 
         /// <summary>
-        /// Retrieves the notification XML content as a string.
+        /// Retrieves the notification XML content as a string, so that it can be sent with a HTTP POST in a push notification.
         /// </summary>
         /// <returns>The notification XML content as a string.</returns>
         public string GetContent()
@@ -34,9 +39,9 @@ namespace NotificationsExtensions.Tiles
 
 #if WINRT
         /// <summary>
-        /// Retrieves the notification XML content as a WinRT XML document.
+        /// Retrieves the notification XML content as a WinRT XmlDocument, so that it can be used with a local tile notification's constructor on either <see cref="Windows.UI.Notifications.TileNotification"/> or <see cref="Windows.UI.Notifications.ScheduledTileNotification"/>.
         /// </summary>
-        /// <returns>The notification XML content as a WinRT XML document.</returns>
+        /// <returns>The notification XML content as a WinRT XmlDocument.</returns>
         public XmlDocument GetXml()
         {
             XmlDocument doc = new XmlDocument();

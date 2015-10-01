@@ -14,6 +14,11 @@ namespace NotificationsExtensions.Tiles
     public sealed class TileImage : ITileSubgroupChild, ITileAdaptiveChild
     {
         /// <summary>
+        /// Initializes a new inline image that can be displayed on a tile.
+        /// </summary>
+        public TileImage() { }
+
+        /// <summary>
         /// Provide the source of the image and other image source related properties.
         /// </summary>
         public TileImageSource Source { get; set; }
@@ -68,6 +73,11 @@ namespace NotificationsExtensions.Tiles
     public sealed class TilePeekImage
     {
         /// <summary>
+        /// Initializes a peek image that animates in from the top of the tile.
+        /// </summary>
+        public TilePeekImage() { }
+
+        /// <summary>
         /// Provide the source of the image and other image source related properties.
         /// </summary>
         public TileImageSource Source { get; set; }
@@ -92,12 +102,20 @@ namespace NotificationsExtensions.Tiles
     public sealed class TileBackgroundImage
     {
         /// <summary>
+        /// Initializes a full-bleed background image that appears beneath the tile content.
+        /// </summary>
+        public TileBackgroundImage() { }
+
+        /// <summary>
         /// Provide the source of the image and other image source related properties.
         /// </summary>
         public TileImageSource Source { get; set; }
 
         private int _overlay = Element_TileBinding.DEFAULT_OVERLAY;
 
+        /// <summary>
+        /// A black overlay on the background image. This value controls the opacity of the black overlay, with 0 being no overlay and 100 being completely black.
+        /// </summary>
         public int Overlay
         {
             get { return _overlay; }

@@ -16,6 +16,11 @@ namespace NotificationsExtensions.Tiles
     public sealed class TileBindingContentPeople : ITileBindingContent
     {
         /// <summary>
+        /// Phone-only. Supported on Medium and Wide.
+        /// </summary>
+        public TileBindingContentPeople() { }
+
+        /// <summary>
         /// Images that will roll around as circles.
         /// </summary>
         public IList<TileImageSource> Images { get; private set; } = new List<TileImageSource>();
