@@ -86,6 +86,9 @@ namespace NotificationsExtensions.Toasts
             else if (input is ToastSelectionBox)
                 return (input as ToastSelectionBox).ConvertToElement();
 
+            else if (input is ToastRatingControl)
+                return (input as ToastRatingControl).ConvertToElement();
+
             throw new NotImplementedException("Unknown input child: " + input.GetType());
         }
     }

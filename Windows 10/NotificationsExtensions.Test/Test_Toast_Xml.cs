@@ -826,6 +826,114 @@ namespace NotificationsExtensions.Win10.Test.Portable
         }
 
         [TestMethod]
+        public void Test_Toast_Xml_RatingControl_Defaults()
+        {
+            var ratingControl = new ToastRatingControl("rating", "1 star", "2 stars", "3 stars", "4 stars", "5 stars");
+
+            AssertInputPayload("<input id='rating' type='selection' hint-selectionType='rating'><selection id='0.2' content='1 star'/><selection id='0.4' content='2 stars'/><selection id='0.6' content='3 stars'/><selection id='0.8' content='4 stars'/><selection id='1.0' content='5 stars'/></input>", ratingControl);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_RatingControl_Title()
+        {
+            var ratingControl = new ToastRatingControl("rating", "1 star", "2 stars", "3 stars", "4 stars", "5 stars")
+            {
+                Title = "Rate me"
+            };
+
+            AssertInputPayload("<input id='rating' type='selection' hint-selectionType='rating' title='Rate me'><selection id='0.2' content='1 star'/><selection id='0.4' content='2 stars'/><selection id='0.6' content='3 stars'/><selection id='0.8' content='4 stars'/><selection id='1.0' content='5 stars'/></input>", ratingControl);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_RatingControl_DefaultRating()
+        {
+            var ratingControl = new ToastRatingControl("rating", "1 star", "2 stars", "3 stars", "4 stars", "5 stars")
+            {
+                Title = "Rate me",
+                DefaultRating = ToastRating.OneStar
+            };
+
+            AssertInputPayload("<input id='rating' type='selection' hint-selectionType='rating' title='Rate me' defaultInput='0.2'><selection id='0.2' content='1 star'/><selection id='0.4' content='2 stars'/><selection id='0.6' content='3 stars'/><selection id='0.8' content='4 stars'/><selection id='1.0' content='5 stars'/></input>", ratingControl);
+
+            ratingControl.DefaultRating = ToastRating.TwoStars;
+
+            AssertInputPayload("<input id='rating' type='selection' hint-selectionType='rating' title='Rate me' defaultInput='0.4'><selection id='0.2' content='1 star'/><selection id='0.4' content='2 stars'/><selection id='0.6' content='3 stars'/><selection id='0.8' content='4 stars'/><selection id='1.0' content='5 stars'/></input>", ratingControl);
+
+            ratingControl.DefaultRating = ToastRating.ThreeStars;
+
+            AssertInputPayload("<input id='rating' type='selection' hint-selectionType='rating' title='Rate me' defaultInput='0.6'><selection id='0.2' content='1 star'/><selection id='0.4' content='2 stars'/><selection id='0.6' content='3 stars'/><selection id='0.8' content='4 stars'/><selection id='1.0' content='5 stars'/></input>", ratingControl);
+
+            ratingControl.DefaultRating = ToastRating.FourStars;
+
+            AssertInputPayload("<input id='rating' type='selection' hint-selectionType='rating' title='Rate me' defaultInput='0.8'><selection id='0.2' content='1 star'/><selection id='0.4' content='2 stars'/><selection id='0.6' content='3 stars'/><selection id='0.8' content='4 stars'/><selection id='1.0' content='5 stars'/></input>", ratingControl);
+
+            ratingControl.DefaultRating = ToastRating.FiveStars;
+
+            AssertInputPayload("<input id='rating' type='selection' hint-selectionType='rating' title='Rate me' defaultInput='1.0'><selection id='0.2' content='1 star'/><selection id='0.4' content='2 stars'/><selection id='0.6' content='3 stars'/><selection id='0.8' content='4 stars'/><selection id='1.0' content='5 stars'/></input>", ratingControl);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_RatingControl_Nulls()
+        {
+            try
+            {
+                new ToastRatingControl(null, "1 star", "2 stars", "3 stars", "4 stars", "5 stars");
+            }
+
+            catch
+            {
+                try
+                {
+                    new ToastRatingControl("rating", null, "2 stars", "3 stars", "4 stars", "5 stars");
+                }
+
+                catch
+                {
+                    try
+                    {
+                        new ToastRatingControl("rating", "1 star", null, "3 stars", "4 stars", "5 stars");
+                    }
+
+                    catch
+                    {
+                        try
+                        {
+                            new ToastRatingControl("rating", "1 star", "2 stars", null, "4 stars", "5 stars");
+                        }
+
+                        catch
+                        {
+                            try
+                            {
+                                new ToastRatingControl("rating", "1 star", "2 stars", "3 stars", null, "5 stars");
+                            }
+
+                            catch
+                            {
+                                try
+                                {
+                                    new ToastRatingControl("rating", "1 star", "2 stars", "3 stars", "4 stars", null);
+                                }
+
+                                catch { return; }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_RatingControl_Emptys()
+        {
+            var ratingControl = new ToastRatingControl("", "", "", "", "", "");
+
+            AssertInputPayload("<input id='' type='selection' hint-selectionType='rating'><selection id='0.2' content=''/><selection id='0.4' content=''/><selection id='0.6' content=''/><selection id='0.8' content=''/><selection id='1.0' content=''/></input>", ratingControl);
+        }
+
+        [TestMethod]
         public void Test_Toast_Xml_SelectionBox_Defaults()
         {
             var selectionBox = new ToastSelectionBox("myId");

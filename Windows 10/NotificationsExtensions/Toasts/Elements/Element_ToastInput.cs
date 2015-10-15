@@ -40,6 +40,13 @@ namespace NotificationsExtensions.Toasts
         [NotificationXmlAttribute("defaultInput")]
         public string DefaultInput { get; set; }
 
+        /// <summary>
+        /// The hint-selectionType attribute is optional and enhances a selection input.
+        /// </summary>
+        [NotificationXmlAttribute("hint-selectionType")]
+        public string SelectionType { get; set; }
+
+
         public IList<IElement_ToastInputChild> Children { get; private set; } = new List<IElement_ToastInputChild>();
     }
 
