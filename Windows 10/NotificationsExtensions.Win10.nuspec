@@ -7,7 +7,9 @@
 	<owners>microsoft, andrewbares</owners>
         <projectUrl>https://github.com/anbare/NotificationsExtensions/wiki</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Generate tile, toast, and badge notifications for Windows via code, with the help of IntelliSense, instead of directly using XML.
+        <description>The official NotificationsExtensions library from Microsoft.
+
+Generate tile, toast, and badge notifications for Windows 10 via code, with the help of IntelliSense, instead of directly using XML.
 
 Supports adaptive tiles and adaptive/interactive toasts for Windows 10!</description>
         <copyright>© Microsoft Corporation. All rights reserved.</copyright>
