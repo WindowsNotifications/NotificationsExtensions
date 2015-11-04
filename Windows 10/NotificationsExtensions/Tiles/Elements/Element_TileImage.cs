@@ -41,5 +41,19 @@ namespace NotificationsExtensions.Tiles
 
         [NotificationXmlAttribute("hint-removeMargin", DEFAULT_REMOVE_MARGIN)]
         public bool RemoveMargin { get; set; } = DEFAULT_REMOVE_MARGIN;
+
+        private int? _overlay;
+        [NotificationXmlAttribute("hint-overlay")]
+        public int? Overlay
+        {
+            get { return _overlay; }
+            set
+            {
+                if (value != null)
+                    Element_TileBinding.CheckOverlayValue(value.Value);
+
+                _overlay = value;
+            }
+        }
     }
 }

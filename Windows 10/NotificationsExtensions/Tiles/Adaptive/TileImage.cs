@@ -6,6 +6,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved
 
 
+using System;
+
 namespace NotificationsExtensions.Tiles
 {
     /// <summary>
@@ -48,8 +50,10 @@ namespace NotificationsExtensions.Tiles
                 Placement = TileImagePlacement.Inline
             };
 
-            if (Source != null)
-                Source.PopulateElement(image);
+            if (Source == null)
+                throw new NullReferenceException("Source property is required on TileImage");
+
+            Source.PopulateElement(image);
 
             return image;
         }
@@ -82,15 +86,42 @@ namespace NotificationsExtensions.Tiles
         /// </summary>
         public TileImageSource Source { get; set; }
 
+        private int _overlay = 0;
+
+        /// <summary>
+        /// New in 1511: A black overlay on the peek image. This value controls the opacity of the black overlay, with 0 being no overlay and 100 being completely black. Defaults to 0.
+        /// Previously for RTM: Did not exist, value will be ignored and peek image will be displayed with 0 overlay.
+        /// </summary>
+        public int Overlay
+        {
+            get { return _overlay; }
+            set
+            {
+                Element_TileBinding.CheckOverlayValue(value);
+
+                _overlay = value;
+            }
+        }
+
+        /// <summary>
+        /// New in 1511: Control the desired cropping of the image.
+        /// Previously for RTM: Did not exist, value will be ignored and peek image will be displayed without any cropping.
+        /// </summary>
+        public TileImageCrop Crop { get; set; } = Element_TileImage.DEFAULT_CROP;
+
         internal Element_TileImage ConvertToElement()
         {
             Element_TileImage image = new Element_TileImage()
             {
-                Placement = TileImagePlacement.Peek
+                Placement = TileImagePlacement.Peek,
+                Crop = Crop
+                // Overlay will be handled by BindingContentAdaptive
             };
 
-            if (Source != null)
-                Source.PopulateElement(image);
+            if (Source == null)
+                throw new NullReferenceException("Source property is required on TilePeekImage");
+
+            Source.PopulateElement(image);
 
             return image;
         }
@@ -114,7 +145,7 @@ namespace NotificationsExtensions.Tiles
         private int _overlay = Element_TileBinding.DEFAULT_OVERLAY;
 
         /// <summary>
-        /// A black overlay on the background image. This value controls the opacity of the black overlay, with 0 being no overlay and 100 being completely black.
+        /// A black overlay on the background image. This value controls the opacity of the black overlay, with 0 being no overlay and 100 being completely black. Defaults to 20.
         /// </summary>
         public int Overlay
         {
@@ -127,15 +158,25 @@ namespace NotificationsExtensions.Tiles
             }
         }
 
+        /// <summary>
+        /// New in 1511: Control the desired cropping of the image.
+        /// Previously for RTM: Did not exist, value will be ignored and peek image will be displayed without any cropping.
+        /// </summary>
+        public TileImageCrop Crop { get; set; } = Element_TileImage.DEFAULT_CROP;
+
         internal Element_TileImage ConvertToElement()
         {
             Element_TileImage image = new Element_TileImage()
             {
-                Placement = TileImagePlacement.Background
+                Placement = TileImagePlacement.Background,
+                Crop = Crop
+                // Overlay will be set on the Binding element
             };
 
-            if (Source != null)
-                Source.PopulateElement(image);
+            if (Source == null)
+                throw new NullReferenceException("Source property is required on TileBackgroundImage");
+
+            Source.PopulateElement(image);
 
             return image;
         }

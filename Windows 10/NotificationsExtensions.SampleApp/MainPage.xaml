@@ -13,6 +13,12 @@
                 x:Name="ButtonToasts"
                 Content="Open Toasts Page"
                 Click="ButtonToasts_Click"/>
+            
+            <Button
+                x:Name="ButtonTiles"
+                Content="Open Tiles Page"
+                Click="ButtonTiles_Click"
+                Margin="0,12,0,0"/>
         </StackPanel>
     </Grid>
 </Page>

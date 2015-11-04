@@ -65,13 +65,42 @@ namespace NotificationsExtensions.Tiles
             // Add the peek image if there's one
             if (PeekImage != null)
             {
-                binding.Children.Add(PeekImage.ConvertToElement());
+                var el = PeekImage.ConvertToElement();
+
+                // If peek overlay needs to be specified
+                if (ShouldSpecifyPeekOverlay(binding, PeekImage))
+                    el.Overlay = PeekImage.Overlay;
+
+                binding.Children.Add(el);
             }
 
             // And then add all the children
             foreach (var child in Children)
             {
                 binding.Children.Add(ConvertToBindingChildElement(child));
+            }
+        }
+
+        private static bool ShouldSpecifyPeekOverlay(Element_TileBinding binding, TilePeekImage peekImage)
+        {
+            if (binding.Overlay == null)
+            {
+                // Peek defaults to 0 anyways, so no need to specify
+                if (peekImage.Overlay == 0)
+                    return false;
+
+                else
+                    return true;
+            }
+
+            else
+            {
+                // Main matches, no need to specify
+                if (binding.Overlay.Value == peekImage.Overlay)
+                    return false;
+
+                else
+                    return true;
             }
         }
 

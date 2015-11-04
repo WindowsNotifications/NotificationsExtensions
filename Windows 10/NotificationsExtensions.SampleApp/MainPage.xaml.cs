@@ -173,5 +173,10 @@ TileContent content = new TileContent()
         {
             Frame.Navigate(typeof(ToastsPage));
         }
+
+        private void ButtonTiles_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(TilesPage));
+        }
     }
 }

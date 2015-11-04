@@ -11,12 +11,14 @@ using System.Collections.Generic;
 namespace NotificationsExtensions.Tiles
 {
     /// <summary>
-    /// Phone-only. Supported on Medium and Wide.
+    /// New in 1511: Supported on Medium, Wide, and Large (Desktop and Mobile).
+    /// Previously for RTM: Phone-only. Supported on Medium and Wide.
     /// </summary>
     public sealed class TileBindingContentPeople : ITileBindingContent
     {
         /// <summary>
-        /// Phone-only. Supported on Medium and Wide.
+        /// New in 1511: Supported on Medium, Wide, and Large (Desktop and Mobile).
+        /// Previously for RTM: Phone-only. Supported on Medium and Wide.
         /// </summary>
         public TileBindingContentPeople() { }
 
