@@ -2284,10 +2284,7 @@ namespace NotificationsExtensions.Win10.Test
                     new TileImageSource("6.jpg"),
                     new TileImageSource("7.jpg"),
                     new TileImageSource("8.jpg"),
-                    new TileImageSource("9.jpg"),
-                    new TileImageSource("10.jpg"),
-                    new TileImageSource("11.jpg"),
-                    new TileImageSource("12.jpg")
+                    new TileImageSource("9.jpg")
                 }
             };
 
@@ -2301,9 +2298,6 @@ namespace NotificationsExtensions.Win10.Test
                 <image src='7.jpg'/>
                 <image src='8.jpg'/>
                 <image src='9.jpg'/>
-                <image src='10.jpg'/>
-                <image src='11.jpg'/>
-                <image src='12.jpg'/>
             </binding>", new TileBinding()
             {
                 Content = content
@@ -2328,17 +2322,14 @@ namespace NotificationsExtensions.Win10.Test
                         new TileImageSource("7.jpg"),
                         new TileImageSource("8.jpg"),
                         new TileImageSource("9.jpg"),
-                        new TileImageSource("10.jpg"),
-                        new TileImageSource("11.jpg"),
-                        new TileImageSource("12.jpg"),
-                        new TileImageSource("13.jpg")
+                        new TileImageSource("10.jpg")
                     }
                 };
             }
 
             catch { return; }
 
-            Assert.Fail("Exception should have been thrown, adding more than 12 images isn't supported.");
+            Assert.Fail("Exception should have been thrown, adding more than 9 images isn't supported.");
         }
 
         #endregion
