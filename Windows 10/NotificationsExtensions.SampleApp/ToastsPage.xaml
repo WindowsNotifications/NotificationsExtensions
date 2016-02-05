@@ -52,7 +52,13 @@
                     Style="{StaticResource ImageButtonStyle}"
                     Click="ButtonCustomSnoozeAndDismissText_Click"
                     Content="Assets/Samples/Toasts/CustomSnoozeAndDismissText.jpg"/>
-                
+
+                <Button
+                    x:Name="ButtonLoopingAudio"
+                    Style="{StaticResource ImageButtonStyle}"
+                    Click="ButtonLoopingAudio_Click"
+                    Content="Assets/Samples/Toasts/LoopingAudio.jpg"/>
+
             </StackPanel>
         </ScrollViewer>
     </Grid>

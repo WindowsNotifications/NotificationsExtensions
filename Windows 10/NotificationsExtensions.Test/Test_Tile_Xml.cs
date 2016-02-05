@@ -43,7 +43,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertVisual(
                 
-                "<visual addImageQuery='True'/>",
+                "<visual addImageQuery='true'/>",
                 
                 new TileVisual()
                 {
@@ -598,7 +598,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMedium(
 
-                "<binding template='TileMedium' addImageQuery='True'/>",
+                "<binding template='TileMedium' addImageQuery='true'/>",
 
                 new TileBinding()
                 {
@@ -960,7 +960,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMedium(
 
-                "<binding template='TileMedium'><image src='http://msn.com' alt='alt' addImageQuery='True' placement='peek' /></binding>",
+                "<binding template='TileMedium'><image src='http://msn.com' alt='alt' addImageQuery='true' placement='peek' /></binding>",
 
                 new TileBinding()
                 {
@@ -1313,7 +1313,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertAdaptiveText(
 
-                "<text hint-wrap='True'/>",
+                "<text hint-wrap='true'/>",
 
                 new TileText()
                 {
@@ -1437,11 +1437,12 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertAdaptiveImage(
 
-                "<image hint-removeMargin='True'/>",
+                "<image hint-removeMargin='true' src='Fable.jpg'/>",
 
                 new TileImage()
                 {
-                    RemoveMargin = true
+                    RemoveMargin = true,
+                    Source = new TileImageSource("Fable.jpg")
                 });
         }
 
@@ -1451,7 +1452,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertAdaptiveImage(
 
-                "<image src='http://msn.com' addImageQuery='True' alt='alt'/>",
+                "<image src='http://msn.com' addImageQuery='true' alt='alt'/>",
 
                 new TileImage()
                 {
@@ -1761,7 +1762,7 @@ namespace NotificationsExtensions.Win10.Test
                 }
             };
 
-            AssertBindingMedium("<binding template='TileMedium' hint-presentation='photos'><image src='http://msn.com/1.jpg' addImageQuery='True' alt='alternate'/></binding>", new TileBinding()
+            AssertBindingMedium("<binding template='TileMedium' hint-presentation='photos'><image src='http://msn.com/1.jpg' addImageQuery='true' alt='alternate'/></binding>", new TileBinding()
             {
                 Content = content
             });
@@ -1887,7 +1888,7 @@ namespace NotificationsExtensions.Win10.Test
                 }
             };
 
-            AssertBindingMedium("<binding template='TileMedium' hint-presentation='people'><image src='http://msn.com/1.jpg' addImageQuery='True' alt='alternate'/></binding>", new TileBinding()
+            AssertBindingMedium("<binding template='TileMedium' hint-presentation='people'><image src='http://msn.com/1.jpg' addImageQuery='true' alt='alternate'/></binding>", new TileBinding()
             {
                 Content = content
             });
@@ -1980,7 +1981,7 @@ namespace NotificationsExtensions.Win10.Test
                 }
             };
 
-            AssertBindingMedium("<binding template='TileMedium' hint-presentation='contact'><image src='http://msn.com/img.jpg' addImageQuery='True' alt='John Smith'/></binding>", new TileBinding()
+            AssertBindingMedium("<binding template='TileMedium' hint-presentation='contact'><image src='http://msn.com/img.jpg' addImageQuery='true' alt='John Smith'/></binding>", new TileBinding()
             {
                 Content = content
             });

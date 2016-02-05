@@ -247,12 +247,12 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
         private static string GenerateStringMediumSubgroup(string day, string image, int high, int low)
         {
-            return $@"<subgroup><text hint-align=""center"">{day}</text><image src=""{image}"" hint-removeMargin=""True"" /><text hint-align=""center"">{high}°</text><text hint-align=""center"" hint-style=""captionSubtle"">{low}°</text></subgroup>";
+            return $@"<subgroup><text hint-align=""center"">{day}</text><image src=""{image}"" hint-removeMargin=""true"" /><text hint-align=""center"">{high}°</text><text hint-align=""center"" hint-style=""captionSubtle"">{low}°</text></subgroup>";
         }
 
         private static string GenerateStringWideSubgroup(string day, string image, int high, int low)
         {
-            return $@"<subgroup hint-weight=""1""><text hint-align=""center"">{day}</text><image src=""{image}"" hint-removeMargin=""True"" /><text hint-align=""center"">{high}°</text><text hint-align=""center"" hint-style=""captionSubtle"">{low}°</text></subgroup>";
+            return $@"<subgroup hint-weight=""1""><text hint-align=""center"">{day}</text><image src=""{image}"" hint-removeMargin=""true"" /><text hint-align=""center"">{high}°</text><text hint-align=""center"" hint-style=""captionSubtle"">{low}°</text></subgroup>";
         }
 
         private static string GenerateStringLargeSubgroup(string day, string image, int high, int low)

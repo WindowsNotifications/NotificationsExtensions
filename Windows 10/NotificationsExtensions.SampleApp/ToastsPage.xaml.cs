@@ -156,5 +156,27 @@ namespace NotificationsExtensions.SampleApp
                 Actions = new ToastActionsSnoozeAndDismiss()
             });
         }
+
+        private void ButtonLoopingAudio_Click(object sender, RoutedEventArgs e)
+        {
+            Show(new ToastContent()
+            {
+                Visual = new ToastVisual()
+                {
+                    TitleText = new ToastText() { Text = "Looping Audio" },
+                    BodyTextLine1 = new ToastText() { Text = "Uses looping audio and long duration" }
+                },
+
+                Launch = "948908230",
+
+                Duration = ToastDuration.Long,
+
+                Audio = new ToastAudio()
+                {
+                    Src = new Uri("ms-winsoundevent:Notification.Default"),
+                    Loop = true
+                }
+            });
+        }
     }
 }
