@@ -104,7 +104,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
                 AddImageQuery = true
             };
 
-            AssertVisualPayload(@"<visual addImageQuery=""True""><binding template=""ToastGeneric""/></visual>", visual);
+            AssertVisualPayload(@"<visual addImageQuery=""true""><binding template=""ToastGeneric""/></visual>", visual);
         }
 
         [TestMethod]
@@ -261,7 +261,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
                 }
             };
 
-            AssertVisualPayload(@"<visual><binding template=""ToastGeneric""><image src='http://msn.com/image.jpg' addImageQuery='True' alt='alternate'/></binding></visual>", visual);
+            AssertVisualPayload(@"<visual><binding template=""ToastGeneric""><image src='http://msn.com/image.jpg' addImageQuery='true' alt='alternate'/></binding></visual>", visual);
         }
 
         [TestMethod]
@@ -287,7 +287,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
                 }
             };
 
-            AssertVisualPayload(@"<visual><binding template=""ToastGeneric""><image src='http://msn.com/image.jpg' addImageQuery='True' alt='alternate'/><image src='Assets/img2.jpg'/></binding></visual>", visual);
+            AssertVisualPayload(@"<visual><binding template=""ToastGeneric""><image src='http://msn.com/image.jpg' addImageQuery='true' alt='alternate'/><image src='Assets/img2.jpg'/></binding></visual>", visual);
         }
 
         [TestMethod]
@@ -406,7 +406,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
                 }
             };
 
-            AssertAppLogoPayload(@"<image placement=""appLogoOverride"" src=""http://xbox.com/Avatar.jpg"" addImageQuery=""True""/>", appLogo);
+            AssertAppLogoPayload(@"<image placement=""appLogoOverride"" src=""http://xbox.com/Avatar.jpg"" addImageQuery=""true""/>", appLogo);
         }
 
         [TestMethod]
@@ -436,7 +436,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
                 Loop = true
             };
 
-            AssertAudioPayload("<audio loop='True'/>", audio);
+            AssertAudioPayload("<audio loop='true'/>", audio);
         }
 
         [TestMethod]
@@ -458,7 +458,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
                 Silent = true
             };
 
-            AssertAudioPayload("<audio silent='True'/>", audio);
+            AssertAudioPayload("<audio silent='true'/>", audio);
         }
 
         [TestMethod]

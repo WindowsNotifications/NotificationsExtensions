@@ -121,6 +121,7 @@
     <Content Include="Assets\Samples\Tiles\PeekOverlay.png" />
     <Content Include="Assets\Samples\Toasts\CustomSnoozeAndDismissText.jpg" />
     <Content Include="Assets\Samples\Toasts\CustomSnoozeTimes.jpg" />
+    <Content Include="Assets\Samples\Toasts\LoopingAudio.jpg" />
     <Content Include="Assets\Samples\Toasts\QuickReply.jpg" />
     <Content Include="Assets\Samples\Toasts\SystemSnoozeAndDismiss.jpg" />
     <Content Include="Assets\Samples\Toasts\UnderConstruction.jpg" />

@@ -269,6 +269,14 @@ namespace NotificationsExtensions
                     return enumStringAttr.String;
             }
 
+            else if (propertyValue is bool)
+            {
+                if ((bool)propertyValue)
+                    return "true";
+                else
+                    return "false";
+            }
+
             return propertyValue.ToString();
         }
 
