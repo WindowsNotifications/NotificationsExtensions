@@ -7,6 +7,9 @@ using Windows.UI.Notifications;
 
 namespace NotificationsExtensions
 {
+    /// <summary>
+    /// Delegate to configure a binding when copied from a toast
+    /// </summary>
     public delegate void ConfigureBindingHandler(XmlElement binding);
 
 
