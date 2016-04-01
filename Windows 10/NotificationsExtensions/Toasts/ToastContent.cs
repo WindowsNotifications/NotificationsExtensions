@@ -6,10 +6,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved
 
 using System;
-using System.Runtime.CompilerServices;
-#if WINRT
-using Windows.Data.Xml.Dom;
-#endif
 
 namespace NotificationsExtensions.Toasts
 {
@@ -68,21 +64,7 @@ namespace NotificationsExtensions.Toasts
             return ConvertToElement().GetContent();
         }
 
-#if WINRT
 
-        /// <summary>
-        /// Retrieves the notification XML content as a WinRT XmlDocument, so that it can be used with a local toast notification's constructor on either <see cref="Windows.UI.Notifications.ToastNotification"/> or <see cref="Windows.UI.Notifications.ScheduledToastNotification"/>.
-        /// </summary>
-        /// <returns>The notification XML content as a WinRT XmlDocument.</returns>
-        public XmlDocument GetXml()
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(GetContent());
-
-            return doc;
-        }
-
-#endif
 
         internal Element_Toast ConvertToElement()
         {

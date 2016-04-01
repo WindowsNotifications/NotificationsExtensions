@@ -13,9 +13,6 @@ using System.Xml;
 using System.Linq;
 using System.Collections;
 using System.IO;
-#if WINRT
-using Windows.Data.Xml.Dom;
-#endif
 
 namespace NotificationsExtensions
 {
@@ -399,19 +396,5 @@ namespace NotificationsExtensions
                 }
             }
         }
-
-
-#if WINRT
-        /// <summary>
-        /// Retrieves the notification XML content as a WinRT XML document.
-        /// </summary>
-        /// <returns>The notification XML content as a WinRT XML document.</returns>
-        public Windows.Data.Xml.Dom.XmlDocument GetXml()
-        {
-            Windows.Data.Xml.Dom.XmlDocument xml = new Windows.Data.Xml.Dom.XmlDocument();
-            xml.LoadXml(GetContent());
-            return xml;
-        }
-#endif
     }
 }

@@ -111,6 +111,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CollectionChangedProcessor.cs" />
+    <Compile Include="GetXmlExtensions.cs" />
+    <Compile Include="NotificationMate.cs" />
+    <Compile Include="NotificationMateBackgroundTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

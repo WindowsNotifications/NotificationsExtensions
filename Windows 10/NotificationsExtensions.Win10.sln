@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Win10.Portable", "NotificationsExtensions.Win10.Portable\NotificationsExtensions.Win10.Portable.csproj", "{DF77CE61-4633-49EC-90B1-DEBE0ED19EB6}"
 EndProject
@@ -11,15 +11,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Sam
 EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "NotificationsExtensions.SampleJavascriptApp", "NotificationsExtensions.SampleJavascriptApp\NotificationsExtensions.SampleJavascriptApp.jsproj", "{DACB18E5-9731-4453-8159-3E16E8DC0489}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NotificationsExtensions", "NotificationsExtensions\NotificationsExtensions.shproj", "{8F4CC187-1AE8-4DB4-9CBC-0380DE29E84B}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NotificationsExtensions.Shared", "NotificationsExtensions\NotificationsExtensions.Shared.shproj", "{8F4CC187-1AE8-4DB4-9CBC-0380DE29E84B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Win10.NETCore", "NotificationsExtensions.Win10.NETCore\NotificationsExtensions.Win10.NETCore.csproj", "{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NotificationsExtensions.Test", "NotificationsExtensions.Test\NotificationsExtensions.Test.shproj", "{6672BCC5-FFE8-4FDF-A982-9D4840F70678}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Win10.Test.NETCore", "NotificationsExtensions.WIn10.Test.NETCore\NotificationsExtensions.Win10.Test.NETCore.csproj", "{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NotificationsExtensions.Test.Shared", "NotificationsExtensions.Test\NotificationsExtensions.Test.Shared.shproj", "{6672BCC5-FFE8-4FDF-A982-9D4840F70678}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Win10.Test.Portable", "NotificationsExtensions.Win10.Test.Portable\NotificationsExtensions.Win10.Test.Portable.csproj", "{C4518F16-3500-4021-8B19-F1B1FD3B0815}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{DD3AC1F8-67CC-4F23-B2F6-F1AAA6F69F19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EE2D820D-FD3B-42D9-926A-674E16DE1BF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Win10.Test.NETCore", "NotificationsExtensions.WIn10.Test.NETCore\NotificationsExtensions.Win10.Test.NETCore.csproj", "{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -98,8 +102,6 @@ Global
 		{B1998D8C-0BE5-4CD3-BD80-DF8D7ABB0BD5}.Release|x86.Build.0 = Release|x86
 		{B1998D8C-0BE5-4CD3-BD80-DF8D7ABB0BD5}.Release|x86.Deploy.0 = Release|x86
 		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Debug|ARM.ActiveCfg = Debug|ARM
 		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Debug|ARM.Build.0 = Debug|ARM
 		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -110,8 +112,6 @@ Global
 		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Debug|x86.Build.0 = Debug|x86
 		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Debug|x86.Deploy.0 = Debug|x86
 		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Release|Any CPU.ActiveCfg = Release|x86
-		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Release|Any CPU.Build.0 = Release|x86
-		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Release|Any CPU.Deploy.0 = Release|x86
 		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Release|ARM.ActiveCfg = Release|ARM
 		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Release|ARM.Build.0 = Release|ARM
 		{DACB18E5-9731-4453-8159-3E16E8DC0489}.Release|ARM.Deploy.0 = Release|ARM
@@ -137,22 +137,6 @@ Global
 		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Release|x64.Build.0 = Release|Any CPU
 		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Release|x86.ActiveCfg = Release|Any CPU
 		{D904D8C8-AEC5-440B-B80E-D42FF3B91EDE}.Release|x86.Build.0 = Release|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|ARM.Build.0 = Debug|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|x64.Build.0 = Debug|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|x86.Build.0 = Debug|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|ARM.ActiveCfg = Release|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|ARM.Build.0 = Release|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|x64.ActiveCfg = Release|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|x64.Build.0 = Release|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|x86.ActiveCfg = Release|Any CPU
-		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|x86.Build.0 = Release|Any CPU
 		{C4518F16-3500-4021-8B19-F1B1FD3B0815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4518F16-3500-4021-8B19-F1B1FD3B0815}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4518F16-3500-4021-8B19-F1B1FD3B0815}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -169,8 +153,31 @@ Global
 		{C4518F16-3500-4021-8B19-F1B1FD3B0815}.Release|x64.Build.0 = Release|Any CPU
 		{C4518F16-3500-4021-8B19-F1B1FD3B0815}.Release|x86.ActiveCfg = Release|Any CPU
 		{C4518F16-3500-4021-8B19-F1B1FD3B0815}.Release|x86.Build.0 = Release|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|ARM.Build.0 = Debug|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|x64.Build.0 = Debug|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Debug|x86.Build.0 = Debug|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|ARM.ActiveCfg = Release|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|ARM.Build.0 = Release|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|x64.ActiveCfg = Release|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|x64.Build.0 = Release|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|x86.ActiveCfg = Release|Any CPU
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B1998D8C-0BE5-4CD3-BD80-DF8D7ABB0BD5} = {DD3AC1F8-67CC-4F23-B2F6-F1AAA6F69F19}
+		{DACB18E5-9731-4453-8159-3E16E8DC0489} = {DD3AC1F8-67CC-4F23-B2F6-F1AAA6F69F19}
+		{6672BCC5-FFE8-4FDF-A982-9D4840F70678} = {EE2D820D-FD3B-42D9-926A-674E16DE1BF0}
+		{C4518F16-3500-4021-8B19-F1B1FD3B0815} = {EE2D820D-FD3B-42D9-926A-674E16DE1BF0}
+		{2135EDD4-3C9F-4F3B-8040-96D4449FB1D8} = {EE2D820D-FD3B-42D9-926A-674E16DE1BF0}
 	EndGlobalSection
 EndGlobal

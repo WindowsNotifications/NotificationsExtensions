@@ -5,10 +5,6 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved
 
-#if WINRT
-using Windows.Data.Xml.Dom;
-#endif
-
 namespace NotificationsExtensions
 {
     /// <summary>
@@ -21,14 +17,6 @@ namespace NotificationsExtensions
         /// </summary>
         /// <returns>The notification Xml content as a string.</returns>
         string GetContent();
-
-#if WINRT
-        /// <summary>
-        /// Retrieves the notification Xml content as a WinRT Xml document.
-        /// </summary>
-        /// <returns>The notification Xml content as a WinRT Xml document.</returns>
-        XmlDocument GetXml();
-#endif
     }
 
     namespace Badges

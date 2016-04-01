@@ -17,5 +17,9 @@ namespace NotificationsExtensions.Toasts
         
         [NotificationXmlAttribute("lang")]
         public string Lang { get; set; }
+
+
+        [NotificationXmlAttribute("hint-wrap")]
+        public bool Wrap { get; set; }
     }
 }
