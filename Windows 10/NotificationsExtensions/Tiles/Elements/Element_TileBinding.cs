@@ -83,6 +83,9 @@ namespace NotificationsExtensions.Tiles
         [NotificationXmlAttribute("hint-lockDetailedStatus3")]
         public string LockDetailedStatus3 { get; set; }
 
+        [NotificationXmlAttribute("arguments")]
+        public string Arguments { get; set; }
+
         private int? _overlay;
         [NotificationXmlAttribute("hint-overlay")]
         public int? Overlay

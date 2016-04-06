@@ -261,7 +261,49 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
-        
+
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Arguments_Null()
+        {
+            AssertVisual(
+
+                "<visual />",
+
+                new TileVisual()
+                {
+                    Arguments = null
+                });
+        }
+
+
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Arguments_EmptyString()
+        {
+            AssertVisual(
+
+                "<visual arguments=''/>",
+
+                new TileVisual()
+                {
+                    Arguments = ""
+                });
+        }
+
+
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Arguments_Value()
+        {
+            AssertVisual(
+
+                "<visual arguments='action=viewStory&amp;story=53'/>",
+
+                new TileVisual()
+                {
+                    Arguments = "action=viewStory&story=53"
+                });
+        }
+
+
         [TestMethod]
         public void Test_Tile_Xml_Visual_LockDetailedStatus1_NoMatchingText()
         {
@@ -781,6 +823,45 @@ namespace NotificationsExtensions.Win10.Test
                 new TileBinding()
                 {
                     Language = "en-US"
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Arguments_Null()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' />",
+
+                new TileBinding()
+                {
+                    Arguments = null
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Arguments_EmptyString()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' arguments='' />",
+
+                new TileBinding()
+                {
+                    Arguments = ""
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Arguments_Value()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' arguments='action=viewStory&amp;storyId=52' />",
+
+                new TileBinding()
+                {
+                    Arguments = "action=viewStory&storyId=52"
                 });
         }
 

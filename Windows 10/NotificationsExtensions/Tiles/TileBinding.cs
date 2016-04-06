@@ -57,6 +57,11 @@ namespace NotificationsExtensions.Tiles
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// New in RS1: App-defined data that is passed back to your app via the TileActivatedInfo property on LaunchActivatedEventArgs when the user launches your app from the Live Tile. This allows you to know which tile notifications your user saw when they tapped your live tile.
+        /// </summary>
+        public string Arguments { get; set; }
+
+        /// <summary>
         /// The actual content to be displayed. One of <see cref="TileBindingContentAdaptive"/>, <see cref="TileBindingContentIconic"/>, <see cref="TileBindingContentContact"/>, <see cref="TileBindingContentPeople"/>, or <see cref="TileBindingContentPhotos"/>
         /// </summary>
         public ITileBindingContent Content { get; set; }
@@ -73,8 +78,8 @@ namespace NotificationsExtensions.Tiles
                 Branding = Branding,
                 AddImageQuery = AddImageQuery,
                 DisplayName = DisplayName,
-                ContentId = ContentId
-
+                ContentId = ContentId,
+                Arguments = Arguments
                 // LockDetailedStatus gets populated by TileVisual
             };
 
