@@ -22,12 +22,25 @@ namespace NotificationsExtensions.Toasts
         /// </summary>
         public ToastActionsSnoozeAndDismiss() { }
 
+        /// <summary>
+        /// New in RS1: Custom context menu items, providing additional actions when the user right clicks the toast notification. You can only have up to 5 items.
+        /// </summary>
+        public IList<ToastContextMenuItem> ContextMenuItems { get; private set; } = new List<ToastContextMenuItem>();
+
         internal Element_ToastActions ConvertToElement()
         {
-            return new Element_ToastActions()
+            if (ContextMenuItems.Count > 5)
+                throw new InvalidOperationException("You have too many context menu items. You can only have up to 5.");
+
+            var el = new Element_ToastActions()
             {
                 SystemCommands = ToastSystemCommand.SnoozeAndDismiss
             };
+            
+            foreach (var item in ContextMenuItems)
+                el.Children.Add(item.ConvertToElement());
+
+            return el;
         }
     }
 
@@ -47,12 +60,20 @@ namespace NotificationsExtensions.Toasts
         public IList<IToastInput> Inputs { get; private set; } = new LimitedList<IToastInput>(5);
 
         /// <summary>
-        /// Buttons are displayed after all the inputs (or adjacent to inputs if used as quick reply buttons). Only up to 5 buttons can be added; after that, an exception is thrown. You can add <see cref="ToastButton"/>, <see cref="ToastButtonSnooze"/>, or <see cref="ToastButtonDismiss"/>
+        /// Buttons are displayed after all the inputs (or adjacent to inputs if used as quick reply buttons). Only up to 5 buttons can be added (or fewer if you are also including context menu items). After that, an exception is thrown. You can add <see cref="ToastButton"/>, <see cref="ToastButtonSnooze"/>, or <see cref="ToastButtonDismiss"/>
         /// </summary>
         public IList<IToastButton> Buttons { get; private set; } = new LimitedList<IToastButton>(5);
 
+        /// <summary>
+        /// New in RS1: Custom context menu items, providing additional actions when the user right clicks the toast notification. You can only have up to 5 buttons and context menu items *combined*. Thus, if you have one context menu item, you can only have four buttons, etc.
+        /// </summary>
+        public IList<ToastContextMenuItem> ContextMenuItems { get; private set; } = new List<ToastContextMenuItem>();
+
         internal Element_ToastActions ConvertToElement()
         {
+            if (Buttons.Count + ContextMenuItems.Count > 5)
+                throw new InvalidOperationException("You have too many buttons/context menu items. You can only have up to 5 total.");
+
             var el = new Element_ToastActions();
 
             foreach (var input in Inputs)
@@ -60,6 +81,9 @@ namespace NotificationsExtensions.Toasts
 
             foreach (var button in Buttons)
                 el.Children.Add(ConvertToActionElement(button));
+
+            foreach (var item in ContextMenuItems)
+                el.Children.Add(item.ConvertToElement());
 
             return el;
         }
@@ -98,5 +122,11 @@ namespace NotificationsExtensions.Toasts
     /// <summary>
     /// Actions to display on a toast notification. One of <see cref="ToastActionsCustom"/> or <see cref="ToastActionsSnoozeAndDismiss"/>.
     /// </summary>
-    public interface IToastActions { }
+    public interface IToastActions
+    {
+        /// <summary>
+        /// New in RS1: Custom context menu items, providing additional actions when the user right clicks the toast notification.
+        /// </summary>
+        IList<ToastContextMenuItem> ContextMenuItems { get; }
+    }
 }

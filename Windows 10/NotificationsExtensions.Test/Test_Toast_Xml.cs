@@ -753,6 +753,147 @@ namespace NotificationsExtensions.Win10.Test.Portable
         }
 
         [TestMethod]
+        public void Test_Toast_Xml_Actions_SixTotal()
+        {
+            try
+            {
+                AssertActionsPayload("doesn't matter", new ToastActionsCustom()
+                {
+                    Buttons =
+                    {
+                        new ToastButton("Button 1", "1"),
+                        new ToastButton("Button 2", "2"),
+                        new ToastButton("Button 3", "3"),
+                        new ToastButton("Button 4", "4"),
+                        new ToastButton("Button 5", "5")
+                    },
+
+                    ContextMenuItems =
+                    {
+                        new ToastContextMenuItem("Menu item 1", "1")
+                    }
+                });
+            }
+
+            catch (InvalidOperationException)
+            {
+                return;
+            }
+
+            Assert.Fail("Exception should have been thrown, only 5 actions are allowed.");
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_Actions_TwoContextMenuItems()
+        {
+
+            AssertActionsPayload("<actions><action placement='contextMenu' content='Menu item 1' arguments='1'/><action placement='contextMenu' content='Menu item 2' arguments='2'/></actions>", new ToastActionsCustom()
+            {
+                ContextMenuItems =
+                {
+                    new ToastContextMenuItem("Menu item 1", "1"),
+                    new ToastContextMenuItem("Menu item 2", "2")
+                }
+            });
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_Actions_FiveContextMenuItems()
+        {
+
+            AssertActionsPayload("<actions><action placement='contextMenu' content='Menu item 1' arguments='1'/><action placement='contextMenu' content='Menu item 2' arguments='2'/><action placement='contextMenu' content='Menu item 3' arguments='3'/><action placement='contextMenu' content='Menu item 4' arguments='4'/><action placement='contextMenu' content='Menu item 5' arguments='5'/></actions>", new ToastActionsCustom()
+            {
+                ContextMenuItems =
+                {
+                    new ToastContextMenuItem("Menu item 1", "1"),
+                    new ToastContextMenuItem("Menu item 2", "2"),
+                    new ToastContextMenuItem("Menu item 3", "3"),
+                    new ToastContextMenuItem("Menu item 4", "4"),
+                    new ToastContextMenuItem("Menu item 5", "5")
+                }
+            });
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_Actions_SixContextMenuItems()
+        {
+            try
+            {
+                AssertActionsPayload("doesn't matter", new ToastActionsCustom()
+                {
+                    ContextMenuItems =
+                    {
+                        new ToastContextMenuItem("Menu item 1", "1"),
+                        new ToastContextMenuItem("Menu item 2", "2"),
+                        new ToastContextMenuItem("Menu item 3", "3"),
+                        new ToastContextMenuItem("Menu item 4", "4"),
+                        new ToastContextMenuItem("Menu item 5", "5"),
+                        new ToastContextMenuItem("Menu item 6", "6")
+                    }
+                });
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+
+
+        [TestMethod]
+        public void Test_Toast_Xml_ActionsSnoozeDismiss_TwoContextMenuItems()
+        {
+            AssertActionsPayload("<actions hint-systemCommands='SnoozeAndDismiss'><action placement='contextMenu' content='Menu item 1' arguments='1'/><action placement='contextMenu' content='Menu item 2' arguments='2'/></actions>", new ToastActionsSnoozeAndDismiss()
+            {
+                ContextMenuItems =
+                {
+                    new ToastContextMenuItem("Menu item 1", "1"),
+                    new ToastContextMenuItem("Menu item 2", "2")
+                }
+            });
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_Actions_ActionsSnoozeDismiss_FiveContextMenuItems()
+        {
+            AssertActionsPayload("<actions hint-systemCommands='SnoozeAndDismiss'><action placement='contextMenu' content='Menu item 1' arguments='1'/><action placement='contextMenu' content='Menu item 2' arguments='2'/><action placement='contextMenu' content='Menu item 3' arguments='3'/><action placement='contextMenu' content='Menu item 4' arguments='4'/><action placement='contextMenu' content='Menu item 5' arguments='5'/></actions>", new ToastActionsSnoozeAndDismiss()
+            {
+                ContextMenuItems =
+                {
+                    new ToastContextMenuItem("Menu item 1", "1"),
+                    new ToastContextMenuItem("Menu item 2", "2"),
+                    new ToastContextMenuItem("Menu item 3", "3"),
+                    new ToastContextMenuItem("Menu item 4", "4"),
+                    new ToastContextMenuItem("Menu item 5", "5")
+                }
+            });
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_Actions_ActionsSnoozeDismiss_SixContextMenuItems()
+        {
+            try
+            {
+                AssertActionsPayload("doesn't matter", new ToastActionsSnoozeAndDismiss()
+                {
+                    ContextMenuItems =
+                    {
+                        new ToastContextMenuItem("Menu item 1", "1"),
+                        new ToastContextMenuItem("Menu item 2", "2"),
+                        new ToastContextMenuItem("Menu item 3", "3"),
+                        new ToastContextMenuItem("Menu item 4", "4"),
+                        new ToastContextMenuItem("Menu item 5", "5"),
+                        new ToastContextMenuItem("Menu item 6", "6")
+                    }
+                });
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        [TestMethod]
         public void Test_Toast_Xml_Button_Defaults()
         {
             ToastButton button = new ToastButton("my content", "myArgs");
@@ -882,6 +1023,73 @@ namespace NotificationsExtensions.Win10.Test.Portable
             ToastButtonDismiss button = new ToastButtonDismiss("my dismiss");
 
             AssertButtonPayload("<action activationType='system' arguments='dismiss' content='my dismiss'/>", button);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_ContextMenuItem_Defaults()
+        {
+            ToastContextMenuItem item = new ToastContextMenuItem("content", "args");
+
+            AssertContextMenuItemPayload("<action placement='contextMenu' content='content' arguments='args'/>", item);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_ContextMenuItem_NullContent()
+        {
+            try
+            {
+                new ToastContextMenuItem(null, "args");
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_ContextMenuItem_NullArguments()
+        {
+            try
+            {
+                new ToastContextMenuItem("content", null);
+            }
+
+            catch { return; }
+
+            Assert.Fail("Exception should have been thrown.");
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_ContextMenuItem_ActivationType_Foreground()
+        {
+            ToastContextMenuItem item = new ToastContextMenuItem("content", "args")
+            {
+                ActivationType = ToastActivationType.Foreground
+            };
+
+            AssertContextMenuItemPayload("<action placement='contextMenu' content='content' arguments='args'/>", item);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_ContextMenuItem_ActivationType_Background()
+        {
+            ToastContextMenuItem item = new ToastContextMenuItem("content", "args")
+            {
+                ActivationType = ToastActivationType.Background
+            };
+
+            AssertContextMenuItemPayload("<action placement='contextMenu' content='content' arguments='args' activationType='background'/>", item);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_ContextMenuItem_ActivationType_Protocol()
+        {
+            ToastContextMenuItem item = new ToastContextMenuItem("content", "args")
+            {
+                ActivationType = ToastActivationType.Protocol
+            };
+
+            AssertContextMenuItemPayload("<action placement='contextMenu' content='content' arguments='args' activationType='protocol'/>", item);
         }
 
         [TestMethod]
@@ -1084,6 +1292,14 @@ namespace NotificationsExtensions.Win10.Test.Portable
             AssertActionsPayload("<actions>" + expectedButtonXml + "</actions>", new ToastActionsCustom()
             {
                 Buttons = { button }
+            });
+        }
+
+        private static void AssertContextMenuItemPayload(string expectedContextMenuItemXml, ToastContextMenuItem item)
+        {
+            AssertActionsPayload("<actions>" + expectedContextMenuItemXml + "</actions>", new ToastActionsCustom()
+            {
+                ContextMenuItems = { item }
             });
         }
 

@@ -57,6 +57,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastAudio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastContextMenuItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastHeroImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastImageSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastImage.cs" />
