@@ -243,6 +243,55 @@ namespace NotificationsExtensions.Win10.Test.Portable
         }
 
         [TestMethod]
+        public void Test_Toast_Xml_Attribution()
+        {
+            var visual = new ToastVisual()
+            {
+                TitleText = new ToastText()
+                {
+                    Text = "My title"
+                },
+
+                BodyTextLine1 = new ToastText()
+                {
+                    Text = "My body 1"
+                },
+
+                Attribution = new ToastText()
+                {
+                    Text = "cnn.com"
+                }
+            };
+
+            AssertVisualPayload(@"<visual><binding template=""ToastGeneric""><text>My title</text><text>My body 1</text><text placement='attribution'>cnn.com</text></binding></visual>", visual);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_Attribution_Lang()
+        {
+            var visual = new ToastVisual()
+            {
+                TitleText = new ToastText()
+                {
+                    Text = "My title"
+                },
+
+                BodyTextLine1 = new ToastText()
+                {
+                    Text = "My body 1"
+                },
+
+                Attribution = new ToastText()
+                {
+                    Text = "cnn.com",
+                    Language = "en-US"
+                }
+            };
+
+            AssertVisualPayload(@"<visual><binding template=""ToastGeneric""><text>My title</text><text>My body 1</text><text placement='attribution' lang='en-US'>cnn.com</text></binding></visual>", visual);
+        }
+
+        [TestMethod]
         public void Test_Toast_XML_Visual_OneImage()
         {
             var visual = new ToastVisual()

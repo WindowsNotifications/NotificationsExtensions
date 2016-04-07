@@ -68,9 +68,14 @@ namespace NotificationsExtensions.Toasts
         public ToastAppLogo AppLogoOverride { get; set; }
 
         /// <summary>
-        /// An optional hero image (a visually impactful image displayed on the toast notification).
+        /// New in RS1: An optional hero image (a visually impactful image displayed on the toast notification).
         /// </summary>
         public ToastHeroImage HeroImage { get; set; }
+
+        /// <summary>
+        /// New in RS1: An optional text element that is displayed as attribution text.
+        /// </summary>
+        public ToastText Attribution { get; set; }
         
 
 
@@ -111,6 +116,15 @@ namespace NotificationsExtensions.Toasts
 
             if (BodyTextLine2 != null)
                 binding.Children.Add(BodyTextLine2.ConvertToElement());
+
+
+            // Add attribution
+            if (Attribution != null)
+            {
+                var attributionEl = Attribution.ConvertToElement();
+                attributionEl.Placement = ToastTextPlacement.Attribution;
+                binding.Children.Add(attributionEl);
+            }
 
 
 
