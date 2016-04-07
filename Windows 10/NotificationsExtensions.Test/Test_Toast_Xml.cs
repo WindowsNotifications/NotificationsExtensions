@@ -410,6 +410,78 @@ namespace NotificationsExtensions.Win10.Test.Portable
         }
 
         [TestMethod]
+        public void Test_Toast_Xml_HeroImage_Default()
+        {
+            var hero = new ToastHeroImage();
+
+            try
+            {
+                AssertHeroImagePayload("<image placement='hero'/>", hero);
+            }
+
+            catch (InvalidOperationException)
+            {
+                return;
+            }
+
+            Assert.Fail("Exception should have been thrown since Source wasn't provided.");
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_HeroImage_WithSource()
+        {
+            var hero = new ToastHeroImage()
+            {
+                Source = new ToastImageSource("http://food.com/peanuts.jpg")
+            };
+
+            AssertHeroImagePayload("<image placement='hero' src='http://food.com/peanuts.jpg'/>", hero);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_HeroImage_Alt()
+        {
+            var hero = new ToastHeroImage()
+            {
+                Source = new ToastImageSource("http://food.com/peanuts.jpg")
+                {
+                    Alt = "peanuts"
+                }
+            };
+
+            AssertHeroImagePayload("<image placement='hero' src='http://food.com/peanuts.jpg' alt='peanuts'/>", hero);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_HeroImage_AddImageQuery()
+        {
+            var hero = new ToastHeroImage()
+            {
+                Source = new ToastImageSource("http://food.com/peanuts.jpg")
+                {
+                    AddImageQuery = true
+                }
+            };
+
+            AssertHeroImagePayload("<image placement='hero' src='http://food.com/peanuts.jpg' addImageQuery='true'/>", hero);
+        }
+
+        [TestMethod]
+        public void Test_Toast_Xml_HeroImage_AllProperties()
+        {
+            var hero = new ToastHeroImage()
+            {
+                Source = new ToastImageSource("http://food.com/peanuts.jpg")
+                {
+                    AddImageQuery = true,
+                    Alt = "peanuts"
+                }
+            };
+
+            AssertHeroImagePayload("<image placement='hero' src='http://food.com/peanuts.jpg' addImageQuery='true' alt='peanuts'/>", hero);
+        }
+
+        [TestMethod]
         public void Test_Toast_Xml_Audio_Defaults()
         {
             var audio = new ToastAudio();
@@ -931,6 +1003,14 @@ namespace NotificationsExtensions.Win10.Test.Portable
             AssertVisualPayload(@"<visual><binding template=""ToastGeneric"">" + expectedAppLogoXml + "</binding></visual>", new ToastVisual()
             {
                 AppLogoOverride = appLogo
+            });
+        }
+
+        private static void AssertHeroImagePayload(string expectedHeroXml, ToastHeroImage heroImage)
+        {
+            AssertVisualPayload(@"<visual><binding template=""ToastGeneric"">" + expectedHeroXml + "</binding></visual>", new ToastVisual()
+            {
+                HeroImage = heroImage
             });
         }
 

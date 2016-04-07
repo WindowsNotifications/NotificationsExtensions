@@ -66,6 +66,11 @@ namespace NotificationsExtensions.Toasts
         /// An optional override of the logo displayed on the toast notification.
         /// </summary>
         public ToastAppLogo AppLogoOverride { get; set; }
+
+        /// <summary>
+        /// An optional hero image (a visually impactful image displayed on the toast notification).
+        /// </summary>
+        public ToastHeroImage HeroImage { get; set; }
         
 
 
@@ -117,6 +122,10 @@ namespace NotificationsExtensions.Toasts
             // And if there's an app logo override, add it
             if (AppLogoOverride != null)
                 binding.Children.Add(AppLogoOverride.ConvertToElement());
+
+            // If there's hero, add it
+            if (HeroImage != null)
+                binding.Children.Add(HeroImage.ConvertToElement());
 
 
 

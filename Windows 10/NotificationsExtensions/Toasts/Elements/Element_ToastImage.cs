@@ -55,6 +55,9 @@ namespace NotificationsExtensions.Toasts
         Inline,
 
         [EnumString("appLogoOverride")]
-        AppLogoOverride
+        AppLogoOverride,
+
+        [EnumString("hero")]
+        Hero
     }
 }
