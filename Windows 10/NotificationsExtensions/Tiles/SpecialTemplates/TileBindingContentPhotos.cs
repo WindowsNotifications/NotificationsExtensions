@@ -21,9 +21,9 @@ namespace NotificationsExtensions.Tiles
         public TileBindingContentPhotos() { }
 
         /// <summary>
-        /// Up to 9 images can be provided, which will be used for the slideshow. Adding more than 9 will throw an exception.
+        /// Up to 12 images can be provided (Mobile will only display up to 9), which will be used for the slideshow. Adding more than 12 will throw an exception.
         /// </summary>
-        public IList<TileImageSource> Images { get; private set; } = new LimitedList<TileImageSource>(9);
+        public IList<TileImageSource> Images { get; private set; } = new LimitedList<TileImageSource>(12);
 
         internal TileTemplateNameV3 GetTemplateName(TileSize size)
         {
