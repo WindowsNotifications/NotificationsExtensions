@@ -178,5 +178,35 @@ namespace NotificationsExtensions.SampleApp
                 }
             });
         }
+
+        private void ButtonRS1StyleToast_Click(object sender, RoutedEventArgs e)
+        {
+            Show(new ToastContent()
+            {
+                Visual = new ToastVisual()
+                {
+                    TitleText = new ToastText() { Text = "Hello World" },
+                    BodyTextLine1 = new ToastText() { Text = "New toast features!" },
+
+                    HeroImage = new ToastHeroImage()
+                    {
+                        Source = new ToastImageSource("https://msn.com/toast.jpg")
+                    },
+
+                    Attribution = new ToastText()
+                    {
+                        Text = "messenger.com"
+                    }
+                },
+
+                Actions = new ToastActionsCustom()
+                {
+                    ContextMenuItems =
+                    {
+                        new ToastContextMenuItem("Block notifications from this site", "args")
+                    }
+                }
+            });
+        }
     }
 }
