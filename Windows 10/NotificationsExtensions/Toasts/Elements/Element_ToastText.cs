@@ -14,7 +14,7 @@ namespace NotificationsExtensions.Toasts
     {
         [NotificationXmlContent]
         public string Text { get; set; }
-
+        
         [NotificationXmlAttribute("lang")]
         public string Lang { get; set; }
     }
