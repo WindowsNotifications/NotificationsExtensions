@@ -38,6 +38,9 @@ namespace NotificationsExtensions.Tiles
         [NotificationXmlAttribute("version")]
         public int? Version { get; set; }
 
+        [NotificationXmlAttribute("arguments")]
+        public string Arguments { get; set; }
+
         public IList<Element_TileBinding> Bindings { get; private set; } = new List<Element_TileBinding>();
     }
 }

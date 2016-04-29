@@ -261,7 +261,49 @@ namespace NotificationsExtensions.Win10.Test
                 });
         }
 
-        
+
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Arguments_Null()
+        {
+            AssertVisual(
+
+                "<visual />",
+
+                new TileVisual()
+                {
+                    Arguments = null
+                });
+        }
+
+
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Arguments_EmptyString()
+        {
+            AssertVisual(
+
+                "<visual arguments=''/>",
+
+                new TileVisual()
+                {
+                    Arguments = ""
+                });
+        }
+
+
+        [TestMethod]
+        public void Test_Tile_Xml_Visual_Arguments_Value()
+        {
+            AssertVisual(
+
+                "<visual arguments='action=viewStory&amp;story=53'/>",
+
+                new TileVisual()
+                {
+                    Arguments = "action=viewStory&story=53"
+                });
+        }
+
+
         [TestMethod]
         public void Test_Tile_Xml_Visual_LockDetailedStatus1_NoMatchingText()
         {
@@ -781,6 +823,45 @@ namespace NotificationsExtensions.Win10.Test
                 new TileBinding()
                 {
                     Language = "en-US"
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Arguments_Null()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' />",
+
+                new TileBinding()
+                {
+                    Arguments = null
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Arguments_EmptyString()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' arguments='' />",
+
+                new TileBinding()
+                {
+                    Arguments = ""
+                });
+        }
+
+        [TestMethod]
+        public void Test_Tile_Xml_Binding_Arguments_Value()
+        {
+            AssertBindingMedium(
+
+                "<binding template='TileMedium' arguments='action=viewStory&amp;storyId=52' />",
+
+                new TileBinding()
+                {
+                    Arguments = "action=viewStory&storyId=52"
                 });
         }
 
@@ -2284,7 +2365,10 @@ namespace NotificationsExtensions.Win10.Test
                     new TileImageSource("6.jpg"),
                     new TileImageSource("7.jpg"),
                     new TileImageSource("8.jpg"),
-                    new TileImageSource("9.jpg")
+                    new TileImageSource("9.jpg"),
+                    new TileImageSource("10.jpg"),
+                    new TileImageSource("11.jpg"),
+                    new TileImageSource("12.jpg")
                 }
             };
 
@@ -2298,6 +2382,9 @@ namespace NotificationsExtensions.Win10.Test
                 <image src='7.jpg'/>
                 <image src='8.jpg'/>
                 <image src='9.jpg'/>
+                <image src='10.jpg'/>
+                <image src='11.jpg'/>
+                <image src='12.jpg'/>
             </binding>", new TileBinding()
             {
                 Content = content
@@ -2322,14 +2409,17 @@ namespace NotificationsExtensions.Win10.Test
                         new TileImageSource("7.jpg"),
                         new TileImageSource("8.jpg"),
                         new TileImageSource("9.jpg"),
-                        new TileImageSource("10.jpg")
+                        new TileImageSource("10.jpg"),
+                        new TileImageSource("11.jpg"),
+                        new TileImageSource("12.jpg"),
+                        new TileImageSource("13.jpg")
                     }
                 };
             }
 
             catch { return; }
 
-            Assert.Fail("Exception should have been thrown, adding more than 9 images isn't supported.");
+            Assert.Fail("Exception should have been thrown, adding more than 12 images isn't supported.");
         }
 
         #endregion
