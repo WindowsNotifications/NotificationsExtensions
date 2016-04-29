@@ -28,18 +28,12 @@ namespace NotificationsExtensions.Toasts
         /// </summary>
         public string Language { get; set; }
 
-        /// <summary>
-        /// Whether or not the text supports wrapping
-        /// </summary>
-        public bool Wrap { get; set; }
-
         internal Element_ToastText ConvertToElement()
         {
             return new Element_ToastText()
             {
                 Text = Text,
-                Lang = Language,
-                Wrap = Wrap
+                Lang = Language
             };
         }
     }
