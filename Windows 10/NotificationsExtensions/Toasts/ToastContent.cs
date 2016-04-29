@@ -102,7 +102,7 @@ namespace NotificationsExtensions.Toasts
 
             if (Actions != null)
                 toast.Actions = ConvertToActionsElement(Actions);
-
+            
 
             return toast;
         }
