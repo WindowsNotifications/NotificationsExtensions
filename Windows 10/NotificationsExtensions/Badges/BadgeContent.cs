@@ -6,6 +6,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved
 
 using System;
+#if WINRT
+using Windows.Data.Xml.Dom;
+#endif
+
 
 namespace NotificationsExtensions.Badges
 {
@@ -72,6 +76,19 @@ namespace NotificationsExtensions.Badges
             return GetContent();
         }
 
+#if WINRT
+        /// <summary>
+        /// Retrieves the notification XML content as a WinRT Xml document.
+        /// </summary>
+        /// <returns>The notification XML content as a WinRT Xml document.</returns>
+        public XmlDocument GetXml()
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(GetContent());
+            return xml;
+        }
+#endif
+
         private GlyphValue m_Glyph = (GlyphValue)(-1);
     }
 
@@ -127,6 +144,18 @@ namespace NotificationsExtensions.Badges
             return GetContent();
         }
 
+#if WINRT
+        /// <summary>
+        /// Retrieves the notification XML content as a WinRT Xml document.
+        /// </summary>
+        /// <returns>The notification XML content as a WinRT Xml document.</returns>
+        public XmlDocument GetXml()
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(GetContent());
+            return xml;
+        }
+#endif
 
         private uint m_Number = 0;
     }
