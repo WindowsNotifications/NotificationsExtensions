@@ -59,11 +59,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastAudio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastContent.cs" />
-<<<<<<< HEAD
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastContextMenuItem.cs" />
-=======
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastGeneric.cs" />
->>>>>>> eed8753d450e83e936db15ce2f655fcbfb29fd50
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastHeroImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastImageSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastImage.cs" />
