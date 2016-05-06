@@ -9,6 +9,8 @@
     <Import_RootNamespace>NotificationsExtensions</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\AdaptiveImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\AdaptiveText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Badges\BadgeContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ContentInterfaces.cs" />
@@ -57,6 +59,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastAudio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastGeneric.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastHeroImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastImageSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastImage.cs" />
