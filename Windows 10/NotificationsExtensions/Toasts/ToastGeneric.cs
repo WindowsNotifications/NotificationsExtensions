@@ -6,10 +6,10 @@ namespace NotificationsExtensions.Toasts
 {
     public sealed class ToastGeneric
     {
-        public List<ToastText> TextElements { get; private set; } = new List<ToastText>();
+        public IList<ToastText> TextElements { get; private set; } = new List<ToastText>();
 
 
     }
 
-    public interface ToastGenericAdaptive
+    public interface ToastGenericAdaptive { }
 }

@@ -62,3 +62,4 @@ namespace NotificationsExtensions.Adaptive
             return Source.ToString();
         }
     }
+}

@@ -7,6 +7,8 @@
 
 
 
+using System;
+
 namespace NotificationsExtensions.Tiles
 {
     /// <summary>
