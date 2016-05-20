@@ -13,7 +13,6 @@ namespace NotificationsExtensions.Tiles
     internal sealed class Element_TileImage : IElement_TileBindingChild, IElement_TileSubgroupChild
     {
         internal const TileImagePlacement DEFAULT_PLACEMENT = TileImagePlacement.Inline;
-        internal const bool DEFAULT_ADD_IMAGE_QUERY = false;
         internal const TileImageCrop DEFAULT_CROP = TileImageCrop.None;
         internal const bool DEFAULT_REMOVE_MARGIN = false;
         internal const TileImageAlign DEFAULT_ALIGN = TileImageAlign.Stretch;
@@ -27,8 +26,8 @@ namespace NotificationsExtensions.Tiles
         [NotificationXmlAttribute("alt")]
         public string Alt { get; set; }
 
-        [NotificationXmlAttribute("addImageQuery", DEFAULT_ADD_IMAGE_QUERY)]
-        public bool AddImageQuery { get; set; } = DEFAULT_ADD_IMAGE_QUERY;
+        [NotificationXmlAttribute("addImageQuery")]
+        public bool? AddImageQuery { get; set; }
 
         [NotificationXmlAttribute("placement", DEFAULT_PLACEMENT)]
         public TileImagePlacement Placement { get; set; } = DEFAULT_PLACEMENT;

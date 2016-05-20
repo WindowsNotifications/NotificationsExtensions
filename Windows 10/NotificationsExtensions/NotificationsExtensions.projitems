@@ -9,11 +9,28 @@
     <Import_RootNamespace>NotificationsExtensions</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\AdaptiveGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\AdaptiveHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Adaptive\AdaptiveImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\AdaptiveImageEnums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\AdaptiveSubgroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\AdaptiveSubgroupEnums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\AdaptiveTextEnums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\BaseTextHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\ChildrenInterfaces.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Adaptive\AdaptiveText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\BaseImageHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\Elements\Element_AdaptiveGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\Elements\Element_AdaptiveImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\Elements\Element_AdaptiveImageEnums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\Elements\Element_AdaptiveSubgroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\Elements\Element_AdaptiveText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\IAdaptiveCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\IBaseImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Adaptive\IBaseText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Badges\BadgeContent.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Common.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ContentInterfaces.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Common.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ContentInterfaces.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiles\Adaptive\Common.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiles\Adaptive\TileBindingContentAdaptive.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tiles\Adaptive\TileGroup.cs" />
@@ -56,12 +73,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\Elements\Element_ToastVisual.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastActions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastAppLogo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastAppLogoEnums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastGenericAttributionText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastAudio.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastContextMenuItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastGeneric.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastHeroImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastBindingGeneric.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastGenericAppLogo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastGenericAppLogoEnums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastGenericHeroImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastImageSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Toasts\ToastSelectionBox.cs" />

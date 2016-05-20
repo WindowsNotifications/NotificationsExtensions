@@ -17,8 +17,8 @@ namespace NotificationsExtensions.Tiles
         internal const TileBranding DEFAULT_BRANDING = TileBranding.Auto;
         internal const bool DEFAULT_ADD_IMAGE_QUERY = false;
 
-        [NotificationXmlAttribute("addImageQuery", DEFAULT_ADD_IMAGE_QUERY)]
-        public bool AddImageQuery { get; set; } = DEFAULT_ADD_IMAGE_QUERY;
+        [NotificationXmlAttribute("addImageQuery")]
+        public bool? AddImageQuery { get; set; }
 
         [NotificationXmlAttribute("baseUri")]
         public Uri BaseUri { get; set; }

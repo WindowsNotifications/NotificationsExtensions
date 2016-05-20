@@ -13,6 +13,7 @@ namespace NotificationsExtensions.Tiles
     /// <summary>
     /// Subgroups are vertical columns that can contain text and images.
     /// </summary>
+    [Obsolete("Use AdaptiveSubgroup instead.")]
     public sealed class TileSubgroup
     {
         /// <summary>

@@ -1,8 +1,12 @@
-﻿using NotificationsExtensions.Tiles;
+﻿using NotificationsExtensions.Adaptive.Elements;
+using NotificationsExtensions.Tiles;
 
-namespace NotificationsExtensions.Adaptive
+namespace NotificationsExtensions
 {
-    public sealed class AdaptiveText : ITileSubgroupChild, ITileAdaptiveChild
+    /// <summary>
+    /// An adaptive text element.
+    /// </summary>
+    public sealed class AdaptiveText : IAdaptiveSubgroupChild, IAdaptiveChild, IBaseText, ITileAdaptiveChild
     {
         /// <summary>
         /// Initializes a new Adaptive text element.
@@ -17,66 +21,68 @@ namespace NotificationsExtensions.Adaptive
         /// <summary>
         /// The target locale of the XML payload, specified as a BCP-47 language tags such as "en-US" or "fr-FR". The locale specified here overrides any other specified locale, such as that in binding or visual. If this value is a literal string, this attribute defaults to the user's UI language. If this value is a string reference, this attribute defaults to the locale chosen by Windows Runtime in resolving the string.
         /// </summary>
-        public string Lang { get; set; }
+        public string Language { get; set; }
 
         /// <summary>
         /// The style controls the text's font size, weight, and opacity.
         /// </summary>
-        public TileTextStyle Style { get; set; } = Element_TileText.DEFAULT_STYLE;
+        public AdaptiveTextStyle HintStyle { get; set; }
 
         /// <summary>
         /// Set this to true to enable text wrapping. False by default.
         /// </summary>
-        public bool Wrap { get; set; } = Element_TileText.DEFAULT_WRAP;
+        public bool? HintWrap { get; set; }
 
-        private int _maxLines = Element_TileText.DEFAULT_MAX_LINES;
+        private int? _hintMaxLines;
 
         /// <summary>
         /// The maximum number of lines the text element is allowed to display.
         /// </summary>
-        public int MaxLines
+        public int? HintMaxLines
         {
-            get { return _maxLines; }
+            get { return _hintMaxLines; }
             set
             {
-                Element_TileText.CheckMaxLinesValue(value);
+                if (value != null)
+                    Element_AdaptiveText.CheckMaxLinesValue(value.Value);
 
-                _maxLines = value;
+                _hintMaxLines = value;
             }
         }
 
-        private int _minLines = Element_TileText.DEFAULT_MIN_LINES;
+        private int? _hintMinLines;
 
         /// <summary>
         /// The minimum number of lines the text element must display.
         /// </summary>
-        public int MinLines
+        public int? HintMinLines
         {
-            get { return _minLines; }
+            get { return _hintMinLines; }
             set
             {
-                Element_TileText.CheckMinLinesValue(value);
+                if (value != null)
+                    Element_AdaptiveText.CheckMinLinesValue(value.Value);
 
-                _minLines = value;
+                _hintMinLines = value;
             }
         }
 
         /// <summary>
         /// The horizontal alignment of the text.
         /// </summary>
-        public TileTextAlign Align { get; set; } = Element_TileText.DEFAULT_ALIGN;
+        public AdaptiveTextAlign HintAlign { get; set; }
 
-        internal Element_TileText ConvertToElement()
+        internal Element_AdaptiveText ConvertToElement()
         {
-            return new Element_TileText()
+            return new Element_AdaptiveText()
             {
                 Text = Text,
-                Lang = Lang,
-                Style = Style,
-                Wrap = Wrap,
-                MaxLines = MaxLines,
-                MinLines = MinLines,
-                Align = Align
+                Lang = Language,
+                Style = HintStyle,
+                Wrap = HintWrap,
+                MaxLines = HintMaxLines,
+                MinLines = HintMinLines,
+                Align = HintAlign
             };
         }
 

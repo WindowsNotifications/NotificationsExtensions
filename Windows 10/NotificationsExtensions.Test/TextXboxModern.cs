@@ -19,18 +19,18 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
                     Children =
                     {
-                        new TileText()
+                        new AdaptiveText()
                         {
                             Text = "Hi,",
-                            Style = TileTextStyle.Base,
-                            Align = TileTextAlign.Center
+                            HintStyle = AdaptiveTextStyle.Base,
+                            HintAlign = AdaptiveTextAlign.Center
                         },
 
-                        new TileText()
+                        new AdaptiveText()
                         {
                             Text = "MasterHip",
-                            Style = TileTextStyle.CaptionSubtle,
-                            Align = TileTextAlign.Center
+                            HintStyle = AdaptiveTextStyle.CaptionSubtle,
+                            HintAlign = AdaptiveTextAlign.Center
                         }
                     }
                 }
@@ -43,38 +43,38 @@ namespace NotificationsExtensions.Win10.Test.Portable
                 {
                     Children =
                     {
-                        new TileGroup()
+                        new AdaptiveGroup()
                         {
                             Children =
                             {
-                                new TileSubgroup()
+                                new AdaptiveSubgroup()
                                 {
-                                    Weight = 33,
+                                    HintWeight = 33,
                                     Children =
                                     {
-                                        new TileImage()
+                                        new AdaptiveImage()
                                         {
-                                            Source = new TileImageSource("http://xbox.com/MasterHip/profile.jpg"),
-                                            Crop = TileImageCrop.Circle
+                                            Source = "http://xbox.com/MasterHip/profile.jpg",
+                                            HintCrop = AdaptiveImageCrop.Circle
                                         }
                                     }
                                 },
 
-                                new TileSubgroup()
+                                new AdaptiveSubgroup()
                                 {
-                                    TextStacking = TileTextStacking.Center,
+                                    HintTextStacking = AdaptiveSubgroupTextStacking.Center,
                                     Children =
                                     {
-                                        new TileText()
+                                        new AdaptiveText()
                                         {
                                             Text = "Hi,",
-                                            Style = TileTextStyle.Title
+                                            HintStyle = AdaptiveTextStyle.Title
                                         },
 
-                                        new TileText()
+                                        new AdaptiveText()
                                         {
                                             Text = "MasterHip",
-                                            Style = TileTextStyle.SubtitleSubtle
+                                            HintStyle = AdaptiveTextStyle.SubtitleSubtle
                                         }
                                     }
                                 }
@@ -94,39 +94,39 @@ namespace NotificationsExtensions.Win10.Test.Portable
                     TextStacking = TileTextStacking.Center,
                     Children =
                     {
-                        new TileGroup()
+                        new AdaptiveGroup()
                         {
                             Children =
                             {
-                                new TileSubgroup() { Weight = 1 },
-                                new TileSubgroup()
+                                new AdaptiveSubgroup() { HintWeight = 1 },
+                                new AdaptiveSubgroup()
                                 {
-                                    Weight = 2,
+                                    HintWeight = 2,
                                     Children =
                                     {
-                                        new TileImage()
+                                        new AdaptiveImage()
                                         {
-                                            Source = new TileImageSource("http://xbox.com/MasterHip/profile.jpg"),
-                                            Crop = TileImageCrop.Circle
+                                            Source = "http://xbox.com/MasterHip/profile.jpg",
+                                            HintCrop = AdaptiveImageCrop.Circle
                                         }
                                     }
                                 },
-                                new TileSubgroup() { Weight = 1 }
+                                new AdaptiveSubgroup() { HintWeight = 1 }
                             }
                         },
 
-                        new TileText()
+                        new AdaptiveText()
                         {
                             Text = "Hi,",
-                            Style = TileTextStyle.Title,
-                            Align = TileTextAlign.Center
+                            HintStyle = AdaptiveTextStyle.Title,
+                            HintAlign = AdaptiveTextAlign.Center
                         },
 
-                        new TileText()
+                        new AdaptiveText()
                         {
                             Text = "MasterHip",
-                            Style = TileTextStyle.SubtitleSubtle,
-                            Align = TileTextAlign.Center
+                            HintStyle = AdaptiveTextStyle.SubtitleSubtle,
+                            HintAlign = AdaptiveTextAlign.Center
                         }
                     }
                 }

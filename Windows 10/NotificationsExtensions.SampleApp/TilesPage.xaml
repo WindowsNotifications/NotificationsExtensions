@@ -32,6 +32,7 @@
                     Style="{StaticResource ImageButtonStyle}"
                     Content="Assets/Samples/Tiles/CirclePeek.png"
                     Click="ButtonCirclePeek_Click"
+                    RightTapped="ButtonCirclePeek_RightTapped"
                     Tag="Circle peek"/>
 
                 <Button
@@ -39,14 +40,23 @@
                     Style="{StaticResource ImageButtonStyle}"
                     Content="Assets/Samples/Tiles/PeekAndBackground.png"
                     Click="ButtonPeekAndBackground_Click"
+                    RightTapped="ButtonPeekAndBackground_RightTapped"
                     Tag="Peek and background"/>
 
                 <Button
                     x:Name="ButtonPeekOverlay"
                     Style="{StaticResource ImageButtonStyle}"
                     Content="Assets/Samples/Tiles/PeekOverlay.png"
+                    RightTapped="ButtonPeekOverlay_RightTapped"
                     Click="ButtonPeekOverlay_Click"
                     Tag="Peek overlay"/>
+
+                <Button
+                    x:Name="ButtonHeavyOverlay"
+                    Style="{StaticResource ImageButtonStyle}"
+                    Content="Assets/Samples/Tiles/HeavyOverlay.png"
+                    Click="ButtonHeavyOverlay_Click"
+                    Tag="Heavy overlay"/>
 
             </StackPanel>
         </ScrollViewer>

@@ -37,9 +37,31 @@ namespace NotificationsExtensions.SampleApp
             {
                 PeekImage = new TilePeekImage()
                 {
-                    Source = new TileImageSource("https://scontent-sea1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10400509_17041889223_9991_n.jpg?oh=e0c4297d1529c5d5ec0fa872ae5ee6b8&oe=56BD2442"),
+                    Source = "https://unsplash.it/100",
 
-                    Crop = TileImageCrop.Circle
+                    HintCrop = TilePeekImageCrop.Circle
+                },
+
+                Children =
+                {
+                    new AdaptiveText()
+                    {
+                        Text = "Matt Hidinger sent you a friend request.",
+                        HintWrap = true
+                    }
+                }
+            });
+        }
+
+        private void ButtonCirclePeek_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            UpdateMedium(new TileBindingContentAdaptive()
+            {
+                PeekImage = new TilePeekImage()
+                {
+                    Source = "https://unsplash.it/100",
+
+                    HintCrop = TilePeekImageCrop.Circle
                 },
 
                 Children =
@@ -90,13 +112,39 @@ namespace NotificationsExtensions.SampleApp
             {
                 PeekImage = new TilePeekImage()
                 {
-                    Source = new TileImageSource("https://scontent-sea1-1.xx.fbcdn.net/hphotos-xpl1/v/t1.0-9/10404444_10206528591155782_2127489559213380445_n.jpg?oh=69be06f60ea96681bc6ad94c270f7d54&oe=56D3658C"),
-                    Crop = TileImageCrop.Circle
+                    Source = "https://unsplash.it/100",
+                    HintCrop = TilePeekImageCrop.Circle
                 },
 
                 BackgroundImage = new TileBackgroundImage()
                 {
-                    Source = new TileImageSource("https://scontent-sea1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10400509_17041889223_9991_n.jpg?oh=e0c4297d1529c5d5ec0fa872ae5ee6b8&oe=56BD2442")
+                    Source = "https://unsplash.it/100/?random"
+                },
+
+                Children =
+                {
+                    new AdaptiveText()
+                    {
+                        Text = "Matt updated his profile picture.",
+                        HintWrap = true
+                    }
+                }
+            });
+        }
+
+        private void ButtonPeekAndBackground_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            UpdateMedium(new TileBindingContentAdaptive()
+            {
+                PeekImage = new TilePeekImage()
+                {
+                    Source = "https://unsplash.it/100",
+                    HintCrop = TilePeekImageCrop.Circle
+                },
+
+                BackgroundImage = new TileBackgroundImage()
+                {
+                    Source = "https://unsplash.it/100/?random"
                 },
 
                 Children =
@@ -116,8 +164,29 @@ namespace NotificationsExtensions.SampleApp
             {
                 PeekImage = new TilePeekImage()
                 {
-                    Source = new TileImageSource("Assets/Images/map.jpg"),
-                    Overlay = 20
+                    Source = "Assets/Images/map.jpg",
+                    HintOverlay = 20
+                },
+
+                Children =
+                {
+                    new AdaptiveText()
+                    {
+                        Text = "1600 NE 29th St, 98008",
+                        HintWrap = true
+                    }
+                }
+            });
+        }
+
+        private void ButtonPeekOverlay_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            UpdateMedium(new TileBindingContentAdaptive()
+            {
+                PeekImage = new TilePeekImage()
+                {
+                    Source = "Assets/Images/map.jpg",
+                    HintOverlay = 20
                 },
 
                 Children =
@@ -126,6 +195,33 @@ namespace NotificationsExtensions.SampleApp
                     {
                         Text = "1600 NE 29th St, 98008",
                         Wrap = true
+                    }
+                }
+            });
+        }
+
+        private void ButtonHeavyOverlay_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateMedium(new TileBindingContentAdaptive()
+            {
+                PeekImage = new TilePeekImage()
+                {
+                    Source = "Assets/Images/map.jpg",
+                    HintOverlay = 60
+                },
+
+                BackgroundImage = new TileBackgroundImage()
+                {
+                    Source = "https://unsplash.it/100",
+                    HintOverlay = 60
+                },
+
+                Children =
+                {
+                    new AdaptiveText()
+                    {
+                        Text = "1600 NE 29th St, 98008",
+                        HintWrap = true
                     }
                 }
             });

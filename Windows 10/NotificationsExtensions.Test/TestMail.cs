@@ -115,53 +115,55 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
             if (makeLarge)
                 xml += @" hint-style=""subtitle""";
+            else
+                xml += " hint-style='caption'";
 
             xml += $@">{from}</text><text hint-style=""captionSubtle"">{subject}</text><text hint-style=""captionSubtle"">{body}</text></subgroup></group>";
 
             return xml;
         }
 
-        private static TileText GenerateSpacer()
+        private static AdaptiveText GenerateSpacer()
         {
-            return new TileText();
+            return new AdaptiveText();
         }
 
-        private static TileGroup GenerateFirstMessage(bool makeLarge)
+        private static AdaptiveGroup GenerateFirstMessage(bool makeLarge)
         {
             return GenerateMessage(FIRST_FROM, FIRST_SUBJECT, FIRST_BODY, makeLarge);
         }
 
-        private static TileGroup GenerateSecondMessage(bool makeLarge)
+        private static AdaptiveGroup GenerateSecondMessage(bool makeLarge)
         {
             return GenerateMessage(SECOND_FROM, SECOND_SUBJECT, SECOND_BODY, makeLarge);
         }
 
-        private static TileGroup GenerateMessage(string from, string subject, string body, bool makeLarge)
+        private static AdaptiveGroup GenerateMessage(string from, string subject, string body, bool makeLarge)
         {
-            return new TileGroup()
+            return new AdaptiveGroup()
             {
                 Children =
                 {
-                    new TileSubgroup()
+                    new AdaptiveSubgroup()
                     {
                         Children =
                         {
-                            new TileText()
+                            new AdaptiveText()
                             {
                                 Text = from,
-                                Style = makeLarge ? TileTextStyle.Subtitle : TileTextStyle.Caption
+                                HintStyle = makeLarge ? AdaptiveTextStyle.Subtitle : AdaptiveTextStyle.Caption
                             },
 
-                            new TileText()
+                            new AdaptiveText()
                             {
                                 Text = subject,
-                                Style = TileTextStyle.CaptionSubtle
+                                HintStyle = AdaptiveTextStyle.CaptionSubtle
                             },
 
-                            new TileText()
+                            new AdaptiveText()
                             {
                                 Text = body,
-                                Style = TileTextStyle.CaptionSubtle
+                                HintStyle = AdaptiveTextStyle.CaptionSubtle
                             }
                         }
                     }

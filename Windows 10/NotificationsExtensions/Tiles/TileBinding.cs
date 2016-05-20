@@ -44,7 +44,7 @@ namespace NotificationsExtensions.Tiles
         /// 
         /// "www.website.com/images/hello.png?ms-scale=100&amp;ms-contrast=standard&amp;ms-lang=en-us"
         /// </summary>
-        public bool AddImageQuery { get; set; } = Element_TileBinding.DEFAULT_ADD_IMAGE_QUERY;
+        public bool? AddImageQuery { get; set; }
 
         /// <summary>
         /// Set to a sender-defined string that uniquely identifies the content of the notification. This prevents duplicates in the situation where a large tile template is displaying the last three wide tile notifications.

@@ -114,17 +114,37 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Apps\Weather\Cloudy-Square.png" />
+    <Content Include="Assets\Apps\Weather\Cloudy.png" />
+    <Content Include="Assets\Apps\Weather\Drizzle-Square.png" />
+    <Content Include="Assets\Apps\Weather\Drizzle.png" />
+    <Content Include="Assets\Apps\Weather\Haze-Square.png" />
+    <Content Include="Assets\Apps\Weather\Haze.png" />
+    <Content Include="Assets\Apps\Weather\Mostly Cloudy-Background.jpg" />
+    <Content Include="Assets\Apps\Weather\Mostly Cloudy-Square.png" />
+    <Content Include="Assets\Apps\Weather\Mostly Cloudy.png" />
+    <Content Include="Assets\Apps\Weather\Slight Drizzle-Square.png" />
+    <Content Include="Assets\Apps\Weather\Slight Drizzle.png" />
+    <Content Include="Assets\Apps\Weather\Snow-Square.png" />
+    <Content Include="Assets\Apps\Weather\Snow.png" />
+    <Content Include="Assets\Apps\Weather\Sunny-Square.png" />
+    <Content Include="Assets\Apps\Weather\Sunny.png" />
+    <Content Include="Assets\Apps\Weather\Thunderstorms-Square.png" />
+    <Content Include="Assets\Apps\Weather\Thunderstorms.png" />
     <Content Include="Assets\Images\map.jpg" />
     <Content Include="Assets\next.png" />
     <Content Include="Assets\Samples\Tiles\CirclePeek.png" />
+    <Content Include="Assets\Samples\Tiles\HeavyOverlay.png" />
     <Content Include="Assets\Samples\Tiles\PeekAndBackground.png" />
     <Content Include="Assets\Samples\Tiles\PeekOverlay.png" />
     <Content Include="Assets\Samples\Toasts\CustomSnoozeAndDismissText.jpg" />
     <Content Include="Assets\Samples\Toasts\CustomSnoozeTimes.jpg" />
     <Content Include="Assets\Samples\Toasts\LoopingAudio.jpg" />
     <Content Include="Assets\Samples\Toasts\QuickReply.jpg" />
+    <Content Include="Assets\Samples\Toasts\RS1StyleToast.jpg" />
     <Content Include="Assets\Samples\Toasts\SystemSnoozeAndDismiss.jpg" />
     <Content Include="Assets\Samples\Toasts\UnderConstruction.jpg" />
+    <Content Include="Assets\Samples\Toasts\WeatherToast.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />

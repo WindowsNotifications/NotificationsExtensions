@@ -250,6 +250,11 @@ namespace NotificationsExtensions.Win10.Test
             AssertXmlElement(expectedEl, actualEl);
         }
 
+        private static string AttributesToString(IEnumerable<MyXmlAttribute> attributes)
+        {
+            return string.Join(", ", attributes.Select(i => i.Name));
+        }
+
         private static void AssertXmlElement(MyXmlElement expected, MyXmlElement actual)
         {
             // If both null, good, done
@@ -269,7 +274,7 @@ namespace NotificationsExtensions.Win10.Test
 
 
             // If attribute count doesn't match
-            Assert.AreEqual(expected.Attributes.Count, actual.Attributes.Count, $"Different number of attributes on <{expected.Name}>");
+            Assert.AreEqual(expected.Attributes.Count, actual.Attributes.Count, $"Different number of attributes on <{expected.Name}>\n\nExpected: " + AttributesToString(expected.Attributes) + "\nActual: " + AttributesToString(actual.Attributes));
 
 
             // Make sure attributes match (order does NOT matter)
