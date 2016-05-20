@@ -5,7 +5,6 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved
 
-
 using NotificationsExtensions.Adaptive.Elements;
 using System;
 
