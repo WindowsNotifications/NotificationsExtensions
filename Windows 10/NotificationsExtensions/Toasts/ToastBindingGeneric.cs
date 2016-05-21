@@ -12,10 +12,18 @@ using System.Text;
 
 namespace NotificationsExtensions.Toasts
 {
+    /// <summary>
+    /// Generic toast binding, where you provide text, images, and other visual elements for your toast notification.
+    /// </summary>
     public sealed class ToastBindingGeneric
     {
         /// <summary>
-        /// The contents of the body of the toast, which can include <see cref="AdaptiveText"/>, <see cref="AdaptiveImage"/>, and <see cref="AdaptiveGroup"/> (added in RS1). Also, <see cref="AdaptiveText"/> elements must come before any other elements. If an <see cref="AdaptiveText"/> element is placed after any other element, an exception will be thrown when you try to retrieve the toast XML content. And finally, certain <see cref="AdaptiveText"/> properties like Style aren't supported on the root children text elements, and only work inside an <see cref="AdaptiveGroup"/>.
+        /// Constructs a generic toast binding, where you provide text, images, and other visual elements for your toast notification.
+        /// </summary>
+        public ToastBindingGeneric() { }
+
+        /// <summary>
+        /// The contents of the body of the toast, which can include <see cref="AdaptiveText"/>, <see cref="AdaptiveImage"/>, and <see cref="AdaptiveGroup"/> (added in 14332). Also, <see cref="AdaptiveText"/> elements must come before any other elements. If an <see cref="AdaptiveText"/> element is placed after any other element, an exception will be thrown when you try to retrieve the toast XML content. And finally, certain <see cref="AdaptiveText"/> properties like Style aren't supported on the root children text elements, and only work inside an <see cref="AdaptiveGroup"/>.
         /// </summary>
         public IList<IAdaptiveChild> Children { get; private set; } = new List<IAdaptiveChild>();
 
