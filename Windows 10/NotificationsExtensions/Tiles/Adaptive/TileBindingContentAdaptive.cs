@@ -22,7 +22,7 @@ namespace NotificationsExtensions.Tiles
         public TileBindingContentAdaptive() { }
 
         /// <summary>
-        /// <see cref="TileText"/>, <see cref="TileImage"/>, and <see cref="TileGroup"/> objects can be added as children. The children are displayed in a vertical StackPanel fashion.
+        /// <see cref="AdaptiveText"/>, <see cref="AdaptiveImage"/>, and <see cref="AdaptiveGroup"/> objects can be added as children. The children are displayed in a vertical StackPanel fashion.
         /// </summary>
         public IList<ITileAdaptiveChild> Children { get; private set; } = new List<ITileAdaptiveChild>();
 
@@ -55,9 +55,6 @@ namespace NotificationsExtensions.Tiles
             // Add the background image if there's one
             if (BackgroundImage != null)
             {
-                // We pull up the overlay value from there
-                binding.Overlay = BackgroundImage.Overlay;
-                
                 // And add it as a child
                 binding.Children.Add(BackgroundImage.ConvertToElement());
             }
@@ -66,10 +63,6 @@ namespace NotificationsExtensions.Tiles
             if (PeekImage != null)
             {
                 var el = PeekImage.ConvertToElement();
-
-                // If peek overlay needs to be specified
-                if (ShouldSpecifyPeekOverlay(binding, PeekImage))
-                    el.Overlay = PeekImage.Overlay;
 
                 binding.Children.Add(el);
             }
@@ -81,32 +74,19 @@ namespace NotificationsExtensions.Tiles
             }
         }
 
-        private static bool ShouldSpecifyPeekOverlay(Element_TileBinding binding, TilePeekImage peekImage)
-        {
-            if (binding.Overlay == null)
-            {
-                // Peek defaults to 0 anyways, so no need to specify
-                if (peekImage.Overlay == 0)
-                    return false;
-
-                else
-                    return true;
-            }
-
-            else
-            {
-                // Main matches, no need to specify
-                if (binding.Overlay.Value == peekImage.Overlay)
-                    return false;
-
-                else
-                    return true;
-            }
-        }
-
         private static IElement_TileBindingChild ConvertToBindingChildElement(ITileAdaptiveChild child)
         {
-            if (child is TileText)
+            if (child is AdaptiveText)
+                return (child as AdaptiveText).ConvertToElement();
+
+            else if (child is AdaptiveImage)
+                return (child as AdaptiveImage).ConvertToElement();
+
+            else if (child is AdaptiveGroup)
+                return (child as AdaptiveGroup).ConvertToElement();
+
+            // Keeping this here for legacy support
+            else if (child is TileText)
                 return (child as TileText).ConvertToElement();
 
             else if (child is TileImage)
@@ -121,7 +101,7 @@ namespace NotificationsExtensions.Tiles
     }
 
     /// <summary>
-    /// Elements (<see cref="TileText"/>, <see cref="TileImage"/>, <see cref="TileGroup"/>) that can be direct children of <see cref="TileBindingContentAdaptive"/>.
+    /// Elements (<see cref="AdaptiveText"/>, <see cref="AdaptiveImage"/>, and <see cref="AdaptiveGroup"/>) that can be direct children of <see cref="TileBindingContentAdaptive"/>.
     /// </summary>
     public interface ITileAdaptiveChild
     {

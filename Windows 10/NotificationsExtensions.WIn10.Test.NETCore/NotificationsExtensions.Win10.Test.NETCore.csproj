@@ -42,18 +42,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NotificationsExtensions.Win10.NETCore\NotificationsExtensions.Win10.NETCore.csproj">
-      <Project>{d904d8c8-aec5-440b-b80e-d42ff3b91ede}</Project>
-      <Name>NotificationsExtensions.Win10.NETCore</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NotificationsExtensions.Win10.NETCore\NotificationsExtensions.Win10.NETCore.csproj">
+      <Project>{d904d8c8-aec5-440b-b80e-d42ff3b91ede}</Project>
+      <Name>NotificationsExtensions.Win10.NETCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\NotificationsExtensions.Test\NotificationsExtensions.Test.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

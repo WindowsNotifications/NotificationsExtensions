@@ -6,11 +6,14 @@
 // Copyright (c) Microsoft Corporation. All rights reserved
 
 
+using System;
+
 namespace NotificationsExtensions.Tiles
 {
     /// <summary>
     /// An adaptive text element.
     /// </summary>
+    [Obsolete("Use AdaptiveText instead.")]
     public sealed class TileText : ITileSubgroupChild, ITileAdaptiveChild
     {
         /// <summary>

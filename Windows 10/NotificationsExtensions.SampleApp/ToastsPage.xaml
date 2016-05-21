@@ -32,6 +32,7 @@
                     Style="{StaticResource ImageButtonStyle}"
                     Content="Assets/Samples/Toasts/QuickReply.jpg"
                     Click="ButtonQuickReply_Click"
+                    RightTapped="ButtonQuickReply_RightTapped"
                     Tag="Quick reply"/>
 
                 <Button
@@ -39,25 +40,41 @@
                     Style="{StaticResource ImageButtonStyle}"
                     Content="Assets/Samples/Toasts/SystemSnoozeAndDismiss.jpg"
                     Click="ButtonSystemSnoozeDismiss_Click"
+                    RightTapped="ButtonSystemSnoozeDismiss_RightTapped"
                     Tag="System handled snooze and dismiss"/>
 
                 <Button
                     x:Name="ButtonCustomSnoozeTimes"
                     Style="{StaticResource ImageButtonStyle}"
                     Content="Assets/Samples/Toasts/CustomSnoozeTimes.jpg"
+                    RightTapped="ButtonCustomSnoozeTimes_RightTapped"
                     Click="ButtonCustomSnoozeTimes_Click"/>
                 
                 <Button
                     x:Name="ButtonCustomSnoozeAndDismissText"
                     Style="{StaticResource ImageButtonStyle}"
                     Click="ButtonCustomSnoozeAndDismissText_Click"
+                    RightTapped="ButtonCustomSnoozeAndDismissText_RightTapped"
                     Content="Assets/Samples/Toasts/CustomSnoozeAndDismissText.jpg"/>
 
                 <Button
                     x:Name="ButtonLoopingAudio"
                     Style="{StaticResource ImageButtonStyle}"
                     Click="ButtonLoopingAudio_Click"
+                    RightTapped="ButtonLoopingAudio_RightTapped"
                     Content="Assets/Samples/Toasts/LoopingAudio.jpg"/>
+
+                <Button
+                    x:Name="ButtonRS1StyleToast"
+                    Style="{StaticResource ImageButtonStyle}"
+                    Content="Assets/Samples/Toasts/RS1StyleToast.jpg"
+                    Click="ButtonRS1StyleToast_Click"/>
+
+                <Button
+                    x:Name="ButtonWeatherToast"
+                    Style="{StaticResource ImageButtonStyle}"
+                    Content="Assets/Samples/Toasts/WeatherToast.jpg"
+                    Click="ButtonWeatherToast_Click"/>
 
             </StackPanel>
         </ScrollViewer>

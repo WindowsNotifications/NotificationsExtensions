@@ -14,8 +14,6 @@ namespace NotificationsExtensions.Toasts
     [NotificationXmlElement("binding")]
     internal sealed class Element_ToastBinding
     {
-        internal const bool DEFAULT_ADD_IMAGE_QUERY = false;
-
         public Element_ToastBinding(ToastTemplateType template)
         {
             Template = template;
@@ -33,8 +31,8 @@ namespace NotificationsExtensions.Toasts
         /// 
         /// "www.website.com/images/hello.png?ms-scale=100&amp;ms-contrast=standard&amp;ms-lang=en-us"
         /// </summary>
-        [NotificationXmlAttribute("addImageQuery", DEFAULT_ADD_IMAGE_QUERY)]
-        public bool AddImageQuery { get; set; } = DEFAULT_ADD_IMAGE_QUERY;
+        [NotificationXmlAttribute("addImageQuery")]
+        public bool? AddImageQuery { get; set; }
 
         /// <summary>
         /// A default base URI that is combined with relative URIs in image source attributes.

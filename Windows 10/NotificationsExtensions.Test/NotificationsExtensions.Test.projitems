@@ -10,11 +10,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AssertHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestMailLegacy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestWeather.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Test_Adaptive_Xml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Test_Tile_Xml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestMail.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TestWeather.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestWeatherLegacy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Test_Badge_Xml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Test_ToastV2_Xml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Test_Toast_Xml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TextXboxModernLegacy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TextXboxModern.cs" />
   </ItemGroup>
 </Project>

@@ -13,6 +13,7 @@ namespace NotificationsExtensions.Toasts
     internal sealed class Element_ToastAction : IElement_ToastActionsChild
     {
         internal const Element_ToastActivationType DEFAULT_ACTIVATION_TYPE = Element_ToastActivationType.Foreground;
+        internal const Element_ToastActionPlacement DEFAULT_PLACEMENT = Element_ToastActionPlacement.Inline;
 
         /// <summary>
         /// The text to be displayed on the button.
@@ -40,6 +41,17 @@ namespace NotificationsExtensions.Toasts
         /// </summary>
         [NotificationXmlAttribute("hint-inputId")]
         public string InputId { get; set; }
+
+        [NotificationXmlAttribute("placement", DEFAULT_PLACEMENT)]
+        public Element_ToastActionPlacement Placement { get; set; } = DEFAULT_PLACEMENT;
+    }
+
+    internal enum Element_ToastActionPlacement
+    {
+        Inline,
+
+        [EnumString("contextMenu")]
+        ContextMenu
     }
 
     internal enum Element_ToastActivationType

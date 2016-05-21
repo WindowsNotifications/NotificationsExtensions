@@ -30,7 +30,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertVisual(
             
-                "<visual/>",
+                "<visual addImageQuery='false'/>",
                     
                 new TileVisual()
                 {
@@ -636,7 +636,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMedium(
 
-                "<binding template='TileMedium'/>",
+                "<binding template='TileMedium' addImageQuery='false'/>",
 
                 new TileBinding()
                 {
@@ -896,7 +896,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMedium(
 
-                "<binding template='TileMedium' hint-overlay='20'><image src='http://msn.com/image.png' placement='background' /></binding>",
+                "<binding template='TileMedium'><image src='http://msn.com/image.png' placement='background' /></binding>",
 
                 new TileBinding()
                 {
@@ -904,7 +904,7 @@ namespace NotificationsExtensions.Win10.Test
                     {
                         BackgroundImage = new TileBackgroundImage()
                         {
-                            Source = new TileImageSource("http://msn.com/image.png")
+                            Source = "http://msn.com/image.png"
                         }
                     }
                 });
@@ -916,7 +916,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMedium(
 
-                "<binding template='TileMedium' hint-overlay='20'><image src='Fable.jpg' placement='background' /></binding>",
+                "<binding template='TileMedium'><image src='Fable.jpg' placement='background' hint-overlay='20'/></binding>",
 
                 new TileBinding()
                 {
@@ -924,8 +924,8 @@ namespace NotificationsExtensions.Win10.Test
                     {
                         BackgroundImage = new TileBackgroundImage()
                         {
-                            Overlay = 20,
-                            Source = new TileImageSource("Fable.jpg")
+                            HintOverlay = 20,
+                            Source = "Fable.jpg"
                         }
                     }
                 });
@@ -937,7 +937,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMedium(
 
-                "<binding template='TileMedium' hint-overlay='0'><image src='Fable.jpg' placement='background' /></binding>",
+                "<binding template='TileMedium'><image src='Fable.jpg' placement='background' hint-overlay='0'/></binding>",
 
                 new TileBinding()
                 {
@@ -945,8 +945,8 @@ namespace NotificationsExtensions.Win10.Test
                     {
                         BackgroundImage = new TileBackgroundImage()
                         {
-                            Overlay = 0,
-                            Source = new TileImageSource("Fable.jpg")
+                            HintOverlay = 0,
+                            Source = "Fable.jpg"
                         }
                     }
                 });
@@ -958,7 +958,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMedium(
 
-                "<binding template='TileMedium' hint-overlay='100'><image src='Fable.jpg' placement='background' /></binding>",
+                "<binding template='TileMedium'><image src='Fable.jpg' placement='background' hint-overlay='100'/></binding>",
 
                 new TileBinding()
                 {
@@ -966,8 +966,8 @@ namespace NotificationsExtensions.Win10.Test
                     {
                         BackgroundImage = new TileBackgroundImage()
                         {
-                            Overlay = 100,
-                            Source = new TileImageSource("Fable.jpg")
+                            HintOverlay = 100,
+                            Source = "Fable.jpg"
                         }
                     }
                 });
@@ -979,7 +979,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMedium(
 
-                "<binding template='TileMedium' hint-overlay='40'><image src='Fable.jpg' placement='background' /></binding>",
+                "<binding template='TileMedium'><image src='Fable.jpg' placement='background' hint-overlay='40'/></binding>",
 
                 new TileBinding()
                 {
@@ -987,8 +987,8 @@ namespace NotificationsExtensions.Win10.Test
                     {
                         BackgroundImage = new TileBackgroundImage()
                         {
-                            Overlay = 40,
-                            Source = new TileImageSource("Fable.jpg")
+                            HintOverlay = 40,
+                            Source = "Fable.jpg"
                         }
                     }
                 });
@@ -1000,7 +1000,7 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMedium(
 
-                "<binding template='TileMedium' hint-overlay='10'><image src='Fable.jpg' placement='background' /></binding>",
+                "<binding template='TileMedium'><image src='Fable.jpg' placement='background' hint-overlay='10' /></binding>",
 
                 new TileBinding()
                 {
@@ -1008,8 +1008,8 @@ namespace NotificationsExtensions.Win10.Test
                     {
                         BackgroundImage = new TileBackgroundImage()
                         {
-                            Overlay = 10,
-                            Source = new TileImageSource("Fable.jpg")
+                            HintOverlay = 10,
+                            Source = "Fable.jpg"
                         }
                     }
                 });
@@ -1023,8 +1023,8 @@ namespace NotificationsExtensions.Win10.Test
             {
                 new TileBackgroundImage()
                 {
-                    Overlay = -1,
-                    Source = new TileImageSource("Fable.jpg")
+                    HintOverlay = -1,
+                    Source = "Fable.jpg"
                 };
             }
 
@@ -1041,8 +1041,8 @@ namespace NotificationsExtensions.Win10.Test
             {
                 new TileBackgroundImage()
                 {
-                    Overlay = 101,
-                    Source = new TileImageSource("Fable.jpg")
+                    HintOverlay = 101,
+                    Source = "Fable.jpg"
                 };
             }
 
@@ -1065,11 +1065,9 @@ namespace NotificationsExtensions.Win10.Test
                     {
                         PeekImage = new TilePeekImage()
                         {
-                            Source = new TileImageSource("http://msn.com")
-                            {
-                                Alt = "alt",
-                                AddImageQuery = true
-                            }
+                            Source = "http://msn.com",
+                            AlternateText = "alt",
+                            AddImageQuery = true
                         }
                     }
                 });
@@ -1595,13 +1593,13 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='20'><image src='http://msn.com' placement='background'/></binding>",
+                "<binding template='TileMedium'><image src='http://msn.com' placement='background'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("http://msn.com")
+                        Source = "http://msn.com"
                     }
                 });
         }
@@ -1611,17 +1609,15 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='20'><image src='http://msn.com' placement='background' addImageQuery='true' alt='MSN Image'/></binding>",
+                "<binding template='TileMedium'><image src='http://msn.com' placement='background' addImageQuery='true' alt='MSN Image'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("http://msn.com")
-                        {
-                            AddImageQuery = true,
-                            Alt = "MSN Image"
-                        }
+                        Source = "http://msn.com",
+                        AddImageQuery = true,
+                        AlternateText = "MSN Image"
                     }
                 });
         }
@@ -1631,14 +1627,14 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='20'><image src='http://msn.com' placement='background'/></binding>",
+                "<binding template='TileMedium'><image src='http://msn.com' placement='background' hint-crop='none'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("http://msn.com"),
-                        Crop = TileImageCrop.None
+                        Source = "http://msn.com",
+                        HintCrop = TileBackgroundImageCrop.None
                     }
                 });
         }
@@ -1648,14 +1644,14 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='20'><image src='http://msn.com' placement='background' hint-crop='circle'/></binding>",
+                "<binding template='TileMedium'><image src='http://msn.com' placement='background' hint-crop='circle'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("http://msn.com"),
-                        Crop = TileImageCrop.Circle
+                        Source = "http://msn.com",
+                        HintCrop = TileBackgroundImageCrop.Circle
                     }
                 });
         }
@@ -1665,14 +1661,14 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='0'><image src='http://msn.com' placement='background'/></binding>",
+                "<binding template='TileMedium'><image src='http://msn.com' placement='background' hint-overlay='0'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("http://msn.com"),
-                        Overlay = 0
+                        Source = "http://msn.com",
+                        HintOverlay = 0
                     }
                 });
         }
@@ -1682,14 +1678,14 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='20'><image src='http://msn.com' placement='background'/></binding>",
+                "<binding template='TileMedium'><image src='http://msn.com' placement='background' hint-overlay='20'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("http://msn.com"),
-                        Overlay = 20
+                        Source = "http://msn.com",
+                        HintOverlay = 20
                     }
                 });
         }
@@ -1699,14 +1695,14 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='80'><image src='http://msn.com' placement='background'/></binding>",
+                "<binding template='TileMedium'><image src='http://msn.com' placement='background' hint-overlay='80'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("http://msn.com"),
-                        Overlay = 80
+                        Source = "http://msn.com",
+                        HintOverlay = 80
                     }
                 });
         }
@@ -1759,7 +1755,7 @@ namespace NotificationsExtensions.Win10.Test
                 {
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("http://msn.com")
+                        Source = "http://msn.com"
                     }
                 });
         }
@@ -1775,11 +1771,9 @@ namespace NotificationsExtensions.Win10.Test
                 {
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("http://msn.com")
-                        {
-                            AddImageQuery = true,
-                            Alt = "MSN Image"
-                        }
+                        Source = "http://msn.com",
+                        AddImageQuery = true,
+                        AlternateText = "MSN Image"
                     }
                 });
         }
@@ -1789,14 +1783,14 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium'><image src='http://msn.com' placement='peek'/></binding>",
+                "<binding template='TileMedium'><image src='http://msn.com' placement='peek' hint-crop='none'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("http://msn.com"),
-                        Crop = TileImageCrop.None
+                        Source = "http://msn.com",
+                        HintCrop = TilePeekImageCrop.None
                     }
                 });
         }
@@ -1812,8 +1806,8 @@ namespace NotificationsExtensions.Win10.Test
                 {
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("http://msn.com"),
-                        Crop = TileImageCrop.Circle
+                        Source = "http://msn.com",
+                        HintCrop = TilePeekImageCrop.Circle
                     }
                 });
         }
@@ -1823,14 +1817,14 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium'><image src='http://msn.com' placement='peek'/></binding>",
+                "<binding template='TileMedium'><image src='http://msn.com' placement='peek' hint-overlay='0'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("http://msn.com"),
-                        Overlay = 0
+                        Source = "http://msn.com",
+                        HintOverlay = 0
                     }
                 });
         }
@@ -1846,8 +1840,8 @@ namespace NotificationsExtensions.Win10.Test
                 {
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("http://msn.com"),
-                        Overlay = 20
+                        Source = "http://msn.com",
+                        HintOverlay = 20
                     }
                 });
         }
@@ -1863,8 +1857,8 @@ namespace NotificationsExtensions.Win10.Test
                 {
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("http://msn.com"),
-                        Overlay = 80
+                        Source = "http://msn.com",
+                        HintOverlay = 80
                     }
                 });
         }
@@ -1911,18 +1905,18 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='20'><image src='Background.jpg' placement='background'/><image src='Peek.jpg' placement='peek' hint-overlay='0'/></binding>",
+                "<binding template='TileMedium'><image src='Background.jpg' placement='background'/><image src='Peek.jpg' placement='peek'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("Background.jpg")
+                        Source = "Background.jpg"
                     },
 
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("Peek.jpg")
+                        Source = "Peek.jpg"
                     }
                 });
         }
@@ -1932,20 +1926,20 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='0'><image src='Background.jpg' placement='background'/><image src='Peek.jpg' placement='peek'/></binding>",
+                "<binding template='TileMedium'><image src='Background.jpg' placement='background' hint-overlay='0'/><image src='Peek.jpg' placement='peek' hint-overlay='0'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("Background.jpg"),
-                        Overlay = 0
+                        Source = "Background.jpg",
+                        HintOverlay = 0
                     },
 
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("Peek.jpg"),
-                        Overlay = 0
+                        Source = "Peek.jpg",
+                        HintOverlay = 0
                     }
                 });
         }
@@ -1955,20 +1949,20 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='20'><image src='Background.jpg' placement='background'/><image src='Peek.jpg' placement='peek'/></binding>",
+                "<binding template='TileMedium'><image src='Background.jpg' placement='background' hint-overlay='20'/><image src='Peek.jpg' placement='peek' hint-overlay='20'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("Background.jpg"),
-                        Overlay = 20
+                        Source = "Background.jpg",
+                        HintOverlay = 20
                     },
 
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("Peek.jpg"),
-                        Overlay = 20
+                        Source = "Peek.jpg",
+                        HintOverlay = 20
                     }
                 });
         }
@@ -1978,20 +1972,20 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='20'><image src='Background.jpg' placement='background'/><image src='Peek.jpg' placement='peek' hint-overlay='30'/></binding>",
+                "<binding template='TileMedium'><image src='Background.jpg' placement='background' hint-overlay='20'/><image src='Peek.jpg' placement='peek' hint-overlay='30'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("Background.jpg"),
-                        Overlay = 20
+                        Source = "Background.jpg",
+                        HintOverlay = 20
                     },
 
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("Peek.jpg"),
-                        Overlay = 30
+                        Source = "Peek.jpg",
+                        HintOverlay = 30
                     }
                 });
         }
@@ -2001,20 +1995,20 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='30'><image src='Background.jpg' placement='background'/><image src='Peek.jpg' placement='peek' hint-overlay='20'/></binding>",
+                "<binding template='TileMedium'><image src='Background.jpg' placement='background' hint-overlay='30'/><image src='Peek.jpg' placement='peek' hint-overlay='20'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("Background.jpg"),
-                        Overlay = 30
+                        Source = "Background.jpg",
+                        HintOverlay = 30
                     },
 
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("Peek.jpg"),
-                        Overlay = 20
+                        Source = "Peek.jpg",
+                        HintOverlay = 20
                     }
                 });
         }
@@ -2025,20 +2019,20 @@ namespace NotificationsExtensions.Win10.Test
         {
             AssertBindingMediumAdaptive(
 
-                "<binding template='TileMedium' hint-overlay='0'><image src='Background.jpg' placement='background'/><image src='Peek.jpg' placement='peek' hint-overlay='20'/></binding>",
+                "<binding template='TileMedium'><image src='Background.jpg' placement='background' hint-overlay='0'/><image src='Peek.jpg' placement='peek' hint-overlay='20'/></binding>",
 
                 new TileBindingContentAdaptive()
                 {
                     BackgroundImage = new TileBackgroundImage()
                     {
-                        Source = new TileImageSource("Background.jpg"),
-                        Overlay = 0
+                        Source = "Background.jpg",
+                        HintOverlay = 0
                     },
 
                     PeekImage = new TilePeekImage()
                     {
-                        Source = new TileImageSource("Peek.jpg"),
-                        Overlay = 20
+                        Source = "Peek.jpg",
+                        HintOverlay = 20
                     }
                 });
         }

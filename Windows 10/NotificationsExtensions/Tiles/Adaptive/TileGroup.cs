@@ -5,6 +5,7 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved
 
+using System;
 using System.Collections.Generic;
 
 namespace NotificationsExtensions.Tiles
@@ -12,6 +13,7 @@ namespace NotificationsExtensions.Tiles
     /// <summary>
     /// Groups semantically identify that the content in the group must either be displayed as a whole, or not displayed if it cannot fit. Groups also allow creating multiple columns.
     /// </summary>
+    [Obsolete("Use AdaptiveGroup instead.")]
     public sealed class TileGroup : ITileAdaptiveChild
     {
         /// <summary>

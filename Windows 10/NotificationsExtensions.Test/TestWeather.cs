@@ -1,8 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NotificationsExtensions.Tiles;
+using NotificationsExtensions.Win10.Test;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace NotificationsExtensions.Win10.Test.Portable
+namespace NotificationsExtensions.Test
 {
     [TestClass]
     public class TestWeather
@@ -13,31 +16,30 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
         private const string BACKGROUND_IMAGE_MOSTLY_CLOUDY = "Assets\\Tiles\\Mostly Cloudy-Background.png";
 
-        [TestCategory("EndToEnd/Weather")]
         [TestMethod]
         public void TestWeatherTile()
         {
-            TileImageSource backgroundImage = new TileImageSource(BACKGROUND_IMAGE_MOSTLY_CLOUDY);
+            var backgroundImage = BACKGROUND_IMAGE_MOSTLY_CLOUDY;
             int overlay = 30;
 
             TileBindingContentAdaptive smallContent = new TileBindingContentAdaptive()
             {
                 TextStacking = TileTextStacking.Center,
-                BackgroundImage = new TileBackgroundImage() { Source = backgroundImage, Overlay = overlay },
+                BackgroundImage = new TileBackgroundImage() { Source = backgroundImage, HintOverlay = overlay },
                 Children =
                 {
-                    new TileText()
+                    new AdaptiveText()
                     {
                         Text = "Mon",
-                        Style = TileTextStyle.Body,
-                        Align = TileTextAlign.Center
+                        HintStyle = AdaptiveTextStyle.Body,
+                        HintAlign = AdaptiveTextAlign.Center
                     },
 
-                    new TileText()
+                    new AdaptiveText()
                     {
                         Text = "63°",
-                        Style = TileTextStyle.Base,
-                        Align = TileTextAlign.Center
+                        HintStyle = AdaptiveTextStyle.Base,
+                        HintAlign = AdaptiveTextAlign.Center
                     }
                 }
             };
@@ -45,10 +47,10 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
             TileBindingContentAdaptive mediumContent = new TileBindingContentAdaptive()
             {
-                BackgroundImage = new TileBackgroundImage() { Source = backgroundImage, Overlay = overlay },
+                BackgroundImage = new TileBackgroundImage() { Source = backgroundImage, HintOverlay = overlay },
                 Children =
                 {
-                    new TileGroup()
+                    new AdaptiveGroup()
                     {
                         Children =
                         {
@@ -64,10 +66,10 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
             TileBindingContentAdaptive wideContent = new TileBindingContentAdaptive()
             {
-                BackgroundImage = new TileBackgroundImage() { Source = backgroundImage, Overlay = overlay },
+                BackgroundImage = new TileBackgroundImage() { Source = backgroundImage, HintOverlay = overlay },
                 Children =
                 {
-                    new TileGroup()
+                    new AdaptiveGroup()
                     {
                         Children =
                         {
@@ -90,47 +92,47 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
             TileBindingContentAdaptive largeContent = new TileBindingContentAdaptive()
             {
-                BackgroundImage = new TileBackgroundImage() { Source = backgroundImage, Overlay = overlay },
+                BackgroundImage = new TileBackgroundImage() { Source = backgroundImage, HintOverlay = overlay },
                 Children =
                 {
-                    new TileGroup()
+                    new AdaptiveGroup()
                     {
                         Children =
                         {
-                            new TileSubgroup()
+                            new AdaptiveSubgroup()
                             {
-                                Weight = 30,
+                                HintWeight = 30,
                                 Children =
                                 {
-                                    new TileImage() { Source = new TileImageSource(IMAGE_MOSTLY_CLOUDY) }
+                                    new AdaptiveImage() { Source = IMAGE_MOSTLY_CLOUDY }
                                 }
                             },
 
-                            new TileSubgroup()
+                            new AdaptiveSubgroup()
                             {
                                 Children =
                                 {
-                                    new TileText()
+                                    new AdaptiveText()
                                     {
                                         Text = "Monday",
-                                        Style = TileTextStyle.Base
+                                        HintStyle = AdaptiveTextStyle.Base
                                     },
 
-                                    new TileText()
+                                    new AdaptiveText()
                                     {
                                         Text = "63° / 42°"
                                     },
 
-                                    new TileText()
+                                    new AdaptiveText()
                                     {
                                         Text = "20% chance of rain",
-                                        Style = TileTextStyle.CaptionSubtle
+                                        HintStyle = AdaptiveTextStyle.CaptionSubtle
                                     },
 
-                                    new TileText()
+                                    new AdaptiveText()
                                     {
                                         Text = "Winds 5 mph NE",
-                                        Style = TileTextStyle.CaptionSubtle
+                                        HintStyle = AdaptiveTextStyle.CaptionSubtle
                                     }
                                 }
                             }
@@ -138,9 +140,9 @@ namespace NotificationsExtensions.Win10.Test.Portable
                     },
 
                     // For spacing
-                    new TileText(),
+                    new AdaptiveText(),
 
-                    new TileGroup()
+                    new AdaptiveGroup()
                     {
                         Children =
                         {
@@ -190,9 +192,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
                 }
             };
 
-
-
-            string expectedPayload = $@"<?xml version=""1.0"" encoding=""utf-8""?><tile><visual displayName=""Seattle""><binding template=""TileSmall"" hint-overlay=""30"" hint-textStacking=""center"">{GenerateStringBackgroundImage()}<text hint-align=""center"" hint-style=""body"">Mon</text><text hint-align=""center"" hint-style=""base"">63°</text></binding><binding template=""TileMedium"" branding=""name"" hint-overlay=""30"">{GenerateStringBackgroundImage()}<group>";
+            string expectedPayload = $@"<?xml version=""1.0"" encoding=""utf-8""?><tile><visual displayName=""Seattle""><binding template=""TileSmall"" hint-textStacking=""center"">{GenerateStringBackgroundImage()}<text hint-align=""center"" hint-style=""body"">Mon</text><text hint-align=""center"" hint-style=""base"">63°</text></binding><binding template=""TileMedium"" branding=""name"">{GenerateStringBackgroundImage()}<group>";
 
             // Medium tile subgroups
             expectedPayload += GenerateStringMediumSubgroup("Mon", IMAGE_MOSTLY_CLOUDY, 63, 42);
@@ -202,7 +202,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
 
             // Wide tile
-            expectedPayload += @"<binding template=""TileWide"" branding=""nameAndLogo"" hint-overlay=""30"">";
+            expectedPayload += @"<binding template=""TileWide"" branding=""nameAndLogo"">";
             expectedPayload += GenerateStringBackgroundImage();
             expectedPayload += "<group>";
 
@@ -218,7 +218,7 @@ namespace NotificationsExtensions.Win10.Test.Portable
 
 
             // Large tile
-            expectedPayload += @"<binding template=""TileLarge"" branding=""nameAndLogo"" hint-overlay=""30"">";
+            expectedPayload += @"<binding template=""TileLarge"" branding=""nameAndLogo"">";
             expectedPayload += GenerateStringBackgroundImage();
             expectedPayload += $@"<group><subgroup hint-weight=""30""><image src=""{IMAGE_MOSTLY_CLOUDY}"" /></subgroup><subgroup><text hint-style=""base"">Monday</text><text>63° / 42°</text><text hint-style=""captionSubtle"">20% chance of rain</text><text hint-style=""captionSubtle"">Winds 5 mph NE</text></subgroup></group>";
 
@@ -237,12 +237,11 @@ namespace NotificationsExtensions.Win10.Test.Portable
             string actualPayload = content.GetContent();
 
             AssertHelper.AssertXml(expectedPayload, actualPayload);
-            //Assert.AreEqual(expectedPayload, actualPayload);
         }
 
         private static string GenerateStringBackgroundImage()
         {
-            return $@"<image src=""{BACKGROUND_IMAGE_MOSTLY_CLOUDY}"" placement=""background"" />";
+            return $@"<image src=""{BACKGROUND_IMAGE_MOSTLY_CLOUDY}"" placement=""background"" hint-overlay=""30""/>";
         }
 
         private static string GenerateStringMediumSubgroup(string day, string image, int high, int low)
@@ -260,54 +259,54 @@ namespace NotificationsExtensions.Win10.Test.Portable
             return $@"<subgroup hint-weight=""1""><text hint-align=""center"">{day}</text><image src=""{image}"" /><text hint-align=""center"">{high}°</text><text hint-align=""center"" hint-style=""captionSubtle"">{low}°</text></subgroup>";
         }
 
-        private static TileSubgroup GenerateMediumSubgroup(string day, string image, int high, int low)
+        private static AdaptiveSubgroup GenerateMediumSubgroup(string day, string image, int high, int low)
         {
-            return new TileSubgroup()
+            return new AdaptiveSubgroup()
             {
                 Children =
                 {
-                    new TileText()
+                    new AdaptiveText()
                     {
                         Text = day,
-                        Align = TileTextAlign.Center
+                        HintAlign = AdaptiveTextAlign.Center
                     },
 
-                    new TileImage()
+                    new AdaptiveImage()
                     {
-                        Source = new TileImageSource(image),
-                        RemoveMargin = true
+                        Source = image,
+                        HintRemoveMargin = true
                     },
 
-                    new TileText()
+                    new AdaptiveText()
                     {
                         Text = high + "°",
-                        Align = TileTextAlign.Center
+                        HintAlign = AdaptiveTextAlign.Center
                     },
 
-                    new TileText()
+                    new AdaptiveText()
                     {
                         Text = low + "°",
-                        Align = TileTextAlign.Center,
-                        Style = TileTextStyle.CaptionSubtle
+                        HintAlign = AdaptiveTextAlign.Center,
+                        HintStyle = AdaptiveTextStyle.CaptionSubtle
                     }
                 }
             };
         }
 
-        private static TileSubgroup GenerateWideSubgroup(string day, string image, int high, int low)
+        private static AdaptiveSubgroup GenerateWideSubgroup(string day, string image, int high, int low)
         {
             var subgroup = GenerateMediumSubgroup(day, image, high, low);
 
-            subgroup.Weight = 1;
+            subgroup.HintWeight = 1;
 
             return subgroup;
         }
 
-        private static TileSubgroup GenerateLargeSubgroup(string day, string image, int high, int low)
+        private static AdaptiveSubgroup GenerateLargeSubgroup(string day, string image, int high, int low)
         {
             var subgroup = GenerateWideSubgroup(day, image, high, low);
 
-            (subgroup.Children[1] as TileImage).RemoveMargin = false;
+            (subgroup.Children[1] as AdaptiveImage).HintRemoveMargin = null;
 
             return subgroup;
         }

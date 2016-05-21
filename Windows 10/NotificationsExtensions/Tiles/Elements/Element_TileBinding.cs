@@ -15,7 +15,6 @@ namespace NotificationsExtensions.Tiles
     internal sealed class Element_TileBinding : IElementWithDescendants
     {
         internal const TileBranding DEFAULT_BRANDING = TileBranding.Auto;
-        internal const bool DEFAULT_ADD_IMAGE_QUERY = false;
         internal const TileTextStacking DEFAULT_TEXT_STACKING = TileTextStacking.Top;
         internal const int DEFAULT_OVERLAY = 20;
 
@@ -27,9 +26,6 @@ namespace NotificationsExtensions.Tiles
         [NotificationXmlAttribute("template")]
         public TileTemplateNameV3 Template { get; private set; }
 
-        [NotificationXmlAttribute("fallback")]
-        public TileTemplateNameV1? Fallback { get; set; }
-
         /// <summary>
         /// Set to true to allow Windows to append a query string to the image URI supplied in the tile notification. Use this attribute if your server hosts images and can handle query strings, either by retrieving an image variant based on the query strings or by ignoring the query string and returning the image as specified without the query string. This query string specifies scale, contrast setting, and language; for instance, a value of
         /// 
@@ -39,8 +35,8 @@ namespace NotificationsExtensions.Tiles
         /// 
         /// "www.website.com/images/hello.png?ms-scale=100&amp;ms-contrast=standard&amp;ms-lang=en-us"
         /// </summary>
-        [NotificationXmlAttribute("addImageQuery", DEFAULT_ADD_IMAGE_QUERY)]
-        public bool AddImageQuery { get; set; } = DEFAULT_ADD_IMAGE_QUERY;
+        [NotificationXmlAttribute("addImageQuery")]
+        public bool? AddImageQuery { get; set; }
 
         /// <summary>
         /// A default base URI that is combined with relative URIs in image source attributes.
@@ -85,20 +81,6 @@ namespace NotificationsExtensions.Tiles
 
         [NotificationXmlAttribute("arguments")]
         public string Arguments { get; set; }
-
-        private int? _overlay;
-        [NotificationXmlAttribute("hint-overlay")]
-        public int? Overlay
-        {
-            get { return _overlay; }
-            set
-            {
-                if (value != null)
-                    CheckOverlayValue(value.Value);
-
-                _overlay = value;
-            }
-        }
 
         /// <summary>
         /// Throws exception if value is invalid

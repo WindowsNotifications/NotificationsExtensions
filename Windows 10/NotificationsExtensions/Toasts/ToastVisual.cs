@@ -21,8 +21,9 @@ namespace NotificationsExtensions.Toasts
         public ToastVisual() { }
 
         /// <summary>
-        /// The version of the tile XML schema this particular payload was developed for. Windows 10 ignores this property.
+        /// DEPRECATED: The version of the tile XML schema this particular payload was developed for. Windows 10 ignores this property.
         /// </summary>
+        [Obsolete("This is not used by Windows 10. The Version property serves no purpose.")]
         public int? Version { get; set; }
 
         /// <summary>
@@ -38,33 +39,41 @@ namespace NotificationsExtensions.Toasts
         /// <summary>
         /// Set to "true" to allow Windows to append a query string to the image URI supplied in the toast notification. Use this attribute if your server hosts images and can handle query strings, either by retrieving an image variant based on the query strings or by ignoring the query string and returning the image as specified without the query string. This query string specifies scale, contrast setting, and language.
         /// </summary>
-        public bool AddImageQuery { get; set; } = Element_ToastVisual.DEFAULT_ADD_IMAGE_QUERY;
-
-        
+        public bool? AddImageQuery { get; set; }
 
         /// <summary>
-        /// The title text displayed on the toast notification, shown as the first line of text.
+        /// The generic toast binding, which can be rendered on all devices. This binding is required and cannot be null.
         /// </summary>
+        public ToastBindingGeneric BindingGeneric { get; set; }
+
+        /// <summary>
+        /// DEPRECATED: The title text displayed on the toast notification, shown as the first line of text.
+        /// </summary>
+        [Obsolete("Use BindingGeneric instead. Note that if you provide BindingGeneric, this property will be ignored.")]
         public ToastText TitleText { get; set; }
 
         /// <summary>
-        /// The first line of body text (after the title)
+        /// DEPRECATED: The first line of body text (after the title)
         /// </summary>
+        [Obsolete("Use BindingGeneric instead. Note that if you provide BindingGeneric, this property will be ignored.")]
         public ToastText BodyTextLine1 { get; set; }
 
         /// <summary>
-        /// The second line of body text
+        /// DEPRECATED: The second line of body text
         /// </summary>
+        [Obsolete("Use BindingGeneric instead. Note that if you provide BindingGeneric, this property will be ignored.")]
         public ToastText BodyTextLine2 { get; set; }
 
         /// <summary>
-        /// Inline images to display after the lines of text. Only 6 images are allowed. Adding more than 6 will throw an exception.
+        /// DEPRECATED: Inline images to display after the lines of text. Only 6 images are allowed. Adding more than 6 will throw an exception.
         /// </summary>
+        [Obsolete("Use BindingGeneric instead. Note that if you provide BindingGeneric, this property will be ignored.")]
         public IList<ToastImage> InlineImages { get; private set; } = new LimitedList<ToastImage>(6);
 
         /// <summary>
-        /// An optional override of the logo displayed on the toast notification.
+        /// DEPRECATED: An optional override of the logo displayed on the toast notification.
         /// </summary>
+        [Obsolete("Use the AppLogoOverride property on BindingGeneric, this AppLogoOverride property has been deprecated. Note that if you provide BindingGeneric, this property will be ignored.")]
         public ToastAppLogo AppLogoOverride { get; set; }
         
 
@@ -75,48 +84,60 @@ namespace NotificationsExtensions.Toasts
         {
             var visual = new Element_ToastVisual()
             {
-                Version = Version,
                 Language = Language,
                 BaseUri = BaseUri,
                 AddImageQuery = AddImageQuery
             };
 
 
-            Element_ToastBinding binding = new Element_ToastBinding(ToastTemplateType.ToastGeneric);
+            Element_ToastBinding binding;
 
-            if (TitleText == null)
+            // If BindingGeneric is provided, we'll ignore all the other properties
+            if (BindingGeneric != null)
             {
-                // If there's subsequent text, add a blank line of text
-                if (BodyTextLine1 != null || BodyTextLine2 != null)
-                    binding.Children.Add(new Element_ToastText());
+                binding = BindingGeneric.ConvertToElement();
             }
 
             else
-                binding.Children.Add(TitleText.ConvertToElement());
-
-            if (BodyTextLine1 == null)
             {
-                // If there's subsequent text, add a blank line of text
+                binding = new Element_ToastBinding(ToastTemplateType.ToastGeneric);
+
+                if (TitleText == null)
+                {
+                    // If there's subsequent text, add a blank line of text
+                    if (BodyTextLine1 != null || BodyTextLine2 != null)
+                        binding.Children.Add(new Element_ToastText());
+                }
+
+                else
+                    binding.Children.Add(TitleText.ConvertToElement());
+
+                if (BodyTextLine1 == null)
+                {
+                    // If there's subsequent text, add a blank line of text
+                    if (BodyTextLine2 != null)
+                        binding.Children.Add(new Element_ToastText());
+                }
+
+                else
+                    binding.Children.Add(BodyTextLine1.ConvertToElement());
+
                 if (BodyTextLine2 != null)
-                    binding.Children.Add(new Element_ToastText());
+                    binding.Children.Add(BodyTextLine2.ConvertToElement());
+
+
+
+
+
+                // Add inline images
+                foreach (var img in InlineImages)
+                    binding.Children.Add(img.ConvertToElement());
+
+
+                // And if there's an app logo override, add it
+                if (AppLogoOverride != null)
+                    binding.Children.Add(AppLogoOverride.ConvertToElement());
             }
-
-            else
-                binding.Children.Add(BodyTextLine1.ConvertToElement());
-
-            if (BodyTextLine2 != null)
-                binding.Children.Add(BodyTextLine2.ConvertToElement());
-
-
-
-            // Add inline images
-            foreach (var img in InlineImages)
-                binding.Children.Add(img.ConvertToElement());
-
-
-            // And if there's an app logo override, add it
-            if (AppLogoOverride != null)
-                binding.Children.Add(AppLogoOverride.ConvertToElement());
 
 
 
