@@ -14,7 +14,7 @@ namespace NotificationsExtensions.Test
         private const string IMAGE_SUNNY = "Assets\\Tiles\\Sunny.png";
         private const string IMAGE_CLOUDY = "Assets\\Tiles\\Cloudy.png";
 
-        private const string BACKGROUND_IMAGE_MOSTLY_CLOUDY = "Assets\\Tiles\\Mostly Cloudy-Background.png";
+        private const string BACKGROUND_IMAGE_MOSTLY_CLOUDY = "Assets\\Tiles\\Mostly Cloudy-Background.jpg";
 
         [TestMethod]
         public void TestWeatherTile()
