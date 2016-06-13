@@ -198,3 +198,4 @@ FakesAssemblies/
 
 # project.lock.json files
 *.lock.json
+*.zip
