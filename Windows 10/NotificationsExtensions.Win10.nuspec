@@ -30,5 +30,7 @@ Supports adaptive tiles and adaptive/interactive toasts for Windows 10!</descrip
 	<file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.dll" target="lib\dotnet"/>
 	<file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.pdb" target="lib\dotnet"/>
 	<file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.xml" target="lib\dotnet"/>
+
+	<file src="NotificationsExtensions.Win10.targets" target="build\native"/>
     </files>
 </package>
