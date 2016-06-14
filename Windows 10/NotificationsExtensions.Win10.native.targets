@@ -3,7 +3,7 @@
 
   <ItemGroup>
     <Reference Include="NotificationsExtensions">
-      <HintPath>$(MSBuildThisFileDirectory)..\..\lib\uap10.0\NotificationsExtensions.winmd</HintPath>
+      <HintPath>$(MSBuildThisFileDirectory)..\..\lib\native\NotificationsExtensions.winmd</HintPath>
       <IsWinMDFile>true</IsWinMDFile>
     </Reference>
   </ItemGroup>

@@ -24,12 +24,12 @@
         <file src="NotificationsExtensions.Win10.Portable\bin\Release\NotificationsExtensions.Win10.Portable.pdb" target="lib\portable-net45+sl50+win+wpa81+wp80"/>
         <file src="NotificationsExtensions.Win10.Portable\bin\Release\NotificationsExtensions.Win10.Portable.xml" target="lib\portable-net45+sl50+win+wpa81+wp80"/>
 
-        <!--For C# and C++ UWP apps-->
-        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.winmd" target="lib\uap10.0"/>
-        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pri" target="lib\uap10.0"/>
-        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pdb" target="lib\uap10.0"/>
-        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.xml" target="lib\uap10.0"/>
-        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.xml" target="lib\uap10.0\NotificationsExtensions.winmd.xml"/>
+        <!--For C++ UWP apps-->
+        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.winmd" target="lib\native"/>
+        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pri" target="lib\native"/>
+        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pdb" target="lib\native"/>
+        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.xml" target="lib\native"/>
+        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.xml" target="lib\native\NotificationsExtensions.winmd.xml"/>
         <!--The above file is included so that IntelliSense summaries appear, there was a bug in VS causing them not to appear without this-->
 
         <!--For modern portable libraries-->
@@ -37,7 +37,7 @@
         <file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.pdb" target="lib\dotnet"/>
         <file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.xml" target="lib\dotnet"/>
 
-        <!--For WinJS UWP apps-->
+        <!--For C# and WinJS UWP apps (we don't use uap10.0 since C# ends up adding both Windows and uap10.0)-->
         <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.winmd" target="lib\Windows"/>
         <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pri" target="lib\Windows"/>
         <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pdb" target="lib\Windows"/>
