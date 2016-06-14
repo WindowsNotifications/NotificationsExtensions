@@ -7,7 +7,8 @@
         <owners>microsoft, andrewbares</owners>
         <projectUrl>https://github.com/anbare/NotificationsExtensions/wiki</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>The official NotificationsExtensions library from Microsoft. Works with all UWP project types (C#, C++, and JavaScript), and also works with portable class libraries and non-UWP projects like server projects.
+        <summary>Generate tile, toast, and badge notifications for Windows 10 via code, with the help of IntelliSense, instead of directly using XML.</summary>
+        <description>The official NotificationsExtensions library from Microsoft. Supports all UWP project types (C#, C++, and JavaScript). Also works with portable class libraries and non-UWP projects like server projects.
 
     Generate tile, toast, and badge notifications for Windows 10 via code, with the help of IntelliSense, instead of directly using XML.
 
