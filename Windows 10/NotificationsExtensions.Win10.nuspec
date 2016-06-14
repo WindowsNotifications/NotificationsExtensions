@@ -4,33 +4,52 @@
         <id>NotificationsExtensions.Win10</id>
         <version>0.0.0</version>
         <authors>Microsoft</authors>
-	<owners>microsoft, andrewbares</owners>
+        <owners>microsoft, andrewbares</owners>
         <projectUrl>https://github.com/anbare/NotificationsExtensions/wiki</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>The official NotificationsExtensions library from Microsoft.
 
-Generate tile, toast, and badge notifications for Windows 10 via code, with the help of IntelliSense, instead of directly using XML.
+    Generate tile, toast, and badge notifications for Windows 10 via code, with the help of IntelliSense, instead of directly using XML.
 
-Supports adaptive tiles and adaptive/interactive toasts for Windows 10!</description>
+    Supports adaptive tiles and adaptive/interactive toasts for Windows 10!</description>
         <copyright>© Microsoft Corporation. All rights reserved.</copyright>
         <tags>notifications, win10, windows 10, tile, tiles, toast, toasts, badge, xml</tags>
-	<licenseUrl>https://raw.githubusercontent.com/anbare/NotificationsExtensions/master/LICENSE</licenseUrl>
+        <licenseUrl>https://raw.githubusercontent.com/anbare/NotificationsExtensions/master/LICENSE</licenseUrl>
     </metadata>
+    
     <files>
+
+        <!--For portable class libraries-->
         <file src="NotificationsExtensions.Win10.Portable\bin\Release\NotificationsExtensions.Win10.Portable.dll" target="lib\portable-net45+sl50+win+wpa81+wp80"/>
         <file src="NotificationsExtensions.Win10.Portable\bin\Release\NotificationsExtensions.Win10.Portable.pdb" target="lib\portable-net45+sl50+win+wpa81+wp80"/>
         <file src="NotificationsExtensions.Win10.Portable\bin\Release\NotificationsExtensions.Win10.Portable.xml" target="lib\portable-net45+sl50+win+wpa81+wp80"/>
 
+        <!--For C# and C++ UWP apps-->
         <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.winmd" target="lib\uap10.0"/>
         <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pri" target="lib\uap10.0"/>
         <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pdb" target="lib\uap10.0"/>
         <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.xml" target="lib\uap10.0"/>
         <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.xml" target="lib\uap10.0\NotificationsExtensions.winmd.xml"/>
+        <!--The above file is included so that IntelliSense summaries appear, there was a bug in VS causing them not to appear without this-->
 
-	<file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.dll" target="lib\dotnet"/>
-	<file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.pdb" target="lib\dotnet"/>
-	<file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.xml" target="lib\dotnet"/>
+        <!--For modern portable libraries-->
+        <file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.dll" target="lib\dotnet"/>
+        <file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.pdb" target="lib\dotnet"/>
+        <file src="NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.xml" target="lib\dotnet"/>
 
-	<file src="NotificationsExtensions.Win10.targets" target="build\native"/>
+        <!--For WinJS UWP apps-->
+        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.winmd" target="lib\Windows"/>
+        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pri" target="lib\Windows"/>
+        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pdb" target="lib\Windows"/>
+        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.xml" target="lib\Windows"/>
+        <file src="NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.xml" target="lib\Windows\NotificationsExtensions.winmd.xml"/>
+
+        <!--For C++ UWP apps-->
+        <file src="NotificationsExtensions.Win10.native.targets" target="build\native\NotificationsExtensions.Win10.targets"/>
+
+        <!--For WinJS UWP apps-->
+        <file src="NotificationsExtensions.Win10.Windows.targets" target="build\Windows\NotificationsExtensions.Win10.targets"/>
+        
     </files>
+
 </package>
