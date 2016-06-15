@@ -16,3 +16,9 @@ The official Microsoft NotificationsExtensions library. Generate tile, toast, an
 ## How to use it
 
 Please [read our Wiki](https://github.com/anbare/NotificationsExtensions/wiki) to learn how to use NotificationsExtensions.
+
+
+
+## Fine Print
+
+This project has adopted the [Microsoft Open Source Code of Conduct](http://microsoft.github.io/codeofconduct). For more information see the [Code of Conduct FAQ](http://microsoft.github.io/codeofconduct/faq.md) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments. 
