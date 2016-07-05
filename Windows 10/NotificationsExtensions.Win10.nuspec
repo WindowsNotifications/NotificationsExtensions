@@ -45,9 +45,7 @@
 
         <!--For C++ UWP apps-->
         <file src="NotificationsExtensions.Win10.native.targets" target="build\native\NotificationsExtensions.Win10.targets"/>
-
-        <!--For C# UWP apps-->
-        <file src="NotificationsExtensions.Win10.uap10.0.targets" target="build\uap10.0\NotificationsExtensions.Win10.targets"/>
         
     </files>
 
+</package>
