@@ -5,7 +5,7 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved
 
-#if WINRT
+#if WINDOWS_UWP
 using Windows.Data.Xml.Dom;
 #endif
 
@@ -37,7 +37,7 @@ namespace NotificationsExtensions.Tiles
             return ConvertToElement().GetContent();
         }
 
-#if WINRT
+#if WINDOWS_UWP
         /// <summary>
         /// Retrieves the notification XML content as a WinRT XmlDocument, so that it can be used with a local tile notification's constructor on either <see cref="Windows.UI.Notifications.TileNotification"/> or <see cref="Windows.UI.Notifications.ScheduledTileNotification"/>.
         /// </summary>
