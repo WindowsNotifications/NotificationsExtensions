@@ -38,7 +38,9 @@ set /p version="Enter Version Number (ex. 10240.0.0): "
 
 if not exist "..\NugetPackages" mkdir "..\NugetPackages"
 
-"C:\Program Files (x86)\NuGet\nuget.exe" pack -Version %version% -OutputDirectory "..\NugetPackages"
+"C:\Program Files (x86)\NuGet\nuget.exe" pack NotificationsExtensions.Win10.nuspec -Version %version% -OutputDirectory "..\NugetPackages"
+
+"C:\Program Files (x86)\NuGet\nuget.exe" pack NotificationsExtensions.Win10.JavaScript.nuspec -Version %version% -OutputDirectory "..\NugetPackages"
 
 PAUSE
 
