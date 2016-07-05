@@ -1,17 +1,21 @@
 @echo off
 
-set files=NotificationsExtensions.Win10.Portable\bin\Release\NotificationsExtensions.Win10.Portable.dll
-set files=%files% NotificationsExtensions.Win10.Portable\bin\Release\NotificationsExtensions.Win10.Portable.pdb
-set files=%files% NotificationsExtensions.Win10.Portable\bin\Release\NotificationsExtensions.Win10.Portable.xml
+set files=NotificationsExtensions.Win10.Portable\bin\Release\NotificationsExtensions.Win10.dll
+set files=%files% NotificationsExtensions.Win10.Portable\bin\Release\NotificationsExtensions.Win10.pdb
+set files=%files% NotificationsExtensions.Win10.Portable\bin\Release\NotificationsExtensions.Win10.xml
 
 set files=%files% NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.winmd
 set files=%files% NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pri
 set files=%files% NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.pdb
 set files=%files% NotificationsExtensions.Win10.WinRT\bin\Release\NotificationsExtensions.xml
 
-set files=%files% NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.dll
-set files=%files% NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.pdb
-set files=%files% NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.NETCore.xml
+set files=%files% NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.dll
+set files=%files% NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.pdb
+set files=%files% NotificationsExtensions.Win10.NETCore\bin\Release\NotificationsExtensions.Win10.xml
+
+set files=%files% NotificationsExtensions.Win10.UWP\bin\Release\NotificationsExtensions.Win10.dll
+set files=%files% NotificationsExtensions.Win10.UWP\bin\Release\NotificationsExtensions.Win10.pdb
+set files=%files% NotificationsExtensions.Win10.UWP\bin\Release\NotificationsExtensions.Win10.xml
 
 FOR %%f IN (%files%) DO IF NOT EXIST %%f call :file_not_found %%f
 

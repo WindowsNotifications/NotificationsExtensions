@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Win10.Portable", "NotificationsExtensions.Win10.Portable\NotificationsExtensions.Win10.Portable.csproj", "{DF77CE61-4633-49EC-90B1-DEBE0ED19EB6}"
 EndProject
@@ -21,14 +21,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Win
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Win10.Test.Portable", "NotificationsExtensions.Win10.Test.Portable\NotificationsExtensions.Win10.Test.Portable.csproj", "{C4518F16-3500-4021-8B19-F1B1FD3B0815}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsExtensions.Win10.UWP", "NotificationsExtensions.Win10.UWP\NotificationsExtensions.Win10.UWP.csproj", "{674955A0-F193-4EB5-901C-9DD375E5AA5F}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		NotificationsExtensions.Test\NotificationsExtensions.Test.projitems*{2135edd4-3c9f-4f3b-8040-96d4449fb1d8}*SharedItemsImports = 4
+		NotificationsExtensions\NotificationsExtensions.projitems*{2e0f30a7-4d63-427d-b547-024b44bd2cfb}*SharedItemsImports = 4
+		NotificationsExtensions.Test\NotificationsExtensions.Test.projitems*{6672bcc5-ffe8-4fdf-a982-9d4840f70678}*SharedItemsImports = 13
+		NotificationsExtensions\NotificationsExtensions.projitems*{674955a0-f193-4eb5-901c-9dd375e5aa5f}*SharedItemsImports = 4
 		NotificationsExtensions\NotificationsExtensions.projitems*{8f4cc187-1ae8-4db4-9cbc-0380de29e84b}*SharedItemsImports = 13
 		NotificationsExtensions\NotificationsExtensions.projitems*{d904d8c8-aec5-440b-b80e-d42ff3b91ede}*SharedItemsImports = 4
-		NotificationsExtensions.Test\NotificationsExtensions.Test.projitems*{6672bcc5-ffe8-4fdf-a982-9d4840f70678}*SharedItemsImports = 13
 		NotificationsExtensions\NotificationsExtensions.projitems*{df77ce61-4633-49ec-90b1-debe0ed19eb6}*SharedItemsImports = 4
-		NotificationsExtensions\NotificationsExtensions.projitems*{2e0f30a7-4d63-427d-b547-024b44bd2cfb}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -169,6 +172,22 @@ Global
 		{C4518F16-3500-4021-8B19-F1B1FD3B0815}.Release|x64.Build.0 = Release|Any CPU
 		{C4518F16-3500-4021-8B19-F1B1FD3B0815}.Release|x86.ActiveCfg = Release|Any CPU
 		{C4518F16-3500-4021-8B19-F1B1FD3B0815}.Release|x86.Build.0 = Release|Any CPU
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Debug|ARM.ActiveCfg = Debug|ARM
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Debug|ARM.Build.0 = Debug|ARM
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Debug|x64.ActiveCfg = Debug|x64
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Debug|x64.Build.0 = Debug|x64
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Debug|x86.ActiveCfg = Debug|x86
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Debug|x86.Build.0 = Debug|x86
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Release|ARM.ActiveCfg = Release|ARM
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Release|ARM.Build.0 = Release|ARM
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Release|x64.ActiveCfg = Release|x64
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Release|x64.Build.0 = Release|x64
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Release|x86.ActiveCfg = Release|x86
+		{674955A0-F193-4EB5-901C-9DD375E5AA5F}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
