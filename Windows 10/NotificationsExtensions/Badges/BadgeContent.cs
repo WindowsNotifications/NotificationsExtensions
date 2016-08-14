@@ -6,7 +6,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved
 
 using System;
-#if WINRT
+#if WINDOWS_UWP
 using Windows.Data.Xml.Dom;
 #endif
 
@@ -75,7 +75,7 @@ namespace NotificationsExtensions.Badges
             return GetContent();
         }
 
-#if WINRT
+#if WINDOWS_UWP
         /// <summary>
         /// Retrieves the notification XML content as a WinRT Xml document.
         /// </summary>
@@ -143,7 +143,7 @@ namespace NotificationsExtensions.Badges
             return GetContent();
         }
 
-#if WINRT
+#if WINDOWS_UWP
         /// <summary>
         /// Retrieves the notification Xml content as a WinRT Xml document.
         /// </summary>

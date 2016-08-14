@@ -13,7 +13,7 @@ using System.Xml;
 using System.Linq;
 using System.Collections;
 using System.IO;
-#if WINRT
+#if WINDOWS_UWP
 using Windows.Data.Xml.Dom;
 #endif
 
@@ -401,7 +401,7 @@ namespace NotificationsExtensions
         }
 
 
-#if WINRT
+#if WINDOWS_UWP
         /// <summary>
         /// Retrieves the notification XML content as a WinRT XML document.
         /// </summary>
