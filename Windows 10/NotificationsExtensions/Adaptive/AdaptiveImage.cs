@@ -7,9 +7,6 @@
 
 using NotificationsExtensions.Adaptive.Elements;
 using NotificationsExtensions.Tiles;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NotificationsExtensions
 {
@@ -18,10 +15,6 @@ namespace NotificationsExtensions
     /// </summary>
     public sealed class AdaptiveImage : IBaseImage, IAdaptiveChild, IAdaptiveSubgroupChild, ITileAdaptiveChild
     {
-        /// <summary>
-        /// Initializes a new inline image.
-        /// </summary>
-        public AdaptiveImage() { }
 
         /// <summary>
         /// Control the desired cropping of the image.
@@ -57,6 +50,23 @@ namespace NotificationsExtensions
         /// Set to true to allow Windows to append a query string to the image URI supplied in the tile notification. Use this attribute if your server hosts images and can handle query strings, either by retrieving an image variant based on the query strings or by ignoring the query string and returning the image as specified without the query string. This query string specifies scale, contrast setting, and language.
         /// </summary>
         public bool? AddImageQuery { get; set;}
+
+        /// <summary>
+        /// Initializes a new inline image.
+        /// </summary>
+        public AdaptiveImage() { }
+
+        /// <summary>
+        /// Initializes a new inline image.
+        /// </summary>
+        /// <param name="text">
+        /// Required. The URI of the image. Can be from your application package, application data, or the internet. 
+        /// Internet images must be less than 200 KB in size.
+        /// </param>
+        public AdaptiveImage(string source)
+        {
+            Source = source;
+        }
 
         internal Element_AdaptiveImage ConvertToElement()
         {

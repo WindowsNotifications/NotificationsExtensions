@@ -5,8 +5,6 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved
 
-
-
 using NotificationsExtensions.Adaptive.Elements;
 using System;
 
@@ -18,10 +16,6 @@ namespace NotificationsExtensions.Tiles
     [Obsolete("Use AdaptiveImage instead.")]
     public sealed class TileImage : ITileSubgroupChild, ITileAdaptiveChild
     {
-        /// <summary>
-        /// Initializes a new inline image that can be displayed on a tile.
-        /// </summary>
-        public TileImage() { }
 
         /// <summary>
         /// Provide the source of the image and other image source related properties.
@@ -42,6 +36,41 @@ namespace NotificationsExtensions.Tiles
         /// The horizontal alignment of the image.
         /// </summary>
         public TileImageAlign Align { get; set; } = Element_TileImage.DEFAULT_ALIGN;
+
+        /// <summary>
+        /// Initializes a new inline image that can be displayed on a tile.
+        /// </summary>
+        public TileImage() { }
+
+        /// <summary>
+        /// Initializes a new inline image that can be displayed on a tile.
+        /// </summary>
+        /// <param name="source"></param>
+        public TileImage(TileImageSource source)
+        {
+            Source = source;
+        }
+
+        /// <summary>
+        /// Initializes a new inline image that can be displayed on a tile.
+        /// </summary>
+        /// <param name="source">Provide the source of the image and other image source related properties.</param>
+        /// <param name="alignment">The horizontal alignment of the image.</param>
+        public TileImage(TileImageSource source, TileImageAlign alignment) : this(source)
+        {
+            Align = alignment;
+        }
+
+        /// <summary>
+        /// Initializes a new inline image that can be displayed on a tile.
+        /// </summary>
+        /// <param name="source">Provide the source of the image and other image source related properties.</param>
+        /// <param name="alignment">The horizontal alignment of the image.</param>
+        /// <param name="crop">Control the desired cropping of the image.</param>
+        public TileImage(TileImageSource source, TileImageAlign alignment, TileImageCrop crop) : this(source, alignment)
+        {
+            Crop = crop;
+        }
 
         internal Element_TileImage ConvertToElement()
         {
@@ -79,10 +108,6 @@ namespace NotificationsExtensions.Tiles
     /// </summary>
     public sealed class TilePeekImage : IBaseImage
     {
-        /// <summary>
-        /// Initializes a peek image that animates in from the top of the tile.
-        /// </summary>
-        public TilePeekImage() { }
 
         private string _source;
         /// <summary>
@@ -127,6 +152,20 @@ namespace NotificationsExtensions.Tiles
         /// Previously for RTM: Did not exist, value will be ignored and peek image will be displayed without any cropping.
         /// </summary>
         public TilePeekImageCrop HintCrop { get; set; }
+
+        /// <summary>
+        /// Initializes a peek image that animates in from the top of the tile.
+        /// </summary>
+        public TilePeekImage() { }
+
+        /// <summary>
+        /// Initializes a peek image that animates in from the top of the tile.
+        /// </summary>
+        /// <param name="source">The URI of the image, in the form of a string. Can be from your application package, application data, or the internet. Internet images must be less than 200 KB in size.</param>
+        public TilePeekImage(string source)
+        {
+            Source = source;
+        }
 
         internal Element_AdaptiveImage ConvertToElement()
         {

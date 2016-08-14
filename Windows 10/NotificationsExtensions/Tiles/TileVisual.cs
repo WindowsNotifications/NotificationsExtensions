@@ -15,10 +15,6 @@ namespace NotificationsExtensions.Tiles
     /// </summary>
     public sealed class TileVisual
     {
-        /// <summary>
-        /// Initializes a tile notification's visual element, which can contain multiple tile size bindings, each defining the visuals for a specific tile size.
-        /// </summary>
-        public TileVisual() { }
 
         /// <summary>
         /// The version of the tile XML schema this particular payload was developed for. Windows 10 ignores this property.
@@ -101,7 +97,10 @@ namespace NotificationsExtensions.Tiles
         /// </summary>
         public TileBinding TileLarge { get; set; }
 
-
+        /// <summary>
+        /// Initializes a tile notification's visual element, which can contain multiple tile size bindings, each defining the visuals for a specific tile size.
+        /// </summary>
+        public TileVisual() { }
 
 
         internal Element_TileVisual ConvertToElement()

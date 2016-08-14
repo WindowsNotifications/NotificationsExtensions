@@ -15,10 +15,6 @@ namespace NotificationsExtensions
     /// </summary>
     public sealed class AdaptiveText : IAdaptiveSubgroupChild, IAdaptiveChild, IBaseText, ITileAdaptiveChild
     {
-        /// <summary>
-        /// Initializes a new Adaptive text element.
-        /// </summary>
-        public AdaptiveText() { }
 
         /// <summary>
         /// The text to display.
@@ -78,6 +74,50 @@ namespace NotificationsExtensions
         /// The horizontal alignment of the text.
         /// </summary>
         public AdaptiveTextAlign HintAlign { get; set; }
+
+        /// <summary>
+        /// Initializes a new Adaptive text element.
+        /// </summary>
+        public AdaptiveText() { }
+
+        /// <summary>
+        /// Initializes a new Adaptive text element.
+        /// </summary>
+        /// <param name="text">The text to display.</param>
+        public AdaptiveText(string text)
+        {
+            Text = text;
+        }
+
+        /// <summary>
+        /// Initializes a new Adaptive text element.
+        /// </summary>
+        /// <param name="text">The text to display.</param>
+        /// 
+        public AdaptiveText(string text, AdaptiveTextStyle hintStyle) : this(text)
+        {
+            HintStyle = hintStyle;
+        }
+
+        /// <summary>
+        /// Initializes a new Adaptive text element.
+        /// </summary>
+        /// <param name="text">The text to display.</param>
+        /// 
+        public AdaptiveText(string text, AdaptiveTextAlign hintAlign) : this(text)
+        {
+            HintAlign = hintAlign;
+        }
+
+        /// <summary>
+        /// Initializes a new Adaptive text element.
+        /// </summary>
+        /// <param name="text">The text to display.</param>
+        /// 
+        public AdaptiveText(string text, AdaptiveTextStyle hintStyle, AdaptiveTextAlign hintAlign) : this(text, hintStyle)
+        {
+            HintAlign = hintAlign;
+        }
 
         internal Element_AdaptiveText ConvertToElement()
         {
