@@ -1,3 +1,7 @@
+# THIS PROJECT HAS MOVED
+
+### NotificationsExtensions is now part of the [UWP Community Toolkit](https://github.com/Microsoft/UWPCommunityToolkit). Please find the latest version [here](https://github.com/Microsoft/UWPCommunityToolkit).
+
 # NotificationsExtensions
 
 The official Microsoft NotificationsExtensions library. Generate tile, toast, and badge notifications for Windows via code, with the help of IntelliSense, instead of directly using XML.
