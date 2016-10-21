@@ -5,7 +5,6 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved
 
-
 using System;
 
 namespace NotificationsExtensions.Tiles
@@ -15,10 +14,6 @@ namespace NotificationsExtensions.Tiles
     /// </summary>
     public sealed class TileBinding
     {
-        /// <summary>
-        /// Initializes a binding element, which contains the visual content for a specific tile size.
-        /// </summary>
-        public TileBinding() { }
 
         /// <summary>
         /// The target locale of the XML payload, specified as a BCP-47 language tags such as "en-US" or "fr-FR". The locale specified here overrides that in visual, but can be overriden by that in text. If this value is a literal string, this attribute defaults to the user's UI language. If this value is a string reference, this attribute defaults to the locale chosen by Windows Runtime in resolving the string. See Remarks for when this value isn't specified.
@@ -65,6 +60,53 @@ namespace NotificationsExtensions.Tiles
         /// The actual content to be displayed. One of <see cref="TileBindingContentAdaptive"/>, <see cref="TileBindingContentIconic"/>, <see cref="TileBindingContentContact"/>, <see cref="TileBindingContentPeople"/>, or <see cref="TileBindingContentPhotos"/>
         /// </summary>
         public ITileBindingContent Content { get; set; }
+
+        /// <summary>
+        /// Initializes a binding element, which contains the visual content for a specific tile size.
+        /// </summary>
+        public TileBinding() { }
+
+        /// <summary>
+        /// Initializes a binding element, which contains the visual content for a specific tile size.
+        /// </summary>
+        /// <param name="content"></param>
+        public TileBinding(ITileBindingContent content)
+        {
+            Content = content;
+        }
+
+        /// <summary>
+        /// Initializes a binding element, which contains the visual content for a specific tile size.
+        /// </summary>
+        /// <param name="content"></param>
+        public TileBinding(Uri baseUri, ITileBindingContent content) : this(content)
+        {
+            BaseUri = baseUri;
+        }
+
+        /// <summary>
+        /// Initializes a binding element, which contains the visual content for a specific tile size.
+        /// </summary>
+        /// <param name="displayName"></param>
+        /// <param name="content"></param>
+        public TileBinding(string displayName, ITileBindingContent content) : this(content)
+        {
+            DisplayName = displayName;
+            Content = content;
+        }
+
+        /// <summary>
+        /// Initializes a binding element, which contains the visual content for a specific tile size.
+        /// </summary>
+        /// <param name="displayName"></param>
+        /// <param name="baseUri"></param>
+        /// <param name="content"></param>
+        /// <param name="branding"></param>
+        public TileBinding(string displayName, Uri baseUri, ITileBindingContent content, TileBranding branding = TileBranding.Auto) : this(displayName, content)
+        {
+            BaseUri = baseUri;
+            Branding = branding;
+        }
 
         internal Element_TileBinding ConvertToElement(TileSize size)
         {

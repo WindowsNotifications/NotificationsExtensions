@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>E:\GitHub\NotificationsExtensions\Windows 10\NotificationsExtensions.SampleApp\Package.appxmanifest</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>NotificationsExtensions.Win10.WinRT</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>e:\github\notificationsextensions\windows 10\notificationsextensions.sampleapp\tilespage.xaml.cs</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>

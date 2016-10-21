@@ -12,19 +12,17 @@ using System.Collections.Generic;
 namespace NotificationsExtensions.Tiles
 {
     /// <summary>
-    /// Supported on all sizes. This is the recommended way of specifying your Tile content. Adaptive Tile templates are the de-facto choice for Windows 10, and you can create a wide variety of custom Tiles through adaptive.
+    /// Supported on all sizes. This is the recommended way of specifying your Tile content. Adaptive Tile templates 
+    /// are the de-facto choice for Windows 10, and you can create a wide variety of custom Tiles through adaptive.
     /// </summary>
     public sealed class TileBindingContentAdaptive : ITileBindingContent
     {
-        /// <summary>
-        /// Supported on all sizes. This is the recommended way of specifying your Tile content. Adaptive Tile templates are the de-facto choice for Windows 10, and you can create a wide variety of custom Tiles through adaptive.
-        /// </summary>
-        public TileBindingContentAdaptive() { }
 
         /// <summary>
-        /// <see cref="AdaptiveText"/>, <see cref="AdaptiveImage"/>, and <see cref="AdaptiveGroup"/> objects can be added as children. The children are displayed in a vertical StackPanel fashion.
+        /// <see cref="AdaptiveText"/>, <see cref="AdaptiveImage"/>, and <see cref="AdaptiveGroup"/> objects can be 
+        /// added as children. The children are displayed in a vertical StackPanel fashion.
         /// </summary>
-        public IList<ITileAdaptiveChild> Children { get; private set; } = new List<ITileAdaptiveChild>();
+        public IList<ITileAdaptiveChild> Children { get; set; } = new List<ITileAdaptiveChild>();
 
         /// <summary>
         /// An optional background image that gets displayed behind all the tile content, full bleed.
@@ -40,7 +38,23 @@ namespace NotificationsExtensions.Tiles
         /// Controls the text stacking (vertical alignment) of the entire binding element.
         /// </summary>
         public TileTextStacking TextStacking { get; set; } = Element_TileBinding.DEFAULT_TEXT_STACKING;
-        
+
+        /// <summary>
+        /// Creates a new Adaptive TileBindingContent.
+        /// </summary>
+        public TileBindingContentAdaptive() { }
+
+        /// <summary>
+        /// Creates a new Adaptive TileBindingContent.
+        /// </summary>
+        /// <param name="children">
+        /// <see cref="AdaptiveText"/>, <see cref="AdaptiveImage"/>, and <see cref="AdaptiveGroup"/> objects can be 
+        /// added as children. The children are displayed in a vertical StackPanel fashion.
+        /// </param>
+        public TileBindingContentAdaptive(IList<ITileAdaptiveChild> children)
+        {
+            Children = children;
+        }
 
         internal TileTemplateNameV3 GetTemplateName(TileSize size)
         {

@@ -17,17 +17,26 @@ namespace NotificationsExtensions.Tiles
     /// </summary>
     public sealed class TileContent
     {
+
+        /// <summary>
+        /// Contains the different bindings for each tile size. Required.
+        /// </summary>
+        public TileVisual Visual { get; set; }
+
         /// <summary>
         /// Initializes a new instance of a tile notification's content. You must then set the Visual property, which is required for a tile notification.
         /// </summary>
         public TileContent() { }
 
         /// <summary>
-        /// The visual element is required.
+        /// Initializes a new instance of a tile notification's content.
         /// </summary>
-        public TileVisual Visual { get; set; }
-
-
+        /// <param name="visual">The <see cref="TileVisual"/> that describes the different bindings for each tile size.</param>
+        public TileContent(TileVisual visual)
+        {
+            Visual = visual;
+        }
+        
         /// <summary>
         /// Retrieves the notification XML content as a string, so that it can be sent with a HTTP POST in a push notification.
         /// </summary>
@@ -48,6 +57,15 @@ namespace NotificationsExtensions.Tiles
             doc.LoadXml(GetContent());
 
             return doc;
+        }
+
+        /// <summary>
+        /// Retrieves the notification XML content as a string so you can quickly assess its contents for accuracy.
+        /// </summary>
+        /// <returns>A string containing the complete XML payload.</returns>
+        public string override ToString()
+        {
+            return GetXml().GetXml();
         }
 
 #endif
